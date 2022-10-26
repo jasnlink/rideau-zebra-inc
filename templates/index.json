@@ -1,1 +1,443 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"Get your zebra on.","heading_size":"h0"}},"text":{"type":"text","settings":{"text":"Find the perfect zebra blinds for your home.","text_style":"subtitle"}},"button":{"type":"buttons","settings":{"button_label_1":"Shop all","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading","text","button"],"settings":{"image":"shopify:\/\/shop_images\/hero-6.webp","image_overlay_opacity":10,"image_height":"large","adapt_height_first_image":false,"desktop_content_position":"middle-left","show_text_box":false,"desktop_content_alignment":"left","color_scheme":"background-1","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"rich_text":{"type":"rich-text","blocks":{"heading":{"type":"heading","settings":{"heading":"<p>Blinds that make sense.<\/p>","heading_size":"h1"}}},"block_order":["heading"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"background-2","full_width":true,"padding_top":84,"padding_bottom":36}},"6848b49b-c0b1-468b-8a2a-2573bedbd88c":{"type":"multicolumn","blocks":{"template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0":{"type":"column","settings":{"title":"Fast local delivery and pickup","text":"<p>With local shipping, you can get your items within 1-3 days. And with pickup, you can get your items even sooner!<\/p>","link_label":"","link":""}},"template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-1":{"type":"column","settings":{"title":"30 Days hassle-free exchanges","text":"<p>If you're not happy with your purchase, simply return it within 30 days and we'll gladly exchange it for you. No hassles, no questions asked!<\/p>","link_label":"","link":""}}},"block_order":["template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0","template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-1"],"settings":{"title":"","heading_size":"h1","image_width":"full","image_ratio":"adapt","columns_desktop":2,"column_alignment":"left","background_style":"none","button_label":"","button_link":"","color_scheme":"background-2","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":84}},"11dda935-574a-4492-af35-93c82eb21142":{"type":"image-with-text","blocks":{"template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0":{"type":"heading","settings":{"heading":"Built to last.","heading_size":"h1"}},"template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1":{"type":"text","settings":{"text":"<p>Built with aluminium, making them durable and long lasting.<\/p>","text_style":"body"}}},"block_order":["template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0","template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1"],"settings":{"image":"shopify:\/\/shop_images\/white-3.jpg","height":"adapt","desktop_image_width":"medium","layout":"image_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"no-overlap","color_scheme":"background-1","mobile_content_alignment":"left","padding_top":56,"padding_bottom":56}},"9697987a-8ba9-4ddf-82c7-3dc457ac526d":{"type":"image-with-text","blocks":{"template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0":{"type":"heading","settings":{"heading":"Quality fabric.","heading_size":"h1"}},"template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1":{"type":"text","settings":{"text":"<p>The horizontal stripes create a unique look that is sure to add style to any space.<\/p>","text_style":"body"}}},"block_order":["template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0","template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1"],"settings":{"image":"shopify:\/\/shop_images\/gray-5.jpg","height":"adapt","desktop_image_width":"medium","layout":"text_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"no-overlap","color_scheme":"background-1","mobile_content_alignment":"left","padding_top":56,"padding_bottom":56}},"a24b7a47-ecee-46fa-81a7-7a54cc0eb56a":{"type":"image-with-text","blocks":{"template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0":{"type":"heading","settings":{"heading":"Cordless design.","heading_size":"h1"}},"template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1":{"type":"text","settings":{"text":"<p>Safe for homes with children and pets, and easy to operate with just a few simple clicks.<\/p>","text_style":"body"}}},"block_order":["template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0","template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1"],"settings":{"image":"shopify:\/\/shop_images\/white-6.jpg","height":"adapt","desktop_image_width":"medium","layout":"image_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"no-overlap","color_scheme":"background-1","mobile_content_alignment":"left","padding_top":56,"padding_bottom":56}},"050c0daa-abea-47e4-a873-d3515cade91f":{"type":"featured-product","blocks":{"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-1":{"type":"title","settings":{"heading_size":"h1"}},"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-2":{"type":"price","settings":{}},"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-3":{"type":"variant_picker","settings":{"picker_type":"dropdown"}},"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-4":{"type":"quantity_selector","settings":{}},"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-5":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true}},"template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-6":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-1","template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-2","template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-3","template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-4","template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-5","template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-6"],"settings":{"product":"cordless-zebra-blinds-white","color_scheme":"inverse","secondary_background":false,"media_position":"left","hide_variants":false,"enable_video_looping":false,"padding_top":100,"padding_bottom":56}},"3f5fdd55-daf8-47b1-b58b-c44c506e75c9":{"type":"featured-product","blocks":{"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-1":{"type":"title","settings":{"heading_size":"h1"}},"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-2":{"type":"price","settings":{}},"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-3":{"type":"variant_picker","settings":{"picker_type":"dropdown"}},"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-4":{"type":"quantity_selector","settings":{}},"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-5":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true}},"template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-6":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-1","template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-2","template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-3","template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-4","template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-5","template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-6"],"settings":{"product":"copy-of-cordless-zebra-blinds-gray","color_scheme":"inverse","secondary_background":false,"media_position":"right","hide_variants":false,"enable_video_looping":false,"padding_top":56,"padding_bottom":56}},"5f496596-0a80-4ddf-b24d-3940ac4301bb":{"type":"featured-product","blocks":{"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-1":{"type":"title","settings":{"heading_size":"h1"}},"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-2":{"type":"price","settings":{}},"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-3":{"type":"variant_picker","settings":{"picker_type":"dropdown"}},"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-4":{"type":"quantity_selector","settings":{}},"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-5":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true}},"template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-6":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-1","template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-2","template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-3","template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-4","template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-5","template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-6"],"settings":{"product":"cordless-zebra-blinds-black","color_scheme":"inverse","secondary_background":false,"media_position":"left","hide_variants":false,"enable_video_looping":false,"padding_top":56,"padding_bottom":56}},"f4fed61e-3f3b-4486-9683-9acd4dcde97f":{"type":"newsletter","blocks":{"template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-0":{"type":"heading","settings":{"heading":"Subscribe to our newsletter.","heading_size":"h1"}},"template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-1":{"type":"paragraph","settings":{"text":"<p>Sign up to our newsletter today and be the first to hear about our latest products, special offers and more.<\/p>"}},"template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-2":{"type":"email_form","settings":{}}},"block_order":["template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-0","template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-1","template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-2"],"settings":{"color_scheme":"background-1","full_width":true,"padding_top":100,"padding_bottom":100}}},"order":["image_banner","rich_text","6848b49b-c0b1-468b-8a2a-2573bedbd88c","11dda935-574a-4492-af35-93c82eb21142","9697987a-8ba9-4ddf-82c7-3dc457ac526d","a24b7a47-ecee-46fa-81a7-7a54cc0eb56a","050c0daa-abea-47e4-a873-d3515cade91f","3f5fdd55-daf8-47b1-b58b-c44c506e75c9","5f496596-0a80-4ddf-b24d-3940ac4301bb","f4fed61e-3f3b-4486-9683-9acd4dcde97f"]}
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get your zebra on.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Find the perfect zebra blinds for your home.",
+            "text_style": "subtitle"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/hero-6.webp",
+        "image_overlay_opacity": 10,
+        "image_height": "large",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Blinds that make sense<\/p>",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 84,
+        "padding_bottom": 36
+      }
+    },
+    "6848b49b-c0b1-468b-8a2a-2573bedbd88c": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0": {
+          "type": "column",
+          "settings": {
+            "title": "Fast local delivery and pickup",
+            "text": "<p>With local shipping, you can get your items within 1-3 days. And with pickup, you can get your items even sooner!<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-1": {
+          "type": "column",
+          "settings": {
+            "title": "30 Days hassle-free exchanges",
+            "text": "<p>If you're not happy with your purchase, simply return it within 30 days and we'll gladly exchange it for you. No hassles, no questions asked!<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0",
+        "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-1"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 84
+      }
+    },
+    "11dda935-574a-4492-af35-93c82eb21142": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built to last",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Built with aluminium, making them durable and long lasting.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0",
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/white-3.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "9697987a-8ba9-4ddf-82c7-3dc457ac526d": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Quality fabric",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The horizontal stripes create a unique look that is sure to add style to any space.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0",
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gray-5.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cordless design",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Safe for homes with children and pets, and easy to operate with just a few simple clicks.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0",
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/white-6.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "050c0daa-abea-47e4-a873-d3515cade91f": {
+      "type": "featured-product",
+      "blocks": {
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-1": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-2": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-3": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-4": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-5": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-6": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-1",
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-2",
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-3",
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-4",
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-5",
+        "template--15300420534325__050c0daa-abea-47e4-a873-d3515cade91f-16666608938c2f8924-6"
+      ],
+      "settings": {
+        "product": "cordless-zebra-blinds-white",
+        "color_scheme": "inverse",
+        "secondary_background": false,
+        "media_position": "left",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 100,
+        "padding_bottom": 56
+      }
+    },
+    "3f5fdd55-daf8-47b1-b58b-c44c506e75c9": {
+      "type": "featured-product",
+      "blocks": {
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-1": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-2": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-3": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-4": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-5": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-6": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-1",
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-2",
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-3",
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-4",
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-5",
+        "template--15300420534325__3f5fdd55-daf8-47b1-b58b-c44c506e75c9-1666676016602d5d37-6"
+      ],
+      "settings": {
+        "product": "copy-of-cordless-zebra-blinds-gray",
+        "color_scheme": "inverse",
+        "secondary_background": false,
+        "media_position": "right",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "5f496596-0a80-4ddf-b24d-3940ac4301bb": {
+      "type": "featured-product",
+      "blocks": {
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-1": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-2": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-3": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-4": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-5": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-6": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-1",
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-2",
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-3",
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-4",
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-5",
+        "template--15300420534325__5f496596-0a80-4ddf-b24d-3940ac4301bb-1666676016602d5d37-6"
+      ],
+      "settings": {
+        "product": "cordless-zebra-blinds-black",
+        "color_scheme": "inverse",
+        "secondary_background": false,
+        "media_position": "left",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "f4fed61e-3f3b-4486-9683-9acd4dcde97f": {
+      "type": "newsletter",
+      "blocks": {
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Sign up to our newsletter today and be the first to hear about our latest products, special offers and more.<\/p>"
+          }
+        },
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-2": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-0",
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-1",
+        "template--15300420534325__f4fed61e-3f3b-4486-9683-9acd4dcde97f-1666676016e0e3842e-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "rich_text",
+    "6848b49b-c0b1-468b-8a2a-2573bedbd88c",
+    "11dda935-574a-4492-af35-93c82eb21142",
+    "9697987a-8ba9-4ddf-82c7-3dc457ac526d",
+    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a",
+    "050c0daa-abea-47e4-a873-d3515cade91f",
+    "3f5fdd55-daf8-47b1-b58b-c44c506e75c9",
+    "5f496596-0a80-4ddf-b24d-3940ac4301bb",
+    "f4fed61e-3f3b-4486-9683-9acd4dcde97f"
+  ]
+}
