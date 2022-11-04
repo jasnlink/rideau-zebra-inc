@@ -306,9 +306,7 @@
                 {%- endif -%}
                 <div class="footer__copyright caption">
                     <small class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
-                    <small class="copyright__content">, made with ☕ by
-                        <a href="https://msmtech.ca">MSM TECHNOLOGIES</a>
-                    </small>
+                    <small class="copyright__content">{{ 'sections.footer.powered_by_html' | t }}</small>
                 </div>
             </div>
         </div>
@@ -342,6 +340,7 @@
             
 
 
+
             this.hidePanel();
             this.elements.button.focus();
         }
@@ -353,6 +352,7 @@
             if (form) 
                 form.submit();
             
+
 
         }
 

@@ -267,7 +267,8 @@
       }
     },
     "footer": {
-      "payment": "Moyens de paiement"
+      "payment": "Moyens de paiement",
+      "powered_by_html": "| Réalisé avec du ☕ par <a href=\"https://msmtech.ca\">MSM TECHNOLOGIES<\/a>"
     },
     "featured_blog": {
       "view_all": "Tout afficher",
