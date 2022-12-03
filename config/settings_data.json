@@ -162,11 +162,19 @@
               "heading": "Our mission",
               "subtext": "<p>To provide high quality, affordable window treatments that enhance the look of any home or office.<\/p>"
             }
+          },
+          "86decab1-c5a5-49b8-952b-b00fde0ebddf": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Useful links",
+              "menu": "footer"
+            }
           }
         },
         "block_order": [
           "5eac245e-e32e-401b-ba5e-8f4e9f8bf6e9",
-          "footer-2"
+          "footer-2",
+          "86decab1-c5a5-49b8-952b-b00fde0ebddf"
         ],
         "settings": {
           "color_scheme": "background-1",
