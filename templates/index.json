@@ -77,8 +77,17 @@
         "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0": {
           "type": "column",
           "settings": {
-            "title": "Fast local delivery and pickup",
-            "text": "<p>With local shipping, you can get your items within 1-3 days. And with pickup, you can get your items even sooner!<\/p>",
+            "title": "Made to Measure",
+            "text": "<p>Send us the measurements and we will cut them to your exact specifications.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "6a4b4001-b681-4d5b-a5bf-496cb4e787ab": {
+          "type": "column",
+          "settings": {
+            "title": "Fast Montreal and South Shore delivery and pickup",
+            "text": "<p>With local delivery, you can get your items within 1-3 days. And with pickup, you can get your items even sooner!<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -95,6 +104,7 @@
       },
       "block_order": [
         "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-0",
+        "6a4b4001-b681-4d5b-a5bf-496cb4e787ab",
         "template--15300420534325__6848b49b-c0b1-468b-8a2a-2573bedbd88c-1666752720de0f10ac-1"
       ],
       "settings": {
@@ -102,7 +112,7 @@
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 2,
+        "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "none",
         "button_label": "",
