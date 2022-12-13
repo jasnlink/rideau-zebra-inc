@@ -124,6 +124,59 @@
         "padding_bottom": 84
       }
     },
+    "72941248-6163-445e-95c2-99a6ec340a2c": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-0": {
+          "type": "column",
+          "settings": {
+            "title": "1. Place your order",
+            "text": "<p>Choose your blinds and place your order!<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-1": {
+          "type": "column",
+          "settings": {
+            "title": "2. Get in contact for measurements",
+            "text": "<p>We contact you to get the measurements for your windows and patios.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-2": {
+          "type": "column",
+          "settings": {
+            "title": "3. Delivery",
+            "text": "<p>We deliver to your home whenever your available!<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-0",
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-1",
+        "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-2"
+      ],
+      "settings": {
+        "title": "How it works",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Shop Now",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 84,
+        "padding_bottom": 36
+      }
+    },
     "11dda935-574a-4492-af35-93c82eb21142": {
       "type": "image-with-text",
       "blocks": {
@@ -442,6 +495,7 @@
     "image_banner",
     "rich_text",
     "6848b49b-c0b1-468b-8a2a-2573bedbd88c",
+    "72941248-6163-445e-95c2-99a6ec340a2c",
     "11dda935-574a-4492-af35-93c82eb21142",
     "9697987a-8ba9-4ddf-82c7-3dc457ac526d",
     "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a",
