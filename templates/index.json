@@ -139,8 +139,8 @@
         "template--15361595998261__72941248-6163-445e-95c2-99a6ec340a2c-16708899667fa2caee-1": {
           "type": "column",
           "settings": {
-            "title": "2. Get in contact for measurements",
-            "text": "<p>We contact you to get the measurements for your windows and patios.<\/p>",
+            "title": "2. Get in touch for measurements",
+            "text": "<p>We contact you to get the perfect measurements for your windows and patios.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -149,7 +149,7 @@
           "type": "column",
           "settings": {
             "title": "3. Delivery",
-            "text": "<p>We deliver to your home whenever your available!<\/p>",
+            "text": "<p>We deliver to you're home whenever your available!<\/p>",
             "link_label": "",
             "link": ""
           }
