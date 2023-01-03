@@ -170,119 +170,11 @@
         "background_style": "none",
         "button_label": "Shop now",
         "button_link": "shopify:\/\/collections\/all-products",
-        "color_scheme": "inverse",
+        "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 84,
         "padding_bottom": 84
-      }
-    },
-    "11dda935-574a-4492-af35-93c82eb21142": {
-      "type": "image-with-text",
-      "blocks": {
-        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Built to last",
-            "heading_size": "h1"
-          }
-        },
-        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Built with aluminium, making them durable and long lasting.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0",
-        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/white-3.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "left",
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
-    "9697987a-8ba9-4ddf-82c7-3dc457ac526d": {
-      "type": "image-with-text",
-      "blocks": {
-        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Quality fabric",
-            "heading_size": "h1"
-          }
-        },
-        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The horizontal stripes create a unique look that is sure to add style to any space.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0",
-        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/gray-5.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "left",
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
-    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a": {
-      "type": "image-with-text",
-      "blocks": {
-        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Cordless design",
-            "heading_size": "h1"
-          }
-        },
-        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Safe for homes with children and pets, and easy to operate with just a few simple clicks.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0",
-        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/white-6.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "left",
-        "padding_top": 56,
-        "padding_bottom": 56
       }
     },
     "050c0daa-abea-47e4-a873-d3515cade91f": {
@@ -456,6 +348,114 @@
         "padding_bottom": 56
       }
     },
+    "11dda935-574a-4492-af35-93c82eb21142": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built to last",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Built with aluminium, making them durable and long lasting.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-0",
+        "template--15300420534325__11dda935-574a-4492-af35-93c82eb21142-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/white-3.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "9697987a-8ba9-4ddf-82c7-3dc457ac526d": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Quality fabric",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The horizontal stripes create a unique look that is sure to add style to any space.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-0",
+        "template--15300420534325__9697987a-8ba9-4ddf-82c7-3dc457ac526d-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gray-5.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cordless design",
+            "heading_size": "h1"
+          }
+        },
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Safe for homes with children and pets, and easy to operate with just a few simple clicks.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-0",
+        "template--15300420534325__a24b7a47-ecee-46fa-81a7-7a54cc0eb56a-16666783007ad94fb9-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/white-6.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
     "f4fed61e-3f3b-4486-9683-9acd4dcde97f": {
       "type": "newsletter",
       "blocks": {
@@ -496,12 +496,12 @@
     "rich_text",
     "6848b49b-c0b1-468b-8a2a-2573bedbd88c",
     "72941248-6163-445e-95c2-99a6ec340a2c",
-    "11dda935-574a-4492-af35-93c82eb21142",
-    "9697987a-8ba9-4ddf-82c7-3dc457ac526d",
-    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a",
     "050c0daa-abea-47e4-a873-d3515cade91f",
     "3f5fdd55-daf8-47b1-b58b-c44c506e75c9",
     "5f496596-0a80-4ddf-b24d-3940ac4301bb",
+    "11dda935-574a-4492-af35-93c82eb21142",
+    "9697987a-8ba9-4ddf-82c7-3dc457ac526d",
+    "a24b7a47-ecee-46fa-81a7-7a54cc0eb56a",
     "f4fed61e-3f3b-4486-9683-9acd4dcde97f"
   ]
 }
