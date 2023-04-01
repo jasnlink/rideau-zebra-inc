@@ -340,7 +340,7 @@
         "column_alignment": "left",
         "background_style": "none",
         "button_label": "Shop now",
-        "button_link": "shopify:\/\/collections\/all-products",
+        "button_link": "shopify:\/\/collections\/all",
         "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
