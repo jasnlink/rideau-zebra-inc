@@ -36,9 +36,7 @@
         <link rel="stylesheet" href="{{ 'output.css' | asset_url }}">
         <link rel="stylesheet" href="{{ 'glide.core.min.css' | asset_url }}">
 
-        {%- if settings.favicon != blank -%}
-            <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-        {%- endif -%}
+        <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_img_url: '32x32' }}">
 
         {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
             <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
