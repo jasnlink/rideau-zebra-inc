@@ -1,0 +1,23 @@
+<div class="pt-4 pb-24 container mx-auto">
+    <div class="sm:w-10/12 mx-auto">
+        <div>
+            <picture>
+                {% assign image = article.image %}
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                <img src="{{ image | image_url: width: 1200 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-contain rounded-md" />
+            </picture>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="{{ blog.url }}" title="{{ 'blogs.article.back_to_blog' | t }}" class="underline underline-offset-4 text-stone-900">{{ 'blogs.article.back_to_blog' | t }}</a>
+        </div>
+        <div class="mt-4">
+            <div class="font-serif font-bold text-5xl text-stone-900">{{ article.title }}</div>
+        </div>
+        <div class="mt-8 text-xl text-stone-900">{{ article.content | replace: "<h3>", '<h3 class="mt-6 mb-4 font-serif font-bold text-3xl">' }}</div>
+    </div>
+</div>

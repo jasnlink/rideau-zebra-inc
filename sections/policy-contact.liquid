@@ -1,0 +1,56 @@
+{% if page.title == blank %}
+    {% capture title %}{{ 'templates.contact.title' | t }}{% endcapture %}
+{% else %}
+    {% assign title = page.title %}
+{% endif %}
+{% if page.content == blank %}
+    {% capture content %}{{ 'templates.contact.content' | t }}{% endcapture %}
+{% else %}
+    {% assign content = page.content %}
+{% endif %}
+<div data-no-overlay class="container mx-auto pt-16 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-12">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-bold font-serif">{{ title }}</h1>
+            <div class="mt-6 text-lg">{{ content }}</div>
+            <div class="mt-4 text-lg">
+                <span>{{ 'templates.contact.email_label' | t }} <a href="mailto:{{ 'templates.contact.email_address' | t }}" class="underline">{{ 'templates.contact.email_address' | t }}</a></span>
+            </div>
+            <div class="text-lg">
+                <span>{{ 'templates.contact.phone_label' | t }} <a href="tel:{{ 'templates.contact.phone_number' | t | replace: '(', '' | replace: ')', '' | replace: ' ', '' | replace: '-', '' }}" class="underline">{{ 'templates.contact.phone_number' | t }}</a></span>
+            </div>
+            <div class="mt-4 text-lg font-bold">{{ 'templates.contact.pickup_on_appointment' | t }}</div>
+            <div class="text-lg">{{ 'templates.contact.address' | t }}</div>
+        </div>
+        <div class="container mx-auto mt-8 lg:mt-0">
+            {% form 'contact' %}
+                {{ form.errors | default_errors }}
+                <div class="flex gap-4 w-full">
+                    <div class="mt-4 w-full">
+                        <label for="first-name">{{ 'templates.contact.form.first_name.label' | t }}</label>
+                        <input type="text" name="contact[first_name]" id="first-name" class="py-3 px-2 rounded-md bg-white border border-stone-200 text-stone-900 w-full" placeholder="{{ 'templates.contact.form.first_name.placeholder' | t }}" />
+                    </div>
+                    <div class="mt-4 w-full">
+                        <label for="last-name">{{ 'templates.contact.form.last_name.label' | t }}</label>
+                        <input type="text" name="contact[last_name]" id="last-name" class="py-3 px-2 rounded-md bg-white border border-stone-200 text-stone-900 w-full" placeholder="{{ 'templates.contact.form.last_name.placeholder' | t }}" />
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="phone">{{ 'templates.contact.form.phone.label' | t }}</label>
+                    <input type="tel" name="contact[phone]" id="phone" class="py-3 px-2 rounded-md bg-white border border-stone-200 text-stone-900 w-full" placeholder="{{ 'templates.contact.form.phone.placeholder' | t }}" />
+                </div>
+                <div class="mt-4">
+                    <label for="email">{{ 'templates.contact.form.email.label' | t }}</label>
+                    <input type="email" name="contact[email]" id="email" class="py-3 px-2 rounded-md bg-white border border-stone-200 text-stone-900 w-full" placeholder="{{ 'templates.contact.form.email.placeholder' | t }}" />
+                </div>
+                <div class="mt-4">
+                    <label for="message">{{ 'templates.contact.form.message.label' | t }}</label>
+                    <textarea name="contact[body]" id="message" placeholder="{{ 'templates.contact.form.message.placeholder' | t }}" class="mt-2 w-full py-3 px-2 rounded-md bg-white border border-stone-200 text-stone-900"></textarea>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="{{ 'templates.contact.form.submit_button' | t }}" class="mt-4 w-full bg-black border border-black text-white font-medium uppercase px-8 pt-3 pb-3 rounded-md text-center cursor-pointer select-none transition-all hover:bg-indigo-500 hover:text-neutral-100 hover:border-transparent" />
+                </div>
+            {% endform %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,206 @@
+<div data-animation-object="cart" class="fixed z-50 hidden">
+    <div class="p-1 bg-indigo-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-neutral-100' %}</div>
+</div>
+<div class="container pt-6 pb-12 mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 xl:gap-12">
+        <div class="col-span-7">
+            <div class="hidden lg:flex flex-col gap-2">
+                {% for image in product.images %}
+                    <div class="flex items-center justify-center aspect-square rounded-md">
+                        <picture class="flex flex-grow">
+                            <source srcset="{{ image | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                            <source srcset="{{ image | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                            <source srcset="{{ image | image_url: width: 868 }}" media="(min-width:1024px)" />
+                            <source srcset="{{ image | image_url: width: 1152 }}" media="(min-width:768px)" />
+                            <source srcset="{{ image | image_url: width: 896 }}" media="(min-width:640px)" />
+                            <source srcset="{{ image | image_url: width: 768 }}" media="(min-width:0px)" />
+                            <img src="{{ image | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                        </picture>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="glide lg:hidden">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        {% for image in product.images %}
+                            <li class="glide__slide">
+                                <div class="flex items-center justify-center aspect-square rounded-md">
+                                    <picture class="flex flex-grow">
+                                        <source srcset="{{ image | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                                        <source srcset="{{ image | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                                        <source srcset="{{ image | image_url: width: 868 }}" media="(min-width:1024px)" />
+                                        <source srcset="{{ image | image_url: width: 1152 }}" media="(min-width:768px)" />
+                                        <source srcset="{{ image | image_url: width: 896 }}" media="(min-width:640px)" />
+                                        <source srcset="{{ image | image_url: width: 768 }}" media="(min-width:0px)" />
+                                        <img src="{{ image | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                                    </picture>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="mt-2 grid grid-cols-6 gap-2" data-glide-el="controls">
+                    {% for image in product.images %}
+                        <div role="button" data-glide-dir="={{ forloop.index0 }}">
+                            <div class="flex items-center justify-center bg-gray-200 aspect-square rounded-md">
+                                <picture class="flex flex-grow">
+                                    <img src="{{ image | image_url: width: 196 }}" alt="{{ image.alt }}" height="120" width="120" loading="lazy" class="w-full h-auto object-contain rounded" />
+                                </picture>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-span-5 text-stone-900 relative">
+            <div class="sticky top-20">
+                <div class="py-4 lg:py-6 mx-auto">
+                    <div class="text-5xl font-bold mt-4 font-serif text-black">{{ product.title }}</div>
+                    <div class="mt-4 flex items-center justify-between gap-8">
+                        <span data-product-display-price class="text-2xl font-light shrink-0">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                        <div class="shrink flex items-center gap-1">
+                            <span>{% render 'icon-success', class: 'h-4 fill-green-500' %}</span>
+                            <span class="text-xs font-medium text-green-500">{{ 'products.product.pickup_availability.pick_up_available_montreal' | t }}</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-400">{{ product.description | strip_html }}</div>
+                    <div class="mt-6">
+                        {% render 'product.section.variant-selector',
+                            type: 'dropdown'
+                        %}
+                    </div>
+                    {% assign button_text = 'products.product.add_to_cart' | t %}
+                    <div class="mt-2 w-full">
+                        {% render 'product.component.add-cart-button',
+                            button_text: button_text
+                        %}
+                    </div>
+                    <div class="mt-2 py-1 flex gap-4 justify-center items-center bg-indigo-100 rounded-md px-8 border border-indigo-300">
+                        <span>{% render 'icon-shipping', class: 'h-8 w-auto fill-stone-700' %}</span>
+                        <span class="font-medium text-stone-700">{{ 'templates.homepage.showcase_8.block_1.title' | t | newline_to_br }}</span>
+                    </div>
+                    <div class="mt-4">
+                        <div>{{ 'products.product.cant_find_your_fit' | t }}</div>
+                        <div>
+                            <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
+                            <span>{{ 'products.product.or' | t }}</span>
+                            <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div data-product-tab-group="0">
+                    <div class="grid grid-cols-3 gap-x-4 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
+                        <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.highlights.tab_title' | t }}</div>
+                        <div role="button" data-product-tab-action="1" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.materials_care.tab_title' | t }}</div>
+                        <div role="button" data-product-tab-action="2" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.warranty_returns.tab_title' | t }}</div>
+                    </div>
+                    <div class="container mx-auto pt-6 pb-10">
+                        <div data-product-tab="0" class="transition-all hidden opacity-0">
+                            <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                <div class="h-8 w-8 relative">
+                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                        {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                                    </div>
+                                </div>
+                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.0' | t }}</span>
+                            </div>
+                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                <div class="h-8 w-8 relative">
+                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                        {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                    </div>
+                                </div>
+                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.1' | t }}</span>
+                            </div>
+                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                <div class="h-8 w-8 relative">
+                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                        {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                    </div>
+                                </div>
+                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.2' | t }}</span>
+                            </div>
+                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                <div class="h-8 w-8 relative">
+                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                        {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                    </div>
+                                </div>
+                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.3' | t }}</span>
+                            </div>
+                        </div>
+                        <div data-product-tab="1" class="transition-all hidden opacity-0">
+                            <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.materials_care.materials.title' | t }}</div>
+                            <ul class="mt-4 ml-4 list-disc leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.materials_care.materials.0_html' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.materials_care.materials.1_html' | t }}</li>
+                            </ul>
+                            <div class="mt-4 text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.materials_care.care.title' | t }}</div>
+                            <ul class="mt-4 ml-4 list-disc leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.materials_care.care.0' | t }}</li>
+                            </ul>
+                        </div>
+                        <div data-product-tab="2" class="transition-all hidden opacity-0">
+                            <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.title' | t }}</div>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.0' | t }}</div>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.1' | t }}</div>
+                            <div class="mt-4 text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.warranty_returns.returns.title' | t }}</div>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.0' | t }}</div>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.1' | t }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div data-product-tab-group="1">
+                    <div class="grid grid-cols-3 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
+                        <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.tab_title' | t }}</div>
+                        <div role="button" data-product-tab-action="1" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.included.tab_title' | t }}</div>
+                        <div role="button" data-product-tab-action="2" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.install.tab_title' | t }}</div>
+                    </div>
+                    <div class="container mx-auto pt-6 pb-10">
+                        <div data-product-tab="0" class="transition-all hidden opacity-0">
+                            <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.pickup.title' | t }}</div>
+                            <ul class="mt-4 ml-4 list-disc leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.pickup_delivery.pickup.0' | t }}</li>
+                            </ul>
+                            <div class="text-xl font-bold mt-4 font-serif">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.title' | t }}</div>
+                            <ul class="mt-4 ml-4 list-disc leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.0' | t }}</li>
+                            </ul>
+                        </div>
+                        <div data-product-tab="1" class="transition-all hidden opacity-0">
+                            <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.included.title' | t }}</div>
+                            <ul class="mt-4 ml-4 list-disc leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.included.0' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.included.1' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.included.2' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.included.3' | t }}</li>
+                            </ul>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.included.description' | t }}</div>
+                        </div>
+                        <div data-product-tab="2" class="transition-all hidden opacity-0">
+                            <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.install.title' | t }}</div>
+                            <div class="mt-4">
+                                {% assign asset = 'products.product.cordless_zebra_blinds.install.media' | t %}
+                                <picture>
+                                    <img src="{{ asset | asset_img_url: 'x720' }}" alt="{{ asset }}" class="w-full h-auto" />
+                                </picture>
+                            </div>
+                            <ul class="mt-4 ml-4 list-decimal leading-8">
+                                <li>{{ 'products.product.cordless_zebra_blinds.install.0' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.install.1' | t }}</li>
+                                <li>{{ 'products.product.cordless_zebra_blinds.install.2' | t }}</li>
+                            </ul>
+                            <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.install.description_html' | t }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% assign component_title = 'products.product.components.wide_hero' | t | newline_to_br %}
+{% assign image = 'index-showcase-wide2.jpg' %}
+<div class="mt-12 lg:mt-24">
+    {% render 'component.wide-hero', title: component_title, image: image %}
+</div>
+{% section 'product-overview' %}

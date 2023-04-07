@@ -1,0 +1,22 @@
+<div data-no-overlay class="container mx-auto pt-12 pb-16">
+    <div class="w-full lg:w-3/5 mx-auto text-lg">
+        <h1 class="text-5xl font-bold font-serif">{{ 'pages.return_exchange_policy.title' | t }}</h1>
+        <div class="mt-8 text-lg">
+            <p>{{ 'pages.return_exchange_policy.intro' | t }}</p>
+            <p class="mt-4 text-2xl font-bold font-serif">{{ 'pages.return_exchange_policy.return_policy.title' | t }}</p>
+            <ul class="ml-8 mt-2 list-disc">
+                {% for i in (1..4) %}
+                <li>{{ 'pages.return_exchange_policy.return_policy.list.item' | append: i | t }}</li>
+                {% endfor %}
+            </ul>
+            <p class="mt-4 text-2xl font-bold font-serif">{{ 'pages.return_exchange_policy.exchange_policy.title' | t }}</p>
+            <ul class="ml-8 mt-2 list-disc">
+                {% for i in (1..4) %}
+                <li>{{ 'pages.return_exchange_policy.exchange_policy.list.item' | append: i | t }}</li>
+                {% endfor %}
+            </ul>
+            <p class="mt-8">{{ 'pages.return_exchange_policy.contact_html' | t }}</p>
+            <p class="mt-4">{{ 'pages.return_exchange_policy.thanks' | t }}</p>
+        </div>
+    </div>
+</div>

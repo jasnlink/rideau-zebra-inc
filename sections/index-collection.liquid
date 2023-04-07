@@ -1,0 +1,6 @@
+{%- assign collection_handle = 'frontpage' -%}
+{% paginate collections[collection_handle].products by 20 %}
+    {% for product in collections[collection_handle].products %}
+        {% render 'product-card', product: product %}
+    {% endfor %}
+{% endpaginate %}

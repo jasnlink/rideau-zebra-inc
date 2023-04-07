@@ -80,7 +80,7 @@
   },
   "blogs": {
     "article": {
-      "blog": "Blog",
+      "blog": "Blogue",
       "read_more_title": "Lire la suite : {{ title }}",
       "comments": {
         "one": "{{ count }} commentaire",
@@ -105,6 +105,80 @@
   },
   "products": {
     "product": {
+      "cordless_zebra_blinds": {
+        "highlights": {
+          "tab_title": "Points forts",
+          "0": "Sécuritaire pour les enfants et les animaux de compagnie",
+          "1": "Tissage de polyester de qualité supérieure",
+          "2": "Tissu résistant aux taches",
+          "3": "La combinaison parfaite de style et de fonctionnalité"
+        },
+        "materials_care": {
+          "tab_title": "Matériaux & entretien",
+          "materials": {
+            "title": "Matériaux",
+            "0_html": "<span class=\"font-bold\">Cadre :<\/span> Nos stores zébrés sans cordon sont fabriqués avec un cadre en aluminium de haute qualité à la fois léger et durable, facilitant l'installation et garantissant une performance durable. De plus, le cadre est facile à nettoyer pour un entretien sans tracas.",
+            "1_html": "<span class=\"font-bold\">Tissu :<\/span> Le tissu est fabriqué à partir d'un polyester de qualité supérieure à la fois doux au toucher et durable, offrant une excellente maîtrise de la lumière et de l'intimité. De plus, le tissu est facile à nettoyer pour un entretien sans tracas."
+          },
+          "care": {
+            "title": "Instructions d'entretien",
+            "0": "Utilisez simplement un plumeau ou un chiffon doux et humide pour enlever toute poussière ou saleté qui pourrait s'accumuler sur la surface des stores. Évitez d'utiliser des produits chimiques agressifs ou des nettoyants abrasifs."
+          }
+        },
+        "warranty_returns": {
+          "tab_title": "Garantie et retours",
+          "warranty": {
+            "title": "Qualité garantie avec notre garantie complète",
+            "0": "Nos stores zébrés sans cordon sont soutenus par une garantie complète qui garantit des produits de qualité supérieure et un service exceptionnel. Nous nous engageons à vous fournir des matériaux durables et un excellent savoir-faire, et notre garantie limitée d'un an couvre tous les défauts.",
+            "1": "Si vous rencontrez des problèmes, veuillez contacter notre équipe du service clientèle, et nous serons ravis de vous aider avec la réparation ou le remplacement pour assurer votre entière satisfaction."
+          },
+          "returns": {
+            "title": "Retours",
+            "0": "Nous soutenons la qualité de nos produits et offrons une politique de retour et d'échange sans tracas de 30 jours.",
+            "1": "Si vous n'êtes pas entièrement satisfait de votre achat, retournez-le simplement dans les 30 jours pour un remboursement complet ou un échange."
+          }
+        },
+        "install": {
+          "tab_title": "Installation",
+          "title": "Guide d'installation rapide en 3 étapes",
+          "media": "install-instructions-transparent.png",
+          "0": "Mesurez la largeur de votre fenêtre et marquez l'emplacement souhaité des supports de chaque côté, en veillant à ce qu'ils soient de niveau.",
+          "1": "Créez des trous pilotes aux endroits marqués à l'aide d'une perceuse.",
+          "2": "Fixez les supports avec les vis fournies, puis soulevez doucement les stores zébrés et clipsez le rail de tête dans les supports.",
+          "description_html": "Installation facile ! Pour plus de détails, veuillez lire le guide d'installation complet."
+        },
+        "included": {
+          "tab_title": "Inclus",
+          "title": "Ce qui est inclus",
+          "0": "Les stores : Stores zébrés sans cordon de haute qualité adaptés à la taille choisie.",
+          "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
+          "2": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
+          "3": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+          "description": "Avec ces composants fournis, vous aurez tout ce dont vous avez besoin pour installer facilement vos nouveaux stores zébrés et profiter de leur fonctionnalité élégante."
+        },
+        "pickup_delivery": {
+          "tab_title": "Collecte et livraison",
+          "pickup": {
+            "title": "Collecte",
+            "0": "Nous offrons une livraison locale zéro émission en utilisant notre véhicule électrique pour toutes les commandes dans notre zone de service, contribuant ainsi à un environnement plus vert.",
+            "1": "Comme toutes les commandes sont expédiées depuis notre entrepôt à Montréal, aucun frais de douane ou d'importation supplémentaire n'est requis lors de la livraison."
+          },
+          "delivery": {
+            "title": "Livraison",
+            "0": "Nous offrons une livraison locale zéro émission en utilisant notre véhicule électrique pour toutes les commandes dans notre zone de service, contribuant ainsi à un environnement plus vert.",
+            "1": "Comme toutes les commandes sont expédiées depuis notre entrepôt à Montréal, aucun frais de douane ou d'importation supplémentaire n'est requis lors de la livraison."
+          }
+          
+        }
+      },
+      "components": {
+        "wide_hero": "Rehaussez le look et la fonctionnalité de votre maison."
+      },
+      "cant_find_your_fit": "Vous ne trouvez pas votre taille?",
+      "place_a_custom_order": "Placez une commande sur mesure",
+      "email_us": "Envoyez-nous un email",
+      "or": "ou",
+      "give_us_a_call": "appelez-nous.",
       "add_to_cart": "Ajouter au panier",
       "description": "Description",
       "on_sale": "En vente",
@@ -116,10 +190,12 @@
         "decrease": "Réduire la quantité de {{ product }}"
       },
       "price": {
+        "from": "À partir de",
         "from_price_html": "À partir de {{ price }}",
         "regular_price": "Prix habituel",
         "sale_price": "Prix soldé",
-        "unit_price": "Prix unitaire"
+        "unit_price": "Prix unitaire",
+        "see_more": "Voir plus de détails"
       },
       "share": "Partager ce produit",
       "sold_out": "Épuisé",
@@ -134,6 +210,7 @@
         "pick_up_available": "Collecte disponible",
         "pick_up_available_at_html": "Service de retrait disponible à <span class=\"color-foreground\">{{ location_name }}<\/span>",
         "pick_up_unavailable_at_html": "Service de retrait non disponible actuellement à <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_available_montreal": "Collecte disponible à Montréal",
         "unavailable": "Impossible de charger la disponibilité du service de retrait",
         "refresh": "Actualiser"
       },
@@ -191,6 +268,108 @@
     }
   },
   "templates": {
+    "homepage": {
+      "hero": {
+        "title": "Transformez votre décor",
+        "button": "Magasiner"
+      },
+      "showcase": {
+        "title": "Rehaussez votre espace avec un look contemporain.",
+        "button": "Découvrez notre sélection"
+      },
+      "showcase_1": {
+        "title": "Vos mesures,\nnotre expertise",
+        "description": "Nous comprenons que vos fenêtres ont toutes des formes et des tailles différentes. C'est pourquoi nous proposons des stores zébrés faits sur mesure pour répondre à vos spécifications exactes."
+      },
+      "showcase_2": {
+        "title": "Usage sans effort",
+        "description": "Ajustez facilement les bandes alternées pour laisser entrer la bonne quantité de lumière."
+      },
+      "showcase_3": {
+        "title": "Simple à nettoyer",
+        "description": "Nos bandes alternées permettent de dépoussiérer et d'essuyer facilement. Il suffit d'un léger essuyage ou d'un dépoussiérage pour que vos stores retrouvent l'aspect du neuf."
+      },
+      "showcase_4": {
+        "title": "Découvrez une harmonie parfaite entre style et fonctionnalité avec nos stores zébrés",
+        "button": "Découvrez notre sélection"
+      },
+      "showcase_5": {
+        "block_1": {
+          "title": "Cadre en aluminium solide et élégant",
+          "description": "Le matériau robuste offre non seulement un aspect élégant et moderne, mais constitue également une base solide pour que les stores fonctionnent parfaitement."
+        },
+        "block_2": {
+          "title": "Polyester tissé de grande qualité",
+          "description": "Notre tissu en polyester de qualité supérieure est non seulement durable, mais il résiste également aux taches et est facile à nettoyer."
+        },
+        "block_3": {
+          "title": "Design sans fil",
+          "description": "Sans cordon, nos stores sont non seulement plus sécuritaires pour les enfants et les animaux de compagnie, mais aussi plus agréables à utiliser."
+        }
+      },
+      "showcase_6": {
+        "title": "Laissez la lumière éclairer votre espace",
+        "description": "Nos stores zébrés vous permettent d'ajuster facilement les rayures alternées, ce qui vous donne un contrôle total sur la quantité de lumière entrant dans votre espace."
+      },
+      "showcase_7": {
+        "title": "Ou gardez la à l'extérieur.",
+        "description": "Créez une ambiance plus intime d'un simple geste du poignet.",
+        "sub": "Votre choix."
+      },
+      "showcase_8": {
+        "title": "Pourquoi sommes-nous meilleurs ?",
+        "block_1": {
+          "title": "Livraison zéro émission",
+          "description": "Nos produits sont livrés localement à l'aide de notre véhicule électrique afin de réduire notre impact sur l'environnement et de protéger notre planète."
+        },
+        "block_2": {
+          "title": "Commande sur mesure",
+          "description": "Nos stores zébrés sont adaptés à vos spécifications exactes et garantissent un alignement parfait sur vos fenêtres."
+        },
+        "block_3": {
+          "title": "Localement à Montréal",
+          "description": "Notre engagement à Montréal ne se limite pas seulement à notre adresse. Nous travaillons avec des fournisseurs locaux pour nous assurer que nos stores zébrés sont de première qualité."
+        },
+        "block_4": {
+          "title": "Appelez-nous à tout moment",
+          "description": "Nous sommes toujours là pour vous aider, que vous ayez besoin d'aide pour passer une commande, que vous ayez des questions sur votre achat ou que vous ayez besoin d'un retour."
+        }
+      },
+      "showcase_9": {
+        "title": "Transformez n'importe quel espace en un lieu élégant et moderne."
+      },
+      "showcase_10": {
+        "title": "Témoignages de nos clients satisfaits",
+        "review_block_1": {
+          "message": "Nous avons installer nos stores ce matin est tout est parfait.\n\nMerci pour le très bon service.\n\nAux plaisirs de référer votre entreprise à nos amis.",
+          "name": "Johanne et Paul",
+          "position": ""
+        },
+        "review_block_2": {
+          "message": "l'équipe a été très serviable et patiente pour m'aider à choisir le bon modèle pour mon salon.\n\nJe suis ravi de mon achat et le recommande vivement.",
+          "name": "Stéphanie",
+          "position": ""
+        },
+        "review_block_3": {
+          "message": "J'ai récemment acheté des stores zébrés pour mon bureau à domicile et je ne pourrais pas être plus heureux.\n\nMerci pour votre excellent service client et votre expertise.",
+          "name": "Alexandre",
+          "position": ""
+        }
+      },
+      "showcase_11": {
+        "title": "Une qualité digne de confiance"
+      },
+      "showcase_12": {
+        "title": "Nos articles sur les stores zébrés",
+        "read_button": "Lire",
+        "see_blog_button": "Voir le reste"
+      },
+      "showcase_13": {
+        "title": "Nous sommes passionnés de transformer chaque espace en un milieu de vie plus élégant et plus confortable.",
+        "button": "Lire notre mission",
+        "sub": "Rideau Zebra Inc."
+      }
+    },
     "search": {
       "no_results": "Aucun résultat trouvé pour « {{ terms }} ». Vérifiez l'orthographe ou utilisez un autre mot ou une autre expression.",
       "results_with_count": {
@@ -209,18 +388,47 @@
       }
     },
     "cart": {
-      "cart": "Panier"
+      "cart": "Panier",
+      "your_cart": "Votre panier",
+      "empty_message": {
+        "title": "Votre panier est actuellement vide",
+        "description": "Laissez-nous vous aider à trouver des produits incroyables pour le remplir.",
+        "button": "Magasinez maintenant"
+      }
     },
     "contact": {
+      "title": "Contact",
+      "content": "Chez rideauzebra.ca, nous accordons de l'importance à vos commentaires et nous nous engageons à fournir un excellent service à la clientèle. Nous sommes là pour vous aider avec toutes les questions ou préoccupations que vous pourriez avoir.",
+      "email_label": "Courriel :",
+      "email_address": "contact@rideauzebra.ca",
+      "phone_label": "Téléphone :",
+      "phone_number": "(438) 882-7275",
+      "pickup_on_appointment": "Ramassage local sur rendez-vous :",
+      "address": "1915 rue Poupart, Montréal QC, H2K3H1",
       "form": {
-        "name": "Nom",
-        "email": "E-mail",
-        "phone": "Numéro de téléphone",
-        "comment": "Commentaire",
-        "send": "Envoyer",
+        "first_name": {
+          "label": "Prénom",
+          "placeholder": "Prénom"
+        },
+        "last_name": {
+          "label": "Nom de famille",
+          "placeholder": "Nom de famille"
+        },
+        "phone": {
+          "label": "Numéro de téléphone",
+          "placeholder": "+1(123)456-7890"
+        },
+        "email": {
+          "label": "Courriel",
+          "placeholder": "vous@exemple.com"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Votre message"
+        },
+        "submit_button": "Envoyer",
         "post_success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
-        "error_heading": "Veuillez ajuster les éléments suivants :",
-        "title": "Formulaire de contact"
+        "error_heading": "Veuillez ajuster ce qui suit :"
       }
     },
     "404": {
@@ -230,13 +438,11 @@
   },
   "sections": {
     "header": {
-      "announcement": "Annonce",
-      "menu": "Menu",
-      "cart_count": {
-        "one": "{{ count }} article",
-        "other": "{{ count }} articles",
-        "many": "{{ count }} articles"
-      }
+      "home": "Accueil",
+      "catalog": "Catalogue",
+      "contact": "Contact",
+      "custom_order": "Commande sur mesure",
+      "translate": "en"
     },
     "cart": {
       "title": "Votre panier",
@@ -267,8 +473,35 @@
       }
     },
     "footer": {
-      "payment": "Moyens de paiement",
-      "powered_by_html": "| Réalisé avec du ☕ par <a href=\"https:\/\/msmtech.ca\">MSM TECHNOLOGIES<\/a>"
+      "shop_with_confidence": "Achetez en toute confiance",
+      "mission": {
+        "paragraph_1": "Nous sommes passionnés de transformer chaque espace en un milieu de vie plus élégant et plus confortable.",
+        "paragraph_2": "Nous visons l'excellence dans tous les aspects de notre entreprise, de la qualité de nos produits au niveau de service que nous fournissons."
+      },
+      "links_1": {
+        "title": "En bref",
+        "about_us": "À propos de nous",
+        "contact_us": "Nous contacter"
+      },
+      "links_2": {
+        "title": "Compagnie",
+        "shipping_delivery": "Ramassage et livraison",
+        "returns_exchanges": "Retours et échanges",
+        "privacy_policy": "Politique de confidentialité",
+        "terms_of_service": "Conditions de service"
+      },
+      "email_subscription": {
+        "title": "Ne manquez pas",
+        "description": "Soyez le premier à connaître nos nouvelles collections et nos offres exclusives en vous inscrivant à notre liste de diffusion.",
+        "enter_your_email": "Entrez votre courriel",
+        "subscribe": "S'abonner"
+      },
+      "solution_by_html": "Une solution par <a href=\"https:\/\/msmtech.ca\">MSM Technologies<\/a>.",
+      "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Propulsé par Shopify<\/a>",
+      "copyright": "&copy; Tous droits réservés",
+      "ssl_encrypted": "PAIEMENTS SÉCURISÉS | CHIFFRÉS PAR SSL",
+      "site_secure": "Site sécuritaire",
+      "verify_security": "Vérifier la sécurité"
     },
     "featured_blog": {
       "view_all": "Tout afficher",
@@ -431,6 +664,116 @@
       "expired": "Expiré",
       "copy_code_success": "Le code a bien été copié",
       "print_gift_card": "Imprimer"
+    }
+  },
+  "pages": {
+    "privacy_policy": {
+      "title": "Politique de Confidentialité",
+      "content": {
+        "introduction": "Chez rideauzebra.ca, nous prenons votre vie privée au sérieux. Cette politique de confidentialité décrit les types d'informations personnelles que nous collectons, comment elles sont utilisées et protégées, et avec qui elles peuvent être partagées.",
+        "information_collection_and_use": {
+          "heading": "Collecte et utilisation des informations :",
+          "item1": "Nous collectons des informations personnelles telles que votre nom, adresse, adresse e-mail et informations de paiement lorsque vous passez une commande sur notre site Web.",
+          "item2": "Nous utilisons ces informations pour traiter votre commande, fournir un service client et vous envoyer des mises à jour sur votre commande et notre entreprise.",
+          "item3": "Nous collectons également des informations sur votre comportement de navigation et d'achat sur notre site Web dans le but d'analyser l'utilisation du site et d'améliorer nos services. Cela inclut l'utilisation de Google Analytics, Google Signals et Shopify Analytics.",
+          "item4": "Nous ne partagerons jamais vos informations avec des tiers à des fins de marketing."
+        },
+        "cookies_and_tracking_technologies": {
+          "heading": "Cookies et technologies de suivi :",
+          "item1": "Nous utilisons des cookies et d'autres technologies de suivi pour améliorer votre expérience de navigation et personnaliser notre site Web pour vous.",
+          "item2": "Vous pouvez choisir de désactiver les cookies dans les paramètres de votre navigateur, mais cela peut affecter votre capacité à utiliser certaines fonctionnalités de notre site Web."
+        },
+        "security": {
+          "heading": "Sécurité :",
+          "item1": "Nous prenons des mesures de sécurité appropriées pour protéger contre l'accès non autorisé, la modification, la divulgation ou la destruction de vos informations personnelles.",
+          "item2": "Cependant, aucune méthode de transmission sur Internet ou méthode de stockage électronique n'est sécurisée à 100%."
+        },
+        "changes_to_policy": {
+          "heading": "Modifications de cette politique :",
+          "item1": "Nous pouvons mettre à jour cette politique de confidentialité de temps en temps.",
+          "item2": "Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page.",
+          "item3": "Il vous est conseillé de consulter périodiquement cette politique de confidentialité pour connaître les changements."
+        },
+        "contact_us": {
+          "heading": "Contactez-nous :",
+          "text": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à",
+          "email": "contact@rideauzebra.ca"
+        }
+      }
+    },
+    "terms_of_service": {
+      "title": "Conditions d'utilisation",
+      "introduction": "En utilisant le site rideauzebra.ca et en passant une commande, vous acceptez d'être lié par les conditions générales suivantes:",
+      "list": {
+        "item1": {
+          "text": "Informations sur les produits: Nous faisons tout notre possible pour assurer que nos produits sont décrits aussi précisément que possible sur notre site web. Cependant, nous ne garantissons pas que les descriptions sont exemptes d'erreurs."
+        },
+        "item2": {
+          "text": "Traitement des commandes: Nous traiterons votre commande dans le délai indiqué sur le site web. Nous nous réservons le droit d'annuler ou de refuser toute commande qui semble suspecte ou frauduleuse."
+        },
+        "item3": {
+          "text": "Paiement: Nous acceptons les modes de paiement indiqués sur le site web. Nous ne vous facturerons pas tant que nous n'avons pas expédié votre commande."
+        },
+        "item4": {
+          "text": "Expédition et livraison: Nous expédierons votre commande à l'adresse indiquée dans votre commande. Les frais d'expédition seront calculés et affichés lors du paiement. Nous ne sommes pas responsables des retards d'expédition ou de livraison causés par le transporteur."
+        },
+        "item5": {
+          "text": "Retours et échanges: Nous avons une politique de retours et d'échanges sans tracas, telle que décrite dans notre Politique de retour et d'échange."
+        },
+        "item6": {
+          "text": "Garantie: Tous nos produits sont garantis 1 an à compter de la date de livraison. Si vous recevez un produit endommagé ou défectueux, veuillez nous contacter pour un remplacement."
+        },
+        "item7": {
+          "text": "Propriété intellectuelle: Le contenu du site rideauzebra.ca est protégé par les lois sur le droit d'auteur et les marques de commerce. Vous ne pouvez pas utiliser de contenu du site sans notre autorisation écrite expresse."
+        },
+        "item8": {
+          "text": "Limitation de responsabilité: Nous ne serons pas responsables des dommages résultant de l'utilisation de notre site web ou de nos produits."
+        },
+        "item9": {
+          "text": "Loi applicable: Ces conditions générales seront régies par les lois du Canada."
+        },
+        "item10": {
+          "text": "Modifications des conditions d'utilisation: Nous nous réservons le droit de modifier ces conditions générales à tout moment."
+        }
+      }
+    },
+    "shipping_policy": {
+      "title": "Politique de livraison et de ramassage local",
+      "intro_html": "Chez rideauzebra.ca, nous nous engageons à offrir à nos clients la meilleure expérience d'achat possible, notamment une livraison locale rapide et neutre en carbone et une livraison à tarif fixe de 25 $ pour les commandes de livraison.",
+      "list": {
+        "item1_html": "Livraison locale zéro émission : Nous offrons une livraison locale neutre en carbone pour les commandes dans la plupart des régions.",
+        "item2_html": "Livraison à tarif fixe : Un frais de livraison fixe de 25 $ s'applique à toutes les commandes de livraison.",
+        "item3_html": "Délai de livraison : Nous sommes fiers de proposer des produits de la meilleure qualité. Pour les commandes régulières, veuillez prévoir de 2 à 4 jours ouvrables pour la livraison. Pour les commandes sur mesure, veuillez prévoir de 1 à 2 semaines. Cela nous permet de proposer des produits de la plus haute qualité aux prix les plus compétitifs.",
+        "item4_html": "Confirmation de commande : Nous confirmerons votre commande et vous tiendrons informé par téléphone et par e-mail. Le statut de votre commande sera mis à jour en conséquence.",
+        "item5_html": "Droits de douane et d'importation : Veuillez noter que les droits de douane, les taxes et les frais sont inclus dans le prix de l'article ou le coût de la livraison pour les clients canadiens. Si l'expédition a lieu hors du Canada, ces frais sont à la charge de l'acheteur.",
+        "item6_html": "Ramassage local : Nous offrons un ramassage local gratuit pour nos clients. Si vous préférez venir chercher votre commande, veuillez sélectionner l'option de ramassage local lors de la validation de la commande.",
+        "item7_html": "Service à la clientèle : Si vous avez des questions ou des préoccupations concernant votre commande, veuillez contacter notre équipe du service à la clientèle à l'adresse <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca</a>. Nous serons heureux de vous aider."
+      },
+      "conclusion_html": "Nous espérons que vous apprécierez votre expérience d'achat sur rideauzebra.ca et nous sommes impatients de vous servir à nouveau bientôt !"
+    },
+    "return_exchange_policy": {
+      "title": "Politique de retour et d'échange sans tracas",
+      "intro": "Chez rideauzebra.ca, la satisfaction du client est notre priorité absolue. Si vous n'êtes pas entièrement satisfait de votre achat, nous sommes heureux de vous proposer un retour ou un échange sans tracas.",
+      "return_policy": {
+        "title": "Politique de retour :",
+        "list": {
+          "item1": "Vous avez 30 jours à compter de la date de livraison pour retourner votre achat et obtenir un remboursement.",
+          "item2": "L'article doit être neuf et inutilisé, avec toutes les étiquettes et emballages d'origine.",
+          "item3": "Les frais d'expédition associés au retour sont gratuits.",
+          "item4": "Les remboursements seront traités dans un délai de 7 à 10 jours ouvrables après réception de l'article retourné."
+        }
+      },
+      "exchange_policy": {
+        "title": "Politique d'échange :",
+        "list": {
+          "item1": "Vous avez 30 jours à compter de la date de livraison pour échanger votre achat contre un autre article.",
+          "item2": "L'article doit être neuf et inutilisé, avec toutes les étiquettes et emballages d'origine.",
+          "item3": "Les frais d'expédition associés à l'échange sont gratuits.",
+          "item4": "Les échanges seront traités dans un délai de 7 à 10 jours ouvrables après réception de l'article retourné."
+        }
+      },
+      "contact_html": "Pour initier un retour ou un échange, veuillez contacter notre équipe du service à la clientèle à <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca<\/a>. Ils vous fourniront les instructions à suivre.",
+      "thanks": "Merci d'avoir choisi rideauzebra.ca !"
     }
   }
 }

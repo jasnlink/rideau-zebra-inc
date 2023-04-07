@@ -1,0 +1,20 @@
+<div data-overlay-action class="hidden fixed bottom-0 w-full bg-white py-3 border-t border-gray-400 z-20 px-4 sm:px-8">
+    <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-col justify-center gap-1">
+            <div class="flex gap-1">
+                <span data-product-display-price class="text-2xl font-bold">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                <span class="w-fit h-fit px-2 border border-green-700 font-medium text-center uppercase text-[8px] text-green-700 bg-green-200 rounded-sm">Free Shipping</span>
+            </div>
+            <div>
+                {% render 'product.section.variant-selector',
+                    type: 'dropdown'
+                %}
+            </div>
+        </div>
+        <div>
+            {% render 'product.component.add-cart-button',
+                button_text: 'Add'
+            %}
+        </div>
+    </div>
+</div>

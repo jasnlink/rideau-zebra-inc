@@ -1,0 +1,6 @@
+<button type="button" data-add-cart="{{ product.selected_or_first_available_variant.id }}" data-animation-source="cart" class="w-full text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-4 pb-4 rounded-md transition-all hover:bg-indigo-500 disabled:opacity-75 disabled:bg-stone-900 disabled:text-neutral-100">
+    <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-7 w-7 text-white', fill: 'none' %}</span>
+    <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-7 w-7 text-white', fill: 'none' %}</span>
+    <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-7 w-7 text-white' %}</span>
+    <span data-add-state="default">{{ button_text }}</span>
+</button>

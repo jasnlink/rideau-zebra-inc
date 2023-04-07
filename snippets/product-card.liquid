@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <a href="{{ product.url }}" class="flex items-center justify-center bg-gray-200 aspect-square rounded-md">
+            <picture class="flex flex-grow">
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+            </picture>
+        </a>
+    </div>
+    <div class="pt-4 pb-5">
+        <div>
+            <a href="{{ product.url }}" class="block">
+                <span class="text-3xl font-bold mt-4 font-serif text-black">{{ product.title }}</span>
+            </a>
+        </div>
+        <div class="mt-1.5">
+            <a href="{{ product.url }}" class="block">
+                {% if product.has_only_default_variant == false %}
+                    <span class="font-light text-xl italic">{{ 'products.product.price.from' | t }}</span>
+                {% endif %}
+                <span class="font-light text-xl">{{ product.price | money_with_currency }}</span>
+            </a>
+        </div>
+        <div class="mt-6">
+            <a href="{{ product.url }}" title="{{ product.title }}" class="font-light underline underline-offset-4">{{ 'products.product.price.see_more' | t }}</a>
+        </div>
+    </div>
+</div>

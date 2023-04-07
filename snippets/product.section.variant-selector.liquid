@@ -1,0 +1,47 @@
+<div class="hidden">
+    {% for variant in product.variants %}
+        {% if variant.available == true %}
+            {% capture data_variant_options %}
+                {% for option in variant.options %}
+                    {% capture data_option %}{% if forloop.first %} {% endif %}{{ 'data-selector-variant-option-' | append: forloop.index | append: '="' | append: option | append: '"' }}{% unless forloop.last %} {% endunless %}{% endcapture %}
+                    {% assign data_option = data_option | downcase | replace: ' ', '_' %}
+                    {{ data_option }}
+                {% endfor %}
+            {% endcapture %}
+            <div data-selector-variant-id="{{ variant.id }}" data-selector-variant-price="{{ variant.price | money_with_currency }}"{{ data_variant_options }}></div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% if type == 'button' %}
+    <div>
+        {% for product_option in product.options_with_values %}
+            <div data-selector-option-group-index="{{ forloop.index }}">
+                <div class="font-bold">{{ product_option.name }}</div>
+                <div class="mt-2 grid grid-cols-4 gap-2" data-selector-element-type="button">
+                    {% for product_option_value in product_option.values %}
+                        {% assign selected_class = ' bg-white text-black' %}
+                        {% if product_option.selected_value == product_option_value %}
+                            {% assign selected_class = ' bg-black text-white' %}
+                        {% endif %}
+                        <button type="button"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}" class="disabled:text-gray-300 disabled:border-gray-300 border border-black rounded-sm py-1 px-2 flex items-center justify-center text-xs text-center select-none{{ selected_class }}">
+                            <span>{{ product_option_value }}</span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% elsif type == 'dropdown' %}
+    <div class="">
+        {% for product_option in product.options_with_values %}
+            <div data-selector-option-group-index="{{ forloop.index }}" class="flex gap-1 lg:gap-4 max-w-full text-clip overflow-hidden rounded-md items-baseline px-4 lg:px-6 bg-white border border-stone-200">
+                <label class="font-medium bg-white" for="variant-selector">{{ product_option.name }}</label>
+            <select id="variant-selector" data-selector-element-type="dropdown" class="bg-white min-w-0 grow focus:outline-none py-5 text-ellipsis">
+                {% for product_option_value in product_option.values %}
+                    <option value="{{ product_option_value }}"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}">{{ product_option_value }}</option>
+                {% endfor %}
+            </select>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

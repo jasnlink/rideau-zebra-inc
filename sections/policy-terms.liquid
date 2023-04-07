@@ -1,0 +1,15 @@
+<div data-no-overlay class="container mx-auto pt-12 pb-16">
+    <div class="w-full lg:w-3/5 mx-auto text-lg">
+        <h1 class="text-5xl font-bold font-serif">{{ 'pages.terms_of_service.title' | t }}</h1>
+        <div class="mt-8 text-lg">
+            <p>{{ 'pages.terms_of_service.introduction' | t }}</p>
+            <ol class="ml-8 mt-4 list-decimal">
+                {% for i in (1..10) %}
+                <li class="mt-2">
+                    <p>{{ 'pages.terms_of_service.list.item' | append: i | append: '.text' | t }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>

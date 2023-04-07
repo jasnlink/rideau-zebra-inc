@@ -1,0 +1,303 @@
+<div class="container mx-auto mt-24 lg:mt-36">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+        <div class="aspect-square">
+            <picture>
+                {% assign image = 'index-showcase-1.jpg' %}
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_1.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+            </picture>
+        </div>
+        <div class="flex flex-col justify-center w-4/5">
+            <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_1.title' | t | newline_to_br }}</div>
+            <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_1.description' | t }}</div>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto mt-24 lg:mt-36">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+        <div class="order-last lg:order-first flex flex-col justify-center w-4/5">
+            <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_2.title' | t | newline_to_br }}</div>
+            <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_2.description' | t }}</div>
+        </div>
+        <div class="order-first lg:order-last aspect-square">
+            <video autoplay loop playsinline muted preload class="h-full w-full object-cover rounded-md">
+                <source src="{{ 'blinds-operation-x720.webm' | asset_url }}" type="video/webm" />
+            </video>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto mt-24 lg:mt-36">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+        <div class="aspect-square">
+            <video autoplay loop playsinline muted preload class="h-full w-full object-cover rounded-md">
+                <source src="{{ 'blinds-clean-x720.webm' | asset_url }}" type="video/webm" />
+            </video>
+        </div>
+        <div class="flex flex-col justify-center w-4/5">
+            <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_3.title' | t | newline_to_br }}</div>
+            <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_3.description' | t }}</div>
+        </div>
+    </div>
+</div>
+<div class="bg-indigo-600">
+    <div class="container mx-auto mt-24 py-32 text-center text-neutral-100">
+        <div class="mx-auto font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_4.title' | t | newline_to_br }}</div>
+        <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase_4.button' | t }}">{{ 'templates.homepage.showcase_4.button' | t }}</a>
+    </div>
+</div>
+<div class="container mx-auto mt-24">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
+        <div class="flex flex-col gap-8">
+            <div class="aspect-square">
+                <picture>
+                    {% assign image = 'index-showcase-4-1.jpeg' %}
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                    <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_5.block_1.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <div class="flex flex-col justify-center">
+                <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_5.block_1.title' | t | newline_to_br }}</div>
+                <div class="inline-block mt-4">{{ 'templates.homepage.showcase_5.block_1.description' | t }}</div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-8">
+            <div class="aspect-square">
+                <picture>
+                    {% assign image = 'index-showcase-4-2.jpeg' %}
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                    <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_5.block_2.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <div class="flex flex-col justify-center">
+                <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_5.block_2.title' | t | newline_to_br }}</div>
+                <div class="inline-block mt-4">{{ 'templates.homepage.showcase_5.block_2.description' | t }}</div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-8">
+            <div class="aspect-square">
+                <picture>
+                    {% assign image = 'index-showcase-4-3.jpeg' %}
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                    <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_5.block_3.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <div class="flex flex-col justify-center">
+                <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_5.block_3.title' | t | newline_to_br }}</div>
+                <div class="inline-block mt-4">{{ 'templates.homepage.showcase_5.block_3.description' | t }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto mt-24 lg:mt-36">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+        <div class="order-last lg:order-first flex flex-col justify-center w-4/5">
+            <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_6.title' | t | newline_to_br }}</div>
+            <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_6.description' | t }}</div>
+        </div>
+        <div class="order-first lg:order-last aspect-square">
+            <picture>
+                {% assign image = 'index-showcase-5.jpg' %}
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_6.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+            </picture>
+        </div>
+    </div>
+</div>
+<div class="bg-stone-900 mt-36">
+    <div class="container mx-auto pt-48">
+        <div class=" text-neutral-100 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
+            <div class="aspect-square">
+                <picture>
+                    {% assign image = 'index-showcase-6.jpg' %}
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | asset_img_url: 'x1200' }}" media="(min-width:0px)" />
+                    <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'templates.homepage.showcase_7.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <div class="flex flex-col justify-center w-4/5">
+                <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_7.title' | t | newline_to_br }}</div>
+                <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_7.description' | t }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-stone-900 pt-36 pb-64 relative">
+        <div class="text-neutral-100 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 font-serif font-bold text-4xl lg:text-6xl w-11/12 text-center">{{ 'templates.homepage.showcase_7.sub' | t }}</div>
+    </div>
+</div>
+<div class="container mx-auto mt-16 md:mt-32 py-12 text-stone-900">
+    <div class="font-serif font-bold text-4xl w-full text-center">{{ 'templates.homepage.showcase_8.title' | t | newline_to_br }}</div>
+    <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-48">
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-shipping', class: 'h-28 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_1.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_1.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-local', class: 'h-20 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_3.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_3.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-tailor', class: 'h-24 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_2.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_2.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-support', class: 'h-24 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_4.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_4.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% assign component_title = 'templates.homepage.showcase_9.title' | t | newline_to_br %}
+{% assign image = 'index-showcase-wide3.jpg' %}
+<div class="mt-12 lg:mt-24">
+    {% render 'component.wide-hero', title: component_title, image: image %}
+</div>
+<div class="bg-neutral-100">
+    <div class="container mx-auto py-24 text-stone-900">
+        <div class="font-serif font-bold text-4xl w-full text-center">{{ 'templates.homepage.showcase_10.title' | t | newline_to_br }}</div>
+        <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div class="bg-stone-300/30 rounded-md p-12 flex flex-col justify-between gap-8">
+                <div class="text-lg">{{ 'templates.homepage.showcase_10.review_block_1.message' | t | newline_to_br }}</div>
+                <div>
+                    <div class="font-bold">{{ 'templates.homepage.showcase_10.review_block_1.name' | t }}</div>
+                    {% assign block_position = 'templates.homepage.showcase_10.review_block_1.position' | t %}
+                    {% unless block_position contains 'translation missing' or block_position == blank %}
+                        <div class="font-medium">{{ block_position }}</div>
+                    {% endunless %}
+                </div>
+            </div>
+            <div class="bg-stone-300/30 rounded-md p-12 flex flex-col justify-between gap-8">
+                <div class="text-lg">{{ 'templates.homepage.showcase_10.review_block_2.message' | t | newline_to_br }}</div>
+                <div>
+                    <div class="font-bold">{{ 'templates.homepage.showcase_10.review_block_2.name' | t }}</div>
+                    {% assign block_position = 'templates.homepage.showcase_10.review_block_2.position' | t %}
+                    {% unless block_position contains 'translation missing' or block_position == blank %}
+                        <div class="font-medium">{{ block_position }}</div>
+                    {% endunless %}
+                </div>
+            </div>
+            <div class="bg-stone-300/30 rounded-md p-12 flex flex-col justify-between gap-8">
+                <div class="text-lg">{{ 'templates.homepage.showcase_10.review_block_3.message' | t | newline_to_br }}</div>
+                <div>
+                    <div class="font-bold">{{ 'templates.homepage.showcase_10.review_block_3.name' | t }}</div>
+                    {% assign block_position = 'templates.homepage.showcase_10.review_block_3.position' | t %}
+                    {% unless block_position contains 'translation missing' or block_position == blank %}
+                        <div class="font-medium">{{ block_position }}</div>
+                    {% endunless %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h-screen w-screen bg-neutral-100 relative">
+    <video autoplay loop playsinline muted preload class="h-full w-full object-cover">
+        <source src="{{ 'blinds-fabrication-x720.webm' | asset_url }}" type="video/webm" />
+    </video>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-11/12">
+        <div class="font-serif text-4xl lg:text-6xl text-neutral-100 font-bold">{{ 'templates.homepage.showcase_11.title' | t | newline_to_br }}</div>
+    </div>
+</div>
+<div class="bg-neutral-100">
+    <div class="container mx-auto py-24 text-stone-900">
+        <div class="w-full text-center">
+            <div class="font-serif font-bold text-4xl">{{ blogs['news'].title }}</div>
+        </div>
+        <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {% for article in blogs['news'].articles %}
+                {% if forloop.index == 4 %}
+                    {% break %}
+                {% endif %}
+                <a href="{{ article.url }}" title="{{ article.title }}" class="block">
+                    <div class="aspect-square rounded-md relative flex align-bottom">
+                        <div class="absolute top-0 left-0 bottom-0 right-0">
+                            <picture>
+                                {% assign image = article.image %}
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                                <img src="{{ image | image_url: width: 1200 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                            </picture>
+                        </div>
+                        <div class="absolute top-0 left-0 right-0 bottom-0 bg-stone-900 opacity-40 rounded-md"></div>
+                        <div class="relative my-12 mx-12 flex flex-col justify-between">
+                            <div class="font-serif font-medium text-2xl text-neutral-100">{{ article.title }}</div>
+                            <div class="font-medium text-stone-900 bg-neutral-100 px-8 py-3 rounded-md w-fit text-center hover:text-neutral-100 hover:bg-indigo-600 transition-all">{{ 'templates.homepage.showcase_12.read_button' | t }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="mt-4 w-full text-center">
+            <a href="{{ blogs['news'].url }}" class="inline-block mt-8 text-xl underline underline-offset-4">{{ 'templates.homepage.showcase_12.see_blog_button' | t }}</a>
+        </div>
+    </div>
+</div>
+<div class="bg-neutral-100">
+    <div class="container mx-auto mt-12 lg:mt-24 py-16 lg:py-32 text-center text-stone-900">
+        <div class="font-serif font-bold text-2xl lg:text-4xl">{{ 'templates.homepage.showcase_13.title' | t | newline_to_br }}</div>
+        {% comment %} <a href="{{ shop.url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4">{{ 'templates.homepage.showcase_13.button' | t }}</a> {% endcomment %}
+        <div class="mt-8 text-sm">{{ 'templates.homepage.showcase_13.sub' | t }}</div>
+    </div>
+</div>

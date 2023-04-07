@@ -1,0 +1,20 @@
+<div data-no-overlay class="container mx-auto pt-12 pb-16">
+    <div class="w-full lg:w-3/5 mx-auto text-lg">
+        <h1 class="text-5xl font-bold font-serif">{{ 'pages.shipping_policy.title' | t }}</h1>
+        <div class="mt-8 text-lg">
+            <ol class="ml-8 mt-4 list-decimal">
+                {% for i in (1..7) %}
+                    {% capture item_key_html %}pages.shipping_policy.list.item{{ i }}_html{% endcapture %}
+                    {% assign html_text_translation = item_key_html | t %}
+                    {% assign missing_translation_text = 'translation missing' | append: ':' %}
+                    <li class="mt-2">
+                        {% unless html_text_translation contains missing_translation_text %}
+                            {{ html_text_translation }}
+                        {% endunless %}
+                    </li>
+                {% endfor %}
+            </ol>
+            <p class="mt-8">{{ 'pages.shipping_policy.conclusion_html' | t }}</p>
+        </div>
+    </div>
+</div>

@@ -104,6 +104,77 @@
   },
   "products": {
     "product": {
+      "cordless_zebra_blinds": {
+        "highlights": {
+          "tab_title": "Highlights",
+          "0": "Child and pet safe design",
+          "1": "Superior quality polyester weave",
+          "2": "Stain Resistant fabric",
+          "3": "The perfect combination of style and functionality"
+        },
+        "materials_care": {
+          "tab_title": "Materials & Care",
+          "materials": {
+            "title": "Materials",
+            "0_html": "<span class=\"font-bold\">Frame:<\/span> Our cordless zebra blinds feature a high-quality aluminum frame that is both lightweight and durable, making installation a breeze and ensuring long-lasting performance. Plus, the frame is easy to clean for hassle-free maintenance.",
+            "1_html": "<span class=\"font-bold\">Fabric:<\/span> The fabric is made of a premium polyester that's both soft to the touch and durable, providing superior light control and privacy. Plus, the fabric is easy to clean for hassle-free maintenance."
+          },
+          "care": {
+            "title": "Care instructions",
+            "0": "Simply use a feather duster or a soft, damp cloth to remove any dust or dirt that may accumulate on the surface of the blinds. Avoid using harsh chemicals or abrasive cleaners."
+          }
+        },
+        "warranty_returns": {
+          "tab_title": "Warranty & Returns",
+          "warranty": {
+            "title": "Guaranteed quality with our comprehensive warranty",
+            "0": "Our cordless zebra blinds are backed by a comprehensive warranty that guarantees top-quality products and outstanding service. We are committed to providing you with durable materials and excellent craftsmanship, and our one-year limited warranty covers any defects.",
+            "1": "If you encounter any issues, please contact our customer service team, and we will be happy to assist you with repair or replacement to ensure your complete satisfaction."
+          },
+          "returns": {
+            "title": "Returns",
+            "0": "We stand behind the quality of our products and offer a 30-day, no-hassle return and exchange policy.",
+            "1": "If you are not completely satisfied with your purchase, simply return it within 30 days for a full refund or exchange."
+          }
+        },
+        "install": {
+          "tab_title": "Installation",
+          "title": "Quick 3-Step Installation Guide",
+          "media": "install-instructions-transparent.png",
+          "0": "Measure the width of your window and mark the desired location of the brackets on both sides, ensuring they're level.",
+          "1": "Create pilot holes at the marked spots using a drill.",
+          "2": "Attach the brackets with the provided screws, then gently lift the zebra blinds and clip the headrail into the brackets.",
+          "description_html": "Installation made easy! For more details, please read the full installation guide."
+        },
+        "included": {
+          "tab_title": "What's Included",
+          "title": "What's included",
+          "0": "The blinds: High-quality cordless zebra blinds tailored to your chosen size.",
+          "1": "Screws: All necessary screws for attaching the brackets securely.",
+          "2": "Plastic drywall anchors: For added stability when installing the blinds on drywall surfaces.",
+          "3": "Brackets: Durable brackets designed to hold the blinds firmly in place.",
+          "description": "With these components provided, you'll have everything you need to easily install your new zebra blinds and enjoy their stylish functionality."
+        },
+        "pickup_delivery": {
+          "tab_title": "Pickup & Delivery",
+          "pickup": {
+            "title": "Pickup",
+            "0": "Enjoy free local pickup in Montreal! Simply select the pickup option at checkout and we will schedule your appointment. Available by appointment only."
+          },
+          "delivery": {
+            "title": "Delivery",
+            "0": "We provide carbon-neutral local delivery using our electric vehicle for all orders within our service area, contributing to a greener environment."
+          }
+        }
+      },
+      "components": {
+        "wide_hero": "Elevate your home's style and functionality."
+      },
+      "cant_find_your_fit": "Can't find your fit?",
+      "place_a_custom_order": "Place a custom order",
+      "email_us": "Email us",
+      "or": "or",
+      "give_us_a_call": "give us a call.",
       "add_to_cart": "Add to cart",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
@@ -132,14 +203,17 @@
         "pick_up_available": "Pickup available",
         "pick_up_available_at_html": "Pickup available at <span class=\"color-foreground\">{{ location_name }}</span>",
         "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_available_montreal": "Pickup available in Montreal",
         "unavailable": "Couldn't load pickup availability",
         "refresh": "Refresh"
       },
       "price": {
+        "from": "From",
         "from_price_html": "From {{ price }}",
         "regular_price": "Regular price",
         "sale_price": "Sale price",
-        "unit_price": "Unit price"
+        "unit_price": "Unit price",
+        "see_more": "See more details"
       },
       "share": "Share this product",
       "sold_out": "Sold out",
@@ -187,6 +261,108 @@
     }
   },
   "templates": {
+    "homepage": {
+      "hero": {
+        "title": "Transform your decor",
+        "button": "Shop now"
+      },
+      "showcase": {
+        "title": "Elevate your space with a contemporary new look.",
+        "button": "Discover our selection"
+      },
+      "showcase_1": {
+        "title": "Your measurements,\nour expertise",
+        "description": "We understand that your windows come in all shapes and sizes. That's why we offer made-to-order zebra blinds tailored to your exact specifications."
+      },
+      "showcase_2": {
+        "title": "Effortless operation",
+        "description": "Easily adjust the alternating stripes to let in just the right amount of light."
+      },
+      "showcase_3": {
+        "title": "A breeze to clean",
+        "description": "Our alternating stripes allow for easy dusting and wiping. With just a quick wipe or dusting, your blinds will look as good as new."
+      },
+      "showcase_4": {
+        "title": "Experience the perfect balance of style and functionality with our zebra blinds",
+        "button": "Discover our selection"
+      },
+      "showcase_5": {
+        "block_1": {
+          "title": "Strong and stylish aluminium frame",
+          "description": "The sturdy material not only looks sleek and modern but also provides a solid foundation for the blinds to function effortlessly."
+        },
+        "block_2": {
+          "title": "High-quality polyester weave",
+          "description": "Our premium polyester fabric is not only durable and long-lasting, but also resists stains and is easy to clean."
+        },
+        "block_3": {
+          "title": "Cordless design",
+          "description": "With no cords to fuss with, our blinds are not only safer for children and pets, but also easier to use."
+        }
+      },
+      "showcase_6": {
+        "title": "Let more light into any space",
+        "description": "Our zebra blinds allow you to easily adjust the alternating stripes, giving you full control over the amount of light entering your space."
+      },
+      "showcase_7": {
+        "title": "Or keep it out.",
+        "description": "Create a more intimate setting with just a flick of your wrist.",
+        "sub": "Your choice."
+      },
+      "showcase_8": {
+        "title": "What sets us apart?",
+        "block_1": {
+          "title": "Carbon-neutral delivery",
+          "description": "Our products are delivered locally using our electric vehicle to reduce our carbon footprint and protect our planet."
+        },
+        "block_2": {
+          "title": "Made to order",
+          "description": "Our made-to-order zebra blinds are tailored to your exact specifications, ensuring a perfect fit for your windows."
+        },
+        "block_3": {
+          "title": "Local in Montreal",
+          "description": "Our commitment to Montreal extends beyond just our address. We work with local suppliers to ensure our zebra blinds are top-quality."
+        },
+        "block_4": {
+          "title": "Call us anytime",
+          "description": "We're always here to help, whether you need assistance placing an order, have questions about your purchase, or need to make a return."
+        }
+      },
+      "showcase_9": {
+        "title": "Make any space look stylish and modern with our elegant zebra blinds."
+      },
+      "showcase_10": {
+        "title": "Testimonials from our satisfied clients",
+        "review_block_1": {
+          "message": "We installed our blinds this morning, and everything is perfect.\n\nThank you for the great service.\n\nWe look forward to referring your business to our friends.",
+          "name": "Johanne and Paul",
+          "position": ""
+        },
+        "review_block_2": {
+          "message": "The team was very helpful and patient in helping me choose the right model for my living room.\n\nI'm thrilled with my purchase and highly recommend them.",
+          "name": "Stéphanie",
+          "position": ""
+        },
+        "review_block_3": {
+          "message": "I recently bought zebra blinds for my home office and couldn't be happier.\n\nThank you for your excellent customer service and expertise.",
+          "name": "Alexandre",
+          "position": ""
+        }
+      },
+      "showcase_11": {
+        "title": "Quality you can trust"
+      },
+      "showcase_12": {
+        "title": "Our articles on zebra blinds",
+        "read_button": "Read",
+        "see_blog_button": "See the rest"
+      },
+      "showcase_13": {
+        "title": "We're passionate about transforming every space into a more beautiful and comfortable place to live.",
+        "button": "Read our mission",
+        "sub": "Rideau Zebra Inc."
+      }
+    },
     "search": {
       "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
       "page": "Page",
@@ -203,16 +379,45 @@
       "search_for": "Search for “{{ terms }}”"
     },
     "cart": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "your_cart": "Your cart",
+      "empty_message": {
+        "title": "Your cart is currently empty",
+        "description": "Let us help you find some amazing products to fill it up.",
+        "button": "Shop now"
+      }
     },
     "contact": {
+      "title": "Contact",
+      "content": "We value your feedback and are committed to providing excellent customer service. We are here to help you with any questions or concerns you may have.",
+      "email_label": "Email:",
+      "email_address": "contact@rideauzebra.ca",
+      "phone_label": "Phone:",
+      "phone_number": "(438) 882-7275",
+      "pickup_on_appointment": "Local pickup by appointment:",
+      "address": "1915 rue Poupart, Montréal QC, H2K3H1",
       "form": {
-        "title": "Contact form",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone number",
-        "comment": "Comment",
-        "send": "Send",
+        "first_name": {
+          "label": "First name",
+          "placeholder": "First name"
+        },
+        "last_name": {
+          "label": "Last name",
+          "placeholder": "Last name"
+        },
+        "phone": {
+          "label": "Phone number",
+          "placeholder": "+1(123)456-7890"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Your message"
+        },
+        "submit_button": "Send",
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
@@ -224,12 +429,11 @@
   },
   "sections": {
     "header": {
-      "announcement": "Announcement",
-      "menu": "Menu",
-      "cart_count": {
-        "one": "{{ count }} item",
-        "other": "{{ count }} items"
-      }
+      "home": "Home",
+      "catalog": "Catalog",
+      "contact": "Contact",
+      "custom_order": "Custom order",
+      "translate": "fr"
     },
     "cart": {
       "title": "Your cart",
@@ -260,8 +464,35 @@
       }
     },
     "footer": {
-      "payment": "Payment methods",
-      "powered_by_html": "| Made with ☕ by <a href=\"https://msmtech.ca\">MSM TECHNOLOGIES<\/a>"
+      "shop_with_confidence": "Shop with Confidence",
+      "mission": {
+        "paragraph_1": "We're passionate about transforming every space into a more beautiful and comfortable place to live.",
+        "paragraph_2": "We strive for excellence in every aspect of our business, from the quality of our products to the level of service we provide."
+      },
+      "links_1": {
+        "title": "About",
+        "about_us": "About Us",
+        "contact_us": "Contact Us"
+      },
+      "links_2": {
+        "title": "Company",
+        "shipping_delivery": "Pickup & Delivery",
+        "returns_exchanges": "Returns & Exchanges",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service"
+      },
+      "email_subscription": {
+        "title": "Don't miss out",
+        "description": "Be the first to know about our newest collections and exclusive offers by subscribing to our email list.",
+        "enter_your_email": "Enter your email",
+        "subscribe": "Subscribe"
+      },
+      "solution_by_html": "A Solution by <a href=\"https:\/\/msmtech.ca\">MSM Technologies<\/a>.",
+      "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Powered by Shopify<\/a>",
+      "copyright": "&copy; Copyright",
+      "ssl_encrypted": "SSL ENCRYPTED | SECURE PAYMENTS",
+      "site_secure": "Site is secure",
+      "verify_security": "Verify security"
     },
     "featured_blog": {
       "view_all": "View all",
@@ -424,6 +655,116 @@
       "expired": "Expired",
       "copy_code_success": "Code copied successfully",
       "print_gift_card": "Print"
+    }
+  },
+  "pages": {
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "content": {
+        "intro": "We take your privacy seriously. This Privacy Policy outlines the types of personal information we collect, how it is used and protected, and with whom it may be shared.",
+        "information_collection_and_use": {
+          "heading": "Information Collection and Use:",
+          "item1": "We collect personal information such as your name, address, email address, and payment information when you place an order on our website.",
+          "item2": "We use this information to process your order, provide customer service, and send you updates about your order and our company.",
+          "item3": "We also collect information about your browsing and shopping behavior on our website for the purpose of analyzing site usage and improving our services. This includes the use of Google Analytics, Google Signals, and Shopify Analytics.",
+          "item4": "We will never share your information with any third parties for marketing purposes."
+        },
+        "cookies_and_tracking_technologies": {
+          "heading": "Cookies and Tracking Technologies:",
+          "item1": "We use cookies and other tracking technologies to improve your browsing experience and personalize our website for you.",
+          "item2": "You can choose to disable cookies in your browser settings, but this may affect your ability to use certain features of our website."
+        },
+        "security": {
+          "heading": "Security:",
+          "item1": "We take appropriate security measures to protect against unauthorized access, alteration, disclosure or destruction of your personal information.",
+          "item2": "However, no method of transmission over the Internet, or method of electronic storage, is 100% secure."
+        },
+        "changes_to_policy": {
+          "heading": "Changes to this Policy:",
+          "item1": "We may update this Privacy Policy from time to time.",
+          "item2": "We will notify you of any changes by posting the new Privacy Policy on this page.",
+          "item3": "You are advised to review this Privacy Policy periodically for any changes."
+        },
+        "contact_us": {
+          "heading": "Contact Us:",
+          "text": "If you have any questions about this Privacy Policy, please contact us at",
+          "email": "contact@rideauzebra.ca"
+        }
+      }
+    },
+    "terms_of_service": {
+      "title": "Terms of Service",
+      "introduction": "By using the rideauzebra.ca website and placing an order, you agree to be bound by the following terms and conditions:",
+      "list": {
+        "item1": {
+          "text": "Product Information: We make every effort to ensure that our products are described as accurately as possible on our website. However, we do not warrant that the descriptions are error-free."
+        },
+        "item2": {
+          "text": "Order Processing: We will process your order within the timeframe specified on the website. We reserve the right to cancel or refuse any order that appears suspect or fraudulent."
+        },
+        "item3": {
+          "text": "Payment: We accept the payment methods specified on the website. We will not charge you until we have shipped your order."
+        },
+        "item4": {
+          "text": "Shipping and Delivery: We will ship your order to the address specified in your order. Shipping costs will be calculated and displayed at checkout. We are not responsible for any delays in shipping or delivery caused by the carrier."
+        },
+        "item5": {
+          "text": "Returns and Exchanges: We have a hassle-free returns and exchanges policy, as outlined in our Return and Exchange Policy."
+        },
+        "item6": {
+          "text": "Warranty: All of our products come with a 1-year warranty from the date of delivery. If you receive a damaged or defective product, please contact us for a replacement."
+        },
+        "item7": {
+          "text": "Intellectual Property: The content of the rideauzebra.ca website is protected by copyright and trademark laws. You may not use any content from the website without our express written permission."
+        },
+        "item8": {
+          "text": "Limitation of Liability: We will not be liable for any damages resulting from the use of our website or products."
+        },
+        "item9": {
+          "text": "Governing Law: These terms and conditions will be governed by the laws of Canada."
+        },
+        "item10": {
+          "text": "Changes to the Terms of Service: We reserve the right to make changes to these terms and conditions at any time."
+        }
+      }
+    },
+    "shipping_policy": {
+      "title": "Local Delivery and Pickup Policy",
+      "intro_html": "We are committed to providing our customers with the best shopping experience, including fast carbon-neutral local delivery and a $25 flat-rate delivery for other orders.",
+      "list": {
+        "item1_html": "Carbon-Neutral Local Delivery: We offer carbon-neutral local delivery for orders in most areas.",
+        "item2_html": "Flat-Rate Delivery: A $25 flat-rate delivery fee applies to all delivery orders.",
+        "item3_html": "Delivery Time: We take pride in offering the best quality products. For regular orders, please allow for 2 to 4 business days for delivery. For made-to-measure orders, please allow for 1 to 2 weeks. This allows us to offer the highest quality products at the most competitive prices.",
+        "item4_html": "Order Confirmation: We will confirm your order and keep you updated via calls and emails. Your order status will be updated accordingly.",
+        "item5_html": "Custom and Import Duties: Please note that import duties, taxes, and charges are included in the item price or delivery cost for Canadian customers. If shipping outside of Canada, these charges are the buyer's responsibility.",
+        "item6_html": "Local Pickup: We offer free local pickup for our customers. If you prefer to pick up your order, please select the local pickup option during checkout.",
+        "item7_html": "Customer Service: If you have any questions or concerns about your order, please contact our customer service team at <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca<\/a>. We will be happy to assist you."
+      },
+      "conclusion_html": "We hope you enjoy your shopping experience with rideauzebra.ca and we look forward to serving you again soon!"
+    },
+    "return_exchange_policy": {
+      "title": "Hassle-Free Return and Exchange Policy",
+      "intro": "Customer satisfaction is our top priority. If you are not completely satisfied with your purchase, we are happy to offer a hassle-free return or exchange.",
+      "return_policy": {
+        "title": "Return Policy:",
+        "list": {
+          "item1": "You have 30 days from the date of delivery to return your purchase for a refund.",
+          "item2": "The item must be in new and unused condition, with all original tags and packaging.",
+          "item3": "Shipping costs associated with the return are free.",
+          "item4": "Refunds will be processed within 7-10 business days of receiving the returned item."
+        }
+      },
+      "exchange_policy": {
+        "title": "Exchange Policy:",
+        "list": {
+          "item1": "You have 30 days from the date of delivery to exchange your purchase for a different item.",
+          "item2": "The item must be in new and unused condition, with all original tags and packaging.",
+          "item3": "Shipping costs associated with the exchange are free.",
+          "item4": "Exchanges will be processed within 7-10 business days of receiving the returned item."
+        }
+      },
+      "contact_html": "To initiate a return or exchange, please contact our customer service team at <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca<\/a>. They will provide you with instructions on how to proceed.",
+      "thanks": "Thank you for choosing rideauzebra.ca!"
     }
   }
 }

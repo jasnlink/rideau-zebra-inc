@@ -1,0 +1,15 @@
+<div class="relative">
+    <div>
+        <picture>
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:1536px)" />
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:1280px)" />
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:1024px)" />
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:768px)" />
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:640px)" />
+            <source srcset="{{ image | asset_img_url: 'x2100' }}" media="(min-width:0px)" />
+            <img src="{{ image | asset_img_url: 'x2100' }}" alt="{{ title }}" height="200" width="200" loading="lazy" class="w-full h-auto object-cover" />
+        </picture>
+    </div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-stone-900 opacity-25"></div>
+    <div class="text-neutral-100 text-center w-10/12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif font-bold text-2xl lg:text-5xl leading-tight">{{ title }}</div>
+</div>

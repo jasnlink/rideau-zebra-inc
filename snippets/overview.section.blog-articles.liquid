@@ -1,0 +1,38 @@
+<div class="bg-neutral-100">
+    <div class="container mx-auto py-24 text-stone-900">
+        <div class="w-full text-center">
+            <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_12.title' | t | newline_to_br }}</div>
+        </div>
+        <div class="mt-16 grid grid-cols-3 gap-4">
+            {% for article in blogs['news'].articles %}
+                {% if forloop.index == 4 %}
+                    {% break %}
+                {% endif %}
+                <a href="{{ article.url }}" title="{{ article.title }}" class="block">
+                    <div class="aspect-square rounded-md relative flex align-bottom">
+                        <div class="absolute top-0 left-0 bottom-0 right-0">
+                            <picture>
+                                {% assign image = article.image %}
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                                <img src="{{ image | image_url: width: 1200 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                            </picture>
+                        </div>
+                        <div class="absolute top-0 left-0 right-0 bottom-0 bg-stone-900 opacity-40 rounded-md"></div>
+                        <div class="relative my-12 mx-12 flex flex-col justify-between">
+                            <div class="font-serif font-medium text-2xl text-neutral-100">{{ article.title }}</div>
+                            <div class="font-medium text-stone-900 bg-neutral-100 px-8 py-3 rounded-md w-fit text-center hover:text-neutral-100 hover:bg-indigo-600 transition-all">{{ 'templates.homepage.showcase_12.read_button' | t }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="mt-4 w-full text-center">
+            <a href="{{ shop.url }}" class="inline-block mt-8 text-xl underline underline-offset-4">{{ 'templates.homepage.showcase_12.see_blog_button' | t }}</a>
+        </div>
+    </div>
+</div>

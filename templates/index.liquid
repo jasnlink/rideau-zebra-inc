@@ -1,0 +1,29 @@
+<div class="h-[calc(100vh_-_89px)] w-screen bg-neutral-100 relative">
+    <video autoplay loop playsinline muted preload class="h-full w-full object-cover">
+        <source src="{{ 'hero-main-v2-x720.webm' | asset_url }}" type="video/webm" />
+    </video>
+    <div class="absolute top-1/2 -translate-y-1/2 w-full text-center">
+        <div class="font-serif text-6xl lg:text-8xl text-neutral-100 font-bold">{{ 'templates.homepage.hero.title' | t }}</div>
+        <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+    </div>
+</div>
+<div class="container mx-auto mt-12 py-24 text-center text-stone-900">
+    <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase.title' | t }}</div>
+    <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase.button' | t }}">{{ 'templates.homepage.showcase.button' | t }}</a>
+</div>
+{%- assign collection_handle = 'homepage' -%}
+{% paginate collections[collection_handle].products by 20 %}
+    <div data-paginate-max="{{ paginate.pages }}" class="hidden"></div>
+{% endpaginate %}
+<div class="container mx-auto">
+    <div id="main-content" class="pt-12 pb-6 mx-auto">
+        <div data-paginated-products class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8"></div>
+        <div class="mt-12">
+            <button data-paginate-more class="block mx-auto w-fit py-3 px-8 bg-black border border-black text-white text-center text-sm uppercase font-medium rounded-sm disabled:opacity-75 select-none hover:bg-white hover:text-black">
+                <span data-paginate-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-6 w-6 text-white' %}</span>
+                <span data-paginate-state="default">See more</span>
+            </button>
+        </div>
+    </div>
+</div>
+{% section 'product-overview' %}
