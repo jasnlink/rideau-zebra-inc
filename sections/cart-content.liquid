@@ -20,7 +20,7 @@
                                 <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:768px)" />
                                 <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:640px)" />
                                 <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:0px)" />
-                                <img src="{{ line_item.image | image_url: width: 160 }}" height="132" width="132" loading="lazy" class="h-full w-auto object-contain rounded-md" />
+                                <img src="{{ line_item.image | image_url: width: 160 }}" alt="{{ line_item.product.title }}" height="132" width="132" loading="lazy" class="h-full w-auto object-contain rounded-md" />
                             </picture>
                         </a>
                     </div>
@@ -53,7 +53,8 @@
                     <div class="font-bold font-serif text-lg">{{ 'sections.cart.taxes_delivery' | t }}</div>
                     <div class="font-light italic text-lg">{{ 'sections.cart.calculated_checkout' | t }}</div>
                 </div>
-                <a href="{{ routes.root_url | append: 'checkout' }}" class="block text-center w-full mt-4 text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-4 pb-4 rounded-md transition-all hover:bg-indigo-500">{{ 'sections.cart.checkout_now' | t }}</a>
+                {% assign variable = value %}
+                <a href="{{ shop.url | append: '/checkout' }}" class="block text-center w-full mt-4 text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-4 pb-4 rounded-md transition-all hover:bg-indigo-500" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
             </div>
         </div>
         <div class="bg-neutral-100">
