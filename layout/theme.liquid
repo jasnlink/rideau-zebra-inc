@@ -13,18 +13,22 @@
 
             function gtag_report_conversion(url) {
                 var callback = function () {
-                    if (typeof(url) != 'undefined') {
-                        window.location = url;
-                    }
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
                 };
                 gtag('event', 'conversion', {
-                        'send_to': 'AW-11037111949/wDVKCKXjxoQYEI3t844p',
-                        'value': 0.0,
-                        'currency': 'CAD',
-                        'event_callback': callback
+                    'send_to': 'AW-11037111949/wDVKCKXjxoQYEI3t844p',
+                    'value': 0.0,
+                    'currency': 'CAD',
+                    'event_callback': callback
                 });
                 return false;
             }
+
+            document.querySelector('#checkout').addEventListener('click',(event)=>{
+                gtag_report_conversion();
+            });
         </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

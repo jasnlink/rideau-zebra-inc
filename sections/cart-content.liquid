@@ -54,7 +54,7 @@
                     <div class="font-light italic text-lg">{{ 'sections.cart.calculated_checkout' | t }}</div>
                 </div>
                 {% assign variable = value %}
-                <a href="{{ shop.url | append: '/checkout' }}" class="block text-center w-full mt-4 text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-4 pb-4 rounded-md transition-all hover:bg-indigo-500" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
+                <a href="{{ shop.url | append: '/checkout' }}" id="checkout" class="block text-center w-full mt-4 text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-4 pb-4 rounded-md transition-all hover:bg-indigo-500" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
             </div>
         </div>
         <div class="bg-neutral-100">

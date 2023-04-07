@@ -1,0 +1,3 @@
+{% for variant in product.variants %}
+    <div class="hidden" data-info-product-id="{{ product.id }}" data-info-product-title="{{ product.title | remove: "'" | remove: '"' }}" data-info-product-vendor="{{ product.vendor | remove: "'" | remove: '"' }}" data-info-product-collection="{{ product.collections[0].title | remove: "'" | remove: '"' }}" data-info-variant-id="{{ variant.id }}" data-info-currency="{{ shop.currency }}" data-info-variant-price="{{ variant.price | times: 0.01 }}"></div>
+{% endfor %}

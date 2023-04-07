@@ -45,10 +45,12 @@ export function initAddCartAction() {
         })
         .then((data) => {
             updateCartCount()
+            pushGtagAddCartEvent(productId)
             disableLoading(targetElement);
             playAnimation();
         })
         .catch((error) => {
+            pushGtagAddErrorEvent(productId)
             disableLoading(targetElement, true);
             console.error('Error adding to cart.', error)
         })
@@ -119,6 +121,48 @@ export function initAddCartAction() {
                 }, 500);
             }
 
+        }
+
+        function pushGtagAddCartEvent(pushId) {
+
+            const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
+            gtag("event", "add_to_cart", {
+                currency: itemInfoElement.getAttribute('data-info-currency'),
+                value: itemInfoElement.getAttribute('data-info-variant-price'),
+                items: [
+                    {
+                        item_id: itemInfoElement.getAttribute('data-info-product-id'),
+                        item_name: itemInfoElement.getAttribute('data-info-product-title'),
+                        item_brand: itemInfoElement.getAttribute('data-info-product-vendor'),
+                        item_category: itemInfoElement.getAttribute('data-info-product-collection'),
+                        item_variant: itemInfoElement.getAttribute('data-info-variant-id'),
+                        price: itemInfoElement.getAttribute('data-info-variant-price'),
+                        quantity: 1
+                    }
+                ]
+            });
+        
+        }
+
+        function pushGtagAddErrorEvent(pushId) {
+
+            const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
+            gtag("event", "error_add_cart", {
+                currency: itemInfoElement.getAttribute('data-info-currency'),
+                value: 0,
+                items: [
+                    {
+                        item_id: itemInfoElement.getAttribute('data-info-product-id'),
+                        item_name: itemInfoElement.getAttribute('data-info-product-title'),
+                        item_brand: itemInfoElement.getAttribute('data-info-product-vendor'),
+                        item_category: itemInfoElement.getAttribute('data-info-product-collection'),
+                        item_variant: itemInfoElement.getAttribute('data-info-variant-id'),
+                        price: itemInfoElement.getAttribute('data-info-variant-price'),
+                        quantity: 1
+                    }
+                ]
+            });
+        
         }
 
     }
