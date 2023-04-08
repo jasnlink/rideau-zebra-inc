@@ -398,7 +398,7 @@
     },
     "contact": {
       "title": "Contact",
-      "content": "Chez rideauzebra.ca, nous accordons de l'importance à vos commentaires et nous nous engageons à fournir un excellent service à la clientèle. Nous sommes là pour vous aider avec toutes les questions ou préoccupations que vous pourriez avoir.",
+      "content": "Nous accordons de l'importance à vos commentaires et nous nous engageons à fournir un excellent service à la clientèle. Nous sommes là pour vous aider avec toutes les questions ou préoccupations que vous pourriez avoir.",
       "email_label": "Courriel :",
       "email_address": "contact@rideauzebra.ca",
       "phone_label": "Téléphone :",
@@ -673,7 +673,7 @@
     "privacy_policy": {
       "title": "Politique de Confidentialité",
       "content": {
-        "introduction": "Chez rideauzebra.ca, nous prenons votre vie privée au sérieux. Cette politique de confidentialité décrit les types d'informations personnelles que nous collectons, comment elles sont utilisées et protégées, et avec qui elles peuvent être partagées.",
+        "introduction": "Nous prenons votre vie privée au sérieux. Cette politique de confidentialité décrit les types d'informations personnelles que nous collectons, comment elles sont utilisées et protégées, et avec qui elles peuvent être partagées.",
         "information_collection_and_use": {
           "heading": "Collecte et utilisation des informations :",
           "item1": "Nous collectons des informations personnelles telles que votre nom, adresse, adresse e-mail et informations de paiement lorsque vous passez une commande sur notre site Web.",
@@ -742,7 +742,7 @@
     },
     "shipping_policy": {
       "title": "Politique de livraison et de ramassage local",
-      "intro_html": "Chez rideauzebra.ca, nous nous engageons à offrir à nos clients la meilleure expérience d'achat possible, notamment une livraison locale rapide et neutre en carbone et une livraison à tarif fixe de 25 $ pour les commandes de livraison.",
+      "intro_html": "Nous nous engageons à offrir à nos clients la meilleure expérience d'achat possible, notamment une livraison locale rapide et neutre en carbone et une livraison à tarif fixe de 25 $ pour les commandes de livraison.",
       "list": {
         "item1_html": "Livraison locale zéro émission : Nous offrons une livraison locale neutre en carbone pour les commandes dans la plupart des régions.",
         "item2_html": "Livraison à tarif fixe : Un frais de livraison fixe de 25 $ s'applique à toutes les commandes de livraison.",
@@ -756,7 +756,7 @@
     },
     "return_exchange_policy": {
       "title": "Politique de retour et d'échange sans tracas",
-      "intro": "Chez rideauzebra.ca, la satisfaction du client est notre priorité absolue. Si vous n'êtes pas entièrement satisfait de votre achat, nous sommes heureux de vous proposer un retour ou un échange sans tracas.",
+      "intro": "La satisfaction du client est notre priorité absolue. Si vous n'êtes pas entièrement satisfait de votre achat, nous sommes heureux de vous proposer un retour ou un échange sans tracas.",
       "return_policy": {
         "title": "Politique de retour :",
         "list": {
