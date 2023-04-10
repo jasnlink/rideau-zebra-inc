@@ -163,7 +163,8 @@
           },
           "delivery": {
             "title": "Delivery",
-            "0": "We provide carbon-neutral local delivery using our electric vehicle for all orders within our service area, contributing to a greener environment."
+            "0": "We provide carbon-neutral local delivery using our electric vehicle for all orders within our service area, contributing to a greener environment.",
+            "1": "We deliver to Montreal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, and many more. Contact us to know more."
           }
         }
       },
