@@ -5,8 +5,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function initPagination() {
+    let paginateMax = document.querySelector('[data-paginate-max]');
+    if(paginateMax === null) {
+        return;
+    }
     let currentIndex = 1;
-    const maxIndex = parseInt(document.querySelector('[data-paginate-max]').dataset.paginateMax);
+    const maxIndex = parseInt(paginateMax.dataset.paginateMax);
 
     const elementPaginationBtn = document.querySelector('[data-paginate-more]');
     const elementPaginatedProducts = document.querySelector('[data-paginated-products]');
@@ -27,7 +31,7 @@ function initPagination() {
             if(!res.ok) {
                 throw new Error();
             }
-            return res.json()
+            return res.json();
         })
         .then((data) => {
             elementPaginatedProducts.insertAdjacentHTML('beforeend', data[section]);
@@ -41,7 +45,7 @@ function initPagination() {
             })
         })
         .catch((error) => {
-            console.error(error)
+            console.error(error);
         })
     }
 
@@ -52,7 +56,7 @@ function initPagination() {
                 elementPaginatedProducts.appendChild(sectionElement.childNodes[0]);
             }
             if(sectionElement.childNodes.length === 0) {
-                sectionElement.remove()
+                sectionElement.remove();
                 resolve();
             }
         })
@@ -64,8 +68,8 @@ function initPagination() {
         elementPaginatedProducts.classList.add('select-none');
         elementPaginatedProducts.classList.add('pointer-events-none');
         elementPaginationBtn.disabled = true;
-        elementPaginationBtn.querySelector('[data-paginate-state="default"]').classList.add('hidden')
-        elementPaginationBtn.querySelector('[data-paginate-state="loading"]').classList.remove('hidden')
+        elementPaginationBtn.querySelector('[data-paginate-state="default"]').classList.add('hidden');
+        elementPaginationBtn.querySelector('[data-paginate-state="loading"]').classList.remove('hidden');
     }
 
     function disableLoading() {
@@ -73,7 +77,7 @@ function initPagination() {
         elementPaginatedProducts.classList.remove('select-none');
         elementPaginatedProducts.classList.remove('pointer-events-none');
         elementPaginationBtn.disabled = false;
-        elementPaginationBtn.querySelector('[data-paginate-state="default"]').classList.remove('hidden')
-        elementPaginationBtn.querySelector('[data-paginate-state="loading"]').classList.add('hidden')
+        elementPaginationBtn.querySelector('[data-paginate-state="default"]').classList.remove('hidden');
+        elementPaginationBtn.querySelector('[data-paginate-state="loading"]').classList.add('hidden');
     }
 }

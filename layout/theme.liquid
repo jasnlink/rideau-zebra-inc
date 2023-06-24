@@ -26,9 +26,12 @@
                 return false;
             }
 
-            document.querySelector('#checkout').addEventListener('click',(event)=>{
-                gtag_report_conversion();
-            });
+            let checkoutBtn = document.querySelector('#checkout')
+            if(checkoutBtn !== null) {
+                checkoutBtn.addEventListener('click',(event)=>{
+                    gtag_report_conversion();
+                });
+            }
         </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

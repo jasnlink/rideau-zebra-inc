@@ -210,7 +210,7 @@
         "pick_up_available": "Collecte disponible",
         "pick_up_available_at_html": "Service de retrait disponible à <span class=\"color-foreground\">{{ location_name }}<\/span>",
         "pick_up_unavailable_at_html": "Service de retrait non disponible actuellement à <span class=\"color-foreground\">{{ location_name }}<\/span>",
-        "pick_up_available_montreal": "Collecte disponible à Montréal",
+        "pick_up_available_montreal": "Collecte disponible à Montréal - H2K 3H1",
         "unavailable": "Impossible de charger la disponibilité du service de retrait",
         "refresh": "Actualiser"
       },
@@ -389,7 +389,7 @@
     },
     "cart": {
       "cart": "Panier",
-      "your_cart": "Votre panier",
+      "your_cart": "Votre panier sécurisé",
       "empty_message": {
         "title": "Votre panier est actuellement vide",
         "description": "Laissez-nous vous aider à trouver des produits incroyables pour le remplir.",

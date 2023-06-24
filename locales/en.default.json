@@ -204,7 +204,7 @@
         "pick_up_available": "Pickup available",
         "pick_up_available_at_html": "Pickup available at <span class=\"color-foreground\">{{ location_name }}</span>",
         "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"color-foreground\">{{ location_name }}</span>",
-        "pick_up_available_montreal": "Pickup available in Montreal",
+        "pick_up_available_montreal": "Pickup available in Montreal - H2K 3H1",
         "unavailable": "Couldn't load pickup availability",
         "refresh": "Refresh"
       },
@@ -381,7 +381,7 @@
     },
     "cart": {
       "cart": "Cart",
-      "your_cart": "Your cart",
+      "your_cart": "Your secure cart",
       "empty_message": {
         "title": "Your cart is currently empty",
         "description": "Let us help you find some amazing products to fill it up.",
