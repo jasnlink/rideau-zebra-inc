@@ -9,8 +9,8 @@
             <a href="{{ routes['root_url'] }}" title="{{ shop.name }}">{% render 'logo-main', class: 'h-12 lg:h-14' %}</a>
             <div class="hidden lg:flex font-light uppercase gap-6 items-center text-stone-900">
                 <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ collections['all'].url }}" title="{{ 'sections.header.catalog' | t }}">{{ 'sections.header.catalog' | t }}</a>
-                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ pages['contact'].url }}" title="{{ 'sections.header.contact' | t }}">{{ 'sections.header.contact' | t }}</a>
                 <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ blogs['news'].url }}" title="{{ 'blogs.article.blog' | t }}">{{ 'blogs.article.blog' | t }}</a>
+                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ pages['contact'].url }}" title="{{ 'sections.header.contact' | t }}">{{ 'sections.header.contact' | t }}</a>
                 {% comment %} <a class="h-fit font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" href="{{ shop.url }}" title="{{ 'sections.header.custom_order' | t }}">{{ 'sections.header.custom_order' | t }}</a> {% endcomment %}
                 {% assign translate_lang = 'sections.header.translate' | t %}
                 {% assign translate_lang_url = translate_lang | prepend: '/' %}
