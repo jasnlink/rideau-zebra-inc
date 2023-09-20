@@ -430,6 +430,7 @@
   },
   "sections": {
     "header": {
+      "top_bar_html": "Call us <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
       "home": "Home",
       "catalog": "Catalog",
       "contact": "Contact",
@@ -491,7 +492,7 @@
         "enter_your_email": "Enter your email",
         "subscribe": "Subscribe"
       },
-      "solution_by_html": "A Solution by <a href=\"https:\/\/msmtech.ca\">MSM Technologies<\/a>.",
+      "solution_by_html": "<a href=\"https:\/\/msmtech.ca\" rel=\"noopener\">Web development solution by MSM Technologies<\/a>.",
       "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Powered by Shopify<\/a>",
       "copyright": "&copy; Copyright",
       "ssl_encrypted": "SSL ENCRYPTED | SECURE PAYMENTS",

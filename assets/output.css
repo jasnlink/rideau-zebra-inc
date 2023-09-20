@@ -2250,8 +2250,22 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
 .bg-none {
   background-image: none;
+}
+
+.from-indigo-600\/90 {
+  --tw-gradient-from: rgb(79 70 229 / 0.9);
+  --tw-gradient-to: rgb(79 70 229 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-indigo-700\/90 {
+  --tw-gradient-to: rgb(67 56 202 / 0.9);
 }
 
 .decoration-slice {

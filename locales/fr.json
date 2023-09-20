@@ -438,6 +438,7 @@
   },
   "sections": {
     "header": {
+      "top_bar_html": "Appelez-nous <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
       "home": "Accueil",
       "catalog": "Catalogue",
       "contact": "Contact",
