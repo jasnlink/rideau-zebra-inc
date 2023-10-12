@@ -102,6 +102,7 @@ function initVariantSelector() {
 
     function searchVariantList() {
         let search = ''
+        console.log(`searchVariantList`, selectionState)
         Object.keys(selectionState).forEach((key) => {
             search += '[data-selector-variant-option-'+key+'="'+selectionState[key]['value']+'"]'
         })
@@ -114,6 +115,12 @@ function initVariantSelector() {
             document.querySelectorAll('[data-product-display-price]').forEach(element => {
                 element.textContent = foundElement.dataset.selectorVariantPrice
             })
+            if (!foundElement.getAttribute('data-variant-available') || foundElement.getAttribute('data-variant-available') === 'false') {
+                document.querySelectorAll('[data-add-cart]').forEach(element => {
+                    element.dataset.addCart = null
+                    element.disabled = true
+                })
+            }
         } else {
             document.querySelectorAll('[data-add-cart]').forEach(element => {
                 element.dataset.addCart = null

@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "dev": "npx shopify theme dev --store=rideau-zebra",
     "tw": "npx tailwindcss -i ./input.css -o ./assets/output.css --watch",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
@@ -9,6 +10,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
+    "@shopify/cli": "^3.49.7",
+    "@shopify/theme": "^3.49.7",
     "@webpack-cli/generators": "^3.0.1",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",

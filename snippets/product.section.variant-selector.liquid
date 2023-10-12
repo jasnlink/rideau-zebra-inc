@@ -1,15 +1,13 @@
 <div class="hidden">
     {% for variant in product.variants %}
-        {% if variant.available == true %}
-            {% capture data_variant_options %}
-                {% for option in variant.options %}
-                    {% capture data_option %}{% if forloop.first %} {% endif %}{{ 'data-selector-variant-option-' | append: forloop.index | append: '="' | append: option | append: '"' }}{% unless forloop.last %} {% endunless %}{% endcapture %}
-                    {% assign data_option = data_option | downcase | replace: ' ', '_' %}
-                    {{ data_option }}
-                {% endfor %}
-            {% endcapture %}
-            <div data-selector-variant-id="{{ variant.id }}" data-selector-variant-price="{{ variant.price | money_with_currency }}"{{ data_variant_options }}></div>
-        {% endif %}
+        {% capture data_variant_options %}
+            {% for option in variant.options %}
+                {% capture data_option %}{% if forloop.first %} {% endif %}{{ 'data-selector-variant-option-' | append: forloop.index | append: '="' | append: option | append: '"' }}{% unless forloop.last %} {% endunless %}{% endcapture %}
+                {% assign data_option = data_option | downcase | replace: ' ', '_' %}
+                {{ data_option }}
+            {% endfor %}
+        {% endcapture %}
+        <div data-selector-variant-id="{{ variant.id }}" data-selector-variant-price="{{ variant.price | money_with_currency }}"{{ data_variant_options }} data-variant-available="{{ variant.available }}"></div>
     {% endfor %}
 </div>
 {% if type == 'button' %}
