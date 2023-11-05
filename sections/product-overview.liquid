@@ -160,11 +160,11 @@
             <div class="flex flex-col gap-4 items-center justify-between">
                 <div class="h-24 w-24 relative">
                     <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-shipping', class: 'h-28 fill-stone-900' %}
+                        {% render 'icon-fixed-rate-shipping', class: 'h-20 fill-stone-900' %}
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_1.title' | t | newline_to_br }}</div>
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_1.title' | t | newline_to_br }}</div>
                     <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_1.description' | t }}</div>
                 </div>
             </div>
@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_3.title' | t | newline_to_br }}</div>
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_3.title' | t | newline_to_br }}</div>
                     <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_3.description' | t }}</div>
                 </div>
             </div>
@@ -188,23 +188,29 @@
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_2.title' | t | newline_to_br }}</div>
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_2.title' | t | newline_to_br }}</div>
                     <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_2.description' | t }}</div>
                 </div>
             </div>
             <div class="flex flex-col gap-4 items-center justify-between">
                 <div class="h-24 w-24 relative">
                     <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-support', class: 'h-24 fill-stone-900' %}
+                        {% render 'icon-support', class: 'h-20 fill-stone-900' %}
                     </div>
                 </div>
                 <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl">{{ 'templates.homepage.showcase_8.block_4.title' | t | newline_to_br }}</div>
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_4.title' | t | newline_to_br }}</div>
                     <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_4.description' | t }}</div>
                 </div>
             </div>
         </div>
     </div>
+    {% if request.page_type != 'product' %}
+        <div class="mt-36">
+            <div class="text-stone-900 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
+            <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+        </div>
+    {% endif %}
 </div>
 {% assign component_title = 'templates.homepage.showcase_9.title' | t | newline_to_br %}
 {% assign image = 'index-showcase-wide3.jpg' %}

@@ -106,6 +106,10 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
+        "highlight_badges": {
+          "0": "Expédition taux fixe vers le reste du Canada et É. U.",
+          "1": "Livraison locale zéro émission"
+        },
         "highlights": {
           "tab_title": "Points forts",
           "0": "Sécuritaire pour les enfants et les animaux de compagnie",
@@ -166,7 +170,8 @@
           "delivery": {
             "title": "Livraison",
             "0": "Nous offrons une livraison locale zéro émission en utilisant notre véhicule électrique pour toutes les commandes dans notre zone de service, contribuant ainsi à un environnement plus vert.",
-            "1" : "Nous livrons à Montréal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, et bien d'autres. Contactez-nous pour en savoir plus."
+            "1" : "Nous livrons à Montréal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, et bien d'autres. Contactez-nous pour en savoir plus.",
+            "2": "Nous expédions au reste du Canada et des É. U. pour un prix fixe."
           }
           
         }
@@ -275,7 +280,7 @@
       },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",
-        "button": "Découvrez notre sélection"
+        "button": "Découvrez notre sélection maintenant"
       },
       "showcase_1": {
         "title": "Vos mesures,\nnotre expertise",
@@ -291,7 +296,7 @@
       },
       "showcase_4": {
         "title": "Découvrez une harmonie parfaite entre style et fonctionnalité avec nos stores zébrés",
-        "button": "Découvrez notre sélection"
+        "button": "Découvrez notre sélection maintenant"
       },
       "showcase_5": {
         "block_1": {
@@ -319,20 +324,23 @@
       "showcase_8": {
         "title": "Pourquoi sommes-nous meilleurs ?",
         "block_1": {
-          "title": "Livraison zéro émission",
-          "description": "Nos produits sont livrés localement à l'aide de notre véhicule électrique afin de réduire notre impact sur l'environnement et de protéger notre planète."
+          "title": "Nous livrons au Canada et aux É. U.",
+          "description": "Nos produits sont livrés à un tarif fixe vers le reste du Canada et aux É. U."
         },
         "block_2": {
           "title": "Commande sur mesure",
           "description": "Nos stores zébrés sont adaptés à vos spécifications exactes et garantissent un alignement parfait sur vos fenêtres."
         },
         "block_3": {
-          "title": "Localement à Montréal",
-          "description": "Notre engagement à Montréal ne se limite pas seulement à notre adresse. Nous travaillons avec des fournisseurs locaux pour nous assurer que nos stores zébrés sont de première qualité."
+          "title": "Livraison locale au Grand Montréal",
+          "description": "Nous travaillons avec des fournisseurs locaux pour nous assurer que nos stores zébrés sont de première qualité. Nous livrons localement à l'aide de notre véhicule électrique afin de réduire notre impact sur l'environnement et de protéger notre planète."
         },
         "block_4": {
           "title": "Appelez-nous à tout moment",
           "description": "Nous sommes toujours là pour vous aider, que vous ayez besoin d'aide pour passer une commande, que vous ayez des questions sur votre achat ou que vous ayez besoin d'un retour."
+        },
+        "call_to_action_block": {
+          "title": "Découvrez notre sélection maintenant"
         }
       },
       "showcase_9": {

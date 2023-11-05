@@ -105,6 +105,10 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
+        "highlight_badges": {
+          "0": "Fixed-rate shipping to the rest of Canada and U.S.",
+          "1": "Carbon-neutral local delivery"
+        },
         "highlights": {
           "tab_title": "Highlights",
           "0": "Child and pet safe design",
@@ -164,7 +168,8 @@
           "delivery": {
             "title": "Delivery",
             "0": "We provide carbon-neutral local delivery using our electric vehicle for all orders within our service area, contributing to a greener environment.",
-            "1": "We deliver to Montreal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, and many more. Contact us to know more."
+            "1": "We deliver to Montreal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, and many more. Contact us to know more.",
+            "2": "We ship to the rest of Canada and the U.S. for a fixed-rate."
           }
         }
       },
@@ -269,7 +274,7 @@
       },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",
-        "button": "Discover our selection"
+        "button": "Discover our selection now"
       },
       "showcase_1": {
         "title": "Your measurements,\nour expertise",
@@ -285,7 +290,7 @@
       },
       "showcase_4": {
         "title": "Experience the perfect balance of style and functionality with our zebra blinds",
-        "button": "Discover our selection"
+        "button": "Discover our selection now"
       },
       "showcase_5": {
         "block_1": {
@@ -313,20 +318,23 @@
       "showcase_8": {
         "title": "What sets us apart?",
         "block_1": {
-          "title": "Carbon-neutral delivery",
-          "description": "Our products are delivered locally using our electric vehicle to reduce our carbon footprint and protect our planet."
+          "title": "We ship Canada-wide and to the U.S.",
+          "description": "Our products are shipped for a fixed-rate to the rest of Canada and U.S."
         },
         "block_2": {
           "title": "Made to order",
           "description": "Our made-to-order zebra blinds are tailored to your exact specifications, ensuring a perfect fit for your windows."
         },
         "block_3": {
-          "title": "Local in Montreal",
-          "description": "Our commitment to Montreal extends beyond just our address. We work with local suppliers to ensure our zebra blinds are top-quality."
+          "title": "Local delivery in Grand Montreal",
+          "description": "We work with local suppliers to ensure our zebra blinds are top-quality. We deliver using our electric vehicle to reduce our carbon footprint and protect our planet."
         },
         "block_4": {
           "title": "Call us anytime",
           "description": "We're always here to help, whether you need assistance placing an order, have questions about your purchase, or need to make a return."
+        },
+        "call_to_action_block": {
+          "title": "Discover our selection today"
         }
       },
       "showcase_9": {
