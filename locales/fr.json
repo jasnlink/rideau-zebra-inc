@@ -1,5 +1,15 @@
 {
   "general": {
+    "meta": {
+      "index": {
+        "title": "",
+        "description": "Trouvez des stores zébrés de qualité supérieure à Montréal chez Rideau Zebra. Notre gamme de stores sans fils combine élégance et fonctionnalité, idéale pour tout espace. Embellissez votre maison avec nos designs élégants et notre qualité exceptionnelle."
+      },
+      "all-products": {
+        "title": "Stores Zébrés Montréal - Stores Sans Fils Élégants | Rideau Zebra",
+        "description": "Explorez les stores sans fils et store zebra de Rideau Zebra, où le design rencontre la facilité d'utilisation. Notre collection offre des solutions élégantes pour chaque intérieur, redéfinissant la beauté et le confort de vos espaces."
+      }
+    },
     "password_page": {
       "login_form_heading": "Accéder à la boutique à l'aide d'un mot de passe :",
       "login_password_button": "Saisir avec un mot de passe",
@@ -278,6 +288,9 @@
         "title": "Transformez votre décor",
         "button": "Magasiner"
       },
+      "partners": {
+        "title": "Mentionné par"
+      },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",
         "button": "Découvrez notre sélection maintenant"
@@ -492,7 +505,7 @@
       },
       "links_1": {
         "title": "En bref",
-        "about_us": "À propos de nous",
+        "about_us": "Notre histoire",
         "contact_us": "Nous contacter"
       },
       "links_2": {

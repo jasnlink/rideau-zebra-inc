@@ -1,5 +1,15 @@
 {
   "general": {
+    "meta": {
+      "index": {
+        "title": "",
+        "description": "Discover premium zebra blinds in Montreal at Rideau Zebra. Offering a range of stylish and functional zebra blinds perfect for any space. Enhance your home with our elegant designs and superior quality."
+      },
+      "all-products": {
+        "title": "Zebra Blinds Montreal - Elegant Zebra Blinds | Rideau Zebra",
+        "description": "Discover Rideau Zebra's exquisite zebra blinds in Montreal, where design meets ease of use. Our collection offers elegant solutions for every interior, redefining the beauty and comfort of your living spaces."
+      }
+    },
     "password_page": {
       "login_form_heading": "Enter store using password:",
       "login_password_button": "Enter using password",
@@ -272,6 +282,9 @@
         "title": "Transform your decor",
         "button": "Shop now"
       },
+      "partners": {
+        "title": "We are mentioned in"
+      },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",
         "button": "Discover our selection now"
@@ -484,7 +497,7 @@
       },
       "links_1": {
         "title": "About",
-        "about_us": "About Us",
+        "about_us": "Our Story",
         "contact_us": "Contact Us"
       },
       "links_2": {

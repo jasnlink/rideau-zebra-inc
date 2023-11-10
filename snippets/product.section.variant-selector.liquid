@@ -30,9 +30,13 @@
         {% endfor %}
     </div>
 {% elsif type == 'dropdown' %}
+    {%- assign paddingClass = 'py-5 px-4 lg:px-6' -%}
+    {%- if compact == true -%}
+        {%- assign paddingClass = 'py-2 px-2 lg:px-4' -%}
+    {%- endif -%}
     <div class="">
         {% for product_option in product.options_with_values %}
-            <div data-selector-option-group-index="{{ forloop.index }}" class="flex gap-1 lg:gap-4 max-w-full text-clip overflow-hidden rounded-md items-baseline py-5 px-4 lg:px-6 bg-white border border-stone-200">
+            <div data-selector-option-group-index="{{ forloop.index }}" class="{{ paddingClass }} flex gap-1 lg:gap-4 max-w-full text-clip overflow-hidden rounded-md items-baseline bg-white border border-stone-200">
                 <label class="font-medium bg-white" for="variant-selector">{{ product_option.name }}</label>
             <select id="variant-selector" data-selector-element-type="dropdown" class="bg-white pl-4 pr-8 min-w-0 grow focus:outline-none text-ellipsis">
                 {% for product_option_value in product_option.values %}

@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initAddCartAction();
     initProductTabAction();
     initVariantSelector();
-    //initPurchaseOverlay();
+    initPurchaseOverlay();
 });
 
 function initPurchaseOverlay() {

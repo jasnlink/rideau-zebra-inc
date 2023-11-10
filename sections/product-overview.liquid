@@ -1,3 +1,24 @@
+{% if request.page_type == 'product' %}
+    <div class="py-20 bg-indigo-50">
+        <div class="container mx-auto">
+            <div class="text-stone-900 font-serif font-bold text-center text-3xl sm:text-4xl">{{ 'templates.homepage.partners.title' | t }}</div>
+            <div class="mt-12 grid grid-cols-3">
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-fadoq.svg' -%}
+                    <img src="{{ image | asset_url }}" alt="{{ 'FADOQ' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-fm1033.png' -%}
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'FM103.3' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-courrier-v2.png' -%}
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Courrier du Sud' }}" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
 <div class="container mx-auto mt-24 lg:mt-36">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
         <div class="aspect-square">

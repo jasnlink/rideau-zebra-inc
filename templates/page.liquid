@@ -1,6 +1,26 @@
 <div data-no-overlay class="container mx-auto pt-12 pb-16">
     <div class="w-full lg:w-3/5 mx-auto">
+        {% if page.handle == 'about-us' %}
+            <div class="mb-8">
+                {%- assign image = 'about-us.png' -%}
+                <picture>
+                    <source srcset="{{ image | | asset_img_url: '1154x' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | | asset_img_url: '1018x' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | | asset_img_url: '868x' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | | asset_img_url: '1152x' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | | asset_img_url: '896x' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | | asset_img_url: '768x' }}" media="(min-width:0px)" />
+                    <img src="{{ image | | asset_img_url: '768x' }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md " />
+                </picture>
+            </div>
+        {% endif %}
         <h1 class="text-4xl font-bold">{{ page.title }}</h1>
         <div class="mt-8 text-lg space-y-4">{{ page.content }}</div>
+        {% if page.handle == 'about-us' %}
+            <div class="mt-24">
+                <div class="text-stone-900 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
+                <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+            </div>
+        {% endif %}
     </div>
 </div>

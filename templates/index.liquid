@@ -7,22 +7,43 @@
         <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
     </div>
 </div>
-<div class="container mx-auto mt-12 py-24 text-center text-stone-900">
-    <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase.title' | t }}</div>
-    <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase.button' | t }}">{{ 'templates.homepage.showcase.button' | t }}</a>
+<div class="py-20 bg-white">
+    <div class="container mx-auto">
+        <div class="text-stone-900 font-serif font-bold text-center text-3xl sm:text-4xl">{{ 'templates.homepage.partners.title' | t }}</div>
+        <div class="mt-12 grid grid-cols-3">
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-fadoq.svg' -%}
+                <img src="{{ image | asset_url }}" alt="{{ 'FADOQ' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-fm1033.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'FM103.3' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-courrier-v2.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Courrier du Sud' }}" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
+            </div>
+        </div>
+    </div>
 </div>
-{%- assign collection_handle = 'homepage' -%}
-{% paginate collections[collection_handle].products by 20 %}
-    <div data-paginate-max="{{ paginate.pages }}" class="hidden"></div>
-{% endpaginate %}
-<div class="container mx-auto">
-    <div id="main-content" class="pt-12 pb-6 mx-auto">
-        <div data-paginated-products class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8"></div>
-        <div class="mt-12">
-            <button data-paginate-more class="block mx-auto w-fit py-3 px-8 bg-black border border-black text-white text-center text-sm uppercase font-medium rounded-sm disabled:opacity-75 select-none hover:bg-white hover:text-black">
-                <span data-paginate-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-6 w-6 text-white' %}</span>
-                <span data-paginate-state="default">See more</span>
-            </button>
+<div class="pt-12 bg-neutral-100">
+    <div class="container mx-auto py-24 text-center text-stone-900">
+        <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase.title' | t }}</div>
+        <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase.button' | t }}">{{ 'templates.homepage.showcase.button' | t }}</a>
+    </div>
+    {%- assign collection_handle = 'homepage' -%}
+    {% paginate collections[collection_handle].products by 20 %}
+        <div data-paginate-max="{{ paginate.pages }}" class="hidden"></div>
+    {% endpaginate %}
+    <div class="container mx-auto">
+        <div id="main-content" class="pt-12 pb-6 mx-auto">
+            <div data-paginated-products class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8"></div>
+            <div class="mt-12">
+                <button data-paginate-more class="block mx-auto w-fit py-3 px-8 bg-black border border-black text-white text-center text-sm uppercase font-medium rounded-sm disabled:opacity-75 select-none hover:bg-white hover:text-black">
+                    <span data-paginate-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-6 w-6 text-white' %}</span>
+                    <span data-paginate-state="default">See more</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

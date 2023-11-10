@@ -55,9 +55,15 @@
             {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
             {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
         </title>
-
-        {% if page_description %}
-            <meta name="description" content="{{ page_description | escape }}">
+        
+        {% if request.page_type == 'index' %}
+            <meta name="description" content="{{ 'general.meta.index.description' | t }}">
+            <meta property="og:description" content="{{ 'general.meta.index.description' | t }}">
+            <meta name="twitter:description" content="{{ 'general.meta.index.description' | t }}">
+        {% else %}
+            {% if page_description %}
+                <meta name="description" content="{{ page_description | escape }}">
+            {% endif %}
         {% endif %}
 
         {% render 'meta-tags' %}
