@@ -1,7 +1,7 @@
 <div data-overlay-action class="hidden fixed top-24 lg:top-28 w-full border-b border-gray-200 shadow-lg bg-neutral-100/90 backdrop-blur pt-1 pb-1 lg:py-4 z-20 px-4 sm:px-8">
-    <div class="container">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-y-3 lg:gap-y-0 lg:gap-x-6">
-            <div class="lg:text-lg font-bold font-serif text-black">{{ product.title }}</div>
+    <div>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-y-3 lg:gap-y-0 gap-x-2 xl:gap-x-6">
+            <div class="text-xs xl:text-lg font-bold font-serif text-black">{{ product.title }}</div>
             <div class="flex flex-col justify-center gap-1">
                 <div>
                     {% render 'product.section.variant-selector',
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="flex gap-4 items-center">
-                <span data-product-display-price class="text-xl font-light">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                <span data-product-display-price class="text-sm xl:text-xl font-light">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
                 <div>
                     {% assign button_text = 'products.product.add_to_cart' | t %}
                     {% render 'product.component.add-cart-button',

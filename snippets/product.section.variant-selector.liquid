@@ -32,7 +32,7 @@
 {% elsif type == 'dropdown' %}
     {%- assign paddingClass = 'py-5 px-4 lg:px-6' -%}
     {%- if compact == true -%}
-        {%- assign paddingClass = 'py-2 px-2 lg:px-4' -%}
+        {%- assign paddingClass = 'py-2 px-2 lg:px-4 text-xs lg:text-sm' -%}
     {%- endif -%}
     <div class="">
         {% for product_option in product.options_with_values %}

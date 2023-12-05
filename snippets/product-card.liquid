@@ -42,16 +42,27 @@
 </script>
 <div>
     <div>
-        <a href="{{ product.url }}" class="flex items-center justify-center bg-gray-200 aspect-square rounded-md">
-            <picture class="flex flex-grow">
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
-                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
-                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
-            </picture>
+        <a href="{{ product.url }}" data-rz-product-hover="{{ product.handle }}" class="bg-gray-200 aspect-square rounded-md">
+            <div class="relative">
+                <picture class="relative">
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
+                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
+                    <img src="{{ product.featured_image | image_url: width: 800 }}" height="800" width="800" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                </picture>
+                <picture class="hidden lg:block absolute inset-0 opacity-0 transition-opacity" data-rz-product-hover-action="{{ product.handle }}">
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1536px)" />
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1280px)" />
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1024px)" />
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:768px)" />
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:640px)" />
+                    <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:0px)" />
+                    <img src="{{ product.images[1] | image_url: width: 800 }}" height="800" width="800" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                </picture>
+            </div>
         </a>
     </div>
     <div class="pt-4 pb-5">

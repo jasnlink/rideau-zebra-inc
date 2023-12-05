@@ -5,7 +5,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initSecurePopover();
     initCartDrawer();
     initMobileMenu();
+    initProductHover();
 });
+
+function initProductHover() {
+    const hoverElements = document.querySelectorAll('[data-rz-product-hover]')
+    const actionHoverElements = document.querySelectorAll('[data-rz-product-hover-action]')
+    if (!actionHoverElements.length || !hoverElements.length) {
+        return
+    }
+    hoverElements.forEach((element) => {
+        element.addEventListener('mouseenter', (e) => {
+            const actionHandle = e.target.getAttribute('data-rz-product-hover')
+            const actionElement = document.querySelector(`[data-rz-product-hover-action="${actionHandle}"]`)
+            actionElement.classList.remove('opacity-0')
+            actionElement.classList.add('opacity-100')
+        })
+        element.addEventListener('mouseleave', (e) => {
+            const actionHandle = e.target.getAttribute('data-rz-product-hover')
+            const actionElement = document.querySelector(`[data-rz-product-hover-action="${actionHandle}"]`)
+            actionElement.classList.remove('opacity-100')
+            actionElement.classList.add('opacity-0')
+        })
+    })
+}
 
 function initSecurePopover() {
 
