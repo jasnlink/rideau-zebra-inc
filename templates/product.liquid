@@ -117,21 +117,31 @@
                             button_text: button_text
                         %}
                     </div>
-                    <div class="mt-2 py-2 flex gap-4 justify-center items-center bg-indigo-800 rounded-md px-8 border border-stone-400">
+                    <div class="mt-2">
+                        <div class="bg-stone-200 rounded-md p-8 text-neutral-900 border-stone-900">
+                            <div class="flex justify-center items-center">
+                                {% render 'icon-question', class: 'h-16 w-auto fill-stone-900' %}
+                            </div>
+                            <div class="mt-4 font-serif font-bold text-3xl text-center">{{ 'products.product.looking_for_more' | t | newline_to_br }}</div>
+                            <!-- Début de widget de lien Calendly -->
+                            <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+                            <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+                            <a href="" class="mt-4 block bg-stone-900 mx-auto text-neutral-100 rounded-md w-fit font-semibold px-8 py-3 transition-all hover:bg-indigo-500" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/lucie-xie/15min'});return false;">{{ 'products.product.plan_a_meeting' | t }}</a>
+                            <!-- Fin de widget de lien Calendly -->
+                            <div class="mt-8">
+                                <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
+                                <span>{{ 'products.product.or' | t }}</span>
+                                <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 py-2 flex gap-4 justify-center items-center bg-indigo-800 rounded-md px-8 border border-stone-400">
                         <span>{% render 'icon-fixed-rate-shipping', class: 'h-6 w-auto fill-neutral-100' %}</span>
                         <span class="font-medium text-neutral-100">{{ 'products.product.cordless_zebra_blinds.highlight_badges.0' | t | newline_to_br }}</span>
                     </div>
                     <div class="mt-2 py-1 flex gap-4 justify-center items-center bg-indigo-100 rounded-md px-8 border border-indigo-300">
                         <span>{% render 'icon-shipping', class: 'h-8 w-auto fill-stone-700' %}</span>
                         <span class="font-medium text-stone-700">{{ 'products.product.cordless_zebra_blinds.highlight_badges.1' | t | newline_to_br }}</span>
-                    </div>
-                    <div class="mt-4">
-                        <div>{{ 'products.product.cant_find_your_fit' | t }}</div>
-                        <div>
-                            <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
-                            <span>{{ 'products.product.or' | t }}</span>
-                            <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
-                        </div>
                     </div>
                 </div>
                 <div data-product-tab-group="0">
