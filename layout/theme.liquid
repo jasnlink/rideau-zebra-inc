@@ -50,16 +50,24 @@
         {%- endunless -%}
 
         <title>
-            {{ page_title }}
-            {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-            {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-            {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+            {% if request.page_type == 'list-collections' %}
+                {{ 'general.meta.all-products.title' | t }}
+            {% else %}
+                {{ page_title }}
+                {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+                {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+                {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+            {% endif %}
         </title>
         
         {% if request.page_type == 'index' %}
             <meta name="description" content="{{ 'general.meta.index.description' | t }}">
             <meta property="og:description" content="{{ 'general.meta.index.description' | t }}">
             <meta name="twitter:description" content="{{ 'general.meta.index.description' | t }}">
+        {% elsif request.page_type == 'list-collections' %}
+            <meta name="description" content="{{ 'general.meta.all-products.description' | t }}">
+            <meta property="og:description" content="{{ 'general.meta.all-products.description' | t }}">
+            <meta name="twitter:description" content="{{ 'general.meta.all-products.description' | t }}">
         {% else %}
             {% if page_description %}
                 <meta name="description" content="{{ page_description | escape }}">
