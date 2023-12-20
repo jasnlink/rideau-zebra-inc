@@ -45,9 +45,13 @@
             <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase_2.title' | t | newline_to_br }}</div>
             <div class="inline-block mt-4 text-lg">{{ 'templates.homepage.showcase_2.description' | t }}</div>
         </div>
+        {% assign assetFileName = 'blinds-operation-x720.mp4' %}
+        {% if product.collections contains collections['motorized-cordless-zebra-blinds'] %}
+            {% assign assetFileName = 'blinds-motorized-operation-x720.mp4' %}
+        {% endif %}
         <div class="order-first lg:order-last aspect-square">
             <video autoplay loop playsinline muted preload class="h-full w-full object-cover rounded-md">
-                <source src="{{ 'blinds-operation-x720.mp4' | asset_url }}" type="video/mp4" />
+                <source src="{{ assetFileName | asset_url }}" type="video/mp4" />
             </video>
         </div>
     </div>
@@ -68,7 +72,7 @@
 <div class="bg-indigo-600">
     <div class="container mx-auto mt-24 py-32 text-center text-neutral-100">
         <div class="mx-auto font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_4.title' | t | newline_to_br }}</div>
-        <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase_4.button' | t }}">{{ 'templates.homepage.showcase_4.button' | t }}</a>
+        <a href="{{ routes['collections_url'] }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase_4.button' | t }}">{{ 'templates.homepage.showcase_4.button' | t }}</a>
     </div>
 </div>
 <div class="container mx-auto mt-24">
@@ -229,7 +233,7 @@
     {% if request.page_type != 'product' %}
         <div class="mt-36">
             <div class="text-stone-900 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
-            <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+            <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
         </div>
     {% endif %}
 </div>

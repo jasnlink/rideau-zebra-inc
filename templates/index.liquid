@@ -4,7 +4,7 @@
     </video>
     <div class="absolute top-1/2 -translate-y-1/2 w-full text-center">
         <div class="font-serif text-6xl lg:text-8xl text-neutral-100 font-bold">{{ 'templates.homepage.hero.title' | t }}</div>
-        <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+        <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
     </div>
 </div>
 <div class="py-20 bg-white">
@@ -29,7 +29,7 @@
 <div class="pt-12 bg-neutral-100">
     <div class="container mx-auto py-24 text-center text-stone-900">
         <div class="font-serif font-bold text-4xl">{{ 'templates.homepage.showcase.title' | t }}</div>
-        <a href="{{ collections['all'].url }}" class="inline-block mt-8 text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase.button' | t }}">{{ 'templates.homepage.showcase.button' | t }}</a>
+        <a href="{{ routes['collections_url'] }}" class="inline-block mt-8 text-xl underline underline-offset-4" title="{{ 'templates.homepage.showcase.button' | t }}">{{ 'templates.homepage.showcase.button' | t }}</a>
     </div>
     {%- assign collection_handle = 'homepage' -%}
     {% paginate collections[collection_handle].products by 20 %}

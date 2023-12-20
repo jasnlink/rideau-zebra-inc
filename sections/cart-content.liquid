@@ -3,7 +3,7 @@
         <div class="container mt-20 mx-auto">
             <div class="text-center text-2xl font-bold font-serif">{{ 'templates.cart.empty_message.title' | t }}</div>
             <div class="text-center mt-4 text-lg">{{ 'templates.cart.empty_message.description' | t }}</div>
-            <a href="{{ collections['all'].url }}" title="{{ 'templates.cart.empty_message.button' | t }}" class="block w-fit mx-auto mt-8 font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500">{{ 'templates.cart.empty_message.button' | t }}</a>
+            <a href="{{ routes['collections_url'] }}" title="{{ 'templates.cart.empty_message.button' | t }}" class="block w-fit mx-auto mt-8 font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500">{{ 'templates.cart.empty_message.button' | t }}</a>
         </div>
     </div>
 {% else %}

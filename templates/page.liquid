@@ -19,7 +19,7 @@
         {% if page.handle == 'about-us' %}
             <div class="mt-24">
                 <div class="text-stone-900 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
-                <a href="{{ collections['all'].url }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+                <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
             </div>
         {% endif %}
     </div>
