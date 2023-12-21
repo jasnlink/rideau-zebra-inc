@@ -5,7 +5,7 @@
     "checkout_logo_size": "medium",
     "checkout_body_background_color": "#f5f5f5",
     "checkout_input_background_color_mode": "transparent",
-    "checkout_heading_font": "Playfair Display",
+    "checkout_heading_font": "Lora",
     "checkout_body_font": "Helvetica Neue",
     "checkout_accent_color": "#4f46e5",
     "checkout_button_color": "#4f46e5",
