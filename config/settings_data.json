@@ -2,7 +2,7 @@
   "current": {
     "checkout_logo_image": "shopify:\/\/shop_images\/logo-v7-1600x.png",
     "checkout_logo_position": "left",
-    "checkout_logo_size": "large",
+    "checkout_logo_size": "medium",
     "checkout_body_background_color": "#f5f5f5",
     "checkout_heading_font": "Playfair Display",
     "checkout_body_font": "Open Sans",
