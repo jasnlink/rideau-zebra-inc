@@ -1,10 +1,21 @@
-<div class="pt-8 px-4 sm:px-8">
-    <div class="py-8 bg-neutral-200 rounded-md">
-        <div class="lg:w-3/4 mx-auto">
+<div class="pt-8 px-4 sm:px-8 flex flex-col lg:flex-row gap-4" id="manual">
+    <div class="py-8 px-8 lg:px-8 bg-neutral-200 rounded-md">
+        <div class="text-center lg:text-start">
             <h1 class="font-serif font-bold text-3xl">{{ collection.title }}</h1>
             <div class="mt-4">{{ collection.description | replace: '<p', '<p class="mb-4"' }}</div>
         </div>
     </div>
+    {% if collection.handle == 'all' %}
+        <a href="{{ collections['motorized-cordless-zebra-blinds'].url }}" role="button" class="py-8 px-8 bg-neutral-200 hover:bg-neutral-300 transition-all rounded-md flex items-center justify-center gap-4">
+            <span>{% render 'icon-gears', class: 'fill-stone-900 h-12 w-12' %}</span>
+            <h2 class="font-serif font-semibold text-2xl leading-tight">{{ 'collections.all-products.see_motorized' | t }}</h2>
+        </a>
+    {% elsif collection.handle == 'motorized-cordless-zebra-blinds' %}
+        <a href="{{ collections['all'].url }}" role="button" class="py-8 px-8 bg-neutral-200 hover:bg-neutral-300 transition-all rounded-md flex items-center justify-center gap-4">
+            <span>{% render 'icon-hand', class: 'fill-stone-900 h-12 w-12' %}</span>
+            <h2 class="font-serif font-semibold text-2xl leading-tight">{{ 'collections.all-products.see_non_motorized' | t }}</h2>
+        </a>
+    {% endif %}
 </div>
 <div class="pt-4 pb-12 lg:pt-4 lg:pb-24 px-4 sm:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">

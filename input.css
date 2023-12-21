@@ -4,6 +4,7 @@
 
 @layer base {
     html {
+            scroll-behavior: smooth;
             font-family: Archivo,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;
         }
     select {

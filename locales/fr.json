@@ -1,4 +1,10 @@
 {
+  "collections": {
+    "all-products": {
+      "see_motorized": "Voir nos options motorisées",
+      "see_non_motorized": "Voir nos options non-motorisées"
+    }
+  },
   "general": {
     "meta": {
       "index": {
