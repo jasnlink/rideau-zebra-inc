@@ -127,10 +127,20 @@
         },
         "highlights": {
           "tab_title": "Highlights",
-          "0": "Child and pet safe design",
-          "1": "Superior quality polyester weave",
-          "2": "Stain Resistant fabric",
-          "3": "The perfect combination of style and functionality"
+          "motorized": {
+            "0": "Child and pet safe design",
+            "1": "Superior quality polyester weave",
+            "2": "Stain Resistant fabric",
+            "3": "Remote-controlled MagicRemote operation for convenience",
+            "4": "The perfect combination of style and functionality"
+          },
+          "non_motorized": {
+            "0": "Child and pet safe design",
+            "1": "Superior quality polyester weave",
+            "2": "Stain Resistant fabric",
+            "3": "Cordless one-handed EasyGlide operation",
+            "4": "The perfect combination of style and functionality"
+          }
         },
         "materials_care": {
           "tab_title": "Materials & Care",
@@ -169,10 +179,19 @@
         "included": {
           "tab_title": "What's Included",
           "title": "What's included",
-          "0": "The blinds: High-quality cordless zebra blinds tailored to your chosen size.",
-          "1": "Screws: All necessary screws for attaching the brackets securely.",
-          "2": "Plastic drywall anchors: For added stability when installing the blinds on drywall surfaces.",
-          "3": "Brackets: Durable brackets designed to hold the blinds firmly in place.",
+          "motorized": {
+            "0": "The blinds: High-quality motorized cordless zebra blinds tailored to your chosen size.",
+            "1": "MagicRemote: Control your blinds from a distance.",
+            "2": "Screws: All necessary screws for attaching the brackets securely.",
+            "3": "Plastic drywall anchors: For added stability when installing the blinds on drywall surfaces.",
+            "4": "Brackets: Durable brackets designed to hold the blinds firmly in place."
+          },
+          "non_motorized": {
+            "0": "The blinds: High-quality cordless zebra blinds tailored to your chosen size.",
+            "1": "Screws: All necessary screws for attaching the brackets securely.",
+            "2": "Plastic drywall anchors: For added stability when installing the blinds on drywall surfaces.",
+            "3": "Brackets: Durable brackets designed to hold the blinds firmly in place."
+          },
           "description": "With these components provided, you'll have everything you need to easily install your new zebra blinds and enjoy their stylish functionality."
         },
         "pickup_delivery": {
@@ -192,6 +211,7 @@
       "components": {
         "wide_hero": "Elevate your home's style and functionality."
       },
+      "see_also": "See also:",
       "cant_find_your_fit": "Can't find your fit?",
       "looking_for_more": "Have questions?\nLooking for a custom fit?",
       "plan_a_meeting": "Plan a quick 15 mins call",

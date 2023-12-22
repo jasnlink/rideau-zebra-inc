@@ -29,7 +29,7 @@ function initPurchaseOverlay() {
 
             entries.forEach((entry) => {
                 // isIntersecting means we see the target element (add to cart button)
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting || entry.boundingClientRect.top > 0) {
                     overlayElement.classList.add('hidden')
                     document.querySelector('footer').classList.remove('mb-24')
                 } else {

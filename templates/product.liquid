@@ -151,40 +151,93 @@
                         <div role="button" data-product-tab-action="2" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.warranty_returns.tab_title' | t }}</div>
                     </div>
                     <div class="container mx-auto pt-6 pb-10">
-                        <div data-product-tab="0" class="transition-all hidden opacity-0">
-                            <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
-                                <div class="h-8 w-8 relative">
-                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                        {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                        {% if product.metafields.custom_filters.is_motorized == true %}
+                            <div data-product-tab="0" class="transition-all hidden opacity-0">
+                                <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                                        </div>
                                     </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.0' | t }}</span>
                                 </div>
-                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.0' | t }}</span>
-                            </div>
-                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
-                                <div class="h-8 w-8 relative">
-                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                        {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                        </div>
                                     </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.1' | t }}</span>
                                 </div>
-                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.1' | t }}</span>
-                            </div>
-                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
-                                <div class="h-8 w-8 relative">
-                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                        {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                        </div>
                                     </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.2' | t }}</span>
                                 </div>
-                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.2' | t }}</span>
-                            </div>
-                            <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
-                                <div class="h-8 w-8 relative">
-                                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                        {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-gears', class: 'ml-2 h-10 w-auto fill-stone-900' %}
+                                        </div>
                                     </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.3' | t }}</span>
                                 </div>
-                                <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.3' | t }}</span>
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.4' | t }}</span>
+                                </div>
                             </div>
-                        </div>
+                        {% else %}
+                            <div data-product-tab="0" class="transition-all hidden opacity-0">
+                                <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.0' | t }}</span>
+                                </div>
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.1' | t }}</span>
+                                </div>
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.2' | t }}</span>
+                                </div>
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-hand', class: 'h-10 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.3' | t }}</span>
+                                </div>
+                                <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="h-8 w-8 relative">
+                                        <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                                            {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                        </div>
+                                    </div>
+                                    <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.4' | t }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
                         <div data-product-tab="1" class="transition-all hidden opacity-0">
                             <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.materials_care.materials.title' | t }}</div>
                             <ul class="mt-4 ml-4 list-disc leading-8">
@@ -228,10 +281,18 @@
                         <div data-product-tab="1" class="transition-all hidden opacity-0">
                             <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.included.title' | t }}</div>
                             <ul class="mt-4 ml-4 list-disc leading-8">
-                                <li>{{ 'products.product.cordless_zebra_blinds.included.0' | t }}</li>
-                                <li>{{ 'products.product.cordless_zebra_blinds.included.1' | t }}</li>
-                                <li>{{ 'products.product.cordless_zebra_blinds.included.2' | t }}</li>
-                                <li>{{ 'products.product.cordless_zebra_blinds.included.3' | t }}</li>
+                                {% if product.metafields.custom_filters.is_motorized == true %}
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.0' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.1' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.2' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.3' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.4' | t }}</li>
+                                {% else %}
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.non_motorized.0' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.non_motorized.1' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.non_motorized.2' | t }}</li>
+                                    <li>{{ 'products.product.cordless_zebra_blinds.included.non_motorized.3' | t }}</li>
+                                {% endif %}
                             </ul>
                             <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.included.description' | t }}</div>
                         </div>
@@ -252,6 +313,47 @@
                         </div>
                     </div>
                 </div>
+                {% if product.metafields.custom.alternate_product != blank %}
+                    {% assign alternate_product = product.metafields.custom.alternate_product.value %}
+                    <div class="p-12 border-t border-stone-400">
+                        <h3 class="font-serif text-3xl font-bold">{{ 'products.product.see_also' | t }}</h3>
+                        <div class="mt-4">
+                            <div>
+                                <a href="{{ alternate_product.url }}" class="bg-gray-200 aspect-square rounded-md">
+                                    <div class="relative">
+                                        <picture class="relative">
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
+                                            <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
+                                            <img src="{{ product.featured_image | image_url: width: 800 }}" height="800" width="800" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                                        </picture>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="pt-4 pb-5">
+                                <div>
+                                    <a href="{{ alternate_product.url }}" class="block">
+                                        <span class="text-xl font-bold mt-4 font-serif text-black">{{ alternate_product.title }}</span>
+                                    </a>
+                                </div>
+                                <div class="mt-1.5">
+                                    <a href="{{ alternate_product.url }}" class="block">
+                                        {% if alternate_product.has_only_default_variant == false %}
+                                            <span class="font-light text-xl italic">{{ 'products.product.price.from' | t }}</span>
+                                        {% endif %}
+                                        <span class="font-light text-xl">{{ alternate_product.price | money_with_currency }}</span>
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <a href="{{ alternate_product.url }}" title="{{ alternate_product.title }}" class="font-semibold underline underline-offset-4">{{ 'products.product.price.see_more' | t }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

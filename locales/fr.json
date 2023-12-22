@@ -128,10 +128,20 @@
         },
         "highlights": {
           "tab_title": "Points forts",
-          "0": "Sécuritaire pour les enfants et les animaux de compagnie",
-          "1": "Tissage de polyester de qualité supérieure",
-          "2": "Tissu résistant aux taches",
-          "3": "La combinaison parfaite de style et de fonctionnalité"
+          "motorized": {
+            "0": "Sécuritaire pour les enfants et les animaux de compagnie",
+            "1": "Tissage de polyester de qualité supérieure",
+            "2": "Tissu résistant aux taches",
+            "3": "Opération MagicRemote télécommandée à distance",
+            "4": "La combinaison parfaite de style et de fonctionnalité"
+          },
+          "non_motorized": {
+            "0": "Sécuritaire pour les enfants et les animaux de compagnie",
+            "1": "Tissage de polyester de qualité supérieure",
+            "2": "Tissu résistant aux taches",
+            "3": "Opération EasyGlide sans cordon à une main",
+            "4": "La combinaison parfaite de style et de fonctionnalité"
+          }
         },
         "materials_care": {
           "tab_title": "Matériaux & entretien",
@@ -170,10 +180,19 @@
         "included": {
           "tab_title": "Inclus",
           "title": "Ce qui est inclus",
-          "0": "Les stores : Stores zébrés sans cordon de haute qualité adaptés à la taille choisie.",
-          "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
-          "2": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
-          "3": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+          "motorized": {
+            "0": "Les stores : Stores zébrés sans cordon de haute qualité adaptés à la taille choisie.",
+            "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
+            "2": "MagicRemote : Contrôlez vos stores à distance.",
+            "3": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
+            "4": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+          },
+          "non_motorized": {
+            "0": "Les stores : Stores zébrés sans cordon de haute qualité adaptés à la taille choisie.",
+            "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
+            "2": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
+            "3": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+          },
           "description": "Avec ces composants fournis, vous aurez tout ce dont vous avez besoin pour installer facilement vos nouveaux stores zébrés et profiter de leur fonctionnalité élégante."
         },
         "pickup_delivery": {
@@ -195,6 +214,7 @@
       "components": {
         "wide_hero": "Rehaussez le look et la fonctionnalité de votre maison."
       },
+      "see_also": "À voir aussi :",
       "cant_find_your_fit": "Vous ne trouvez pas votre taille?",
       "looking_for_more": "Vous avez des questions ?",
       "plan_a_meeting": "Planifiez un appel rapide de 15 minutes",
