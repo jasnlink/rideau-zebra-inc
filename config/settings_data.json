@@ -11,6 +11,20 @@
     "checkout_button_color": "#4f46e5",
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#000000",
+          "button_icon": "chat_bubble",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "button_text": "no_text",
+          "greeting_message": "👋 Bonjour ! Veuillez nous envoyer un message si vous avez des questions ou donnez-nous une idée de ce que vous recherchez. Nous sommes ravis de faire des recommandations.\"\n\n------\n\n👋 Hello! Please message us if you have questions, or give an idea of what you’re looking for. We’re happy to make recommendations."
+        }
+      }
+    }
   }
 }
