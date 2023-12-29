@@ -36,13 +36,13 @@
     {%- endif -%}
     <div class="">
         {% for product_option in product.options_with_values %}
-            <div data-selector-option-group-index="{{ forloop.index }}" class="{{ paddingClass }} flex gap-1 lg:gap-4 max-w-full text-clip overflow-hidden rounded-md items-baseline bg-white border border-stone-200">
-                <label class="font-medium bg-white" for="variant-selector">{{ product_option.name }}</label>
-            <select id="variant-selector" data-selector-element-type="dropdown" class="bg-white pl-4 pr-8 min-w-0 grow focus:outline-none text-ellipsis">
-                {% for product_option_value in product_option.values %}
-                    <option value="{{ product_option_value }}"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}">{{ product_option_value }}</option>
-                {% endfor %}
-            </select>
+            <div data-selector-option-group-index="{{ forloop.index }}" class="{{ paddingClass }} flex gap-1 lg:gap-4 max-w-full text-clip overflow-hidden rounded-md items-baseline bg-white border border-stone-200 select-none">
+                <label class="font-medium bg-white" for="variant-selector-{{ groupId }}">{{ product_option.name }}</label>
+                <select id="variant-selector-{{ groupId }}" data-selector-element-type="dropdown" class="bg-white pl-4 pr-8 min-w-0 grow focus:outline-none text-ellipsis cursor-pointer">
+                    {% for product_option_value in product_option.values %}
+                        <option value="{{ product_option_value }}"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}">{{ product_option_value }}</option>
+                    {% endfor %}
+                </select>
             </div>
         {% endfor %}
     </div>

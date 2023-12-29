@@ -14,21 +14,30 @@ export function initAddCartAction() {
 
         event.preventDefault();
         const targetElement = event.currentTarget
-        let productId
-        if(targetElement.dataset.addCart) {
-            productId = parseInt(targetElement.dataset.addCart);
-        } else if(targetElement.dataset.addCartShowcase) {
-            productId = parseInt(targetElement.dataset.addCartShowcase);
+
+        if(!targetElement.dataset.addCart) {
+            return
         }
+
+        const productIds = targetElement.dataset.addCart.split(',');
+
+        if (!productIds || !productIds.length) {
+            return
+        }
+
         enableLoading(targetElement);
         initAnimation()
 
         let formData = {
-            'items': [{
-                    'id': productId,
-                    'quantity': 1
-                }]
+            'items': []
         };
+
+        for (let productId of productIds) {
+            formData.items.push({
+                'id': parseInt(productId),
+                'quantity': 1
+            })
+        }
 
         fetch(window.Shopify.routes.root + 'cart/add.js', {
             method: 'POST',
@@ -45,7 +54,7 @@ export function initAddCartAction() {
         })
         .then((data) => {
             updateCartCount()
-            pushGtagAddCartEvent(productId)
+            pushGtagAddCartEvent(productIds)
             disableLoading(targetElement);
             playAnimation();
         })
@@ -123,14 +132,19 @@ export function initAddCartAction() {
 
         }
 
-        function pushGtagAddCartEvent(pushId) {
+        function pushGtagAddCartEvent(pushIds) {
 
-            const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
-            gtag("event", "add_to_cart", {
-                currency: itemInfoElement.getAttribute('data-info-currency'),
-                value: itemInfoElement.getAttribute('data-info-variant-price'),
-                items: [
-                    {
+            if (!pushIds || !pushIds.length) {
+                return
+            }
+
+            const gtagItems = []
+            let totalValue = 0
+
+            for (let pushId of pushIds) {
+                const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
+                if (itemInfoElement) {
+                    gtagItems.push({
                         item_id: itemInfoElement.getAttribute('data-info-product-id'),
                         item_name: itemInfoElement.getAttribute('data-info-product-title'),
                         item_brand: itemInfoElement.getAttribute('data-info-product-vendor'),
@@ -138,31 +152,46 @@ export function initAddCartAction() {
                         item_variant: itemInfoElement.getAttribute('data-info-variant-id'),
                         price: itemInfoElement.getAttribute('data-info-variant-price'),
                         quantity: 1
-                    }
-                ]
+                    })
+                    totalValue += parseFloat(itemInfoElement.getAttribute('data-info-variant-price'))
+                } else {
+                    gtagItems.push({
+                        item_id: pushId,
+                        quantity: 1
+                    })
+                }
+                
+            }
+
+            gtag("event", "add_to_cart", {
+                currency: document.querySelector('[data-info-variant-id]').getAttribute('data-info-currency'),
+                value: totalValue,
+                items: gtagItems,
             });
         
         }
 
-        function pushGtagAddErrorEvent(pushId) {
+        function pushGtagAddErrorEvent(pushIds) {
 
-            const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
+            if (!pushIds || !pushIds.length) {
+                return
+            }
+
+            const gtagItems = []
+
+            for (let pushId of pushIds) {
+                gtagItems.push({
+                    item_id: pushId,
+                    quantity: 1
+                })
+            }
+
             gtag("event", "error_add_cart", {
-                currency: itemInfoElement.getAttribute('data-info-currency'),
+                currency: document.querySelector('[data-info-variant-id]').getAttribute('data-info-currency'),
                 value: 0,
-                items: [
-                    {
-                        item_id: itemInfoElement.getAttribute('data-info-product-id'),
-                        item_name: itemInfoElement.getAttribute('data-info-product-title'),
-                        item_brand: itemInfoElement.getAttribute('data-info-product-vendor'),
-                        item_category: itemInfoElement.getAttribute('data-info-product-collection'),
-                        item_variant: itemInfoElement.getAttribute('data-info-variant-id'),
-                        price: itemInfoElement.getAttribute('data-info-variant-price'),
-                        quantity: 1
-                    }
-                ]
+                items: gtagItems,
             });
-        
+
         }
 
     }

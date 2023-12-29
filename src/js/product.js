@@ -7,7 +7,37 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initProductTabAction();
     initVariantSelector();
     initPurchaseOverlay();
+    initProductInstallService();
 });
+
+function initProductInstallService() {
+    const installServiceElement = document.querySelector('[data-product-install-service-item-id]')
+
+    if (!installServiceElement) {
+        return
+    }
+
+    const installServiceId = installServiceElement.getAttribute('data-product-install-service-item-id')
+
+    installServiceElement.addEventListener('change', (event) => {
+        if (event.currentTarget.checked) {
+            document.querySelectorAll('[data-add-cart]').forEach(element => {
+                const currentAddCartIds = element.getAttribute('data-add-cart').split(',')
+                currentAddCartIds.push(installServiceId)
+                currentAddCartIds.join(',')
+                element.setAttribute('data-add-cart', currentAddCartIds)
+            })
+        } else {
+            document.querySelectorAll('[data-add-cart]').forEach(element => {
+                let currentAddCartIds = element.getAttribute('data-add-cart').split(',')
+                currentAddCartIds = currentAddCartIds.filter((value, index, array) => value !== installServiceId)
+                currentAddCartIds.join(',')
+                element.setAttribute('data-add-cart', currentAddCartIds)
+            })
+        }
+    })
+
+}
 
 function initPurchaseOverlay() {
     
@@ -102,14 +132,21 @@ function initVariantSelector() {
 
     function searchVariantList() {
         let search = ''
-        console.log(`searchVariantList`, selectionState)
         Object.keys(selectionState).forEach((key) => {
             search += '[data-selector-variant-option-'+key+'="'+selectionState[key]['value']+'"]'
         })
         let foundElement = document.querySelector(search)
         if(foundElement) {
+            const installServiceElement = document.querySelector('[data-product-install-service-item-id]')
+            const installServiceId = installServiceElement?.getAttribute('data-product-install-service-item-id')
+
             document.querySelectorAll('[data-add-cart]').forEach(element => {
-                element.dataset.addCart = foundElement.dataset.selectorVariantId
+
+                let currentAddCartIds = element.getAttribute('data-add-cart').split(',')
+                currentAddCartIds = currentAddCartIds.filter((value, index, array) => value === installServiceId)
+                currentAddCartIds.push(foundElement.dataset.selectorVariantId)
+                currentAddCartIds.join(',')
+                element.setAttribute('data-add-cart', currentAddCartIds)
                 element.disabled = false
             })
             document.querySelectorAll('[data-product-display-price]').forEach(element => {

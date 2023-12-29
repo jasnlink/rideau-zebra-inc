@@ -2,14 +2,17 @@
     <div>
         <div class="flex flex-col sm:flex-row items-center justify-between gap-y-3 lg:gap-y-0 gap-x-2 xl:gap-x-6">
             <div class="text-xs xl:text-lg font-bold font-serif text-black">{{ product.title }}</div>
-            <div class="flex flex-col justify-center gap-1">
-                <div>
-                    {% render 'product.section.variant-selector',
-                        type: 'dropdown',
-                        compact: true,
-                    %}
+            {% if product.has_only_default_variant == false %}
+                <div class="flex flex-col justify-center gap-1">
+                    <div>
+                        {% render 'product.section.variant-selector',
+                            type: 'dropdown',
+                            compact: true,
+                            groupId: 1
+                        %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <div class="flex gap-4 items-center">
                 <span data-product-display-price class="text-sm xl:text-xl font-light">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
                 <div>

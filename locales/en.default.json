@@ -121,6 +121,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
+        "have_us_install": "Have us install your blinds (+ {{ installPrice }})",
         "highlight_badges": {
           "0": "Fixed-rate shipping to the rest of Canada and U.S.",
           "1": "Carbon-neutral local delivery"
@@ -213,7 +214,8 @@
       },
       "see_also": "See also:",
       "cant_find_your_fit": "Can't find your fit?",
-      "looking_for_more": "Have questions?\nLooking for a custom fit?",
+      "looking_for_more_1": "Have questions?",
+      "looking_for_more_2": "We can also take measurements for you.",
       "plan_a_meeting": "Plan a quick 15 mins call",
       "place_a_custom_order": "Place a custom order",
       "email_us": "Email us",

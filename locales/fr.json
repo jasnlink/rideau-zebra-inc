@@ -122,6 +122,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
+        "have_us_install": "Faites installer vos stores (+ {{ installPrice }})",
         "highlight_badges": {
           "0": "Expédition taux fixe vers le reste du Canada et É. U.",
           "1": "Livraison locale zéro émission"
@@ -185,13 +186,13 @@
             "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
             "2": "MagicRemote : Contrôlez vos stores à distance.",
             "3": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
-            "4": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+            "4": "Supports : Supports durables conçus pour maintenir fermement les stores en place."
           },
           "non_motorized": {
             "0": "Les stores : Stores zébrés sans cordon de haute qualité adaptés à la taille choisie.",
             "1": "Vis : Toutes les vis nécessaires pour fixer solidement les supports.",
             "2": "Ancrages muraux en plastique : Pour une stabilité supplémentaire lors de l'installation des stores sur des surfaces en cloison sèche.",
-            "3": "Supports : Supports durables conçus pour maintenir fermement les stores en place.",
+            "3": "Supports : Supports durables conçus pour maintenir fermement les stores en place."
           },
           "description": "Avec ces composants fournis, vous aurez tout ce dont vous avez besoin pour installer facilement vos nouveaux stores zébrés et profiter de leur fonctionnalité élégante."
         },
@@ -216,7 +217,8 @@
       },
       "see_also": "À voir aussi :",
       "cant_find_your_fit": "Vous ne trouvez pas votre taille?",
-      "looking_for_more": "Vous avez des questions ?",
+      "looking_for_more_1": "Vous avez des questions ?",
+      "looking_for_more_2": "Nous pouvons également prendre les mesures pour vous.",
       "plan_a_meeting": "Planifiez un appel rapide de 15 minutes",
       "place_a_custom_order": "Placez une commande sur mesure",
       "email_us": "Envoyez-nous un email",
