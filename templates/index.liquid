@@ -7,13 +7,21 @@
         <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
     </div>
 </div>
+{% assign language = localization.language.iso_code %}
 <div class="py-20 bg-white">
     <div class="container mx-auto">
         <div class="text-stone-900 font-serif font-bold text-center text-3xl sm:text-4xl">{{ 'templates.homepage.partners.title' | t }}</div>
         <div class="mt-12 grid grid-cols-3">
             <div class="col-span-1 flex items-center justify-center">
+                {% if language == 'fr' %}
+                    {% assign partner_url = 'https://www.fadoq.ca/ile-de-montreal/rabais/habitation/rideau-zebra' %}
+                {% else %}
+                    {% assign partner_url = 'https://www.fadoq.ca/en/ile-de-montreal/discounts/housing/827952-2' %}
+                {% endif %}
                 {%- assign image = 'partner-logo-fadoq.svg' -%}
-                <img src="{{ image | asset_url }}" alt="{{ 'FADOQ' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                <a href="{{ partner_url }}" class="block" target="_blank">
+                    <img src="{{ image | asset_url }}" alt="{{ 'FADOQ' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </a>
             </div>
             <div class="col-span-1 flex items-center justify-center">
                 {%- assign image = 'partner-logo-fm1033.png' -%}
@@ -21,8 +29,13 @@
             </div>
             <div class="col-span-1 flex items-center justify-center">
                 {%- assign image = 'partner-logo-courrier-v2.png' -%}
-                <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Courrier du Sud' }}" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
+                <a href="https://www.lecourrierdusud.ca/les-stores-alternes-un-equilibre-parfait-entre-style-et-fonctionnalite" class="block" target="_blank">
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Courrier du Sud' }}" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
+                </a>
             </div>
+        </div>
+        <div class="mt-16 text-center">
+            <p>{{ 'templates.homepage.partners.description' | t }}</p>
         </div>
     </div>
 </div>

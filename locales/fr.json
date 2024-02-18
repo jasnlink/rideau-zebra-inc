@@ -319,7 +319,8 @@
         "button": "Magasiner"
       },
       "partners": {
-        "title": "Mentionné par"
+        "title": "Nous sommes mentionnés par",
+        "description": "Nous sommes ravis d'offrir à tous les membres FADOQ un rabais exclusif. Visitez leur site pour plus d'information."
       },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",
@@ -489,7 +490,8 @@
   },
   "sections": {
     "header": {
-      "top_bar_html": "Appelez-nous <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
+      "top_bar_1_html": "Profitez de 5% de réduction avec le code : <strong>ZEBRA5<\/strong>",
+      "top_bar_2_html": "Appelez-nous <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
       "home": "Accueil",
       "catalog": "Catalogue",
       "contact": "Contact",

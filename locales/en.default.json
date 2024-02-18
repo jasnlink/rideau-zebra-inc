@@ -313,7 +313,8 @@
         "button": "Shop now"
       },
       "partners": {
-        "title": "We are mentioned in"
+        "title": "We are mentioned by",
+        "description": "We are thrilled to offer all FADOQ members an exclusive discount. Visit their website for more information."
       },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",
@@ -481,7 +482,8 @@
   },
   "sections": {
     "header": {
-      "top_bar_html": "Call us <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
+      "top_bar_1_html": "Enjoy 5% off on your first order with code: <strong>ZEBRA5<\/strong>",
+      "top_bar_2_html": "Call us <a href=\"+14388827275\" class=\"underline\">(438) 882-7275<\/a>",
       "home": "Home",
       "catalog": "Catalog",
       "contact": "Contact",
