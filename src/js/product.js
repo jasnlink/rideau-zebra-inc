@@ -8,7 +8,104 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initVariantSelector();
     initPurchaseOverlay();
     initProductInstallService();
+    initProductForms();
 });
+
+function initProductForms() {
+
+    const productFormsElement = document.querySelector('[data-rz-product-forms="form"]')
+
+    if (!productFormsElement) {
+        return
+    }
+
+    window.productForms = {
+        productFormsElement: productFormsElement,
+        productFormsMeasurementUnitInputElement: productFormsElement.querySelector('[data-rz-product-forms="measurement-unit-input"]'),
+        productFormsWidthInputElement: productFormsElement.querySelector('[data-rz-product-forms="width-input"]'),
+        productFormsHeightInputElement: productFormsElement.querySelector('[data-rz-product-forms="height-input"]'),
+        productFormsDepthInputElement: productFormsElement.querySelector('[data-rz-product-forms="depth-input"]'),
+        productFormsRoomNameInputElement: productFormsElement.querySelector('[data-rz-product-forms="room-name-input"]'),
+        productFormsMountInputElements: productFormsElement.querySelectorAll('[data-rz-product-forms="mount-input"]'),
+        productFormsWidthAssetElement: productFormsElement.querySelector('[data-rz-product-forms="width-asset"]'),
+        productFormsHeightAssetElement: productFormsElement.querySelector('[data-rz-product-forms="height-asset"]'),
+        measurementUnitsMultiplier: {
+            cm: 0.393701,
+            in: 1,
+        },
+        selectedVariantId: null,
+        selectedVariantWidth: null,
+        minVariantWidth: 10,
+        maxVariantWidth: 90,
+        enabled: true,
+    }
+
+    window.productForms.productFormsMountInputElements.forEach(element => {
+        element.addEventListener('change', event => {
+            window.productForms.productFormsWidthAssetElement.src = event.target.getAttribute('data-rz-product-forms-width-asset-url')
+            window.productForms.productFormsHeightAssetElement.src = event.target.getAttribute('data-rz-product-forms-height-asset-url')
+
+            const productFormsDepthBlockElement = document.querySelector('[data-rz-product-forms="depth"]')
+            if (productFormsDepthBlockElement) {
+                if (event.target.getAttribute('data-rz-product-forms-depth-show') === 'true') {
+                    productFormsDepthBlockElement.classList.remove('hidden')
+                    window.productForms.productFormsDepthInputElement.toggleAttribute('required', true)
+                } else {
+                    productFormsDepthBlockElement.classList.add('hidden')
+                    window.productForms.productFormsDepthInputElement.toggleAttribute('required', false)
+                }
+            }
+        })
+    })
+
+    productFormsElement.querySelectorAll('[data-rz-product-forms="measurement-unit-display"]').forEach(element => {
+        element.textContent = window.productForms.productFormsMeasurementUnitInputElement.options[window.productForms.productFormsMeasurementUnitInputElement.options.selectedIndex].textContent
+    })
+    window.productForms.productFormsMeasurementUnitInputElement.addEventListener('change', (event) => {
+        calculateVariantWidth(window.productForms.productFormsWidthInputElement.value, event.target.value)
+        selectVariant(window.productForms.selectedVariantWidth)
+        productFormsElement.querySelectorAll('[data-rz-product-forms="measurement-unit-display"]').forEach(element => {
+            element.textContent = event.target.options[event.target.options.selectedIndex].textContent
+        })
+    })
+
+    productFormsElement.addEventListener('reset', (event) => {
+        const productFormsDepthBlockElement = document.querySelector('[data-rz-product-forms="depth"]')
+        if (productFormsDepthBlockElement) {
+            productFormsDepthBlockElement.classList.remove('hidden')
+            window.productForms.productFormsDepthInputElement.toggleAttribute('required', true)
+        }
+    })
+
+    window.productForms.productFormsWidthInputElement.addEventListener('input', (event) => {
+        calculateVariantWidth(event.target.value, window.productForms.productFormsMeasurementUnitInputElement.value)
+        selectVariant(window.productForms.selectedVariantWidth)
+    })
+    
+    function calculateVariantWidth(width, unit) {
+        window.productForms.selectedVariantWidth = Math.ceil(parseFloat(width) * window.productForms.measurementUnitsMultiplier[unit] || 0)
+        if (window.productForms.selectedVariantWidth <= window.productForms.minVariantWidth) {
+            window.productForms.selectedVariantWidth = window.productForms.minVariantWidth
+        }
+        if (window.productForms.selectedVariantWidth >= window.productForms.maxVariantWidth) {
+            window.productForms.selectedVariantWidth = window.productForms.maxVariantWidth
+        }
+    }
+
+    function selectVariant(selectedVariantWidth) {
+
+        const variantSelector = document.querySelector('[data-selector-element-type="dropdown"]')
+        for (const option of variantSelector.options) {
+            const optionValue = parseInt(option.getAttribute('data-selector-option-value').split('x')[0].split('_')[0])
+            if (optionValue === selectedVariantWidth) {
+                variantSelector.value = option.value
+                variantSelector.dispatchEvent(new Event('change'));
+                return
+            }
+        }
+    }
+
+}
 
 function initProductInstallService() {
     const installServiceElement = document.querySelector('[data-product-install-service-item-id]')
@@ -144,13 +241,14 @@ function initVariantSelector() {
 
                 let currentAddCartIds = element.getAttribute('data-add-cart').split(',')
                 currentAddCartIds = currentAddCartIds.filter((value, index, array) => value === installServiceId)
-                currentAddCartIds.push(foundElement.dataset.selectorVariantId)
+                currentAddCartIds.push(foundElement.getAttribute('data-selector-variant-id'))
                 currentAddCartIds.join(',')
                 element.setAttribute('data-add-cart', currentAddCartIds)
+                element.setAttribute('data-add-cart-selected-product-variant-id', foundElement.getAttribute('data-selector-variant-id'))
                 element.disabled = false
             })
             document.querySelectorAll('[data-product-display-price]').forEach(element => {
-                element.textContent = foundElement.dataset.selectorVariantPrice
+                element.textContent = foundElement.getAttribute('data-selector-variant-price')
             })
             if (!foundElement.getAttribute('data-variant-available') || foundElement.getAttribute('data-variant-available') === 'false') {
                 document.querySelectorAll('[data-add-cart]').forEach(element => {

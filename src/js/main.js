@@ -3,9 +3,10 @@ import { updateCartCount } from "./lib";
 
 window.addEventListener('DOMContentLoaded', (event) => {
     initSecurePopover();
-    initCartDrawer();
+    initCart();
     initMobileMenu();
     initProductHover();
+    initDrawers();
 });
 
 function initProductHover() {
@@ -118,56 +119,78 @@ function initMobileMenu() {
     }
 }
 
-function initCartDrawer() {
-    let drawerOpen = false;
-    const backdropOpacity = 0.4;
+function initDrawers() {
+    const backdropOpacity = 0.4
+    let currentTargetDrawer = null
 
-    const cartBtnElementList = document.querySelectorAll('[data-cart-open]');
-    cartBtnElementList.forEach((cartBtnElement) => {
-        cartBtnElement.addEventListener('click', handleCartToggle);
+    document.querySelectorAll('[data-drawer]').forEach(element => {
+        document.querySelector(`#${element.id}-overlay`).style.opacity = 0
+        element.style.transform = 'translateX(100%)';
     })
 
-    const cartCloseBtnElement = document.getElementById('cart-close-btn');
-    cartCloseBtnElement.addEventListener('click', handleCartToggle);
+    const drawerActionElements = document.querySelectorAll('[data-drawer-action]')
+    drawerActionElements.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault()
+            const actionTarget = event.currentTarget.getAttribute('data-drawer-action')
+            if (currentTargetDrawer !== null) {
+                toggleDrawer(currentTargetDrawer, false)
+            }
+            toggleDrawer(actionTarget, true)
+            currentTargetDrawer = actionTarget
+        })
+    })
 
-    const cartWrapperElement = document.getElementById('cart-drawer-overlay');
-    const cartDrawerElement = document.getElementById('cart-drawer');
+    const drawerCloseElements = document.querySelectorAll('[data-drawer-close]')
+    drawerCloseElements.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault()
+            if (currentTargetDrawer !== null) {
+                toggleDrawer(currentTargetDrawer, false)
+                currentTargetDrawer = null
+            }
+        })
+    })
 
-    cartWrapperElement.style.opacity = 0;
-    cartDrawerElement.style.transform = 'translateX(100%)';
-    cartWrapperElement.addEventListener('click', handleCartToggle);
+    function toggleDrawer(target, open) {
+        const drawerWrapperElement = document.querySelector(`#${target}-overlay`)
+        const drawerElement = document.querySelector(`#${target}`)
 
-    updateCartCount();
-
-    function handleCartToggle(event) {
-
-        event.preventDefault();
-
-        if(drawerOpen === false) {
-            cartWrapperElement.classList.remove('hidden');
-            cartDrawerElement.classList.remove('hidden');
+        if (open === true) {
+            drawerWrapperElement.classList.remove('hidden');
+            drawerElement.classList.remove('hidden');
             setTimeout(() => {
-                cartWrapperElement.style.opacity = backdropOpacity;
-                cartDrawerElement.style.transform = 'translateX(0%)';
+                drawerWrapperElement.style.opacity = backdropOpacity;
+                drawerElement.style.transform = 'translateX(0%)';
             }, 20);
-            cartWrapperElement.addEventListener('transitionend', () => {
+            drawerWrapperElement.addEventListener('transitionend', () => {
                 document.body.style.overflow = 'hidden';
                 document.documentElement.style.overflow = 'hidden';
+                drawerElement.setAttribute('data-drawer-state', 'open')
             }, {once:true})
-            drawerOpen = true
-            handleCartFetch();
-        } else if(drawerOpen === true) {
-            cartWrapperElement.style.opacity = 0;
-            cartDrawerElement.style.transform = 'translateX(100%)';
+        } else if (open === false) {
+            drawerWrapperElement.style.opacity = 0;
+            drawerElement.style.transform = 'translateX(100%)';
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
-            cartWrapperElement.addEventListener('transitionend', () => {
-                cartWrapperElement.classList.add('hidden');
-                cartDrawerElement.classList.add('hidden');
+            drawerWrapperElement.addEventListener('transitionend', () => {
+                drawerWrapperElement.classList.add('hidden');
+                drawerElement.classList.add('hidden');
+                drawerElement.setAttribute('data-drawer-state', 'closed')
             }, {once:true})
-            drawerOpen = false
         }
     }
+}
+
+function initCart() {
+
+    updateCartCount();
+    const cartElement = document.querySelector('#cart-drawer')
+    cartElement.addEventListener('transitionstart', (event) => {
+        if (event.target.id === cartElement.id && cartElement.getAttribute('data-drawer-state') === 'closed') {
+            handleCartFetch();
+        }
+    })
 
     function handleCartFetch() {
         enableLoading()

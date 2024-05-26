@@ -2,7 +2,7 @@
 {%- if compact == true -%}
     {%- assign buttonPaddingClass = 'px-2 pt-1 pb-1 xl:px-4 xl:pt-2 xl:pb-2 text-xs xl:text-sm' -%}
 {%- endif -%}
-<button type="button" data-overlay-listen data-add-cart="{{ product.selected_or_first_available_variant.id }}" data-animation-source="cart" class="{{ buttonPaddingClass }} w-full font-medium bg-stone-900 text-neutral-100 uppercase rounded-md transition-all hover:bg-indigo-500 disabled:opacity-75 disabled:bg-stone-900 disabled:text-neutral-100">
+<button type="submit" data-overlay-listen data-add-cart-selected-product-variant-id="{{ product.selected_or_first_available_variant.id }}" data-add-cart="{{ product.selected_or_first_available_variant.id }}" data-animation-source="cart" class="{{ buttonPaddingClass }} w-full font-medium bg-stone-900 text-neutral-100 uppercase rounded-md transition-all hover:bg-indigo-500 disabled:opacity-75 disabled:bg-stone-900 disabled:text-neutral-100">
     <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-7 w-7 text-white', fill: 'none' %}</span>
     <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-7 w-7 text-white', fill: 'none' %}</span>
     <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-7 w-7 text-white' %}</span>

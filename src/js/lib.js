@@ -13,6 +13,13 @@ export function initAddCartAction() {
     function handleAddCart(event) {
 
         event.preventDefault();
+
+        if (window?.productForms?.enabled) {
+            if (!window.productForms.productFormsElement.reportValidity()) {
+                return
+            }
+        }
+
         const targetElement = event.currentTarget
 
         if(!targetElement.dataset.addCart) {
@@ -33,10 +40,33 @@ export function initAddCartAction() {
         };
 
         for (let productId of productIds) {
-            formData.items.push({
-                'id': parseInt(productId),
-                'quantity': 1
-            })
+            if (productId === targetElement.getAttribute('data-add-cart-selected-product-variant-id') && window?.productForms?.enabled) {
+                let selectedMountTypeElement = null
+                window.productForms.productFormsMountInputElements.forEach(element => {
+                    if (element.checked) {
+                        selectedMountTypeElement = element
+                    }
+                })
+
+                const item = {
+                    'id': parseInt(productId),
+                    'quantity': 1,
+                    'properties': window?.productForms?.enabled ? {
+                        [window.productForms.productFormsWidthInputElement.placeholder]: `${window.productForms.productFormsWidthInputElement.value} ${window.productForms.productFormsMeasurementUnitInputElement.value}`,
+                        [window.productForms.productFormsHeightInputElement.placeholder]: `${window.productForms.productFormsHeightInputElement.value} ${window.productForms.productFormsMeasurementUnitInputElement.value}`,
+                        [window.productForms.productFormsDepthInputElement.placeholder]: window.productForms.productFormsDepthInputElement.value.length ? `${window.productForms.productFormsDepthInputElement.value} ${window.productForms.productFormsMeasurementUnitInputElement.value}` : `N/A`,
+                        [window.productForms.productFormsRoomNameInputElement.placeholder]: window.productForms.productFormsRoomNameInputElement.value,
+                        [selectedMountTypeElement.placeholder]: selectedMountTypeElement.value,
+                    } : null,
+                }
+
+                formData.items.push(item)
+            } else {
+                formData.items.push({
+                    'id': parseInt(productId),
+                    'quantity': 1,
+                })
+            }
         }
 
         fetch(window.Shopify.routes.root + 'cart/add.js', {
@@ -62,6 +92,11 @@ export function initAddCartAction() {
             pushGtagAddErrorEvent(productId)
             disableLoading(targetElement, true);
             console.error('Error adding to cart.', error)
+        })
+        .finally(() => {
+            if (window?.productForms?.enabled) {
+                window.productForms.productFormsElement.reset()
+            }
         })
 
         function initAnimation() {

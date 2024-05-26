@@ -33,6 +33,11 @@
                             {% if line_item.product.has_only_default_variant == false %}
                                 <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ line_item.variant.title }}</div>
                             {% endif %}
+                            {% unless line_item.properties == empty %}
+                                {% for property in line_item.properties %}
+                                    <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ property.first }}: {{ property.last }}</div>
+                                {% endfor %}
+                            {% endunless %}
                             <div class="mt-1.5 flex justify-center items-center gap-2">
                                 <div role="button" data-cart-action="minus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-minus', class: 'h-3 w-3 text-black' %}</div>
                                 <div class="select-none text-black font-medium">{{ line_item.quantity }}</div>
