@@ -1,8 +1,8 @@
-<div data-overlay-action class="hidden fixed top-28 lg:top-28 w-full border-b border-gray-200 shadow-lg bg-neutral-100/90 backdrop-blur pt-1 pb-1 lg:py-4 z-20 px-4 sm:px-8">
+<div data-overlay-action class="hidden absolute w-full border-b border-gray-200 shadow-lg bg-neutral-100/90 backdrop-blur py-3 lg:py-4 z-20 px-4 sm:px-8">
     <div>
         <div class="flex flex-col sm:flex-row items-center justify-between gap-y-3 lg:gap-y-0 gap-x-2 xl:gap-x-6">
-            <div class="text-sm xl:text-lg font-bold font-serif text-black">{{ product.title }}</div>
-            {% if product.has_only_default_variant == false %}
+            <div class="hidden lg:inline lg:text-lg font-bold font-serif text-black">{{ product.title }}</div>
+            {% if product.has_only_default_variant == false and template != 'product.v2' %}
                 <div class="flex flex-col justify-center gap-1">
                     <div>
                         {% render 'product.section.variant-selector',
@@ -12,9 +12,26 @@
                         %}
                     </div>
                 </div>
+            {% elsif product.has_only_default_variant == false and template == 'product.v2' %}
+                <div class="hidden">
+                    <div>
+                        {% render 'product.section.variant-selector',
+                            type: 'dropdown',
+                            compact: true,
+                            groupId: 1
+                        %}
+                    </div>
+                </div>
             {% endif %}
-            <div class="flex gap-4 items-center">
-                <span data-product-display-price class="text-sm xl:text-xl font-light">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+            <div class="flex gap-4 grow justify-center lg:shrink-0 lg:justify-end lg:grow-0 items-center">
+                <span data-product-display-price class="text-lg font-light">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                <div data-product-display-availability="true" class="hidden flex-col">
+                    <span class="text-xs font-medium text-green-400 leading-none">{{ 'products.product.in_stock' | t }}</span>
+                    <span class="text-xs font-medium leading-none">{{ 'products.product.free_shipping' | t }}</span>
+                </div>
+                <div data-product-display-availability="false" class="hidden flex-col">
+                    <span class="text-xs font-medium text-red-500 leading-none">{{ 'products.product.out_of_stock' | t }}</span>
+                </div>
                 <div>
                     {% assign button_text = 'products.product.add_to_cart' | t %}
                     {% render 'product.component.add-cart-button',

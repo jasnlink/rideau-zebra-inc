@@ -122,7 +122,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
-        "have_us_install": "Faites installer vos stores (+ {{ installPrice }})",
+        "have_us_install": "Faites installer vos stores (+ {{ installPrice }} chq.)",
         "highlight_badges": {
           "0": "Expédition taux fixe vers le reste du Canada et É. U.",
           "1": "Livraison locale zéro émission"
@@ -159,12 +159,12 @@
         "warranty_returns": {
           "tab_title": "Garantie et retours",
           "warranty": {
-            "title": "Qualité garantie avec notre garantie complète",
-            "0": "Nos stores zébrés sans cordon sont soutenus par une garantie complète qui garantit des produits de qualité supérieure et un service exceptionnel. Nous nous engageons à vous fournir des matériaux durables et un excellent savoir-faire, et notre garantie limitée d'un an couvre tous les défauts.",
+            "title": "Qualité garantie avec notre garantie complète de 2 ans",
+            "0": "Nos stores zébrés sans cordon sont soutenus par une garantie complète qui garantit des produits de qualité supérieure et un service exceptionnel. Nous nous engageons à vous fournir des matériaux durables et un excellent savoir-faire, et notre garantie limitée de deux ans couvre tous les défauts.",
             "1": "Si vous rencontrez des problèmes, veuillez contacter notre équipe du service clientèle, et nous serons ravis de vous aider avec la réparation ou le remplacement pour assurer votre entière satisfaction."
           },
           "returns": {
-            "title": "Retours",
+            "title": "Retours sans tracas",
             "0": "Nous soutenons la qualité de nos produits et offrons une politique de retour et d'échange sans tracas de 30 jours.",
             "1": "Si vous n'êtes pas entièrement satisfait de votre achat, retournez-le simplement dans les 30 jours pour un remboursement complet ou un échange."
           }
@@ -172,7 +172,7 @@
         "install": {
           "tab_title": "Installation",
           "title": "Guide d'installation rapide en 3 étapes",
-          "media": "install-instructions-transparent.png",
+          "media": "product-install-instructions-transparent.png",
           "0": "Mesurez la largeur de votre fenêtre et marquez l'emplacement souhaité des supports de chaque côté, en veillant à ce qu'ils soient de niveau.",
           "1": "Créez des trous pilotes aux endroits marqués à l'aide d'une perceuse.",
           "2": "Fixez les supports avec les vis fournies, puis soulevez doucement les stores zébrés et clipsez le rail de tête dans les supports.",
@@ -210,6 +210,180 @@
             "2": "Nous expédions au reste du Canada et des É. U. pour un prix fixe."
           }
           
+        },
+        "guides": {
+          "mount_type": {
+            "title": "Choisir votre type de montage",
+            "description": "Lorsqu'il s'agit de choisir le type de montage idéal pour vos stores zébrés, vous avez deux options principales : le montage intérieur et le montage extérieur. Chaque type offre des avantages distincts et peut affecter l'apparence générale et la fonctionnalité de vos stores.",
+            "sections": {
+              "inside_mount": {
+                "title": "Montage intérieur",
+                "description": "Un montage intérieur place les stores à l'intérieur du cadre de la fenêtre. Cette option offre un look élégant et épuré, les stores étant alignés avec la fenêtre, mettant en valeur les moulures de la fenêtre et créant une apparence plus intégrée."
+              },
+              "outside_mount": {
+                "title": "Montage extérieur",
+                "description": "Un montage extérieur installe les stores sur le mur ou le plafond à l'extérieur du cadre de la fenêtre. Cette option offre plus de flexibilité en termes de placement et peut donner l'impression que la fenêtre est plus grande."
+              },
+              "conclusion": {
+                "title": "Installation professionnelle",
+                "description": "Si vous avez besoin d'aide pour mesurer vos fenêtres ou si vous préférez une installation professionnelle, n'hésitez pas à nous contacter chez Rideau Zebra. Notre équipe est prête à vous aider pour garantir que vos stores zébrés s'ajustent parfaitement et embellissent votre décoration intérieure."
+              }
+            }
+          },
+          "measuring": {
+            "title": "Aide à la mesure des fenêtres",
+            "description": "Des mesures précises sont cruciales pour garantir que vos stores zébrés s'ajustent parfaitement, que vous choisissiez un montage intérieur ou extérieur. Suivez ces étapes pour mesurer vos fenêtres avec précision.",
+            "sections": {
+              "before_you_start": {
+                "title": "Avant de commencer :",
+                "bullet_points": {
+                  "0": "Utilisez toujours un ruban à mesurer en acier pour une précision maximale.",
+                  "1": "Vérifiez vos mesures deux fois pour vous assurer qu'elles sont correctes.",
+                  "2": "Pour les montages intérieurs, assurez-vous que le cadre de la fenêtre n'est pas obstrué par des poignées ou des serrures."
+                }
+              },
+              "inside_mount": {
+                "title": "Mesures pour le montage intérieur",
+                "sections": {
+                  "depth": {
+                    "title": "Mesurez la profondeur",
+                    "description_1": "Mesurez la profondeur du bord avant du cadre de la fenêtre jusqu'à l'arrière où le store sera monté. Assurez-vous que la profondeur est suffisante pour que les stores puissent s'adapter. Nos stores zébrés nécessitent une profondeur minimale de 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium pour un montage intérieur affleurant.",
+                    "description_2": "Exemple : Si la profondeur est de 85 mm (3,35 po), les stores standard s'adapteront. Si elle est inférieure à 70 mm (2,75 po) pour les stores standard, envisagez un montage extérieur."
+                  },
+                  "width": {
+                    "title": "Mesurez la largeur",
+                    "description_1": "Mesurez la largeur intérieure de la fenêtre en haut, au milieu et en bas. Enregistrez la mesure la plus étroite pour vous assurer que les stores s'adaptent à l'intérieur du cadre sans obstruction.",
+                    "description_2": "Exemple : Largeur en haut = 35 pouces, Largeur au milieu = 35,2 pouces, Largeur en bas = 34,8 pouces. Utilisez 34,8 pouces comme mesure finale de la largeur."
+                  },
+                  "height": {
+                    "title": "Mesurez la hauteur",
+                    "description_1": "Mesurez la hauteur intérieure de la fenêtre à gauche, au centre et à droite. Utilisez la mesure la plus longue pour assurer une couverture complète.",
+                    "description_2": "Exemple : Hauteur à gauche = 60 pouces, Hauteur au centre = 60,1 pouces, Hauteur à droite = 59,9 pouces. Utilisez 60,1 pouces comme mesure finale de la hauteur."
+                  }
+                }
+              },
+              "outside_mount": {
+                "title": "Mesures pour le montage extérieur",
+                "sections": {
+                  "width": {
+                    "title": "Mesurez la largeur",
+                    "description_1": "Mesurez la largeur totale de la zone que vous souhaitez couvrir, y compris tout chevauchement souhaité de chaque côté de la fenêtre. Nous recommandons d'ajouter au moins 2-3 pouces de chaque côté pour un contrôle optimal de la lumière et de la confidentialité.",
+                    "description_2": "Exemple : Largeur de la fenêtre = 34,8 pouces. Ajoutez 3 pouces de chaque côté pour une largeur totale de 40,8 pouces."
+                  },
+                  "height": {
+                    "title": "Mesurez la hauteur",
+                    "description_1": "Mesurez du haut de la zone de montage au point inférieur souhaité. Nous recommandons d'ajouter au moins 2-3 pouces au-dessus du cadre de la fenêtre pour le montage et de garantir une couverture complète sous le rebord de la fenêtre.",
+                    "description_2": "Exemple : Hauteur de la fenêtre = 60,1 pouces. Ajoutez 3 pouces au-dessus et en dessous pour une hauteur totale de 66,1 pouces."
+                  },
+                  "conclusion": {
+                    "title": "Installation professionnelle",
+                    "description": "Si vous avez besoin d'aide pour mesurer vos fenêtres ou si vous préférez une installation professionnelle, n'hésitez pas à nous contacter chez Rideau Zebra. Notre équipe est prête à vous aider pour garantir que vos stores zébrés s'ajustent parfaitement et embellissent votre décoration intérieure."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "color_selector": {
+          "title": "Choisissez votre couleur :",
+          "options": {
+            "snow-white": "Blanc neige",
+            "slate-gray": "Gris ardoise",
+            "midnight-black": "Noir minuit",
+            "taupe-beige": "Beige taupe"
+          }
+        },
+        "product_forms": {
+          "choose_your_mount": {
+            "title": "Choisissez votre montage :",
+            "choosing_your_mount_type": "Choisir votre type de montage",
+            "mount_type": "Type de montage",
+            "inside": "Intérieur",
+            "outside": "Extérieur"
+          },
+          "enter_your_measurements": {
+            "title": "Entrez vos mesures :",
+            "measuring_tips": "Conseils et aide pour les mesures",
+            "unit": "Unité",
+            "cm": "cm",
+            "in": "po",
+            "width": "Largeur",
+            "height": "Hauteur",
+            "depth": "Profondeur",
+            "depth_check": {
+              "title": "Vérification de la profondeur",
+              "description": "Assurez-vous que votre cadre intérieur a au moins 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium afin de garantir un ajustement correct.",
+              "see_specifications": "Voir les spécifications du produit"
+            },
+            "assign_room_name": {
+              "title": "Attribuer un nom de chambre :",
+              "room_name": "Nom de la salle"
+            }
+          }
+        },
+        "product_details": {
+          "specifications": {
+            "title": "Spécifications",
+            "fig_1": "Stores",
+            "fig_2": "Caisson",
+            "sections": {
+              "dimensions": {
+                "title": "Dimensions",
+                "cassette": {
+                  "title": "Caisson",
+                  "height": {
+                    "heading": "Hauteur :",
+                    "data": "61 mm (2,4 po)"
+                  },
+                  "min_depth": {
+                    "heading": "Profondeur min. :",
+                    "data": "59 mm (2,32 po)"
+                  },
+                  "max_depth": {
+                    "heading": "Profondeur max. :",
+                    "data": "67 mm (2,64 po)"
+                  },
+                  "width": {
+                    "heading": "Largeur :",
+                    "data": "Dépend des mesures de la fenêtre."
+                  }
+                },
+                "blinds": {
+                  "title": "Stores",
+                  "height": {
+                    "heading": "Hauteur :",
+                    "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 213,36 cm (84 po)."
+                  },
+                  "width": {
+                    "heading": "Largeur :",
+                    "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 228,6 cm (90 po)."
+                  }
+                }
+              },
+              "materials": {
+                "title": "Matériaux",
+                "cassette": {
+                  "title": "Caisson",
+                  "line_1": "Aluminium",
+                  "line_2": "Peint à la couleur correspondante."
+                },
+                "blinds": {
+                  "title": "Stores",
+                  "line_1": "100% Polyester",
+                  "line_2": "Plus de couleurs disponibles sur demande."
+                }
+              },
+              "features": {
+                "title": "Caractéristiques",
+                "line_1": "Design sécuritaire pour les enfants et les animaux domestiques",
+                "line_2": "Fonctionnement sans corde EasyGlide à une main",
+                "line_3": "Tissu polyester de qualité supérieure",
+                "line_4": "Tissu résistant aux taches",
+                "line_5": "Facile à nettoyer",
+                "line_6": "Stylé et fonctionnel"
+              }
+            }
+          }
         }
       },
       "components": {
@@ -228,6 +402,9 @@
       "description": "Description",
       "on_sale": "En vente",
       "product_variants": "Variantes de produits",
+      "in_stock": "En stock",
+      "free_shipping": "Livraison gratuite",
+      "out_of_stock": "Rupture de stock",
       "quantity": {
         "label": "Quantité",
         "input_label": "Quantité pour {{ product }}",
@@ -313,6 +490,40 @@
     }
   },
   "templates": {
+    "overview": {
+      "sections": {
+        "what_sets_us_apart": {
+          "main": {
+            "title": "Pourquoi sommes-nous meilleurs ?",
+            "description": "Rideau Zebra est reconnu pour son excellence dans la conception de stores et rideaux sur mesure de haute qualité. Notre engagement est de fournir des solutions d'ombrage personnalisées et élégantes, conçues spécifiquement pour répondre aux besoins et au style de chaque client."
+          },
+          "made_to_last": {
+            "title": "Conçus pour durer plus de 10 ans",
+            "description": "Fabriqués à partir de matériaux robustes et construits avec précision, nous vous promettons plus d'une décennie de performance et d'esthétique sans faille."
+          },
+          "quality": {
+            "title": "Qualité supérieure",
+            "description": "Chaque store est fabriqué avec attention aux détails, utilisant des matériaux de haute qualité qui durent et améliorent également le confort et le style de vos espaces."
+          },
+          "warranty": {
+            "title": "Garantie complète de 2 ans",
+            "description": "Confiance dans notre savoir-faire nous permet d'offrir une garantie complète de 2 ans. Cette garantie couvre tout défaut de matériaux ou de fabrication, vous offrant la tranquillité d'esprit pour votre achat."
+          },
+          "custom_made": {
+            "title": "Fabriqués sur mesure",
+            "description": "Chaque store est adapté aux mesures précises, assurant un ajustement parfait pour vos espaces de fenêtres uniques, améliorant à la fois la fonctionnalité et le style."
+          },
+          "support": {
+            "title": "Support local authentique",
+            "description": "Notre équipe de support local dédiée est toujours disponible pour aider. Des demandes de produits à l'assistance après-achat, nous vous assurons un service personnalisé et réactif à chaque étape."
+          },
+          "delivery": {
+            "title": "Livraison rapide et sécurisée",
+            "description": "Les stores Rideau Zebra sont fabriqués et livrés rapidement et en toute sécurité, directement à votre porte. Notre logistique efficace assure que vos stores arrivent en parfait état et prêts à être installés."
+          }
+        }
+      }
+    },
     "homepage": {
       "hero": {
         "title": "Transformez votre décor",
@@ -320,7 +531,9 @@
       },
       "partners": {
         "title": "Nous sommes mentionnés par",
-        "description": "Nous sommes ravis d'offrir à tous les membres FADOQ un rabais exclusif. Visitez leur site pour plus d'information."
+        "title_2": "Projet en vedette : Installation de stores zébrés pour le studio de FM 103.3",
+        "description": "Ce projet a permis d'améliorer l'acoustique et de moderniser l'apparence du studio, offrant un environnement de travail plus agréable pour les animateurs et les invités.",
+        "read_more": "Lire l'article complet sur notre installation chez FM 103.3"
       },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",

@@ -21,7 +21,7 @@
                         {% if product_option.selected_value == product_option_value %}
                             {% assign selected_class = ' bg-black text-white' %}
                         {% endif %}
-                        <button type="button"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}" class="disabled:text-gray-300 disabled:border-gray-300 border border-black rounded-sm py-1 px-2 flex items-center justify-center text-xs text-center select-none{{ selected_class }}">
+                        <button type="button"{% if product_option.selected_value == product_option_value %} data-selector-default{% endif %} data-selector-option-index="{{ forloop.index0 }}" data-selector-action="{{ product_option.position }}" data-selector-option-value="{{ product_option_value | downcase | replace: ' ', '_' }}" class="disabled:text-gray-300 disabled:border-gray-300 border border-black rounded-md py-1 px-2 flex items-center justify-center text-xs text-center select-none{{ selected_class }}">
                             <span>{{ product_option_value }}</span>
                         </button>
                     {% endfor %}

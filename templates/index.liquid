@@ -1,6 +1,6 @@
 <div class="h-[calc(100vh_-_89px)] w-full bg-neutral-100 relative">
     <video autoplay loop playsinline muted preload class="h-full w-full object-cover">
-        <source src="{{ 'hero-main-v2-x720.mp4' | asset_url }}" type="video/mp4" />
+        <source src="{{ 'page-index-hero-main-v2-x720.mp4' | asset_url }}" type="video/mp4" />
     </video>
     <div class="absolute top-1/2 -translate-y-1/2 w-full text-center">
         <div class="font-serif text-6xl lg:text-8xl text-neutral-100 font-bold">{{ 'templates.homepage.hero.title' | t }}</div>
@@ -34,8 +34,21 @@
                 </a>
             </div>
         </div>
-        <div class="mt-16 text-center">
-            <p>{{ 'templates.homepage.partners.description' | t }}</p>
+        <div class="mt-24 text-center w-full sm:w-3/4 lg:w-1/2 mx-auto">
+            <div class="text-stone-900 font-serif font-bold text-center text-2xl">{{ 'templates.homepage.partners.title_2' | t }}</div>
+            <div class="mt-8 aspect-square w-full sm:w-3/4 lg:w-1/2 mx-auto">
+                <picture>
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                    <img src="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" alt="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <p class="mt-12">{{ 'templates.homepage.partners.description' | t }}</p>
+            <a href="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ articles['custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}">{{ 'templates.homepage.partners.read_more' | t }}</a>
         </div>
     </div>
 </div>
@@ -52,7 +65,7 @@
         <div id="main-content" class="pt-12 pb-6 mx-auto">
             <div data-paginated-products class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8"></div>
             <div class="mt-12">
-                <button data-paginate-more class="block mx-auto w-fit py-3 px-8 bg-black border border-black text-white text-center text-sm uppercase font-medium rounded-sm disabled:opacity-75 select-none hover:bg-white hover:text-black">
+                <button data-paginate-more class="block mx-auto w-fit py-3 px-8 bg-black border border-black text-white text-center text-sm uppercase font-medium rounded-md disabled:opacity-75 select-none hover:bg-white hover:text-black">
                     <span data-paginate-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-6 w-6 text-white' %}</span>
                     <span data-paginate-state="default">See more</span>
                 </button>

@@ -121,7 +121,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
-        "have_us_install": "Have us install your blinds (+ {{ installPrice }})",
+        "have_us_install": "Have us install your blinds (+ {{ installPrice }} each)",
         "highlight_badges": {
           "0": "Fixed-rate shipping to the rest of Canada and U.S.",
           "1": "Carbon-neutral local delivery"
@@ -158,12 +158,12 @@
         "warranty_returns": {
           "tab_title": "Warranty & Returns",
           "warranty": {
-            "title": "Guaranteed quality with our comprehensive warranty",
-            "0": "Our cordless zebra blinds are backed by a comprehensive warranty that guarantees top-quality products and outstanding service. We are committed to providing you with durable materials and excellent craftsmanship, and our one-year limited warranty covers any defects.",
+            "title": "Guaranteed quality with our two-year comprehensive warranty",
+            "0": "Our cordless zebra blinds are backed by a comprehensive warranty that guarantees top-quality products and outstanding service. We are committed to providing you with durable materials and excellent craftsmanship, and our two-year limited warranty covers any defects.",
             "1": "If you encounter any issues, please contact our customer service team, and we will be happy to assist you with repair or replacement to ensure your complete satisfaction."
           },
           "returns": {
-            "title": "Returns",
+            "title": "Free Returns",
             "0": "We stand behind the quality of our products and offer a 30-day, no-hassle return and exchange policy.",
             "1": "If you are not completely satisfied with your purchase, simply return it within 30 days for a full refund or exchange."
           }
@@ -171,7 +171,7 @@
         "install": {
           "tab_title": "Installation",
           "title": "Quick 3-Step Installation Guide",
-          "media": "install-instructions-transparent.png",
+          "media": "product-install-instructions-transparent.png",
           "0": "Measure the width of your window and mark the desired location of the brackets on both sides, ensuring they're level.",
           "1": "Create pilot holes at the marked spots using a drill.",
           "2": "Attach the brackets with the provided screws, then gently lift the zebra blinds and clip the headrail into the brackets.",
@@ -207,6 +207,246 @@
             "1": "We deliver to Montreal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, and many more. Contact us to know more.",
             "2": "We ship to the rest of Canada and the U.S. for a fixed-rate."
           }
+        },
+        "guides": {
+          "mount_type": {
+            "title": "Choosing your mount type",
+            "description": "When deciding on the perfect mount type for your zebra blinds, you have two primary options: inside mount and outside mount. Each type offers distinct advantages and can affect the overall appearance and functionality of your blinds.",
+            "sections": {
+              "inside_mount": {
+                "title": "Inside Mount",
+                "description": "An inside mount places the blinds within the window frame. This option provides a sleek, clean look as the blinds sit flush with the window, highlighting the window trim and creating a more integrated appearance."
+              },
+              "outside_mount": {
+                "title": "Outside Mount",
+                "description": "An outside mount installs the blinds on the wall or ceiling outside the window frame. This option offers more flexibility in terms of placement and can make the window appear larger."
+              },
+              "conclusion": {
+                "title": "Professional installation",
+                "description": "If you need any help measuring your windows or if you prefer professional installation, feel free to contact us at Rideau Zebra. Our team is ready to assist you to ensure your zebra blinds fit perfectly and enhance your home decor."
+              }
+            }
+          },
+          "measuring": {
+            "title": "Window measuring help",
+            "description": "Proper measurements are crucial for ensuring that your zebra blinds fit perfectly, whether you choose an inside mount or an outside mount. Follow these steps to measure your windows accurately.",
+            "sections": {
+              "before_you_start": {
+                "title": "Before you start:",
+                "bullet_points": {
+                  "0": "Always use a steel tape measure for accuracy.",
+                  "1": "Double-check your measurements to ensure they are correct.",
+                  "2": "For inside mounts, ensure the window frame is not obstructed by handles or locks."
+                }
+              },
+              "inside_mount": {
+                "title": "Inside Mount Measurements",
+                "sections": {
+                  "depth": {
+                    "title": "Measure the depth",
+                    "description_1": "Measure the depth from the front edge of the window frame to the back where the blind will be mounted. Ensure the depth is sufficient for the blinds to fit. Our blinds require a minimum depth of 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds for a flush inside mount.",
+                    "description_2": "Example: If the depth is 85 mm (3.35 in), our standard blinds will fit. If it's less than 70 mm (2.75 in) for our standard blinds, consider an outside mount."
+                  },
+                  "width": {
+                    "title": "Measure the width",
+                    "description_1": "Measure the inside width of the window at the top, middle, and bottom. Record the narrowest measurement to ensure the blinds fit within the frame without obstruction.",
+                    "description_2": "Example: Top width = 35 inches, Middle width = 35.2 inches, Bottom width = 34.8 inches. Use 34.8 inches as the final width measurement."
+                  },
+                  "height": {
+                    "title": "Measure the height",
+                    "description_1": "Measure the inside height of the window at the left, center, and right. Use the longest measurement to ensure full coverage.",
+                    "description_2": "Example: Left height = 60 inches, Center height = 60.1 inches, Right height = 59.9 inches. Use 60.1 inches as the final height measurement."
+                  }
+                }
+              },
+              "outside_mount": {
+                "title": "Outside Mount Measurements",
+                "sections": {
+                  "width": {
+                    "title": "Measure the width",
+                    "description_1": "Measure the total width of the area you want to cover, including any desired overlap on each side of the window. We recommend adding at least 2-3 inches on each side for optimal light control and privacy.",
+                    "description_2": "Example: Window width = 34.8 inches. Add 3 inches on each side for a total width of 40.8 inches."
+                  },
+                  "height": {
+                    "title": "Measure the height",
+                    "description_1": "Measure from the top of the mounting area to the desired bottom point. We recommend adding at least 2-3 inches above the window frame for mounting and ensuring full coverage below the window sill.",
+                    "description_2": "Example: Window height = 60.1 inches. Add 3 inches above and below for a total height of 66.1 inches."
+                  },
+                  "conclusion": {
+                    "title": "Professional installation",
+                    "description": "If you need any help measuring your windows or if you prefer professional installation, feel free to contact us at Rideau Zebra. Our team is ready to assist you to ensure your zebra blinds fit perfectly and enhance your home decor."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "color_selector": {
+          "title": "Choose your color:",
+          "options": {
+            "snow-white": "Snow White",
+            "slate-gray": "Slate Gray",
+            "midnight-black": "Midnight Black",
+            "taupe-beige": "Taupe Beige"
+          }
+        },
+        "product_forms": {
+          "choose_your_mount": {
+            "title": "Choose your mount:",
+            "choosing_your_mount_type": "Choosing your mount type",
+            "mount_type": "Mount Type",
+            "inside": "Inside",
+            "outside": "Outside"
+          },
+          "enter_your_measurements": {
+            "title": "Enter your measurements:",
+            "measuring_tips": "Measuring tips & help",
+            "unit": "Unit",
+            "cm": "cm",
+            "in": "in",
+            "width": "Width",
+            "height": "Height",
+            "depth": "Depth",
+            "depth_check": {
+              "title": "Depth Check",
+              "description": "Ensure your inner frame has at least 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds to ensure a proper fit.",
+              "see_specifications": "See product specifications"
+            },
+            "assign_room_name": {
+              "title": "Assign a room name:",
+              "room_name": "Room name"
+            }
+          }
+        },
+        "product_details": {
+          "basic": {
+            "specifications": {
+              "title": "Specifications",
+              "fig_1": "Blinds",
+              "fig_2": "Cassette",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Cassette",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "61 mm (2.4 in.)"
+                    },
+                    "min_depth": {
+                      "heading": "Min. depth:",
+                      "data": "59 mm (2.32 in.)"
+                    },
+                    "max_depth": {
+                      "heading": "Max. depth:",
+                      "data": "67 mm (2.64 in.)"
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements."
+                    }
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 213.36 cm (84 in.)."
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 228.6 cm (90 in.)."
+                    }
+                  }
+                },
+                "materials": {
+                  "title": "Materials",
+                  "cassette": {
+                    "title": "Cassette",
+                    "line_1": "Aluminium",
+                    "line_2": "Painted to matching color."
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "line_1": "100% Polyester",
+                    "line_2": "More colors available on request."
+                  }
+                },
+                "features": {
+                  "title": "Features",
+                  "line_1": "Child and pet safe design",
+                  "line_2": "Cordless one-handed EasyGlide operation",
+                  "line_3": "Superior quality polyester weave",
+                  "line_4": "Stain Resistant fabric",
+                  "line_5": "Easy to clean",
+                  "line_6": "Stylish and functional"
+                }
+              }
+            }
+          },
+          "premium": {
+            "specifications": {
+              "title": "Specifications",
+              "fig_1": "Blinds",
+              "fig_2": "Cassette",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Cassette",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "72 mm (2.83 in.)"
+                    },
+                    "min_depth": {
+                      "heading": "Min. depth:",
+                      "data": "75.5 mm (2.97 in.)"
+                    },
+                    "max_depth": {
+                      "heading": "Max. depth:",
+                      "data": "87 mm (3.43 in.)"
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements."
+                    }
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 213.36 cm (84 in.)."
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 228.6 cm (90 in.)."
+                    }
+                  }
+                },
+                "materials": {
+                  "title": "Materials",
+                  "cassette": {
+                    "title": "Cassette",
+                    "line_1": "Aluminium",
+                    "line_2": "Painted to matching color."
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "line_1": "100% Polyester",
+                    "line_2": "More colors available on request."
+                  }
+                },
+                "features": {
+                  "title": "Features",
+                  "line_1": "Child and pet safe design",
+                  "line_2": "Cordless one-handed EasyGlide operation",
+                  "line_3": "Superior quality polyester weave",
+                  "line_4": "Stain Resistant fabric",
+                  "line_5": "Easy to clean",
+                  "line_6": "Stylish and functional"
+                }
+              }
+            }
+          }
         }
       },
       "components": {
@@ -227,6 +467,9 @@
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",
+      "in_stock": "In stock",
+      "free_shipping": "Free shipping",
+      "out_of_stock": "Out of stock",
       "media": {
         "gallery_viewer": "Gallery Viewer",
         "load_image": "Load image {{ index }} in gallery view",
@@ -307,6 +550,40 @@
     }
   },
   "templates": {
+    "overview": {
+      "sections": {
+        "what_sets_us_apart": {
+          "main": {
+            "title": "What sets us apart?",
+            "description": "Rideau Zebra is renowned for its high-quality, custom-made blinds and shades. Our commitment is to deliver personalized and stylish shading solutions that are tailored to meet the specific needs and tastes of each customer."
+          },
+          "made_to_last": {
+            "title": "Made to last 10+ years",
+            "description": "Made from robust materials and built with precision, we promise over a decade of flawless performance and aesthetic appeal."
+          },
+          "quality": {
+            "title": "Premium quality",
+            "description": "Each blind is crafted with attention to detail, using high-grade materials that not only last but also enhance the comfort and style of your spaces."
+          },
+          "warranty": {
+            "title": "Comprehensive 2 Years Warranty",
+            "description": "Confidence in our craftsmanship allows us to offer a comprehensive 2-year warranty. This warranty covers any defects in materials or workmanship, giving you peace of mind with your purchase."
+          },
+          "custom_made": {
+            "title": "100% Custom Made to Fit Your Windows",
+            "description": "Each blind is tailored to precise measurements, ensuring a perfect fit for your unique window spaces, enhancing both function and style."
+          },
+          "support": {
+            "title": "Genuine Local Support",
+            "description": "Our dedicated local support team is always on hand to assist. From product inquiries to post-purchase assistance, we ensure you receive personalized and responsive service every step of the way."
+          },
+          "delivery": {
+            "title": "Fast & Secure Delivery",
+            "description": "Rideau Zebra Blinds are made and delivered swiftly and securely, directly to your door. Our efficient logistics ensure that your blinds arrive in pristine condition and ready for installation."
+          }
+        }
+      }
+    },
     "homepage": {
       "hero": {
         "title": "Transform your decor",
@@ -314,7 +591,9 @@
       },
       "partners": {
         "title": "We are mentioned by",
-        "description": "We are thrilled to offer all FADOQ members an exclusive discount. Visit their website for more information."
+        "title_2": "Featured Project: Zebra Blinds Installation for FM 103.3 Studio",
+        "description": "This project improved the studio's acoustics and modernized its appearance, creating a more pleasant working environment for hosts and guests.",
+        "read_more": "Read the full article about our installation at FM 103.3"
       },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",

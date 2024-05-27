@@ -92,7 +92,7 @@
                         <span class="block sm:inline">{{ 'sections.footer.copyright' | t }} {{ 'now' | date: "%Y" }} <span class="font-bold">{{ 'RIDEAU ZEBRA INC.' | link_to: routes.root_url }}</span></span>
                     </div>
                 </div>
-                <div id="footer" data-secure-action role="button" class="w-full order-first lg:order-last sm:w-fit text-xs text-stone-900 font-bold rounded-md flex justify-center items-center gap-x-2 bg-green-300 py-2 px-8 tracking-tighter select-none hover:bg-green-200 active:bg-green-400">{% render 'icon-secure', class: 'h-4 w-auto fill-black' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
+                <div data-secure-action="footer" role="button" class="w-full order-first lg:order-last sm:w-fit text-xs text-stone-900 font-bold rounded-md flex justify-center items-center gap-x-2 bg-green-300 py-2 px-8 tracking-tighter select-none hover:bg-green-200 active:bg-green-400">{% render 'icon-secure', class: 'h-4 w-auto fill-black' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
             </div>
         </div>
     </div>

@@ -1,0 +1,17 @@
+<div class="bg-stone-200 rounded-md p-8 text-neutral-900 border-stone-900">
+    <div class="flex justify-center items-center">
+        {% render 'icon-question', class: 'h-16 w-auto fill-stone-900' %}
+    </div>
+    <h3 class="mt-4 font-serif font-bold text-3xl text-center">{{ 'products.product.looking_for_more_1' | t }}</h3>
+    <p class="mt-2 text-center">{{ 'products.product.looking_for_more_2' | t }}</p>
+    <!-- Début de widget de lien Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <a href="" class="mt-4 block bg-stone-900 mx-auto text-neutral-100 rounded-md w-fit font-semibold px-8 py-3 transition-all text-center text-sm hover:bg-indigo-500" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/lucie-xie/15min'});return false;">{{ 'products.product.plan_a_meeting' | t }}</a>
+    <!-- Fin de widget de lien Calendly -->
+    <div class="mt-8">
+        <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
+        <span>{{ 'products.product.or' | t }}</span>
+        <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
+    </div>
+</div>

@@ -1,87 +1,3 @@
-<div class="container mx-auto pt-12 pb-20 md:pt-24 md:pb-32 text-stone-900">
-    <div>
-        <h2 class="font-serif font-bold text-4xl w-full text-center">{{ 'templates.overview.sections.what_sets_us_apart.main.title' | t | newline_to_br }}</h2>
-        <p class="mt-8 text-center">{{ 'templates.overview.sections.what_sets_us_apart.main.description' | t | newline_to_br }}</p>
-    </div>
-    <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-48">
-        <div class="flex flex-col gap-12 md:gap-24 justify-between">
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-durable', class: 'h-20 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.made_to_last.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.made_to_last.description' | t }}</div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-tailor', class: 'h-24 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.custom_made.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.custom_made.description' | t }}</div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-warranty', class: 'h-20 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.warranty.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.warranty.description' | t }}</div>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col gap-12 md:gap-24 justify-between">
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-quality', class: 'h-16 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.quality.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.quality.description' | t }}</div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-support', class: 'h-20 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.support.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.support.description' | t }}</div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 items-center justify-between">
-                <div class="h-24 w-24 relative">
-                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                        {% render 'icon-shipping', class: 'h-20 w-auto fill-stone-900' %}
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center items-center">
-                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.overview.sections.what_sets_us_apart.delivery.title' | t | newline_to_br }}</div>
-                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.delivery.description' | t }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% if request.page_type != 'product' %}
-    <div class="mt-16 py-24 bg-indigo-600">
-        <div class="text-neutral-100 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
-        <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-neutral-100 text-stone-900 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900 hover:text-neutral-100" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
-    </div>
-{% endif %}
 {% if request.page_type == 'product' %}
     {% assign language = localization.language.iso_code %}
     <div class="py-20 bg-indigo-50">
@@ -110,21 +26,8 @@
                     </a>
                 </div>
             </div>
-            <div class="mt-24 text-center w-full sm:w-3/4 lg:w-1/2 mx-auto">
-                <div class="text-stone-900 font-serif font-bold text-center text-2xl">{{ 'templates.homepage.partners.title_2' | t }}</div>
-                <div class="mt-8 aspect-square w-full sm:w-3/4 lg:w-1/2 mx-auto">
-                    <picture>
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1536px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1280px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1024px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:768px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:640px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:0px)" />
-                        <img src="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" alt="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
-                    </picture>
-                </div>
-                <p class="mt-12">{{ 'templates.homepage.partners.description' | t }}</p>
-                <a href="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ articles['custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}">{{ 'templates.homepage.partners.read_more' | t }}</a>
+            <div class="mt-16 text-center">
+                <p>{{ 'templates.homepage.partners.description' | t }}</p>
             </div>
         </div>
     </div>
@@ -288,9 +191,68 @@
         <div class="text-neutral-100 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 font-serif font-bold text-4xl lg:text-6xl w-11/12 text-center">{{ 'templates.homepage.showcase_7.sub' | t }}</div>
     </div>
 </div>
+<div class="container mx-auto mt-16 md:mt-32 py-12 text-stone-900">
+    <div class="font-serif font-bold text-4xl w-full text-center">{{ 'templates.homepage.showcase_8.title' | t | newline_to_br }}</div>
+    <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-48">
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-fixed-rate-shipping', class: 'h-20 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_1.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_1.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-local', class: 'h-20 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_3.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_3.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-tailor', class: 'h-24 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_2.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_2.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-support', class: 'h-20 fill-stone-900' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="font-serif font-bold text-2xl text-center">{{ 'templates.homepage.showcase_8.block_4.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.homepage.showcase_8.block_4.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if request.page_type != 'product' %}
+        <div class="mt-36">
+            <div class="text-stone-900 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
+            <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+        </div>
+    {% endif %}
+</div>
 {% assign component_title = 'templates.homepage.showcase_9.title' | t | newline_to_br %}
 {% assign image = 'product-showcase-wide-3.jpg' %}
-<div>
+<div class="mt-12 lg:mt-24">
     {% render 'component.wide-hero', title: component_title, image: image %}
 </div>
 <div class="bg-neutral-100">

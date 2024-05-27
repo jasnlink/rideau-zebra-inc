@@ -26,10 +26,10 @@
         <div class="flex flex-col justify-center items-center gap-2">
             <span class="text-2xl font-bold">{{ variant.price | money_with_currency }}</span>
             {% if shipping_included == true %}
-                <span class="w-fit py-1 px-4 border border-green-700 font-medium text-center uppercase text-xs text-green-700 bg-green-200 rounded-sm">Free Shipping</span>
+                <span class="w-fit py-1 px-4 border border-green-700 font-medium text-center uppercase text-xs text-green-700 bg-green-200 rounded-md">Free Shipping</span>
             {% endif %}
         </div>
-        <button type="button" data-add-cart-showcase="{{ variant.id }}" class="mt-4 w-full bg-black border text-sm border-black text-white text-center uppercase font-medium rounded-sm py-3 sm:px-8 select-none hover:bg-white hover:text-black disabled:opacity-75 disabled:bg-black disabled:text-white">
+        <button type="button" data-add-cart-showcase="{{ variant.id }}" class="mt-4 w-full bg-black border text-sm border-black text-white text-center uppercase font-medium rounded-md py-3 sm:px-8 select-none hover:bg-white hover:text-black disabled:opacity-75 disabled:bg-black disabled:text-white">
             <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-5 w-5 text-white', fill: 'none' %}</span>
             <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-5 w-5 text-white' %}</span>
             <span data-add-state="default">Add to cart</span>

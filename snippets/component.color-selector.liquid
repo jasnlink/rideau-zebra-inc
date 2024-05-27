@@ -1,0 +1,34 @@
+<div class="mt-4 pt-4 border-t border-stone-400">
+    <div class="bg-white border border-stone-200 rounded-md pt-6 pb-8 px-4 sm:px-6 lg:px-4 xl:px-6">
+        {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ product.metafields.custom.color_key_name.value }}{% endcapture %}
+        <div class="font-medium text-lg">{{ 'products.product.cordless_zebra_blinds.color_selector.title' | t }} <span class="font-bold">{{ translated_color | t }}</span></div>
+        <div class="mt-2 flex flex-wrap gap-2">
+            {% for collection_product in collections['zebra-blinds'].products %}
+                {% capture color_block %}
+                    {% comment %} {% if collection_product.metafields.custom_filters.texture != blank %}
+                        <div class="rounded-md overflow-hidden">
+                            <picture>
+                                <img src="{{ collection_product.metafields.custom_filters.texture | image_url: width: 360 }}" class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                    {% else %}
+                    {% endif %} {% endcomment %}
+                    <div class="w-full h-full rounded-md overflow-hidden" style="background-color: {{ collection_product.metafields.custom_filters.color.value }};"></div>
+                {% endcapture %}
+                <div class="relative group">
+                    {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ collection_product.metafields.custom.color_key_name.value }}{% endcapture %}
+                    <div class="invisible group-hover:visible absolute mt-2 top-full left-1/2 -translate-x-1/2 py-1 px-2 text-neutral-100 text-sm bg-stone-800/70 rounded-md whitespace-nowrap">{{ translated_color | t }}</div>
+                    {% if collection_product.handle == product.handle %}
+                        <div class="aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-indigo-500 overflow-hidden hover:border-indigo-500/80 transition-all shadow-sm">
+                            {{ color_block }}
+                        </div>
+                    {% else %}
+                        <a href="{{ collection_product.url | append: '?view=v2' }}" title="{{ collection_product.title }}" class="block aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-stone-300 hover:border-indigo-300 transition-all overflow-hidden shadow-sm">
+                            {{ color_block }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
