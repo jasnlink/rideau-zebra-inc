@@ -122,7 +122,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
-        "have_us_install": "Faites installer vos stores (+ {{ installPrice }})",
+        "have_us_install": "Faites installer vos stores (+ {{ installPrice }} chq.)",
         "highlight_badges": {
           "0": "Expédition taux fixe vers le reste du Canada et É. U.",
           "1": "Livraison locale zéro émission"
@@ -159,12 +159,12 @@
         "warranty_returns": {
           "tab_title": "Garantie et retours",
           "warranty": {
-            "title": "Qualité garantie avec notre garantie complète",
-            "0": "Nos stores zébrés sans cordon sont soutenus par une garantie complète qui garantit des produits de qualité supérieure et un service exceptionnel. Nous nous engageons à vous fournir des matériaux durables et un excellent savoir-faire, et notre garantie limitée d'un an couvre tous les défauts.",
+            "title": "Qualité garantie avec notre garantie complète de 2 ans",
+            "0": "Nos stores zébrés sans cordon sont soutenus par une garantie complète qui garantit des produits de qualité supérieure et un service exceptionnel. Nous nous engageons à vous fournir des matériaux durables et un excellent savoir-faire, et notre garantie limitée de deux ans couvre tous les défauts.",
             "1": "Si vous rencontrez des problèmes, veuillez contacter notre équipe du service clientèle, et nous serons ravis de vous aider avec la réparation ou le remplacement pour assurer votre entière satisfaction."
           },
           "returns": {
-            "title": "Retours",
+            "title": "Retours sans tracas",
             "0": "Nous soutenons la qualité de nos produits et offrons une politique de retour et d'échange sans tracas de 30 jours.",
             "1": "Si vous n'êtes pas entièrement satisfait de votre achat, retournez-le simplement dans les 30 jours pour un remboursement complet ou un échange."
           }
@@ -247,8 +247,8 @@
                 "sections": {
                   "depth": {
                     "title": "Mesurez la profondeur",
-                    "description_1": "Mesurez la profondeur du bord avant du cadre de la fenêtre jusqu'à l'arrière où le store sera monté. Assurez-vous que la profondeur est suffisante pour que les stores puissent s'adapter. La plupart des stores zébrés nécessitent une profondeur minimale de 2 pouces pour un montage intérieur affleurant.",
-                    "description_2": "Exemple : Si la profondeur est de 2,5 pouces, les stores s'adapteront. Si elle est inférieure à 2 pouces, envisagez un montage extérieur."
+                    "description_1": "Mesurez la profondeur du bord avant du cadre de la fenêtre jusqu'à l'arrière où le store sera monté. Assurez-vous que la profondeur est suffisante pour que les stores puissent s'adapter. Nos stores zébrés nécessitent une profondeur minimale de 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium pour un montage intérieur affleurant.",
+                    "description_2": "Exemple : Si la profondeur est de 85 mm (3,35 po), les stores standard s'adapteront. Si elle est inférieure à 70 mm (2,75 po) pour les stores standard, envisagez un montage extérieur."
                   },
                   "width": {
                     "title": "Mesurez la largeur",
@@ -312,12 +312,12 @@
             "depth": "Profondeur",
             "depth_check": {
               "title": "Vérification de la profondeur",
-              "description": "Assurez-vous que votre cadre intérieur a au moins 59 mm (2,32 po) de dégagement pour les stores standard et 75,5 mm (2,97 po) pour les stores premium afin de garantir un ajustement correct.",
+              "description": "Assurez-vous que votre cadre intérieur a au moins 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium afin de garantir un ajustement correct.",
               "see_specifications": "Voir les spécifications du produit"
             },
             "assign_room_name": {
-              "title": "Attribuer un nom à la pièce :",
-              "room_name": "Nom de la pièce"
+              "title": "Attribuer un nom de chambre :",
+              "room_name": "Nom de la salle"
             }
           }
         },
@@ -402,6 +402,9 @@
       "description": "Description",
       "on_sale": "En vente",
       "product_variants": "Variantes de produits",
+      "in_stock": "En stock",
+      "free_shipping": "Livraison gratuite",
+      "out_of_stock": "Rupture de stock",
       "quantity": {
         "label": "Quantité",
         "input_label": "Quantité pour {{ product }}",
@@ -528,7 +531,9 @@
       },
       "partners": {
         "title": "Nous sommes mentionnés par",
-        "description": "Nous sommes ravis d'offrir à tous les membres FADOQ un rabais exclusif. Visitez leur site pour plus d'information."
+        "title_2": "Projet en vedette : Installation de stores zébrés pour le studio de FM 103.3",
+        "description": "Ce projet a permis d'améliorer l'acoustique et de moderniser l'apparence du studio, offrant un environnement de travail plus agréable pour les animateurs et les invités.",
+        "read_more": "Lire l'article complet sur notre installation chez FM 103.3"
       },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",

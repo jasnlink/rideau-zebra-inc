@@ -7,7 +7,12 @@ module.exports = {
         'serif': ['STIXTwoText'],
         'body': ['"Archivo"'],
       },
-      extend: {},
+      extend: {
+        aspectRatio: {
+          '4x3': '4 / 3',
+          '3x4': '3 / 4',
+        },
+      },
       container: {
         padding: {
           DEFAULT: '1rem',

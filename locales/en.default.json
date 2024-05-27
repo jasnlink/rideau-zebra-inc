@@ -121,7 +121,7 @@
   "products": {
     "product": {
       "cordless_zebra_blinds": {
-        "have_us_install": "Have us install your blinds (+ {{ installPrice }})",
+        "have_us_install": "Have us install your blinds (+ {{ installPrice }} each)",
         "highlight_badges": {
           "0": "Fixed-rate shipping to the rest of Canada and U.S.",
           "1": "Carbon-neutral local delivery"
@@ -158,12 +158,12 @@
         "warranty_returns": {
           "tab_title": "Warranty & Returns",
           "warranty": {
-            "title": "Guaranteed quality with our comprehensive warranty",
-            "0": "Our cordless zebra blinds are backed by a comprehensive warranty that guarantees top-quality products and outstanding service. We are committed to providing you with durable materials and excellent craftsmanship, and our one-year limited warranty covers any defects.",
+            "title": "Guaranteed quality with our two-year comprehensive warranty",
+            "0": "Our cordless zebra blinds are backed by a comprehensive warranty that guarantees top-quality products and outstanding service. We are committed to providing you with durable materials and excellent craftsmanship, and our two-year limited warranty covers any defects.",
             "1": "If you encounter any issues, please contact our customer service team, and we will be happy to assist you with repair or replacement to ensure your complete satisfaction."
           },
           "returns": {
-            "title": "Returns",
+            "title": "Free Returns",
             "0": "We stand behind the quality of our products and offer a 30-day, no-hassle return and exchange policy.",
             "1": "If you are not completely satisfied with your purchase, simply return it within 30 days for a full refund or exchange."
           }
@@ -244,8 +244,8 @@
                 "sections": {
                   "depth": {
                     "title": "Measure the depth",
-                    "description_1": "Measure the depth from the front edge of the window frame to the back where the blind will be mounted. Ensure the depth is sufficient for the blinds to fit. Most zebra blinds require a minimum depth of 2 inches for a flush inside mount.",
-                    "description_2": "Example: If the depth is 2.5 inches, the blinds will fit. If it's less than 2 inches, consider an outside mount."
+                    "description_1": "Measure the depth from the front edge of the window frame to the back where the blind will be mounted. Ensure the depth is sufficient for the blinds to fit. Our blinds require a minimum depth of 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds for a flush inside mount.",
+                    "description_2": "Example: If the depth is 85 mm (3.35 in), our standard blinds will fit. If it's less than 70 mm (2.75 in) for our standard blinds, consider an outside mount."
                   },
                   "width": {
                     "title": "Measure the width",
@@ -309,7 +309,7 @@
             "depth": "Depth",
             "depth_check": {
               "title": "Depth Check",
-              "description": "Ensure your inner frame has at least 59 mm (2.32 in) clearance for standard blinds and 75.5 mm (2.97 in) for premium blinds to ensure a proper fit.",
+              "description": "Ensure your inner frame has at least 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds to ensure a proper fit.",
               "see_specifications": "See product specifications"
             },
             "assign_room_name": {
@@ -319,65 +319,131 @@
           }
         },
         "product_details": {
-          "specifications": {
-            "title": "Specifications",
-            "fig_1": "Blinds",
-            "fig_2": "Cassette",
-            "sections": {
-              "dimensions": {
-                "title": "Dimensions",
-                "cassette": {
-                  "title": "Cassette",
-                  "height": {
-                    "heading": "Height:",
-                    "data": "61 mm (2.4 in.)"
+          "basic": {
+            "specifications": {
+              "title": "Specifications",
+              "fig_1": "Blinds",
+              "fig_2": "Cassette",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Cassette",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "61 mm (2.4 in.)"
+                    },
+                    "min_depth": {
+                      "heading": "Min. depth:",
+                      "data": "59 mm (2.32 in.)"
+                    },
+                    "max_depth": {
+                      "heading": "Max. depth:",
+                      "data": "67 mm (2.64 in.)"
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements."
+                    }
                   },
-                  "min_depth": {
-                    "heading": "Min. depth:",
-                    "data": "59 mm (2.32 in.)"
-                  },
-                  "max_depth": {
-                    "heading": "Max. depth:",
-                    "data": "67 mm (2.64 in.)"
-                  },
-                  "width": {
-                    "heading": "Width:",
-                    "data": "Depends on window measurements."
+                  "blinds": {
+                    "title": "Blinds",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 213.36 cm (84 in.)."
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 228.6 cm (90 in.)."
+                    }
                   }
                 },
-                "blinds": {
-                  "title": "Blinds",
-                  "height": {
-                    "heading": "Height:",
-                    "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 213.36 cm (84 in.)."
+                "materials": {
+                  "title": "Materials",
+                  "cassette": {
+                    "title": "Cassette",
+                    "line_1": "Aluminium",
+                    "line_2": "Painted to matching color."
                   },
-                  "width": {
-                    "heading": "Width:",
-                    "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 228.6 cm (90 in.)."
+                  "blinds": {
+                    "title": "Blinds",
+                    "line_1": "100% Polyester",
+                    "line_2": "More colors available on request."
                   }
-                }
-              },
-              "materials": {
-                "title": "Materials",
-                "cassette": {
-                  "title": "Cassette",
-                  "line_1": "Aluminium",
-                  "line_2": "Painted to matching color."
                 },
-                "blinds": {
-                  "title": "Blinds",
-                  "line_1": "100% Polyester",
-                  "line_2": "More colors available on request."
+                "features": {
+                  "title": "Features",
+                  "line_1": "Child and pet safe design",
+                  "line_2": "Cordless one-handed EasyGlide operation",
+                  "line_3": "Superior quality polyester weave",
+                  "line_4": "Stain Resistant fabric",
+                  "line_5": "Easy to clean",
+                  "line_6": "Stylish and functional"
                 }
-              },
-              "features": {
-                "title": "Features",
-                "line_1": "Child and pet safe design",
-                "line_2": "Cordless one-handed EasyGlide operation",
-                "line_3": "Superior quality polyester weave",
-                "line_4": "Stain Resistant fabric",
-                "line_5": "Easy to clean",
-                "line_6": "Stylish and functional"
+              }
+            }
+          },
+          "premium": {
+            "specifications": {
+              "title": "Specifications",
+              "fig_1": "Blinds",
+              "fig_2": "Cassette",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Cassette",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "72 mm (2.83 in.)"
+                    },
+                    "min_depth": {
+                      "heading": "Min. depth:",
+                      "data": "75.5 mm (2.97 in.)"
+                    },
+                    "max_depth": {
+                      "heading": "Max. depth:",
+                      "data": "87 mm (3.43 in.)"
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements."
+                    }
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "height": {
+                      "heading": "Height:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 213.36 cm (84 in.)."
+                    },
+                    "width": {
+                      "heading": "Width:",
+                      "data": "Depends on window measurements - Min. 52 cm (20.47 in.). Max. 228.6 cm (90 in.)."
+                    }
+                  }
+                },
+                "materials": {
+                  "title": "Materials",
+                  "cassette": {
+                    "title": "Cassette",
+                    "line_1": "Aluminium",
+                    "line_2": "Painted to matching color."
+                  },
+                  "blinds": {
+                    "title": "Blinds",
+                    "line_1": "100% Polyester",
+                    "line_2": "More colors available on request."
+                  }
+                },
+                "features": {
+                  "title": "Features",
+                  "line_1": "Child and pet safe design",
+                  "line_2": "Cordless one-handed EasyGlide operation",
+                  "line_3": "Superior quality polyester weave",
+                  "line_4": "Stain Resistant fabric",
+                  "line_5": "Easy to clean",
+                  "line_6": "Stylish and functional"
+                }
               }
             }
           }
@@ -401,6 +467,9 @@
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",
+      "in_stock": "In stock",
+      "free_shipping": "Free shipping",
+      "out_of_stock": "Out of stock",
       "media": {
         "gallery_viewer": "Gallery Viewer",
         "load_image": "Load image {{ index }} in gallery view",
@@ -522,7 +591,9 @@
       },
       "partners": {
         "title": "We are mentioned by",
-        "description": "We are thrilled to offer all FADOQ members an exclusive discount. Visit their website for more information."
+        "title_2": "Featured Project: Zebra Blinds Installation for FM 103.3 Studio",
+        "description": "This project improved the studio's acoustics and modernized its appearance, creating a more pleasant working environment for hosts and guests.",
+        "read_more": "Read the full article about our installation at FM 103.3"
       },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",

@@ -119,39 +119,30 @@
                     {% endif %}
                     <div class="pt-4 pb-2 flex items-center justify-between gap-8">
                         <span data-product-display-price class="text-2xl font-light shrink-0">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
-                        {% if product.collections contains collections['all'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
+                        {% comment %} {% if product.collections contains collections['all'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
                             <div class="shrink flex items-center gap-1 bg-green-100 border border-green-300 rounded-md px-4 py-1">
                                 <span>{% render 'icon-success', class: 'h-4 fill-green-500' %}</span>
                                 <span class="text-xs font-medium text-green-500">{{ 'products.product.pickup_availability.pick_up_available_montreal' | t }}</span>
                             </div>
-                        {% endif %}
+                        {% endif %} {% endcomment %}
+                        <div data-product-display-availability="true" class="hidden flex-col">
+                            <span class="text-sm font-medium text-green-400">{{ 'products.product.in_stock' | t }}</span>
+                            <span class="text-sm font-medium">{{ 'products.product.free_shipping' | t }}</span>
+                        </div>
+                        <div data-product-display-availability="false" class="hidden flex-col">
+                            <span class="text-sm font-medium text-red-500">{{ 'products.product.out_of_stock' | t }}</span>
+                        </div>
                     </div>
                     {% assign button_text = 'products.product.add_to_cart' | t %}
-                    <div class="mt-2 w-full">
+                    <div class="mt-2 w-full" data-overlay-listen>
                         {% render 'product.component.add-cart-button',
                             button_text: button_text
                         %}
                     </div>
                     <div class="mt-2">
-                        <div class="bg-stone-200 rounded-md p-8 text-neutral-900 border-stone-900">
-                            <div class="flex justify-center items-center">
-                                {% render 'icon-question', class: 'h-16 w-auto fill-stone-900' %}
-                            </div>
-                            <h3 class="mt-4 font-serif font-bold text-3xl text-center">{{ 'products.product.looking_for_more_1' | t }}</h3>
-                            <p class="mt-2 text-center">{{ 'products.product.looking_for_more_2' | t }}</p>
-                            <!-- Début de widget de lien Calendly -->
-                            <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-                            <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-                            <a href="" class="mt-4 block bg-stone-900 mx-auto text-neutral-100 rounded-md w-fit font-semibold px-8 py-3 transition-all hover:bg-indigo-500" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/lucie-xie/15min'});return false;">{{ 'products.product.plan_a_meeting' | t }}</a>
-                            <!-- Fin de widget de lien Calendly -->
-                            <div class="mt-8">
-                                <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
-                                <span>{{ 'products.product.or' | t }}</span>
-                                <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
-                            </div>
-                        </div>
+                        {% render 'component.questions-scheduler' %}
                     </div>
-                    {% if product.collections contains collections['all'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
+                    {% comment %} {% if product.collections contains collections['all'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
                         <div class="mt-4 py-2 flex gap-4 justify-center items-center bg-indigo-800 rounded-md px-8 border border-stone-400">
                             <span>{% render 'icon-fixed-rate-shipping', class: 'h-6 w-auto fill-neutral-100' %}</span>
                             <span class="font-medium text-neutral-100">{{ 'products.product.cordless_zebra_blinds.highlight_badges.0' | t | newline_to_br }}</span>
@@ -160,7 +151,7 @@
                             <span>{% render 'icon-shipping', class: 'h-8 w-auto fill-stone-700' %}</span>
                             <span class="font-medium text-stone-700">{{ 'products.product.cordless_zebra_blinds.highlight_badges.1' | t | newline_to_br }}</span>
                         </div>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                 </div>
                 {% if product.collections contains collections['all'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
                     <div data-product-tab-group="0">

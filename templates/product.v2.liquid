@@ -138,32 +138,23 @@
                                     <span class="text-xs font-medium text-green-500">{{ 'products.product.pickup_availability.pick_up_available_montreal' | t }}</span>
                                 </div>
                             {% endif %} {% endcomment %}
+                            <div data-product-display-availability="true" class="hidden flex-col">
+                                <span class="text-sm font-medium text-green-400">{{ 'products.product.in_stock' | t }}</span>
+                                <span class="text-sm font-medium">{{ 'products.product.free_shipping' | t }}</span>
+                            </div>
+                            <div data-product-display-availability="false" class="hidden flex-col">
+                                <span class="text-sm font-medium text-red-500">{{ 'products.product.out_of_stock' | t }}</span>
+                            </div>
                         </div>
                         {% assign button_text = 'products.product.add_to_cart' | t %}
-                        <div class="mt-2 w-full">
+                        <div class="mt-2 w-full" data-overlay-listen>
                             {% render 'product.component.add-cart-button',
                                 button_text: button_text
                             %}
                         </div>
-                        {% comment %} <div class="mt-2">
-                            <div class="bg-stone-200 rounded-md p-8 text-neutral-900 border-stone-900">
-                                <div class="flex justify-center items-center">
-                                    {% render 'icon-question', class: 'h-16 w-auto fill-stone-900' %}
-                                </div>
-                                <h3 class="mt-4 font-serif font-bold text-3xl text-center">{{ 'products.product.looking_for_more_1' | t }}</h3>
-                                <p class="mt-2 text-center">{{ 'products.product.looking_for_more_2' | t }}</p>
-                                <!-- Début de widget de lien Calendly -->
-                                <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-                                <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-                                <a href="" class="mt-4 block bg-stone-900 mx-auto text-neutral-100 rounded-md w-fit font-semibold px-8 py-3 transition-all hover:bg-indigo-500" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/lucie-xie/15min'});return false;">{{ 'products.product.plan_a_meeting' | t }}</a>
-                                <!-- Fin de widget de lien Calendly -->
-                                <div class="mt-8">
-                                    <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
-                                    <span>{{ 'products.product.or' | t }}</span>
-                                    <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
-                                </div>
-                            </div>
-                        </div> {% endcomment %}
+                        <div class="mt-2">
+                            {% render 'component.questions-scheduler' %}
+                        </div>
                         {% comment %} {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
                             <div class="mt-4 py-2 flex gap-4 justify-center items-center bg-indigo-800 rounded-md px-8 border border-stone-400">
                                 <span>{% render 'icon-fixed-rate-shipping', class: 'h-6 w-auto fill-neutral-100' %}</span>
@@ -176,7 +167,7 @@
                         {% endif %} {% endcomment %}
                     </div>
                 </form>
-                {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
+                {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] or product.collections contains collections['opaque-blinds'] %}
                     <div data-product-tab-group="0">
                         <div class="grid grid-cols-3 gap-x-4 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
                             <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.highlights.tab_title' | t }}</div>
@@ -393,14 +384,17 @@
     </div>
 </div>
 {% render 'product.section.info' %}
-{% section 'product-details-basic' %}
+{% if product.collections contains collections['standard-zebra-blinds'] %}
+    {% section 'product-details-basic' %}
+{% elsif product.collections contains collections['premium-zebra-blinds'] %}
+    {% section 'product-details-premium' %}
+{% endif %}
 {% assign component_title = 'products.product.components.wide_hero' | t | newline_to_br %}
 {% assign image = 'product-showcase-wide-2.jpg' %}
 <div class="mt-12 lg:mt-24">
     {% render 'component.wide-hero', title: component_title, image: image %}
 </div>
 {% section 'product-overview' %}
-{% render 'product.component.purchase-overlay' %}
 
 {% capture drawer_content %}
     <div class="relative w-full text-stone-900">
@@ -408,7 +402,7 @@
             <div>{% render 'icon-close', class: 'h-5 w-auto fill-neutral-100 text-neutral-100' %}</div>
         </div>
         <div class="relative container text-center pt-8 pb-4 mx-auto">
-            <h3 class="text-5xl font-serif font-semibold">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.title' | t }}</h3>
+            <h3 class="text-5xl font-serif font-bold">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.title' | t }}</h3>
         </div>
         <div class="relative pt-4 pb-16 container mx-auto flex justify-center">
             <div class="lg:w-1/2">
@@ -425,7 +419,7 @@
                         <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                     </picture>
                 </div>
-                <h4 class="text-2xl font-serif font-semibold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}</h4>
+                <h4 class="text-2xl font-serif font-bold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.description' | t }}</p>
                 <div class="mt-20 aspect-square rounded-md overflow-hidden">
                     <picture>
@@ -439,9 +433,9 @@
                         <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                     </picture>
                 </div>
-                <h4 class="text-2xl font-serif font-semibold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}</h4>
+                <h4 class="text-2xl font-serif font-bold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.description' | t }}</p>
-                <h4 class="text-4xl font-serif font-semibold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.title' | t }}</h4>
+                <h4 class="text-3xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.description' | t }}</p>
             </div>
         </div>
@@ -455,50 +449,50 @@
             <div>{% render 'icon-close', class: 'h-5 w-auto fill-neutral-100 text-neutral-100' %}</div>
         </div>
         <div class="relative container text-center pt-8 pb-4 mx-auto">
-            <h3 class="text-5xl font-serif font-semibold">{{ 'products.product.cordless_zebra_blinds.guides.measuring.title' | t }}</h3>
+            <h3 class="text-5xl font-serif font-bold">{{ 'products.product.cordless_zebra_blinds.guides.measuring.title' | t }}</h3>
         </div>
         <div class="relative pt-4 pb-16 container mx-auto flex justify-center">
             <div class="lg:w-1/2">
                 <p>{{ 'products.product.cordless_zebra_blinds.guides.measuring.description' | t }}</p>
-                <h4 class="text-2xl font-serif font-semibold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.title' | t }}</h4>
+                <h4 class="text-2xl font-serif font-bold mt-6 text-start">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.title' | t }}</h4>
                 <ul class="mt-4 list-disc list-inside">
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.0' | t }}</li>
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.1' | t }}</li>
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.2' | t }}</li>
                 </ul>
-                <h4 class="text-4xl font-serif font-semibold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.title' | t }}</h4>
+                <h4 class="text-4xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.title' | t }}</h4>
                 <div class="mt-0 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-depth.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-semibold mt-12 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}</h5>
+                <h5 class="text-2xl font-serif font-bold mt-12 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.description_2' | t }}</p>
                 <div class="mt-8 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-width.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-semibold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}</h5>
+                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.description_2' | t }}</p>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-height.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-semibold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}</h5>
+                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.description_2' | t }}</p>
-                <h4 class="text-4xl font-serif font-semibold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.title' | t }}</h4>
+                <h4 class="text-4xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.title' | t }}</h4>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-outside-width.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-semibold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}</h5>
+                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.description_2' | t }}</p>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-outside-height.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-semibold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}</h5>
+                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.description_2' | t }}</p>
-                <h4 class="text-4xl font-serif font-semibold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.title' | t }}</h4>
+                <h4 class="text-3xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.description' | t }}</p>
             </div>
         </div>

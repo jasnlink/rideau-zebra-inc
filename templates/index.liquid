@@ -34,8 +34,21 @@
                 </a>
             </div>
         </div>
-        <div class="mt-16 text-center">
-            <p>{{ 'templates.homepage.partners.description' | t }}</p>
+        <div class="mt-24 text-center w-full sm:w-3/4 lg:w-1/2 mx-auto">
+            <div class="text-stone-900 font-serif font-bold text-center text-2xl">{{ 'templates.homepage.partners.title_2' | t }}</div>
+            <div class="mt-8 aspect-square w-full sm:w-3/4 lg:w-1/2 mx-auto">
+                <picture>
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                    <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                    <img src="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" alt="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                </picture>
+            </div>
+            <p class="mt-12">{{ 'templates.homepage.partners.description' | t }}</p>
+            <a href="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4" title="{{ articles['custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}">{{ 'templates.homepage.partners.read_more' | t }}</a>
         </div>
     </div>
 </div>

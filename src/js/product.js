@@ -158,10 +158,10 @@ function initPurchaseOverlay() {
                 // isIntersecting means we see the target element (add to cart button)
                 if (entry.isIntersecting || entry.boundingClientRect.top > 0) {
                     overlayElement.classList.add('hidden')
-                    document.querySelector('footer').classList.remove('mb-24')
+                    // document.querySelector('footer').classList.remove('mb-24')
                 } else {
                     overlayElement.classList.remove('hidden')
-                    document.querySelector('footer').classList.add('mb-24')
+                    // document.querySelector('footer').classList.add('mb-24')
                 }
             });
         }
@@ -234,6 +234,7 @@ function initVariantSelector() {
         })
         let foundElement = document.querySelector(search)
         if(foundElement) {
+            console.log('searchVariantList')
             const installServiceElement = document.querySelector('[data-product-install-service-item-id]')
             const installServiceId = installServiceElement?.getAttribute('data-product-install-service-item-id')
 
@@ -246,20 +247,46 @@ function initVariantSelector() {
                 element.setAttribute('data-add-cart', currentAddCartIds)
                 element.setAttribute('data-add-cart-selected-product-variant-id', foundElement.getAttribute('data-selector-variant-id'))
                 element.disabled = false
+
             })
             document.querySelectorAll('[data-product-display-price]').forEach(element => {
                 element.textContent = foundElement.getAttribute('data-selector-variant-price')
             })
+            document.querySelectorAll('[data-product-display-availability="true"]').forEach(element => {
+                element.classList.remove('hidden')
+                element.classList.add('flex')
+            })
+            document.querySelectorAll('[data-product-display-availability="false"]').forEach(element => {
+                element.classList.add('hidden')
+                element.classList.remove('flex')
+            })
+
             if (!foundElement.getAttribute('data-variant-available') || foundElement.getAttribute('data-variant-available') === 'false') {
                 document.querySelectorAll('[data-add-cart]').forEach(element => {
                     element.dataset.addCart = null
                     element.disabled = true
+                })
+                document.querySelectorAll('[data-product-display-availability="false"]').forEach(element => {
+                    element.classList.remove('hidden')
+                    element.classList.add('flex')
+                })
+                document.querySelectorAll('[data-product-display-availability="true"]').forEach(element => {
+                    element.classList.add('hidden')
+                    element.classList.remove('flex')
                 })
             }
         } else {
             document.querySelectorAll('[data-add-cart]').forEach(element => {
                 element.dataset.addCart = null
                 element.disabled = true
+            })
+            document.querySelectorAll('[data-product-display-availability="false"]').forEach(element => {
+                element.classList.remove('hidden')
+                element.classList.add('flex')
+            })
+            document.querySelectorAll('[data-product-display-availability="true"]').forEach(element => {
+                element.classList.add('hidden')
+                element.classList.remove('flex')
             })
         }
     }
