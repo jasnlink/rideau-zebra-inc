@@ -47,46 +47,54 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 xl:gap-12">
         <div class="col-span-7">
             <div class="hidden lg:flex flex-col gap-2">
-                {% for image in product.images %}
+                {% for media in product.media %}
                     <div class="flex items-center justify-center aspect-square rounded-md">
+                    {% if media.media_type == 'image' %}
                         <picture class="flex flex-grow">
-                            <source srcset="{{ image | image_url: width: 1154 }}" media="(min-width:1536px)" />
-                            <source srcset="{{ image | image_url: width: 1018 }}" media="(min-width:1280px)" />
-                            <source srcset="{{ image | image_url: width: 868 }}" media="(min-width:1024px)" />
-                            <source srcset="{{ image | image_url: width: 1152 }}" media="(min-width:768px)" />
-                            <source srcset="{{ image | image_url: width: 896 }}" media="(min-width:640px)" />
-                            <source srcset="{{ image | image_url: width: 768 }}" media="(min-width:0px)" />
-                            <img src="{{ image | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                            <source srcset="{{ media | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                            <source srcset="{{ media | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                            <source srcset="{{ media | image_url: width: 868 }}" media="(min-width:1024px)" />
+                            <source srcset="{{ media | image_url: width: 1152 }}" media="(min-width:768px)" />
+                            <source srcset="{{ media | image_url: width: 896 }}" media="(min-width:640px)" />
+                            <source srcset="{{ media | image_url: width: 768 }}" media="(min-width:0px)" />
+                            <img src="{{ media | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-contain rounded-md" />
                         </picture>
+                    {% elsif media.media_type == 'video' %}
+                        {{ media | video_tag: image_size: '480x', playsinline: '', autoplay: true, loop: true, muted: true, class: 'w-full h-full object-cover rounded-md' }}
+                    {% endif %}
                     </div>
                 {% endfor %}
             </div>
             <div class="glide lg:hidden">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        {% for image in product.images %}
+                        {% for media in product.media %}
                             <li class="glide__slide">
                                 <div class="flex items-center justify-center aspect-square rounded-md">
-                                    <picture class="flex flex-grow">
-                                        <source srcset="{{ image | image_url: width: 1154 }}" media="(min-width:1536px)" />
-                                        <source srcset="{{ image | image_url: width: 1018 }}" media="(min-width:1280px)" />
-                                        <source srcset="{{ image | image_url: width: 868 }}" media="(min-width:1024px)" />
-                                        <source srcset="{{ image | image_url: width: 1152 }}" media="(min-width:768px)" />
-                                        <source srcset="{{ image | image_url: width: 896 }}" media="(min-width:640px)" />
-                                        <source srcset="{{ image | image_url: width: 768 }}" media="(min-width:0px)" />
-                                        <img src="{{ image | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
-                                    </picture>
+                                    {% if media.media_type == 'image' %}
+                                        <picture class="flex flex-grow">
+                                            <source srcset="{{ media | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                                            <source srcset="{{ media | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                                            <source srcset="{{ media | image_url: width: 868 }}" media="(min-width:1024px)" />
+                                            <source srcset="{{ media | image_url: width: 1152 }}" media="(min-width:768px)" />
+                                            <source srcset="{{ media | image_url: width: 896 }}" media="(min-width:640px)" />
+                                            <source srcset="{{ media | image_url: width: 768 }}" media="(min-width:0px)" />
+                                            <img src="{{ media | image_url: width: 768 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-contain rounded-md" />
+                                        </picture>
+                                    {% elsif media.media_type == 'video' %}
+                                        {{ media | video_tag: image_size: '480x', playsinline: '', autoplay: true, loop: true, muted: true, class: 'w-full h-full object-cover rounded-md' }}
+                                    {% endif %}
                                 </div>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="mt-2 grid grid-cols-6 gap-2" data-glide-el="controls">
-                    {% for image in product.images %}
+                    {% for media in product.media %}
                         <div role="button" data-glide-dir="={{ forloop.index0 }}">
-                            <div class="flex items-center justify-center bg-gray-200 aspect-square rounded-md">
+                            <div class="flex items-stretch justify-center bg-gray-200 aspect-square rounded-md">
                                 <picture class="flex flex-grow">
-                                    <img src="{{ image | image_url: width: 196 }}" alt="{{ image.alt }}" height="120" width="120" loading="lazy" class="w-full h-auto object-contain rounded" />
+                                    <img src="{{ media | image_url: width: 196 }}" alt="{{ image.alt }}" height="120" width="120" loading="lazy" class="w-full h-full object-cover rounded" />
                                 </picture>
                             </div>
                         </div>
