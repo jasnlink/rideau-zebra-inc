@@ -99,6 +99,14 @@
                         <div
                             class="text-stone-900 font-bold text-center text-2xl"
                             aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
+                        >{{ gift_card.balance }}</div>
+                        <div
+                            class="text-stone-900 font-bold text-center text-2xl"
+                            aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
+                        >{{ gift_card.code | format_code }}</div>
+                        <div
+                            class="text-stone-900 font-bold text-center text-2xl"
+                            aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
                         >{{ gift_card.code | format_code }}</div>
                         {%- if gift_card.pass_url -%}
                             <a href="{{ gift_card.pass_url }}" class="gift_card__apple-wallet">
