@@ -56,7 +56,7 @@
 
     <body class="gradient">
         <header class="gift-card__title">
-            <span class="h2">{{ shop.name }}</span>
+            {% comment %} <span class="h2">{{ shop.name }}</span>
             <h1 class="gift-card__heading">{{ 'gift_cards.issued.subtext' | t }}</h1>
             <div class="gift-card__price">
                 <p>
@@ -78,7 +78,10 @@
             {% endif %}
             {%- if gift_card.balance != gift_card.initial_value -%}
                 <p class="gift-card__label caption-large">{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
+            {% section 'mobile-menu' %}
+            {% section 'cart-drawer' %}
+            {% section 'header' %}
         </header>
 
         <main
