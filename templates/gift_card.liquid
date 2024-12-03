@@ -91,18 +91,15 @@
         >
             <div class="py-20 bg-white">
                 <div class="container mx-auto">
-                    <div class="gift-card__image-wrapper">
+                    <div class="flex justify-center items-center">
                         <img src="{{ 'gift-card/card.svg' | shopify_asset_url }}" alt="" class="gift-card__image" height="{{ 570 | divided_by: 1.5 }}" width="570" loading="lazy">
                     </div>
-                    <div class="gift-card__qr-code" data-identifier="{{ gift_card.qr_identifier }}"></div>
-                    <div class="gift-card__information">
-                        <input
-                            type="text"
-                            class="gift-card__number"
-                            value="{{ gift_card.code | format_code }}"
+                    <div class="mt-8 flex justify-center items-center" data-identifier="{{ gift_card.qr_identifier }}"></div>
+                    <div class="mt-8 flex flex-col gap-8 items-center justify-center">
+                        <div
+                            class="text-stone-900 font-serif font-bold text-center text-2xl"
                             aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
-                            readonly
-                        >
+                        >{{ gift_card.code | format_code }}</div>
                         <div class="gift-card__copy-code">
                             <button class="link gift-card__copy-link">{{ 'gift_cards.issued.copy_code' | t }}</button>
                             <span class="gift-card__copy-success form__message" role="status"></span>
