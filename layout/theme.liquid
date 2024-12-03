@@ -59,7 +59,7 @@
                 {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
             {% endif %}
         </title>
-        
+
         {% if request.page_type == 'index' %}
             <meta name="description" content="{{ 'general.meta.index.description' | t }}">
             <meta property="og:description" content="{{ 'general.meta.index.description' | t }}">
@@ -77,11 +77,11 @@
         {% render 'meta-tags' %}
         <script src="https://unpkg.com/@popperjs/core@2" defer="defer"></script>
         <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
-        {%- if template == 'index' -%}
+        {%- if template.name == 'index' -%}
             <script src="{{ 'index.js' | asset_url }}" defer="defer">
-        {% elsif template == 'product' or template == 'product.v2' %}
+        {% elsif template.name == 'product' or template == 'product.v2' %}
             <script src="{{ 'product.js' | asset_url }}" defer="defer">
-        {% elsif template == 'collection' %}
+        {% elsif template.name == 'collection' %}
             <script src="{{ 'index.js' | asset_url }}" defer="defer">
         {%- endif -%}
         {{ content_for_header }}
