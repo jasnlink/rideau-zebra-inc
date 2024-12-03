@@ -27,7 +27,7 @@
                 <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ shop.url | remove: current_lang_url }}{{ parsed_request_path }}" title="{{ translate_lang }}">{{ translate_lang }}</a>
             </div>
         </div>
-        {% if page.template_suffix != 'gift_card' %}
+        {% if template.name != 'gift_card' %}
             <div class="text-sm font-medium text-right">
                 <a href="#" data-drawer-action="cart-drawer" data-animation-target="cart" title="CART" class="flex items-center justify-center relative p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
                     <span class="w-fit">{% render 'icon-cart', class: 'h-5 lg:h-7 w-auto fill-neutral-100' %}</span>
