@@ -27,12 +27,14 @@
                 <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ shop.url | remove: current_lang_url }}{{ parsed_request_path }}" title="{{ translate_lang }}">{{ translate_lang }}</a>
             </div>
         </div>
-        <div class="text-sm font-medium text-right">
-            <a href="#" data-drawer-action="cart-drawer" data-animation-target="cart" title="CART" class="flex items-center justify-center relative p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
-                <span class="w-fit">{% render 'icon-cart', class: 'h-5 lg:h-7 w-auto fill-neutral-100' %}</span>
-                <div data-cart-count class="absolute -mt-1.5 lg:-mt-1 -mr-1 top-0 right-0 p-1.5 opacity-0 rounded-full bg-indigo-600 text-neutral-100 font-medium text-[10px] lg:text-[11px] leading-none flex items-center justify-center transition-all"></div>
-            </a>
-        </div>
+        {% if template.name != 'gift_card' %}
+            <div class="text-sm font-medium text-right">
+                <a href="#" data-drawer-action="cart-drawer" data-animation-target="cart" title="CART" class="flex items-center justify-center relative p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
+                    <span class="w-fit">{% render 'icon-cart', class: 'h-5 lg:h-7 w-auto fill-neutral-100' %}</span>
+                    <div data-cart-count class="absolute -mt-1.5 lg:-mt-1 -mr-1 top-0 right-0 p-1.5 opacity-0 rounded-full bg-indigo-600 text-neutral-100 font-medium text-[10px] lg:text-[11px] leading-none flex items-center justify-center transition-all"></div>
+                </a>
+            </div>
+        {% endif %}
     </nav>
     {% if request.page_type == 'product' %}
         {% render 'product.component.purchase-overlay' %}
