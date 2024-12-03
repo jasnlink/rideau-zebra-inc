@@ -97,22 +97,15 @@
                     <div class="mt-8 flex justify-center items-center" data-identifier="{{ gift_card.qr_identifier }}"></div>
                     <div class="mt-8 flex flex-col gap-8 items-center justify-center">
                         <div
-                            class="text-stone-900 font-serif font-bold text-center text-2xl"
+                            class="text-stone-900 font-bold text-center text-2xl"
                             aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
                         >{{ gift_card.code | format_code }}</div>
-                        <div class="gift-card__copy-code">
-                            <button class="link gift-card__copy-link">{{ 'gift_cards.issued.copy_code' | t }}</button>
-                            <span class="gift-card__copy-success form__message" role="status"></span>
-                            <template>
-                                {%- render 'icon-success' -%}{{ 'gift_cards.issued.copy_code_success' | t }}
-                            </template>
-                        </div>
                         {%- if gift_card.pass_url -%}
                             <a href="{{ gift_card.pass_url }}" class="gift_card__apple-wallet">
                                 <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}" loading="lazy">
                             </a>
                         {%- endif -%}
-                        <div class="gift-card__buttons no-print">
+                        <div class="flex items-center justify-center gap-8">
                             <a
                                 href="{{ shop.url }}"
                                 class="button"
