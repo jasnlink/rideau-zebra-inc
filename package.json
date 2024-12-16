@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "dev": "npx shopify theme dev --store=rideau-zebra",
+        "dev": "npx shopify theme dev --store rideau-zebra --ignore package.json --ignore package-lock.json",
         "tw": "npx tailwindcss -i ./input.css -o ./assets/output.css --watch",
         "build": "webpack --mode=production --node-env=production",
         "build:dev": "webpack --mode=development",

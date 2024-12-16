@@ -209,7 +209,7 @@
             "1" : "Nous livrons à Montréal, Longueuil, Brossard, Sainte-Julie, Saint-Bruno, Mercier, La Prairie, Carignan, Chambly, Sainte-Catherine, Saint-Constant, Boucherville, Laval, et bien d'autres. Contactez-nous pour en savoir plus.",
             "2": "Nous expédions au reste du Canada et des É. U. pour un prix fixe."
           }
-          
+
         },
         "guides": {
           "mount_type": {
@@ -768,6 +768,7 @@
       },
       "solution_by_html": "Une solution par <a href=\"https:\/\/msmtech.ca\">MSM Technologies<\/a>.",
       "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Propulsé par Shopify<\/a>",
+      "powered_by_shpf": "Propulsé par Shopify",
       "copyright": "&copy; Tous droits réservés",
       "ssl_encrypted": "PAIEMENTS SÉCURISÉS | CHIFFRÉS PAR SSL",
       "site_secure": "Site sécuritaire",
