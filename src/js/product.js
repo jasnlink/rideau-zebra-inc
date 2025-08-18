@@ -36,7 +36,7 @@ function initProductForms() {
         selectedVariantId: null,
         selectedVariantWidth: null,
         minVariantWidth: 10,
-        maxVariantWidth: 90,
+        maxVariantWidth: 200,
         enabled: true,
     }
 
@@ -81,7 +81,7 @@ function initProductForms() {
         calculateVariantWidth(event.target.value, window.productForms.productFormsMeasurementUnitInputElement.value)
         selectVariant(window.productForms.selectedVariantWidth)
     })
-    
+
     function calculateVariantWidth(width, unit) {
         window.productForms.selectedVariantWidth = Math.ceil(parseFloat(width) * window.productForms.measurementUnitsMultiplier[unit] || 0)
         if (window.productForms.selectedVariantWidth <= window.productForms.minVariantWidth) {
@@ -95,13 +95,64 @@ function initProductForms() {
     function selectVariant(selectedVariantWidth) {
 
         const variantSelector = document.querySelector('[data-selector-element-type="dropdown"]')
+        let availableWidths = []
+        let exactMatch = null
+
+        // Collect all available widths and look for exact match
         for (const option of variantSelector.options) {
             const optionValue = parseInt(option.getAttribute('data-selector-option-value').split('x')[0].split('_')[0])
+            availableWidths.push({ width: optionValue, option: option })
+
             if (optionValue === selectedVariantWidth) {
-                variantSelector.value = option.value
+                exactMatch = option
+            }
+        }
+
+        // If exact match found, select it
+        if (exactMatch) {
+            variantSelector.value = exactMatch.value
+            variantSelector.dispatchEvent(new Event('change'));
+            return
+        }
+
+        // Sort available widths
+        availableWidths.sort((a, b) => a.width - b.width)
+
+        // If selectedVariantWidth is at or below minimum, select smallest available
+        if (selectedVariantWidth <= window.productForms.minVariantWidth) {
+            const smallestOption = availableWidths[0]
+            if (smallestOption) {
+                variantSelector.value = smallestOption.option.value
                 variantSelector.dispatchEvent(new Event('change'));
                 return
             }
+        }
+
+        // If selectedVariantWidth is at or above maximum, select largest available
+        if (selectedVariantWidth >= window.productForms.maxVariantWidth) {
+            const largestOption = availableWidths[availableWidths.length - 1]
+            if (largestOption) {
+                variantSelector.value = largestOption.option.value
+                variantSelector.dispatchEvent(new Event('change'));
+                return
+            }
+        }
+
+        // For values in between, find the closest available width
+        let closestOption = null
+        let smallestDifference = Infinity
+
+        for (const item of availableWidths) {
+            const difference = Math.abs(item.width - selectedVariantWidth)
+            if (difference < smallestDifference) {
+                smallestDifference = difference
+                closestOption = item.option
+            }
+        }
+
+        if (closestOption) {
+            variantSelector.value = closestOption.value
+            variantSelector.dispatchEvent(new Event('change'));
         }
     }
 
@@ -137,7 +188,7 @@ function initProductInstallService() {
 }
 
 function initPurchaseOverlay() {
-    
+
     let observeElement = document.querySelector('[data-overlay-listen]')
     if(observeElement) {
         let options = {
@@ -146,7 +197,7 @@ function initPurchaseOverlay() {
         }
         let observer = new IntersectionObserver(handleIntersect, options);
         observer.observe(observeElement);
-    
+
         function handleIntersect(entries) {
             let overlayElement = document.querySelector('[data-overlay-action]')
 
@@ -178,7 +229,7 @@ function initVariantSelector() {
             value: null
         }
     })
-    
+
     document.querySelectorAll('[data-selector-element-type]').forEach(selectorElement => {
         let selectorType = selectorElement.dataset.selectorElementType
         if(selectorType === 'button') {
@@ -321,12 +372,12 @@ function initProductTabAction() {
             handleTabSelection(currentTabState, clickedTabActionElement)
         })
     })
-    
+
     function handleTabSelection(currentTabState, clickedTabActionElement) {
-        
+
         let clickedTabgroupId = parseInt(clickedTabActionElement.closest('[data-product-tab-group]').dataset.productTabGroup)
         let clickedTabId = parseInt(clickedTabActionElement.dataset.productTabAction)
-    
+
         if(clickedTabId === currentTabState[clickedTabgroupId].selectedTabId) {
             return
         }
@@ -357,7 +408,7 @@ function initProductTabAction() {
             currentTabState[clickedTabgroupId].selectedTabId = clickedTabId
             currentTabState[clickedTabgroupId].selectedTabActionElement = clickedTabActionElement
         }
-    
+
 
     }
 

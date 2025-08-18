@@ -87,7 +87,7 @@
     <div class="py-20 bg-indigo-50">
         <div class="container mx-auto">
             <div class="text-stone-900 font-serif font-bold text-center text-3xl sm:text-4xl">{{ 'templates.homepage.partners.title' | t }}</div>
-            <div class="mt-12 grid grid-cols-3">
+            <div class="mt-12 grid grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-2">
                 <div class="col-span-1 flex items-center justify-center">
                     {%- assign image = 'partner-logo-fadoq.svg' -%}
                     {% if language == 'fr' %}
@@ -108,6 +108,18 @@
                     <a href="https://www.lecourrierdusud.ca/les-stores-alternes-un-equilibre-parfait-entre-style-et-fonctionnalite" class="block" target="_blank">
                         <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Courrier du Sud' }}" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
                     </a>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-gravite-media.png' -%}
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Gravité Média' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-ma-vie-ma-region.png' -%}
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Ma Vie Ma Région' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                    {%- assign image = 'partner-logo-walmart.png' -%}
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Walmart' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
                 </div>
             </div>
             <div class="mt-24 text-center w-full sm:w-3/4 lg:w-1/2 mx-auto">
