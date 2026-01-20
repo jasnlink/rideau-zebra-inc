@@ -77,6 +77,7 @@ color-group:VALUE    # Color variant grouping
 - `product-type:opaque-blinds`
 
 **Tiers:**
+- `tier:basic`
 - `tier:standard`
 - `tier:premium`
 
@@ -113,7 +114,7 @@ color-group:VALUE    # Color variant grouping
     {% endif %}
 {% endfor %}
 
-{% if product_tier == 'standard' %}
+{% if product_tier == 'basic' or product_tier == 'standard' %}
     {% section 'product-details-basic' %}
 {% elsif product_tier == 'premium' %}
     {% section 'product-details-premium' %}
@@ -192,7 +193,7 @@ color-group:VALUE    # Color variant grouping
 ```
 Tags:
   - product-type:zebra-blinds
-  - tier:standard
+  - tier:basic
   - color-group:zebra-standard
 
 Metafields:

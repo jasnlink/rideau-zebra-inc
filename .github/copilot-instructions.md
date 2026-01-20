@@ -43,6 +43,7 @@ Example usage in Liquid:
 Format: `tier:VALUE`
 
 Valid values:
+- `tier:basic` - Basic quality level
 - `tier:standard` - Standard quality level
 - `tier:premium` - Premium quality level
 
