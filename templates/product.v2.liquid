@@ -419,7 +419,7 @@
         {% break %}
     {% endif %}
 {% endfor %}
-{% if product_tier == 'standard' %}
+{% if product_tier == 'basic' or product_tier == 'standard' %}
     {% section 'product-details-basic' %}
 {% elsif product_tier == 'premium' %}
     {% section 'product-details-premium' %}
