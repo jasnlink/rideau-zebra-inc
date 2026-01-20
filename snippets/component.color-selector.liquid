@@ -1,34 +1,73 @@
-<div class="mt-4 pt-4 border-t border-stone-400">
-    <div class="bg-white border border-stone-200 rounded-md pt-6 pb-8 px-4 sm:px-6 lg:px-4 xl:px-6">
-        {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ product.metafields.custom.color_key_name.value }}{% endcapture %}
-        <div class="font-medium text-lg">{{ 'products.product.cordless_zebra_blinds.color_selector.title' | t }} <span class="font-bold">{{ translated_color | t }}</span></div>
-        <div class="mt-2 flex flex-wrap gap-2">
-            {% for collection_product in collections['zebra-blinds'].products %}
-                {% capture color_block %}
-                    {% comment %} {% if collection_product.metafields.custom_filters.texture != blank %}
-                        <div class="rounded-md overflow-hidden">
-                            <picture>
-                                <img src="{{ collection_product.metafields.custom_filters.texture | image_url: width: 360 }}" class="w-full h-full object-cover">
-                            </picture>
-                        </div>
-                    {% else %}
-                    {% endif %} {% endcomment %}
-                    <div class="w-full h-full rounded-md overflow-hidden" style="background-color: {{ collection_product.metafields.custom_filters.color.value }};"></div>
-                {% endcapture %}
-                <div class="relative group">
-                    {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ collection_product.metafields.custom.color_key_name.value }}{% endcapture %}
-                    <div class="invisible group-hover:visible absolute mt-2 top-full left-1/2 -translate-x-1/2 py-1 px-2 text-neutral-100 text-sm bg-stone-800/70 rounded-md whitespace-nowrap">{{ translated_color | t }}</div>
-                    {% if collection_product.handle == product.handle %}
-                        <div class="aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-indigo-500 overflow-hidden hover:border-indigo-500/80 transition-all shadow-sm">
-                            {{ color_block }}
-                        </div>
-                    {% else %}
-                        <a href="{{ collection_product.url | append: '?view=v2' }}" title="{{ collection_product.title }}" class="block aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-stone-300 hover:border-indigo-300 transition-all overflow-hidden shadow-sm">
-                            {{ color_block }}
-                        </a>
-                    {% endif %}
+{% comment %}
+  Color Selector Component
+  Uses product tags with prefix "color-group:" to determine which products share the same color variants
+  Example tags: color-group:zebra-standard, color-group:zebra-premium
+
+  Requirements:
+  - Product must have a tag starting with "color-group:"
+  - Product must have metafields.custom.color_key_name set
+  - Product must have metafields.custom_filters.color set (for background color)
+{% endcomment %}
+
+{% comment %} Find the color group tag for this product {% endcomment %}
+{% assign color_group_tag = '' %}
+{% for tag in product.tags %}
+    {% if tag contains 'color-group:' %}
+        {% assign color_group_tag = tag %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% comment %} Only show color selector if product has color group tag and color metafield {% endcomment %}
+{% if color_group_tag != blank and product.metafields.custom.color_key_name.value != blank %}
+    {% comment %} Get all products from the store that share the same color group tag {% endcomment %}
+    {% assign color_variants = collections.all.products | where_exp: "item", "item.tags contains color_group_tag" %}
+
+    {% comment %} Only show if there are multiple color variants {% endcomment %}
+    {% if color_variants.size > 1 %}
+        <div class="mt-4 pt-4 border-t border-stone-400">
+            <div class="bg-white border border-stone-200 rounded-md pt-6 pb-8 px-4 sm:px-6 lg:px-4 xl:px-6">
+                {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ product.metafields.custom.color_key_name.value }}{% endcapture %}
+                <div class="font-medium text-lg">{{ 'products.product.cordless_zebra_blinds.color_selector.title' | t }} <span class="font-bold">{{ translated_color | t }}</span></div>
+                <div class="mt-2 flex flex-wrap gap-2">
+                    {% for variant_product in color_variants %}
+                        {% if variant_product.metafields.custom.color_key_name.value != blank %}
+                            {% capture color_block %}
+                                {% if variant_product.metafields.custom_filters.texture != blank %}
+                                    <div class="rounded-md overflow-hidden">
+                                        <picture>
+                                            <img src="{{ variant_product.metafields.custom_filters.texture | image_url: width: 360 }}" alt="{{ variant_product.title }}" class="w-full h-full object-cover">
+                                        </picture>
+                                    </div>
+                                {% elsif variant_product.metafields.custom_filters.color.value != blank %}
+                                    <div class="w-full h-full rounded-md overflow-hidden" style="background-color: {{ variant_product.metafields.custom_filters.color.value }};"></div>
+                                {% else %}
+                                    <div class="w-full h-full rounded-md overflow-hidden bg-gray-300"></div>
+                                {% endif %}
+                            {% endcapture %}
+                            <div class="relative group">
+                                {% capture translated_color %}products.product.cordless_zebra_blinds.color_selector.options.{{ variant_product.metafields.custom.color_key_name.value }}{% endcapture %}
+                                <div class="invisible group-hover:visible absolute mt-2 top-full left-1/2 -translate-x-1/2 py-1 px-2 text-neutral-100 text-sm bg-stone-800/70 rounded-md whitespace-nowrap z-10">{{ translated_color | t }}</div>
+                                {% if variant_product.handle == product.handle %}
+                                    <div class="aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-indigo-500 overflow-hidden hover:border-indigo-500/80 transition-all shadow-sm">
+                                        {{ color_block }}
+                                    </div>
+                                {% else %}
+                                    {% comment %} Preserve current view parameter if present {% endcomment %}
+                                    {% if request.page_type == 'product' and template.name == 'product' %}
+                                        {% assign target_url = variant_product.url %}
+                                    {% else %}
+                                        {% assign target_url = variant_product.url | append: '?view=v2' %}
+                                    {% endif %}
+                                    <a href="{{ target_url }}" title="{{ variant_product.title }}" class="block aspect-square w-16 h-16 p-0.5 rounded-md border-2 border-stone-300 hover:border-indigo-300 transition-all overflow-hidden shadow-sm">
+                                        {{ color_block }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                            {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
-    </div>
-</div>
+    {% endif %}
+{% endif %}
