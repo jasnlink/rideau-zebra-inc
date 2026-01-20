@@ -108,7 +108,18 @@
                     <div class="py-4 lg:py-6 mx-auto">
                         <div class="text-4xl font-bold mt-4 font-serif text-black">{{ product.title }}</div>
                         <div class="mt-4 pt-4 border-t border-stone-400">{{ product.description | strip_html }}</div>
-                        {% if product.collections contains collections['zebra-blinds'] %}
+                        {% comment %} Check if product has zebra-blinds product type {% endcomment %}
+                        {% assign has_product_type = false %}
+                        {% for tag in product.tags %}
+                            {% if tag contains 'product-type:' %}
+                                {% assign product_type = tag | remove: 'product-type:' %}
+                                {% if product_type == 'zebra-blinds' or product_type == 'motorized-zebra-blinds' or product_type == 'opaque-blinds' %}
+                                    {% assign has_product_type = true %}
+                                    {% break %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if has_product_type %}
                             {% render 'component.color-selector' %}
 
                             {% comment %} <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-white border border-stone-200 hover:bg-neutral-50 has-[:checked]:bg-indigo-200 has-[:checked]:border-indigo-500" for="install-check">
@@ -128,7 +139,7 @@
                                 %}
                             </div>
                         {% endif %}
-                        {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
+                        {% if has_product_type %}
                             <div class="mt-2">
                                 <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-white border border-stone-200 hover:bg-neutral-50 has-[:checked]:bg-indigo-200 has-[:checked]:border-indigo-500" for="install-check">
                                     <input class="hidden peer" type="checkbox" id="install-check" data-product-install-service-item-id="{{ all_products['professional-window-blind-installation-service'].first_available_variant.id }}">
@@ -183,7 +194,7 @@
                         {% endif %} {% endcomment %}
                     </div>
                 </form>
-                {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] or product.collections contains collections['opaque-blinds'] %}
+                {% if has_product_type %}
                     <div data-product-tab-group="0">
                         <div class="grid grid-cols-3 gap-x-4 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
                             <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.highlights.tab_title' | t }}</div>
@@ -400,9 +411,17 @@
     </div>
 </div>
 {% render 'product.section.info' %}
-{% if product.collections contains collections['standard-zebra-blinds'] %}
+{% comment %} Check for product tier {% endcomment %}
+{% assign product_tier = '' %}
+{% for tag in product.tags %}
+    {% if tag contains 'tier:' %}
+        {% assign product_tier = tag | remove: 'tier:' %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% if product_tier == 'standard' %}
     {% section 'product-details-basic' %}
-{% elsif product.collections contains collections['premium-zebra-blinds'] %}
+{% elsif product_tier == 'premium' %}
     {% section 'product-details-premium' %}
 {% endif %}
 {% assign component_title = 'products.product.components.wide_hero' | t | newline_to_br %}
