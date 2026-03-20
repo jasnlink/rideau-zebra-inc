@@ -1,15 +1,16 @@
-{% assign collection = collections['all'] %}
-
 {% comment %}
-    All products page — products grouped by type.
-    Tier and operation show naturally via product info.
+    Collection page v2 — products grouped by type.
+    Requires product-type: tags on products to group them.
+    Products without tags fall into "Other Products".
 {% endcomment %}
 
 {% comment %} ── Page header ── {% endcomment %}
 <div class="bg-surface-white">
     <div class="container mx-auto rz-page-gutter pt-16 pb-12 lg:pt-24 lg:pb-16 text-center">
-        <h1 class="rz-h1">{{ 'collections.page.title' | t }}</h1>
-        <p class="mt-4 text-content-secondary text-lg leading-relaxed max-w-2xl mx-auto">{{ 'collections.page.subtitle' | t }}</p>
+        <h1 class="rz-h1">{{ collection.title }}</h1>
+        {% if collection.description != blank %}
+            <p class="mt-4 text-content-secondary text-lg leading-relaxed max-w-2xl mx-auto">{{ collection.description | strip_html }}</p>
+        {% endif %}
     </div>
 </div>
 
@@ -34,6 +35,7 @@
         <div class="bg-surface-100">
             <div class="container mx-auto rz-page-gutter pt-16 pb-20 lg:pt-24 lg:pb-28" id="{{ pt }}">
                 <div class="border-t border-content-tertiary pt-8">
+                    <span class="rz-overline text-content-secondary">{{ pt_title_key | t }}</span>
                     <p class="mt-2 text-content-secondary leading-relaxed max-w-xl">{{ pt_desc_key | t }}</p>
                 </div>
 
@@ -75,6 +77,7 @@
     <div class="bg-surface-100">
         <div class="container mx-auto rz-page-gutter pt-16 pb-20 lg:pt-24 lg:pb-28">
             <div class="border-t border-content-tertiary pt-8">
+                <h2 class="rz-h2">{{ 'collections.groups.other.title' | t }}</h2>
             </div>
 
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
@@ -94,3 +97,5 @@
         </div>
     </div>
 {% endif %}
+
+{% render 'component.faq' %}

@@ -1,8 +1,52 @@
 {
   "collections": {
+    "page": {
+      "title": "Stores zébrés & habillages de fenêtres sur mesure",
+      "subtitle": "Fabriqués sur mesure. Livrés chez vous."
+    },
     "all-products": {
       "see_motorized": "Voir nos options motorisées",
-      "see_non_motorized": "Voir nos options non-motorisées"
+      "see_non_motorized": "Voir nos options non-motorisées",
+      "motorized_title": "Stores zébrés motorisés",
+      "motorized_description": "Découvrez notre sélection de stores zébrés motorisés pour un contrôle de la lumière sans effort."
+    },
+    "groups": {
+      "product_type": {
+        "zebra-blinds": {
+          "title": "Stores zébrés",
+          "description": "Bandes alternées transparentes et opaques. Ajustez la lumière d'un simple geste."
+        },
+        "curtains": {
+          "title": "Rideaux",
+          "description": "Habillage de fenêtre classique pour chaque pièce. Doux, fluide et intemporel."
+        },
+        "opaque-blinds": {
+          "title": "Stores opaques",
+          "description": "Occultation complète de la lumière. Idéal pour les chambres et salles de cinéma."
+        }
+      },
+      "tier": {
+        "basic": {
+          "title": "Basique"
+        },
+        "standard": {
+          "title": "Standard"
+        },
+        "premium": {
+          "title": "Premium"
+        }
+      },
+      "operation": {
+        "cordless": {
+          "title": "Sans fil"
+        },
+        "motorized": {
+          "title": "Motorisé"
+        }
+      },
+      "other": {
+        "title": "Autres produits"
+      }
     }
   },
   "general": {
@@ -127,6 +171,10 @@
           "0": "Expédition taux fixe vers le reste du Canada et É. U.",
           "1": "Livraison locale zéro émission"
         },
+        "width_warning": {
+          "too_small": "Cette largeur est trop petite pour ce produit. Veuillez entrer une largeur plus grande.",
+          "too_large": "Cette largeur dépasse la taille maximale disponible. Veuillez entrer une largeur plus petite ou nous contacter pour une commande personnalisée."
+        },
         "highlights": {
           "tab_title": "Points forts",
           "motorized": {
@@ -168,6 +216,9 @@
             "0": "Nous soutenons la qualité de nos produits et offrons une politique de retour et d'échange sans tracas de 30 jours.",
             "1": "Si vous n'êtes pas entièrement satisfait de votre achat, retournez-le simplement dans les 30 jours pour un remboursement complet ou un échange."
           }
+        },
+        "specifications": {
+          "tab_title": "Specs"
         },
         "install": {
           "tab_title": "Installation",
@@ -322,65 +373,131 @@
           }
         },
         "product_details": {
-          "specifications": {
-            "title": "Spécifications",
-            "fig_1": "Stores",
-            "fig_2": "Caisson",
-            "sections": {
-              "dimensions": {
-                "title": "Dimensions",
-                "cassette": {
-                  "title": "Caisson",
-                  "height": {
-                    "heading": "Hauteur :",
-                    "data": "61 mm (2,4 po)"
+          "basic": {
+            "specifications": {
+              "title": "Spécifications",
+              "fig_1": "Stores",
+              "fig_2": "Caisson",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Caisson",
+                    "height": {
+                      "heading": "Hauteur :",
+                      "data": "61 mm (2,4 po)"
+                    },
+                    "min_depth": {
+                      "heading": "Profondeur min. :",
+                      "data": "59 mm (2,32 po)"
+                    },
+                    "max_depth": {
+                      "heading": "Profondeur max. :",
+                      "data": "67 mm (2,64 po)"
+                    },
+                    "width": {
+                      "heading": "Largeur :",
+                      "data": "Dépend des mesures de la fenêtre."
+                    }
                   },
-                  "min_depth": {
-                    "heading": "Profondeur min. :",
-                    "data": "59 mm (2,32 po)"
-                  },
-                  "max_depth": {
-                    "heading": "Profondeur max. :",
-                    "data": "67 mm (2,64 po)"
-                  },
-                  "width": {
-                    "heading": "Largeur :",
-                    "data": "Dépend des mesures de la fenêtre."
+                  "blinds": {
+                    "title": "Stores",
+                    "height": {
+                      "heading": "Hauteur :",
+                      "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 213,36 cm (84 po)."
+                    },
+                    "width": {
+                      "heading": "Largeur :",
+                      "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 228,6 cm (90 po)."
+                    }
                   }
                 },
-                "blinds": {
-                  "title": "Stores",
-                  "height": {
-                    "heading": "Hauteur :",
-                    "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 213,36 cm (84 po)."
+                "materials": {
+                  "title": "Matériaux",
+                  "cassette": {
+                    "title": "Caisson",
+                    "line_1": "Aluminium",
+                    "line_2": "Peint à la couleur correspondante."
                   },
-                  "width": {
-                    "heading": "Largeur :",
-                    "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 228,6 cm (90 po)."
+                  "blinds": {
+                    "title": "Stores",
+                    "line_1": "100% Polyester",
+                    "line_2": "Plus de couleurs disponibles sur demande."
                   }
-                }
-              },
-              "materials": {
-                "title": "Matériaux",
-                "cassette": {
-                  "title": "Caisson",
-                  "line_1": "Aluminium",
-                  "line_2": "Peint à la couleur correspondante."
                 },
-                "blinds": {
-                  "title": "Stores",
-                  "line_1": "100% Polyester",
-                  "line_2": "Plus de couleurs disponibles sur demande."
+                "features": {
+                  "title": "Caractéristiques",
+                  "line_1": "Design sécuritaire pour les enfants et les animaux domestiques",
+                  "line_2": "Fonctionnement sans corde EasyGlide à une main",
+                  "line_3": "Tissu polyester de qualité supérieure",
+                  "line_4": "Tissu résistant aux taches",
+                  "line_5": "Facile à nettoyer",
+                  "line_6": "Stylé et fonctionnel"
                 }
-              },
-              "features": {
-                "title": "Caractéristiques",
-                "line_1": "Design sécuritaire pour les enfants et les animaux domestiques",
-                "line_2": "Fonctionnement sans corde EasyGlide à une main",
-                "line_3": "Tissu polyester de qualité supérieure",
-                "line_4": "Tissu résistant aux taches",
-                "line_5": "Facile à nettoyer",
-                "line_6": "Stylé et fonctionnel"
+              }
+            }
+          },
+          "premium": {
+            "specifications": {
+              "title": "Spécifications",
+              "fig_1": "Stores",
+              "fig_2": "Caisson",
+              "sections": {
+                "dimensions": {
+                  "title": "Dimensions",
+                  "cassette": {
+                    "title": "Caisson",
+                    "height": {
+                      "heading": "Hauteur :",
+                      "data": "72 mm (2,83 po)"
+                    },
+                    "min_depth": {
+                      "heading": "Profondeur min. :",
+                      "data": "75,5 mm (2,97 po)"
+                    },
+                    "max_depth": {
+                      "heading": "Profondeur max. :",
+                      "data": "87 mm (3,43 po)"
+                    },
+                    "width": {
+                      "heading": "Largeur :",
+                      "data": "Dépend des mesures de la fenêtre."
+                    }
+                  },
+                  "blinds": {
+                    "title": "Stores",
+                    "height": {
+                      "heading": "Hauteur :",
+                      "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 213,36 cm (84 po)."
+                    },
+                    "width": {
+                      "heading": "Largeur :",
+                      "data": "Dépend des mesures de la fenêtre - Min. 52 cm (20,47 po). Max. 228,6 cm (90 po)."
+                    }
+                  }
+                },
+                "materials": {
+                  "title": "Matériaux",
+                  "cassette": {
+                    "title": "Caisson",
+                    "line_1": "Aluminium",
+                    "line_2": "Peint à la couleur correspondante."
+                  },
+                  "blinds": {
+                    "title": "Stores",
+                    "line_1": "100% Polyester",
+                    "line_2": "Plus de couleurs disponibles sur demande."
+                  }
+                },
+                "features": {
+                  "title": "Caractéristiques",
+                  "line_1": "Design sécuritaire pour les enfants et les animaux domestiques",
+                  "line_2": "Fonctionnement sans corde EasyGlide à une main",
+                  "line_3": "Tissu polyester de qualité supérieure",
+                  "line_4": "Tissu résistant aux taches",
+                  "line_5": "Facile à nettoyer",
+                  "line_6": "Stylé et fonctionnel"
+                }
               }
             }
           }
@@ -391,9 +508,11 @@
       },
       "see_also": "À voir aussi :",
       "cant_find_your_fit": "Vous ne trouvez pas votre taille?",
-      "looking_for_more_1": "Vous avez des questions ?",
-      "looking_for_more_2": "Nous pouvons également prendre les mesures pour vous.",
-      "plan_a_meeting": "Planifiez un appel rapide de 15 minutes",
+      "looking_for_more_1": "Vous ne savez pas par où commencer ?",
+      "looking_for_more_2": "On vous guide pour tout — couleurs, mesures, installation. Choisissez le moment qui vous convient.",
+      "plan_a_meeting": "Réservez un appel gratuit de 15 min",
+      "plan_a_meeting_sub": "Sans pression. Sans engagement.",
+      "prefer_text": "Vous préférez écrire ?",
       "place_a_custom_order": "Placez une commande sur mesure",
       "email_us": "Envoyez-nous un email",
       "or": "ou",
@@ -451,6 +570,12 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés à l'étape de paiement.",
       "choose_options": "Choisir des options",
       "choose_product_options": "Choisir des options pour {{ product_name }}"
+    },
+    "reviews": {
+      "title": "Ce que nos clients disent",
+      "subtitle": "Avis vérifiés Google",
+      "source": "Avis Google",
+      "review_count": "{{ count }} avis"
     },
     "modal": {
       "label": "Galerie de supports multimédias"
@@ -529,11 +654,33 @@
         "title": "Transformez votre décor",
         "button": "Magasiner"
       },
+      "payments_accepted": {
+        "title": "Paiements acceptés"
+      },
+      "how_to_order": {
+        "title": "3 étapes faciles. C'est tout.",
+        "step_label": "Étape {{ step }}",
+        "step_1": {
+          "title": "Choisissez votre couleur",
+          "description": "Sélectionnez parmi notre gamme de couleurs et de tissus."
+        },
+        "step_2": {
+          "title": "Mesurez et commandez",
+          "description": "Mesurez votre fenêtre, entrez la taille et passez votre commande."
+        },
+        "step_3": {
+          "title": "On s'occupe du reste",
+          "description": "On fabrique vos stores et on les livre chez vous, prêts à installer."
+        }
+      },
       "partners": {
-        "title": "Nous sommes mentionnés par",
-        "title_2": "Projet en vedette : Installation de stores zébrés pour le studio de FM 103.3",
-        "description": "Ce projet a permis d'améliorer l'acoustique et de moderniser l'apparence du studio, offrant un environnement de travail plus agréable pour les animateurs et les invités.",
-        "read_more": "Lire l'article complet sur notre installation chez FM 103.3"
+        "title": "Nous sommes mentionnés par"
+      },
+      "featured_project": {
+        "overline": "Projet en vedette",
+        "title": "Stores zébrés pour le studio FM 103.3",
+        "description": "Nous avons équipé les studios de FM 103.3 avec des stores zébrés sur mesure — améliorant l'acoustique et offrant un look moderne et épuré.",
+        "cta": "Voir le projet"
       },
       "showcase": {
         "title": "Rehaussez votre espace avec un look contemporain.",
@@ -770,7 +917,7 @@
       "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Propulsé par Shopify<\/a>",
       "powered_by_shpf": "Propulsé par Shopify",
       "copyright": "&copy; Tous droits réservés",
-      "ssl_encrypted": "PAIEMENTS SÉCURISÉS | CHIFFRÉS PAR SSL",
+      "ssl_encrypted": "PAIEMENTS SÉCURISÉS | PROPULSÉ PAR SHOPIFY",
       "site_secure": "Site sécuritaire",
       "verify_security": "Vérifier la sécurité"
     },
@@ -1045,6 +1192,37 @@
       },
       "contact_html": "Pour initier un retour ou un échange, veuillez contacter notre équipe du service à la clientèle à <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca<\/a>. Ils vous fourniront les instructions à suivre.",
       "thanks": "Merci d'avoir choisi rideauzebra.ca !"
+    }
+  },
+  "components": {
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "1": {
+          "question": "Combien de temps faut-il pour recevoir mes stores ?",
+          "answer": "Pour les commandes régulières, prévoyez 2 à 4 jours ouvrables pour la livraison. Pour les commandes sur mesure, prévoyez 1 à 2 semaines. Nous offrons aussi la collecte locale gratuite à Montréal sur rendez-vous."
+        },
+        "2": {
+          "question": "Comment mesurer mes fenêtres ?",
+          "answer": "Utilisez un ruban à mesurer en acier pour une précision maximale. Mesurez la largeur et la hauteur en trois points et utilisez la plus petite mesure. Notre page produit inclut un guide de mesure complet avec diagrammes pour les montages intérieur et extérieur."
+        },
+        "3": {
+          "question": "Puis-je installer les stores moi-même ?",
+          "answer": "Oui. Chaque commande comprend les supports, vis et ancrages muraux. Marquez l'emplacement des supports, percez les trous pilotes, fixez les supports et clipsez le rail de tête en place."
+        },
+        "4": {
+          "question": "Quelle est votre politique de retour ?",
+          "answer": "Nous offrons une politique de retour et d'échange de 30 jours. Les articles doivent être neufs et inutilisés avec toutes les étiquettes et l'emballage d'origine. Les frais de retour sont gratuits et les remboursements sont traités en 7 à 10 jours ouvrables."
+        },
+        "5": {
+          "question": "Quelle garantie offrez-vous ?",
+          "answer": "Tous nos stores zébrés sont couverts par une garantie limitée de deux ans couvrant tout défaut de matériaux ou de fabrication."
+        },
+        "6": {
+          "question": "Vos stores sont-ils sécuritaires pour les enfants et les animaux ?",
+          "answer": "Oui. Notre design sans cordon élimine les cordons pendants, ce qui les rend sécuritaires pour les foyers avec enfants et animaux."
+        }
+      }
     }
   }
 }

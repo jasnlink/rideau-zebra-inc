@@ -1,7 +1,7 @@
-<div class="bg-indigo-700">
+<div class="bg-brand-700">
     <div class="mx-auto py-6 lg:py-6">
         <div class="flex flex-col gap-y-2 sm:gap-y-6 lg:flex-row items-center justify-center gap-x-4">
-            <span class="text-sm font-medium uppercase text-neutral-100">{{ 'sections.footer.shop_with_confidence' | t }}</span>
+            <span class="rz-overline text-content-inverse">{{ 'sections.footer.shop_with_confidence' | t }}</span>
             <div class="inline-flex justify-center gap-y-2 gap-x-2 flex-wrap">
                 {% for type in shop.enabled_payment_types -%}
                     {{ type | payment_type_svg_tag: class: 'h-8 w-auto' }}
@@ -10,9 +10,9 @@
         </div>
     </div>
 </div>
-<footer class="bg-stone-900 text-neutral-200/[.85] pt-24 pb-24 underline-offset-4">
+<footer class="bg-content text-content-inverse/[.85] pt-24 pb-24 underline-offset-4">
     <div>
-        <div class="px-4 sm:px-8 pt-16 pb-20">
+        <div class="rz-page-gutter pt-16 pb-20">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-y-24 sm:gap-y-16 gap-x-48 sm:gap-x-16 xl:gap-x-12">
                 <div class="w-10/12">
                     <div>
@@ -27,14 +27,14 @@
                     <div class="mt-24">
                         <div>
                             <div>
-                                <a class="text-3xl font-bold font-serif text-neutral-100">{{ 'sections.footer.email_subscription.title' | t }}</a>
+                                <a class="rz-h3 text-content-inverse">{{ 'sections.footer.email_subscription.title' | t }}</a>
                             </div>
                             <div class="mt-4">
                                 {% form 'customer' %}
                                     <p class="text-base">{{ 'sections.footer.email_subscription.description' | t }}</p>
                                     <div class="flex flex-col lg:flex-row gap-4 mt-6">
-                                        <input type="email" name="contact[email]" placeholder="{{ 'sections.footer.email_subscription.enter_your_email' | t }}" class="py-3 px-2 rounded-md bg-neutral-100 text-stone-900 xl:flex-grow" />
-                                        <input type="submit" class="h-fit cursor-pointer font-medium bg-neutral-100 text-stone-900 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-700 hover:text-neutral-100" value="{{ 'sections.footer.email_subscription.subscribe' | t }}" />
+                                        <input type="email" name="contact[email]" placeholder="{{ 'sections.footer.email_subscription.enter_your_email' | t }}" class="rz-input bg-surface-100 text-content xl:flex-grow" />
+                                        <input type="submit" class="h-fit cursor-pointer rz-btn-md rz-btn-ghost hover:bg-brand-700 hover:text-content-inverse" value="{{ 'sections.footer.email_subscription.subscribe' | t }}" />
                                     </div>
                                 {% endform %}
                             </div>
@@ -45,7 +45,7 @@
                     <div class="grid grid-cols-2 text-lg">
                         <div>
                             <div>
-                                <span class="text-2xl font-bold font-serif text-neutral-100 select-none">{{ 'sections.footer.links_1.title' | t }}</span>
+                                <span class="rz-h4 text-content-inverse select-none">{{ 'sections.footer.links_1.title' | t }}</span>
                             </div>
                             <div class="mt-8">
                                 <a href="{{ pages['about-us'].url }}" class="no-underline hover:underline" title="{{ 'sections.footer.links_1.about_us' | t }}">{{ 'sections.footer.links_1.about_us' | t }}</a>
@@ -59,7 +59,7 @@
                         </div>
                         <div>
                             <div>
-                                <span class="text-2xl font-bold font-serif text-neutral-100 select-none">{{ 'sections.footer.links_2.title' | t }}</span>
+                                <span class="rz-h4 text-content-inverse select-none">{{ 'sections.footer.links_2.title' | t }}</span>
                             </div>
                             <div class="mt-8">
                                 <a href="{{ shop.shipping_policy.url }}" class="no-underline hover:underline" title="{{ 'sections.footer.links_2.shipping_delivery' | t }}">{{ 'sections.footer.links_2.shipping_delivery' | t }}</a>
@@ -80,7 +80,7 @@
         </div>
     </div>
     <div>
-        <div class="px-4 sm:px-8 mx-auto py-4 sm:py-2">
+        <div class="rz-page-gutter mx-auto py-4 sm:py-2">
             <div class="flex flex-col gap-y-12 lg:gap-y-4 lg:flex-row justify-between lg:items-center">
                 <div class="order-last lg:order-first text-xs uppercase w-full lg:w-auto">
                     <div>
@@ -92,20 +92,20 @@
                         <span class="block sm:inline">{{ 'sections.footer.copyright' | t }} {{ 'now' | date: "%Y" }} <span class="font-bold">{{ 'RIDEAU ZEBRA INC.' | link_to: routes.root_url }}</span></span>
                     </div>
                 </div>
-                <div data-secure-action="footer" role="button" class="w-full order-first lg:order-last sm:w-fit text-xs text-stone-900 font-bold rounded-md flex justify-center items-center gap-x-2 bg-green-300 py-2 px-8 tracking-tighter select-none hover:bg-green-200 active:bg-green-400">{% render 'icon-secure', class: 'h-4 w-auto fill-black' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
+                <div data-secure-action="footer" role="button" class="w-full order-first lg:order-last sm:w-fit rz-btn-trust flex gap-x-2">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
             </div>
         </div>
     </div>
 </footer>
-<div id="secure-popover" class="hidden bg-white rounded-md relative z-10" role="tooltip">
+<div id="secure-popover" class="hidden rz-popover" role="tooltip">
     <div data-secure-close role="button" class="absolute z-10 top-2 right-2">
-        {% render 'icon-close', class: 'h-4 w-auto fill-black' %}
+        {% render 'icon-close', class: 'h-4 w-auto fill-content' %}
     </div>
     <div class="relative container mx-auto py-8 px-6">
-        <div class="text-center bg-green-100 rounded-md px-8 py-8 border border-green-300 text-green-800">
-            <div class="flex items-center justify-center gap-x-2">{% render 'icon-success', class: 'h-8 w-auto fill-green-400', fill: '#428445' %} <span class="font-bold text-2xl">{{ 'sections.footer.site_secure' | t }}</span></div>
+        <div class="rz-popover-trust">
+            <div class="flex items-center justify-center gap-x-2">{% render 'icon-success', class: 'h-8 w-auto fill-trust-400', fill: '#428445' %} <span class="font-bold text-2xl">{{ 'sections.footer.site_secure' | t }}</span></div>
             <div class="mt-6 text-center">
-                <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rideauzebra.ca&latest" target="_blank" class="block text-neutral-100 bg-green-500 px-8 w-full rounded-md text-sm py-2 select-none hover:bg-green-400 active:bg-green-600 uppercase" title="{{ 'sections.footer.verify_security' | t }}">{{ 'sections.footer.verify_security' | t }}</a>
+                <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rideauzebra.ca&latest" target="_blank" class="block w-full rz-btn-trust-verify" title="{{ 'sections.footer.verify_security' | t }}">{{ 'sections.footer.verify_security' | t }}</a>
             </div>
         </div>
     </div>

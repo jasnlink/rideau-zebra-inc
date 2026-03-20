@@ -82,14 +82,81 @@
 
     {%- assign homepage_collection = collections['frontpage'] -%}
 
-    {% comment %} ── Product grid ── {% endcomment %}
-    <div class="container mx-auto rz-page-gutter pt-8 pb-16 lg:pb-24">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
-            {% for product in homepage_collection.products %}
-                {% render 'product-card', product: product %}
+    {% comment %} ── Product type groups ── {% endcomment %}
+    {% assign product_types = 'zebra-blinds,curtains,opaque-blinds' | split: ',' %}
+
+    {% for pt in product_types %}
+        {% assign pt_count = 0 %}
+        {% for product in homepage_collection.products %}
+            {% for tag in product.tags %}
+                {% if tag == 'product-type:' | append: pt %}
+                    {% assign pt_count = pt_count | plus: 1 %}
+                    {% break %}
+                {% endif %}
             {% endfor %}
+        {% endfor %}
+
+        {% if pt_count > 0 %}
+            {% assign pt_title_key = 'collections.groups.product_type.' | append: pt | append: '.title' %}
+            {% assign pt_desc_key = 'collections.groups.product_type.' | append: pt | append: '.description' %}
+
+            <div class="container mx-auto rz-page-gutter pt-12 pb-16 lg:pt-16 lg:pb-20">
+                <div class="border-t border-content-tertiary pt-8">
+                    <span class="rz-overline text-content-secondary">{{ pt_title_key | t }}</span>
+                    <p class="mt-2 text-content-secondary leading-relaxed max-w-xl">{{ pt_desc_key | t }}</p>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
+                    {% for product in homepage_collection.products %}
+                        {% assign has_pt = false %}
+                        {% for tag in product.tags %}
+                            {% if tag == 'product-type:' | append: pt %}
+                                {% assign has_pt = true %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if has_pt %}
+                            {% render 'product-card', product: product %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% comment %} ── Uncategorized products ── {% endcomment %}
+    {% assign uncategorized_count = 0 %}
+    {% for product in homepage_collection.products %}
+        {% assign has_known_type = false %}
+        {% for tag in product.tags %}
+            {% if tag == 'product-type:zebra-blinds' or tag == 'product-type:curtains' or tag == 'product-type:opaque-blinds' %}
+                {% assign has_known_type = true %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% unless has_known_type %}
+            {% assign uncategorized_count = uncategorized_count | plus: 1 %}
+        {% endunless %}
+    {% endfor %}
+
+    {% if uncategorized_count > 0 %}
+        <div class="container mx-auto rz-page-gutter pt-8 pb-16 lg:pb-24">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
+                {% for product in homepage_collection.products %}
+                    {% assign has_known_type = false %}
+                    {% for tag in product.tags %}
+                        {% if tag == 'product-type:zebra-blinds' or tag == 'product-type:curtains' or tag == 'product-type:opaque-blinds' %}
+                            {% assign has_known_type = true %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    {% unless has_known_type %}
+                        {% render 'product-card', product: product %}
+                    {% endunless %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 
 {% comment %} ── 2. Payments Accepted band ── {% endcomment %}
@@ -173,3 +240,6 @@
 
 {% comment %} ── 6. Product Overview section ── {% endcomment %}
 {% section 'product-overview' %}
+
+{% comment %} ── 7. Questions / Scheduler section ── {% endcomment %}
+{% render 'component.questions-scheduler' %}

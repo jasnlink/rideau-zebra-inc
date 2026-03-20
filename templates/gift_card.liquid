@@ -87,9 +87,9 @@
             id="main-content"
             role="main"
             tabindex="-1"
-            class="bg-neutral-100"
+            class="bg-surface-100"
         >
-            <div class="py-20 bg-white">
+            <div class="py-20 bg-surface-white">
                 <div class="container mx-auto">
                     <div class="flex justify-center items-center">
                         <img src="{{ 'gift-card/card.svg' | shopify_asset_url }}" alt="" class="gift-card__image" height="{{ 570 | divided_by: 1.5 }}" width="570" loading="lazy">
@@ -97,11 +97,11 @@
                     <div class="mt-8 flex justify-center items-center" data-identifier="{{ gift_card.qr_identifier }}"></div>
                     <div class="mt-8 flex flex-col gap-8 items-center justify-center">
                         <div
-                            class="text-stone-900 font-bold text-center text-2xl"
+                            class="text-content font-bold text-center text-2xl"
                             aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
                         >{{ gift_card.code | format_code }}</div>
                         <div
-                            class="text-stone-900 font-bold text-center text-2xl"
+                            class="text-content font-bold text-center text-2xl"
                             aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
                         >{{ gift_card.balance | money_with_currency }}</div>
                         {%- if gift_card.pass_url -%}

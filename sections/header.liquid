@@ -1,22 +1,22 @@
 <header id="main-header">
-    <div class="bg-gradient-to-r from-indigo-600/90 to-indigo-700/90 text-neutral-100 text-center py-1 px-2 text-sm w-full flex flex-col lg:flex-row gap-x-1 justify-center">
+    <div class="bg-gradient-to-r from-brand-600/90 to-brand-700/90 text-content-inverse text-center py-1 px-2 text-sm w-full flex flex-col lg:flex-row gap-x-1 justify-center">
         <span>{{ 'sections.header.top_bar_1_html' | t }}</span>
         <span class="hidden lg:block">-</span>
         <span>{{ 'sections.header.top_bar_2_html' | t }}</span>
     </div>
-    <nav class="border-b border-gray-200 pt-2 pb-2 lg:pt-4 lg:pb-4 px-4 sm:px-8 flex justify-between items-center shadow-lg bg-neutral-100/90 backdrop-blur">
+    <nav class="border-b border-content-light pt-2 pb-2 lg:pt-4 lg:pb-4 rz-page-gutter flex justify-between items-center shadow-lg bg-surface-100/90 backdrop-blur">
         <a href="#" title="" data-menu-open class="flex lg:hidden flex-col gap-1 w-6">
-            <div class="p-[0.08rem] w-full bg-stone-900"></div>
-            <div class="p-[0.08rem] w-full bg-stone-900"></div>
-            <div class="p-[0.08rem] w-full bg-stone-900"></div>
+            <div class="p-[0.08rem] w-full bg-content"></div>
+            <div class="p-[0.08rem] w-full bg-content"></div>
+            <div class="p-[0.08rem] w-full bg-content"></div>
         </a>
         <div class="flex items-center justify-center gap-16">
             <a href="{{ routes['root_url'] }}" title="{{ shop.name }}">{% render 'logo-main', class: 'h-12 lg:h-14' %}</a>
-            <div class="hidden lg:flex font-light uppercase gap-6 items-center text-stone-900">
-                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ routes['collections_url'] }}" title="{{ 'sections.header.catalog' | t }}">{{ 'sections.header.catalog' | t }}</a>
-                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ blogs['news'].url }}" title="{{ 'blogs.article.blog' | t }}">{{ 'blogs.article.blog' | t }}</a>
-                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ pages['contact'].url }}" title="{{ 'sections.header.contact' | t }}">{{ 'sections.header.contact' | t }}</a>
-                {% comment %} <a class="h-fit font-medium bg-stone-900 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-indigo-500" href="{{ shop.url }}" title="{{ 'sections.header.custom_order' | t }}">{{ 'sections.header.custom_order' | t }}</a> {% endcomment %}
+            <div class="hidden lg:flex font-light uppercase gap-6 items-center text-content">
+                <a class="rz-link-nav" href="{{ routes['collections_url'] }}" title="{{ 'sections.header.catalog' | t }}">{{ 'sections.header.catalog' | t }}</a>
+                <a class="rz-link-nav" href="{{ blogs['news'].url }}" title="{{ 'blogs.article.blog' | t }}">{{ 'blogs.article.blog' | t }}</a>
+                <a class="rz-link-nav" href="{{ pages['contact'].url }}" title="{{ 'sections.header.contact' | t }}">{{ 'sections.header.contact' | t }}</a>
+                {% comment %} <a class="h-fit rz-btn-md rz-btn-primary" href="{{ shop.url }}" title="{{ 'sections.header.custom_order' | t }}">{{ 'sections.header.custom_order' | t }}</a> {% endcomment %}
                 {% assign translate_lang = 'sections.header.translate' | t %}
                 {% assign translate_lang_url = translate_lang | prepend: '/' %}
                 {% assign current_lang_url = request.locale.iso_code | prepend: '/' %}
@@ -24,14 +24,14 @@
                 {% unless translate_lang == 'en' %}
                     {% assign parsed_request_path = parsed_request_path | prepend: translate_lang_url %}
                 {% endunless %}
-                <a class="transition-all hover:underline hover:underline-offset-4 text-lg" href="{{ shop.url | remove: current_lang_url }}{{ parsed_request_path }}" title="{{ translate_lang }}">{{ translate_lang }}</a>
+                <a class="rz-link-nav" href="{{ shop.url | remove: current_lang_url }}{{ parsed_request_path }}" title="{{ translate_lang }}">{{ translate_lang }}</a>
             </div>
         </div>
         {% if template.name != 'gift_card' %}
             <div class="text-sm font-medium text-right">
-                <a href="#" data-drawer-action="cart-drawer" data-animation-target="cart" title="CART" class="flex items-center justify-center relative p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
-                    <span class="w-fit">{% render 'icon-cart', class: 'h-5 lg:h-7 w-auto fill-neutral-100' %}</span>
-                    <div data-cart-count class="absolute -mt-1.5 lg:-mt-1 -mr-1 top-0 right-0 p-1.5 opacity-0 rounded-full bg-indigo-600 text-neutral-100 font-medium text-[10px] lg:text-[11px] leading-none flex items-center justify-center transition-all"></div>
+                <a href="#" data-drawer-action="cart-drawer" data-animation-target="cart" title="CART" class="rz-icon-btn">
+                    <span class="w-fit">{% render 'icon-cart', class: 'h-5 lg:h-7 w-auto fill-content-inverse' %}</span>
+                    <div data-cart-count class="absolute -mt-1.5 lg:-mt-1 -mr-1 top-0 right-0 p-1.5 opacity-0 rounded-full bg-brand-600 text-content-inverse font-medium text-[10px] lg:text-[11px] leading-none flex items-center justify-center transition-all"></div>
                 </a>
             </div>
         {% endif %}

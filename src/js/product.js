@@ -84,17 +84,13 @@ function initProductForms() {
 
     function calculateVariantWidth(width, unit) {
         window.productForms.selectedVariantWidth = Math.ceil(parseFloat(width) * window.productForms.measurementUnitsMultiplier[unit] || 0)
-        if (window.productForms.selectedVariantWidth <= window.productForms.minVariantWidth) {
-            window.productForms.selectedVariantWidth = window.productForms.minVariantWidth
-        }
-        if (window.productForms.selectedVariantWidth >= window.productForms.maxVariantWidth) {
-            window.productForms.selectedVariantWidth = window.productForms.maxVariantWidth
-        }
     }
 
     function selectVariant(selectedVariantWidth) {
 
         const variantSelector = document.querySelector('[data-selector-element-type="dropdown"]')
+        const warningEl = document.querySelector('[data-rz-width-warning]')
+        const warningTextEl = warningEl ? warningEl.querySelector('[data-rz-width-warning-text]') : null
         let availableWidths = []
         let exactMatch = null
 
@@ -108,6 +104,49 @@ function initProductForms() {
             }
         }
 
+        // Sort available widths
+        availableWidths.sort((a, b) => a.width - b.width)
+
+        const minAvailable = availableWidths[0] ? availableWidths[0].width : 0
+        const maxAvailable = availableWidths.length ? availableWidths[availableWidths.length - 1].width : 0
+
+        // Helper to show warning and disable add to cart
+        function showWarning(msgKey) {
+            if (warningEl && warningTextEl) {
+                warningTextEl.textContent = warningEl.getAttribute('data-rz-width-warning-' + msgKey)
+                warningEl.classList.remove('hidden')
+                warningEl.classList.add('flex')
+            }
+            document.querySelectorAll('[data-add-cart]').forEach(el => {
+                el.dataset.addCart = null
+                el.disabled = true
+            })
+        }
+
+        function hideWarning() {
+            if (warningEl) {
+                warningEl.classList.add('hidden')
+                warningEl.classList.remove('flex')
+            }
+        }
+
+        // Check lower limit — if width is below smallest available variant
+        if (selectedVariantWidth > 0 && selectedVariantWidth < minAvailable) {
+            showWarning('too-small')
+            return
+        }
+
+        // Check upper limit — only enforce if the 91" extra-large variant does NOT exist.
+        // If 91 exists, any width above it just matches to 91 (extra-large pricing, no cap).
+        const hasExtraLarge = availableWidths.some(item => item.width === 91)
+        if (!hasExtraLarge && selectedVariantWidth > maxAvailable) {
+            showWarning('too-large')
+            return
+        }
+
+        // Valid range — hide any warning
+        hideWarning()
+
         // If exact match found, select it
         if (exactMatch) {
             variantSelector.value = exactMatch.value
@@ -115,11 +154,8 @@ function initProductForms() {
             return
         }
 
-        // Sort available widths
-        availableWidths.sort((a, b) => a.width - b.width)
-
-        // If selectedVariantWidth is at or below minimum, select smallest available
-        if (selectedVariantWidth <= window.productForms.minVariantWidth) {
+        // If no input yet, select smallest
+        if (selectedVariantWidth <= 0) {
             const smallestOption = availableWidths[0]
             if (smallestOption) {
                 variantSelector.value = smallestOption.option.value
@@ -128,26 +164,18 @@ function initProductForms() {
             }
         }
 
-        // If selectedVariantWidth is at or above maximum, select largest available
-        if (selectedVariantWidth >= window.productForms.maxVariantWidth) {
-            const largestOption = availableWidths[availableWidths.length - 1]
-            if (largestOption) {
-                variantSelector.value = largestOption.option.value
-                variantSelector.dispatchEvent(new Event('change'));
-                return
+        // For values in between, find the closest available width that is >= input
+        let closestOption = null
+        for (const item of availableWidths) {
+            if (item.width >= selectedVariantWidth) {
+                closestOption = item.option
+                break
             }
         }
 
-        // For values in between, find the closest available width
-        let closestOption = null
-        let smallestDifference = Infinity
-
-        for (const item of availableWidths) {
-            const difference = Math.abs(item.width - selectedVariantWidth)
-            if (difference < smallestDifference) {
-                smallestDifference = difference
-                closestOption = item.option
-            }
+        // Fallback to largest if nothing >= exists (shouldn't happen due to upper limit check)
+        if (!closestOption) {
+            closestOption = availableWidths[availableWidths.length - 1].option
         }
 
         if (closestOption) {
@@ -257,10 +285,10 @@ function initVariantSelector() {
         if(selectionState[targetOptionIndex]['value']) {
             document.querySelectorAll('[data-selector-option-group-index="'+targetOptionIndex+'"] [data-selector-option-value="'+selectionState[targetOptionIndex]['value']+'"]')
             .forEach((optionElement) => {
-                optionElement.classList.remove('bg-black')
-                optionElement.classList.remove('text-white')
-                optionElement.classList.add('bg-white')
-                optionElement.classList.add('text-black')
+                optionElement.classList.remove('bg-content')
+                optionElement.classList.remove('text-content-inverse')
+                optionElement.classList.add('bg-surface-white')
+                optionElement.classList.add('text-content')
             })
         }
         selectionState[targetOptionIndex]['value'] = element.dataset.selectorOptionValue
@@ -270,10 +298,10 @@ function initVariantSelector() {
             if(optionGroupElement.dataset.selectorElementType === 'dropdown') {
                 optionGroupElement.selectedIndex = parseInt(optionElement.dataset.selectorOptionIndex)
             }
-            optionElement.classList.remove('bg-white')
-            optionElement.classList.remove('text-black')
-            optionElement.classList.add('bg-black')
-            optionElement.classList.add('text-white')
+            optionElement.classList.remove('bg-surface-white')
+            optionElement.classList.remove('text-content')
+            optionElement.classList.add('bg-content')
+            optionElement.classList.add('text-content-inverse')
         })
         searchVariantList()
     }

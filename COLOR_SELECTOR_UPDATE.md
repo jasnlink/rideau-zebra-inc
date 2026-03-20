@@ -21,11 +21,16 @@ The product template system has been completely redesigned to use a **composite 
 All product attributes use prefix-based tags for organization:
 
 **Product Type** - `product-type:`
-- `product-type:zebra-blinds` - Basic zebra blind products
-- `product-type:motorized-zebra-blinds` - Motorized options
+- `product-type:zebra-blinds` - Standard zebra blind products
+- `product-type:curtains` - Curtain products
 - `product-type:opaque-blinds` - Opaque blind variants
 - `product-type:roller-shades` - Roller shade products (future)
 - `product-type:vertical-blinds` - Vertical blinds (future)
+
+**Operation Mechanism** - `operation:`
+- `operation:cordless` - Cordless operation (default)
+- `operation:motorized` - Motorized operation
+- `operation:cord` - Cord-operated
 
 **Product Tier** - `tier:`
 - `tier:standard` - Standard quality/feature level
@@ -48,9 +53,10 @@ color-group:zebra-standard
 
 **Premium Motorized Blind - Slate Gray:**
 ```
-product-type:motorized-zebra-blinds
+product-type:zebra-blinds
 tier:premium
 color-group:zebra-premium
+operation:motorized
 ```
 
 ### Required Metafields
@@ -102,7 +108,7 @@ Structure:
 
 ### Color Selector
 The color selector section will **only display** when:
-1. ✅ Product has any `product-type:` tag (zebra-blinds, motorized-zebra-blinds, or opaque-blinds)
+1. ✅ Product has any `product-type:` tag (zebra-blinds, curtains, or opaque-blinds)
 2. ✅ Product has a tag starting with `color-group:`
 3. ✅ Product has `metafields.custom.color_key_name` set
 4. ✅ There are 2+ products in the same color group
@@ -134,7 +140,7 @@ Add appropriate prefix-based tags to each product:
 
 **Product Type** (at least one required):
 - Standard zebra blinds → `product-type:zebra-blinds`
-- Motorized products → `product-type:motorized-zebra-blinds`
+- Curtain products → `product-type:curtains`
 - Opaque variants → `product-type:opaque-blinds`
 
 **Product Tier** (choose one):
@@ -158,7 +164,7 @@ Tags: product-type:zebra-blinds, tier:standard, color-group:zebra-standard
 
 **Product: "Premium Motorized Blind - Snow White"**
 ```
-Tags: product-type:motorized-zebra-blinds, tier:premium, color-group:zebra-premium
+Tags: product-type:zebra-blinds, tier:premium, color-group:zebra-premium, operation:motorized
 ```
 
 ### 2. Set Metafields

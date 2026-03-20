@@ -2,6 +2,7 @@ import { initAddCartAction } from "./lib";
 
 window.addEventListener('DOMContentLoaded', (event) => {
     initPagination();
+    initPartnerScroll();
 });
 
 function initPagination() {
@@ -22,7 +23,7 @@ function initPagination() {
         currentIndex++;
         paginate(currentIndex);
     })
-    
+
     function paginate(index) {
         enableLoading();
         const section = 'index-collection'
@@ -80,4 +81,33 @@ function initPagination() {
         elementPaginationBtn.querySelector('[data-paginate-state="default"]').classList.remove('hidden');
         elementPaginationBtn.querySelector('[data-paginate-state="loading"]').classList.add('hidden');
     }
+}
+
+/**
+ * Scroll-linked horizontal scroll for partner logos on mobile.
+ * As the user scrolls vertically past the bar, the logos scroll horizontally.
+ */
+function initPartnerScroll() {
+    const el = document.querySelector('[data-rz-partner-scroll]');
+    if (!el) return;
+
+    // Only active on mobile (below lg breakpoint)
+    const mql = window.matchMedia('(max-width: 1023px)');
+    if (!mql.matches) return;
+
+    const scrollWidth = el.scrollWidth - el.clientWidth;
+    if (scrollWidth <= 0) return;
+
+    function onScroll() {
+        const rect = el.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        // Map from when the element enters the viewport to when it exits
+        const start = viewH;        // element top hits viewport bottom
+        const end = -rect.height;   // element bottom exits viewport top
+        const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+        el.scrollLeft = progress * scrollWidth;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 }

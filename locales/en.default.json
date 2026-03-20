@@ -1,8 +1,52 @@
 {
   "collections": {
+    "page": {
+      "title": "Custom Zebra Blinds & Window Treatments",
+      "subtitle": "Made to measure. Delivered to your door."
+    },
     "all-products": {
       "see_motorized": "See our motorized options",
-      "see_non_motorized": "See our non-motorized options"
+      "see_non_motorized": "See our non-motorized options",
+      "motorized_title": "Motorized Zebra Blinds",
+      "motorized_description": "Explore our selection of motorized zebra blinds for effortless light control."
+    },
+    "groups": {
+      "product_type": {
+        "zebra-blinds": {
+          "title": "Zebra Blinds",
+          "description": "Alternating sheer and opaque fabric bands. Adjust the light with a simple shift."
+        },
+        "curtains": {
+          "title": "Curtains",
+          "description": "Classic window dressing for any room. Soft, flowing, and timeless."
+        },
+        "opaque-blinds": {
+          "title": "Opaque Blinds",
+          "description": "Full light-blocking coverage. Ideal for bedrooms and media rooms."
+        }
+      },
+      "tier": {
+        "basic": {
+          "title": "Basic"
+        },
+        "standard": {
+          "title": "Standard"
+        },
+        "premium": {
+          "title": "Premium"
+        }
+      },
+      "operation": {
+        "cordless": {
+          "title": "Cordless"
+        },
+        "motorized": {
+          "title": "Motorized"
+        }
+      },
+      "other": {
+        "title": "Other Products"
+      }
     }
   },
   "general": {
@@ -126,6 +170,10 @@
           "0": "Fixed-rate shipping to the rest of Canada and U.S.",
           "1": "Carbon-neutral local delivery"
         },
+        "width_warning": {
+          "too_small": "This width is too small for this product. Please enter a larger width.",
+          "too_large": "This width exceeds the maximum size available. Please enter a smaller width or contact us for a custom order."
+        },
         "highlights": {
           "tab_title": "Highlights",
           "motorized": {
@@ -167,6 +215,9 @@
             "0": "We stand behind the quality of our products and offer a 30-day, no-hassle return and exchange policy.",
             "1": "If you are not completely satisfied with your purchase, simply return it within 30 days for a full refund or exchange."
           }
+        },
+        "specifications": {
+          "tab_title": "Specs"
         },
         "install": {
           "tab_title": "Installation",
@@ -454,9 +505,11 @@
       },
       "see_also": "See also:",
       "cant_find_your_fit": "Can't find your fit?",
-      "looking_for_more_1": "Have questions?",
-      "looking_for_more_2": "We can also take measurements for you.",
-      "plan_a_meeting": "Plan a quick 15 mins call",
+      "looking_for_more_1": "Not sure where to start?",
+      "looking_for_more_2": "We'll walk you through everything — colors, measurements, installation. Pick a time that works for you.",
+      "plan_a_meeting": "Book a free 15-min call",
+      "plan_a_meeting_sub": "No pressure. No commitment.",
+      "prefer_text": "Prefer to write?",
       "place_a_custom_order": "Place a custom order",
       "email_us": "Email us",
       "or": "or",
@@ -514,6 +567,12 @@
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "include_taxes": "Tax included.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+    },
+    "reviews": {
+      "title": "What Our Customers Say",
+      "subtitle": "Verified Google Reviews",
+      "source": "Google Review",
+      "review_count": "{{ count }} reviews"
     },
     "modal": {
       "label": "Media gallery"
@@ -589,11 +648,33 @@
         "title": "Transform your decor",
         "button": "Shop now"
       },
+      "payments_accepted": {
+        "title": "Accepted Payments"
+      },
+      "how_to_order": {
+        "title": "3 Easy Steps. That's It.",
+        "step_label": "Step {{ step }}",
+        "step_1": {
+          "title": "Pick your color",
+          "description": "Choose from our selection of colors and fabrics."
+        },
+        "step_2": {
+          "title": "Measure & order",
+          "description": "Measure your window, enter the size, and place your order."
+        },
+        "step_3": {
+          "title": "We do the rest",
+          "description": "We make your blinds and deliver them to your door, ready to install."
+        }
+      },
       "partners": {
-        "title": "We are mentioned by",
-        "title_2": "Featured Project: Zebra Blinds Installation for FM 103.3 Studio",
-        "description": "This project improved the studio's acoustics and modernized its appearance, creating a more pleasant working environment for hosts and guests.",
-        "read_more": "Read the full article about our installation at FM 103.3"
+        "title": "We are mentioned by"
+      },
+      "featured_project": {
+        "overline": "Featured Project",
+        "title": "Zebra Blinds for FM 103.3 Studio",
+        "description": "We outfitted FM 103.3's broadcast studios with custom zebra blinds — improving acoustics and giving the space a clean, modern look.",
+        "cta": "View Project"
       },
       "showcase": {
         "title": "Elevate your space with a contemporary new look.",
@@ -828,7 +909,7 @@
       "powered_by_html": "<a target=\"_blank\" rel=\"nofollow\" href=\"https://www.shopify.com?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore\">Powered by Shopify<\/a>",
       "powered_by_shpf": "Powered by Shopify",
       "copyright": "&copy; Copyright",
-      "ssl_encrypted": "SSL ENCRYPTED | SECURE PAYMENTS",
+      "ssl_encrypted": "SECURE PAYMENTS | POWERED BY SHOPIFY",
       "site_secure": "Site is secure",
       "verify_security": "Verify security"
     },
@@ -1103,6 +1184,37 @@
       },
       "contact_html": "To initiate a return or exchange, please contact our customer service team at <a href=\"mailto:contact@rideauzebra.ca\" class=\"underline\">contact@rideauzebra.ca<\/a>. They will provide you with instructions on how to proceed.",
       "thanks": "Thank you for choosing rideauzebra.ca!"
+    }
+  },
+  "components": {
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": {
+        "1": {
+          "question": "How long does it take to receive my blinds?",
+          "answer": "For regular orders, please allow 2 to 4 business days for delivery. For made-to-measure orders, please allow 1 to 2 weeks. We also offer free local pickup in Montreal by appointment."
+        },
+        "2": {
+          "question": "How do I measure my windows?",
+          "answer": "Use a steel tape measure for accuracy. Measure the width and height at three points and use the smallest measurement. Our product page includes a full measuring guide with diagrams for both inside and outside mounts."
+        },
+        "3": {
+          "question": "Can I install the blinds myself?",
+          "answer": "Yes. Each order includes brackets, screws, and drywall anchors. Mark your bracket positions, drill pilot holes, attach the brackets, and clip the headrail into place."
+        },
+        "4": {
+          "question": "What is your return policy?",
+          "answer": "We offer a 30-day return and exchange policy. Items must be in new, unused condition with all original tags and packaging. Return shipping is free and refunds are processed within 7 to 10 business days."
+        },
+        "5": {
+          "question": "What warranty do you offer?",
+          "answer": "All our zebra blinds are backed by a two-year limited warranty covering any defects in materials or craftsmanship."
+        },
+        "6": {
+          "question": "Are your blinds child and pet safe?",
+          "answer": "Yes. Our cordless design eliminates dangling cords, making them safe for homes with children and pets."
+        }
+      }
     }
   }
 }

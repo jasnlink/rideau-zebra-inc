@@ -4,12 +4,13 @@
 
 @layer base {
     html {
-            scroll-behavior: smooth;
-            font-family: Archivo,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;
-        }
+        scroll-behavior: smooth;
+        font-family: Archivo,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;
+        @apply text-content bg-surface-100;
+    }
     select {
-        box-shadow:none;   
-        outline:none;      
+        box-shadow:none;
+        outline:none;
         -webkit-appearance: none;
         -moz-appearance: none;
         background: transparent;
@@ -18,5 +19,259 @@
             background-position-x: 100%;
             background-position-y: center;
             background-size: 28px;
+    }
+}
+
+/* ============================================================
+   DESIGN SYSTEM — Component Classes
+   ============================================================
+   Naming: .rz-{category}-{variant}
+   Categories: btn, heading, body, label, card, input, badge,
+               section, page, divider, link, icon-btn, trust
+   ============================================================ */
+
+@layer components {
+
+    /* ----------------------------------------------------------
+       BUTTONS
+       All buttons: rounded-md, uppercase, font-medium,
+       transition-all, select-none
+       Sizes: xs, sm, md (default), lg
+       ---------------------------------------------------------- */
+
+    /* Base: shared by all button variants */
+    .rz-btn {
+        @apply font-medium uppercase rounded-md transition-all select-none text-center;
+    }
+
+    /* --- Sizes --- */
+    .rz-btn-xs {
+        @apply rz-btn text-xs py-1 px-2;
+    }
+    .rz-btn-sm {
+        @apply rz-btn text-sm py-2 px-6;
+    }
+    .rz-btn-md {
+        @apply rz-btn text-base py-3 px-8;
+    }
+    .rz-btn-lg {
+        @apply rz-btn text-lg py-4 px-8;
+    }
+
+    /* --- Variants (apply AFTER a size class) --- */
+
+    /* Primary: dark bg, brand hover */
+    .rz-btn-primary {
+        @apply bg-content text-content-inverse hover:bg-brand-500;
+    }
+    /* Primary disabled */
+    .rz-btn-primary:disabled,
+    .rz-btn-primary.disabled {
+        @apply opacity-75 bg-content text-content-inverse cursor-not-allowed;
+    }
+
+    /* Secondary: brand bg, dark hover */
+    .rz-btn-secondary {
+        @apply bg-brand-600 text-content-inverse hover:bg-content;
+    }
+
+    /* Tertiary / Ghost: light bg, dark hover */
+    .rz-btn-ghost {
+        @apply bg-surface-100 text-content hover:bg-content hover:text-content-inverse;
+    }
+
+    /* Outline: transparent bg, border, inverts on hover */
+    .rz-btn-outline {
+        @apply bg-surface-white border border-content text-content hover:bg-content hover:text-content-inverse;
+    }
+    .rz-btn-outline:disabled,
+    .rz-btn-outline.disabled {
+        @apply opacity-75 bg-content text-content-inverse cursor-not-allowed;
+    }
+
+    /* Icon button: circular, for cart/close/menu-close */
+    .rz-icon-btn {
+        @apply flex items-center justify-center p-2 rounded-full bg-content hover:bg-brand-600 transition-all;
+    }
+
+    /* ----------------------------------------------------------
+       TRUST BUTTONS (SSL badges, verify)
+       ---------------------------------------------------------- */
+    .rz-btn-trust {
+        @apply rz-btn text-xs font-bold bg-trust-300 text-content py-2 px-8 tracking-tighter hover:bg-trust-200 active:bg-trust-400;
+    }
+    .rz-btn-trust-verify {
+        @apply rz-btn text-sm bg-trust-500 text-content-inverse py-2 px-8 hover:bg-trust-400 active:bg-trust-600;
+    }
+
+    /* ----------------------------------------------------------
+       TYPOGRAPHY — Headings
+       All headings: font-serif, font-bold
+       Scale: h1 → h5
+       ---------------------------------------------------------- */
+    .rz-h1 {
+        @apply font-serif font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight;
+    }
+    .rz-h2 {
+        @apply font-serif font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight;
+    }
+    .rz-h3 {
+        @apply font-serif font-bold text-xl sm:text-2xl lg:text-3xl;
+    }
+    .rz-h4 {
+        @apply font-serif font-bold text-lg sm:text-xl lg:text-2xl;
+    }
+    .rz-h5 {
+        @apply font-serif font-bold text-base sm:text-lg;
+    }
+
+    /* Hero-level heading (homepage/overview) */
+    .rz-hero-title {
+        @apply font-serif font-bold text-4xl sm:text-5xl lg:text-7xl leading-tight;
+    }
+
+    /* ----------------------------------------------------------
+       TYPOGRAPHY — Body / Labels
+       ---------------------------------------------------------- */
+    .rz-body {
+        @apply text-base font-light text-content leading-relaxed;
+    }
+    .rz-body-lg {
+        @apply text-lg font-light text-content;
+    }
+    .rz-label {
+        @apply text-sm font-medium text-content;
+    }
+    .rz-caption {
+        @apply text-xs text-content-secondary;
+    }
+    .rz-overline {
+        @apply text-sm font-medium uppercase tracking-wide text-content-secondary;
+    }
+
+    /* ----------------------------------------------------------
+       LINKS
+       ---------------------------------------------------------- */
+    .rz-link {
+        @apply underline underline-offset-4 transition-all hover:text-brand-600;
+    }
+    .rz-link-nav {
+        @apply text-lg font-light uppercase transition-all hover:underline hover:underline-offset-4;
+    }
+
+    /* ----------------------------------------------------------
+       CARDS
+       ---------------------------------------------------------- */
+    .rz-card {
+        @apply bg-surface-white border border-content-light rounded-md;
+    }
+    .rz-card-padded {
+        @apply rz-card px-4 sm:px-6 pt-6 pb-8;
+    }
+    .rz-card-feature {
+        @apply bg-content-subtle/30 rounded-md p-8 lg:p-12;
+    }
+
+    /* ----------------------------------------------------------
+       FORM INPUTS
+       ---------------------------------------------------------- */
+    .rz-input {
+        @apply w-full py-3 px-2 rounded-md bg-surface-white border border-content-light text-content;
+    }
+    .rz-select {
+        @apply rz-input;
+    }
+
+    /* ----------------------------------------------------------
+       BADGES
+       ---------------------------------------------------------- */
+    .rz-badge {
+        @apply inline-flex items-center gap-1 text-xs font-medium py-1 px-3 rounded-md;
+    }
+    .rz-badge-brand {
+        @apply rz-badge bg-brand-800 text-content-inverse;
+    }
+    .rz-badge-info {
+        @apply rz-badge bg-brand-100 text-content border border-brand-300;
+    }
+    .rz-badge-trust {
+        @apply rz-badge bg-trust-700 text-content-inverse border border-trust-700;
+    }
+    .rz-badge-stock {
+        @apply text-sm font-medium text-trust-400;
+    }
+    .rz-badge-out-of-stock {
+        @apply text-sm font-medium text-danger;
+    }
+
+    /* ----------------------------------------------------------
+       DIVIDERS
+       ---------------------------------------------------------- */
+    .rz-divider {
+        @apply border-t border-content-tertiary;
+    }
+    .rz-divider-light {
+        @apply border-t border-content-light;
+    }
+
+    /* ----------------------------------------------------------
+       LAYOUT — Page & Section Spacing
+       ---------------------------------------------------------- */
+
+    /* Page-level horizontal gutter */
+    .rz-page-gutter {
+        @apply px-4 sm:px-8;
+    }
+
+    /* Section vertical spacing */
+    .rz-section-gap {
+        @apply py-12 lg:py-24;
+    }
+    .rz-section-gap-sm {
+        @apply py-8 lg:py-12;
+    }
+    .rz-section-gap-lg {
+        @apply py-16 lg:py-36;
+    }
+
+    /* Security popover */
+    .rz-popover {
+        @apply bg-surface-white rounded-md relative z-10;
+    }
+    .rz-popover-trust {
+        @apply text-center bg-trust-100 rounded-md px-8 py-8 border border-trust-300 text-trust-800;
+    }
+}
+
+@keyframes rzFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@layer utilities {
+    .rz-fade-in {
+        animation: rzFadeIn 200ms ease-in-out;
+    }
+    /* Hide scrollbar but keep scroll functionality */
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    /* Minimum square aspect ratio — container is at least as tall as it is wide */
+    .min-aspect-square {
+        min-height: 0;
+        display: grid;
+    }
+    .min-aspect-square::before {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+        grid-area: 1 / 1;
+    }
+    .min-aspect-square > * {
+        grid-area: 1 / 1;
     }
 }

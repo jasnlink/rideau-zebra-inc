@@ -1,0 +1,117 @@
+{% comment %}
+    Customer reviews section.
+    Displays Google reviews + client testimonials.
+    10 total reviews, 5.0 average (all 5-star).
+{% endcomment %}
+
+<div id="reviews" class="bg-surface-100">
+    <div class="container mx-auto rz-section-gap rz-page-gutter">
+        <div class="text-center">
+            <h2 class="rz-h1">{{ 'products.reviews.title' | t }}</h2>
+            <div class="mt-4 flex items-center justify-center gap-2">
+                {% assign review_label = 'products.reviews.review_count' | t: count: 10 %}
+                {% render 'component.star-rating',
+                    rating: 5.0,
+                    label: review_label,
+                    size_class: 'h-5 w-5',
+                    text_class: 'text-base'
+                %}
+            </div>
+            <p class="mt-2 text-content-secondary">{{ 'products.reviews.subtitle' | t }}</p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% comment %} Review — Carl C. (Google) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"We are happy that we decided to go with Rideau Zebra. The quality of the blinds were very good and their attention to installation was excellent. I recommend their company/products if you need blinds for your house or condo."</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">Carl C.</span>
+                    <span class="rz-caption text-content-tertiary">·</span>
+                    <span class="rz-caption text-content-secondary">{{ 'products.reviews.source' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Jean-Daniel P. (Google) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"From the initial contact with Rideau Zebra to the installation, everything went smoothly, efficiently, and pleasantly. Lucie was invaluable and fully committed to our project. The result is magnificent and brings a beautiful harmony to our condo."</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">Jean-Daniel P.</span>
+                    <span class="rz-caption text-content-tertiary">·</span>
+                    <span class="rz-caption text-content-secondary">{{ 'products.reviews.source' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Marie-Noël G. (Google) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"We had a wonderful experience purchasing our home blinds from Rideau Zebra. Lucie's service was impeccable; professional and friendly; communication was quick and clear. The result is truly superb. Thank you for everything, we are delighted!"</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">Marie-Noël G.</span>
+                    <span class="rz-caption text-content-tertiary">·</span>
+                    <span class="rz-caption text-content-secondary">{{ 'products.reviews.source' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Johanne & Paul (Testimonial) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"{{ 'templates.homepage.showcase_10.review_block_1.message' | t }}"</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">{{ 'templates.homepage.showcase_10.review_block_1.name' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Stéphanie (Testimonial) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"{{ 'templates.homepage.showcase_10.review_block_2.message' | t }}"</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">{{ 'templates.homepage.showcase_10.review_block_2.name' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Alexandre (Testimonial) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"{{ 'templates.homepage.showcase_10.review_block_3.message' | t }}"</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">{{ 'templates.homepage.showcase_10.review_block_3.name' | t }}</span>
+                </div>
+            </div>
+            {% comment %} Review — Charlie C. (Google) {% endcomment %}
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-0.5 text-brand-600">
+                    {%- for i in (1..5) -%}
+                        {% render 'icon-star', class: 'h-4 w-4' %}
+                    {%- endfor -%}
+                </div>
+                <p class="text-content leading-relaxed">"Excellent !"</p>
+                <div class="flex items-center gap-2">
+                    <span class="rz-label text-content">Charlie C.</span>
+                    <span class="rz-caption text-content-tertiary">·</span>
+                    <span class="rz-caption text-content-secondary">{{ 'products.reviews.source' | t }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
