@@ -448,7 +448,7 @@
                                 <div class="mt-4">
                                     {% assign asset = 'products.product.cordless_zebra_blinds.install.media' | t %}
                                     <picture>
-                                        <img src="{{ asset | asset_img_url: 'x720' }}" alt="{{ asset }}" class="w-full h-auto" />
+                                        <img src="{{ asset | asset_img_url: 'x720' }}" alt="{{ asset }}" width="720" height="480" loading="lazy" class="w-full h-auto" />
                                     </picture>
                                 </div>
                                 <ul class="mt-4 ml-4 list-decimal leading-8">
@@ -469,7 +469,7 @@
                                             <div class="mt-2">
                                                 {% assign fig1_asset = 'product-specifications-full-' | append: spec_tier | append: '.svg' %}
                                                 <picture>
-                                                    <img src="{{ fig1_asset | asset_url }}" alt="{{ fig1_key | t }}" class="w-full h-auto object-cover">
+                                                    <img src="{{ fig1_asset | asset_url }}" alt="{{ fig1_key | t }}" width="400" height="400" loading="lazy" class="w-full h-auto object-cover">
                                                 </picture>
                                             </div>
                                         </div>
@@ -479,7 +479,7 @@
                                             <div class="mt-2">
                                                 {% assign fig2_asset = 'product-specifications-cassette-' | append: spec_tier | append: '.svg' %}
                                                 <picture>
-                                                    <img src="{{ fig2_asset | asset_url }}" alt="{{ fig2_key | t }}" class="w-full h-auto object-cover">
+                                                    <img src="{{ fig2_asset | asset_url }}" alt="{{ fig2_key | t }}" width="400" height="400" loading="lazy" class="w-full h-auto object-cover">
                                                 </picture>
                                             </div>
                                         </div>

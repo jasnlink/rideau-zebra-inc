@@ -42,7 +42,7 @@
                                     {% if variant_product.metafields.custom_filters.texture != blank %}
                                         <div class="rounded-md overflow-hidden">
                                             <picture>
-                                                <img src="{{ variant_product.metafields.custom_filters.texture | image_url: width: 360 }}" alt="{{ variant_product.title }}" class="w-full h-full object-cover">
+                                                <img src="{{ variant_product.metafields.custom_filters.texture | image_url: width: 360 }}" alt="{{ variant_product.title }}" width="64" height="64" loading="lazy" class="w-full h-full object-cover">
                                             </picture>
                                         </div>
                                     {% elsif variant_product.metafields.custom_filters.color.value != blank %}

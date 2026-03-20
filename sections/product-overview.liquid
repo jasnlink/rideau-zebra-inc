@@ -122,21 +122,27 @@
                     <img src="{{ image | asset_img_url: '240x' }}" alt="{{ 'Walmart' }}" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
                 </div>
             </div>
-            <div class="mt-24 text-center w-full sm:w-3/4 lg:w-1/2 mx-auto">
-                <div class="rz-h4 text-center">{{ 'templates.homepage.partners.title_2' | t }}</div>
-                <div class="mt-8 aspect-square w-full sm:w-3/4 lg:w-1/2 mx-auto">
-                    <picture>
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1536px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1280px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:1024px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:768px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:640px)" />
-                        <source srcset="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" media="(min-width:0px)" />
-                        <img src="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].image | image_url: width: 1200 }}" alt="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
-                    </picture>
+            <div class="mt-24">
+                {% assign featured_article = articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'] %}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div class="overflow-hidden rounded-md">
+                        <img
+                            src="{{ featured_article.image | image_url: width: 900 }}"
+                            srcset="{{ featured_article.image | image_url: width: 600 }} 600w, {{ featured_article.image | image_url: width: 900 }} 900w, {{ featured_article.image | image_url: width: 1200 }} 1200w"
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            alt="{{ featured_article.title }}"
+                            width="900" height="600"
+                            loading="lazy"
+                            class="w-full h-auto object-cover"
+                        />
+                    </div>
+                    <div>
+                        <span class="rz-overline text-content-secondary">{{ 'templates.homepage.featured_project.overline' | t }}</span>
+                        <h3 class="mt-4 rz-h2">{{ 'templates.homepage.featured_project.title' | t }}</h3>
+                        <p class="mt-6 text-content-secondary leading-relaxed">{{ 'templates.homepage.featured_project.description' | t }}</p>
+                        <a href="{{ featured_article.url }}" class="inline-block mt-8 rz-btn-md rz-btn-secondary" title="{{ featured_article.title }}">{{ 'templates.homepage.featured_project.cta' | t }}</a>
+                    </div>
                 </div>
-                <p class="mt-12">{{ 'templates.homepage.partners.description' | t }}</p>
-                <a href="{{ articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].url }}" class="inline-block mt-8 rz-link text-lg lg:text-xl" title="{{ articles['custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'].title }}">{{ 'templates.homepage.partners.read_more' | t }}</a>
             </div>
         </div>
     </div>

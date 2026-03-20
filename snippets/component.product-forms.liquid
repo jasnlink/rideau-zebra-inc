@@ -13,14 +13,14 @@
             <label role="button" for="product-forms-mount-inside" class="flex flex-col p-2 rounded-md border-2 border-content-light hover:border-brand-300 has-[:checked]:border-brand-500 transition-all shadow-sm">
                 <input class="hidden" data-rz-product-forms="mount-input" type="radio" name="product-forms-mount" placeholder="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.mount_type' | t }}" id="product-forms-mount-inside" value="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.inside' | t }}" data-rz-product-forms-width-asset-url="{{ 'product-forms-inside-width.svg' | asset_url }}" data-rz-product-forms-height-asset-url="{{ 'product-forms-inside-height.svg' | asset_url }}" data-rz-product-forms-depth-show="true" checked>
                 <picture>
-                    <img src="{{ 'product-forms-inside-mount.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.inside' | t }}" class="w-full h-full object-cover">
+                    <img src="{{ 'product-forms-inside-mount.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.inside' | t }}" width="200" height="200" loading="lazy" class="w-full h-full object-cover">
                 </picture>
                 <div class="font-medium">{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.inside' | t }}</div>
             </label>
             <label role="button" for="product-forms-mount-outside" class="flex flex-col p-2 rounded-md border-2 border-content-light hover:border-brand-300 has-[:checked]:border-brand-500 transition-all shadow-sm">
                 <input class="hidden" data-rz-product-forms="mount-input" type="radio" name="product-forms-mount" placeholder="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.mount_type' | t }}" id="product-forms-mount-outside" value="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.outside' | t }}" data-rz-product-forms-width-asset-url="{{ 'product-forms-outside-width.svg' | asset_url }}" data-rz-product-forms-height-asset-url="{{ 'product-forms-outside-height.svg' | asset_url }}">
                 <picture>
-                    <img src="{{ 'product-forms-outside-mount.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.outside' | t }}" class="w-full h-full object-cover">
+                    <img src="{{ 'product-forms-outside-mount.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.outside' | t }}" width="200" height="200" loading="lazy" class="w-full h-full object-cover">
                 </picture>
                 <div class="font-medium">{{ 'products.product.cordless_zebra_blinds.product_forms.choose_your_mount.outside' | t }}</div>
             </label>
@@ -48,7 +48,7 @@
         <div class="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-2 xl:gap-4">
             <div class="flex flex-col" data-rz-product-forms="width">
                 <picture>
-                    <img src="{{ 'product-forms-inside-width.svg' | asset_url }}" data-rz-product-forms="width-asset" class="w-full h-full object-cover">
+                    <img src="{{ 'product-forms-inside-width.svg' | asset_url }}" data-rz-product-forms="width-asset" width="200" height="200" loading="lazy" class="w-full h-full object-cover">
                 </picture>
                 <div class="mt-2">
                     <label for="product-forms-width">{{ 'products.product.cordless_zebra_blinds.product_forms.enter_your_measurements.width' | t }} (<span data-rz-product-forms="measurement-unit-display"></span>)</label>
@@ -57,7 +57,7 @@
             </div>
             <div class="flex flex-col" data-rz-product-forms="height">
                 <picture>
-                    <img src="{{ 'product-forms-inside-height.svg' | asset_url }}" data-rz-product-forms="height-asset" class="w-full h-full object-cover">
+                    <img src="{{ 'product-forms-inside-height.svg' | asset_url }}" data-rz-product-forms="height-asset" width="200" height="200" loading="lazy" class="w-full h-full object-cover">
                 </picture>
                 <div class="mt-2">
                     <label for="product-forms-height">{{ 'products.product.cordless_zebra_blinds.product_forms.enter_your_measurements.height' | t }} (<span data-rz-product-forms="measurement-unit-display"></span>)</label>
@@ -68,7 +68,7 @@
         <div class="mt-4 grid grid-cols-2 gap-2 sm:gap-4 lg:gap-2 xl:gap-4" data-rz-product-forms="depth">
             <div class="flex flex-col">
                 <picture>
-                    <img src="{{ 'product-forms-inside-depth.svg' | asset_url }}" data-rz-product-forms="depth-asset" class="w-full h-full object-cover">
+                    <img src="{{ 'product-forms-inside-depth.svg' | asset_url }}" data-rz-product-forms="depth-asset" width="200" height="200" loading="lazy" class="w-full h-full object-cover">
                 </picture>
                 <div class="mt-2">
                     <label for="product-forms-depth">{{ 'products.product.cordless_zebra_blinds.product_forms.enter_your_measurements.depth' | t }} (<span data-rz-product-forms="measurement-unit-display"></span>)</label>
