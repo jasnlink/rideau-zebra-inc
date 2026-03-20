@@ -86,10 +86,11 @@
     {% assign product_types = 'zebra-blinds,curtains,opaque-blinds' | split: ',' %}
 
     {% for pt in product_types %}
+        {% assign pt_tag = 'product-type:' | append: pt %}
         {% assign pt_count = 0 %}
         {% for product in homepage_collection.products %}
             {% for tag in product.tags %}
-                {% if tag == 'product-type:' | append: pt %}
+                {% if tag == pt_tag %}
                     {% assign pt_count = pt_count | plus: 1 %}
                     {% break %}
                 {% endif %}
@@ -110,7 +111,7 @@
                     {% for product in homepage_collection.products %}
                         {% assign has_pt = false %}
                         {% for tag in product.tags %}
-                            {% if tag == 'product-type:' | append: pt %}
+                            {% if tag == pt_tag %}
                                 {% assign has_pt = true %}
                                 {% break %}
                             {% endif %}

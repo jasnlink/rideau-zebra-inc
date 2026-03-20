@@ -4,13 +4,13 @@
             <div class="mb-8">
                 {%- assign image = 'page-about-main.png' -%}
                 <picture>
-                    <source srcset="{{ image | | asset_img_url: '1154x' }}" media="(min-width:1536px)" />
-                    <source srcset="{{ image | | asset_img_url: '1018x' }}" media="(min-width:1280px)" />
-                    <source srcset="{{ image | | asset_img_url: '868x' }}" media="(min-width:1024px)" />
-                    <source srcset="{{ image | | asset_img_url: '1152x' }}" media="(min-width:768px)" />
-                    <source srcset="{{ image | | asset_img_url: '896x' }}" media="(min-width:640px)" />
-                    <source srcset="{{ image | | asset_img_url: '768x' }}" media="(min-width:0px)" />
-                    <img src="{{ image | | asset_img_url: '768x' }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md " />
+                    <source srcset="{{ image | asset_img_url: '1154x' }}" media="(min-width:1536px)" />
+                    <source srcset="{{ image | asset_img_url: '1018x' }}" media="(min-width:1280px)" />
+                    <source srcset="{{ image | asset_img_url: '868x' }}" media="(min-width:1024px)" />
+                    <source srcset="{{ image | asset_img_url: '1152x' }}" media="(min-width:768px)" />
+                    <source srcset="{{ image | asset_img_url: '896x' }}" media="(min-width:640px)" />
+                    <source srcset="{{ image | asset_img_url: '768x' }}" media="(min-width:0px)" />
+                    <img src="{{ image | asset_img_url: '768x' }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
                 </picture>
             </div>
         {% endif %}
