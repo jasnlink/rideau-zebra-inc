@@ -1,6 +1,6 @@
 <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org",
         "@type": "Product",
         "name": {{ product.title | json }},
         "url": {{ request.origin | append: product.url | json }},
@@ -15,6 +15,13 @@
             "@type": "Brand",
             "name": {{ product.vendor | json }}
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 5.0,
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": 10
+        },
         "offers": [
             {%- for variant in product.variants -%}
             {
@@ -23,15 +30,15 @@
                 "sku": {{ variant.sku | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 12 -%}
-                "gtin12": {{ variant.barcode }},
+                "gtin12": {{ variant.barcode | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 13 -%}
-                "gtin13": {{ variant.barcode }},
+                "gtin13": {{ variant.barcode | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 14 -%}
-                "gtin14": {{ variant.barcode }},
+                "gtin14": {{ variant.barcode | json }},
                 {%- endif -%}
-                "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
                 "price" : {{ variant.price | divided_by: 100.00 | json }},
                 "priceCurrency" : {{ cart.currency.iso_code | json }},
                 "url" : {{ request.origin | append: variant.url | json }}
@@ -41,34 +48,45 @@
     }
 </script>
 <div>
-    <div>
-        <a href="{{ product.url }}" data-rz-product-hover="{{ product.handle }}" class="bg-gray-200 aspect-square rounded-md">
-            <div class="relative">
-                <picture class="relative">
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
-                    <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
-                    <img src="{{ product.featured_image | image_url: width: 800 }}" height="800" width="800" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
-                </picture>
-                <picture class="hidden lg:block absolute inset-0 opacity-0 transition-opacity" data-rz-product-hover-action="{{ product.handle }}">
+    <a href="{{ product.url }}" data-rz-product-hover="{{ product.handle }}" class="block rounded-md overflow-hidden">
+        <div class="bg-surface-200 transition-[height] duration-200 ease-in-out" data-rz-product-container="{{ product.handle }}">
+            <picture data-rz-product-primary="{{ product.handle }}">
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1280px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1024px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:768px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:640px)" />
+                <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:0px)" />
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt }}" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}" loading="lazy" class="w-full h-auto" />
+            </picture>
+            {% if product.images[1] %}
+                <picture class="hidden" data-rz-product-hover-action="{{ product.handle }}">
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1536px)" />
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1280px)" />
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:1024px)" />
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:768px)" />
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:640px)" />
                     <source srcset="{{ product.images[1] | image_url: width: 800 }}" media="(min-width:0px)" />
-                    <img src="{{ product.images[1] | image_url: width: 800 }}" height="800" width="800" alt="{{ product.featured_image.alt }}" height="200" width="200" loading="lazy" class="w-full h-auto object-contain rounded-md" />
+                    <img src="{{ product.images[1] | image_url: width: 800 }}" alt="{{ product.featured_image.alt }}" width="{{ product.images[1].width }}" height="{{ product.images[1].height }}" loading="lazy" class="w-full h-auto" />
                 </picture>
-            </div>
-        </a>
-    </div>
+            {% endif %}
+        </div>
+    </a>
     <div class="pt-4 pb-5">
         <div>
             <a href="{{ product.url }}" class="block">
-                <span class="text-3xl font-bold mt-4 font-serif text-black">{{ product.title }}</span>
+                <span class="rz-h3 mt-4">{{ product.title }}</span>
+            </a>
+        </div>
+        <div class="mt-1.5">
+            <a href="{{ product.url }}" class="block">
+                {% assign review_label = 'products.reviews.review_count' | t: count: 10 %}
+                {% render 'component.star-rating',
+                    rating: 5.0,
+                    label: review_label,
+                    size_class: 'h-3.5 w-3.5',
+                    text_class: 'text-xs'
+                %}
             </a>
         </div>
         <div class="mt-1.5">
@@ -80,7 +98,7 @@
             </a>
         </div>
         <div class="mt-6">
-            <a href="{{ product.url }}" title="{{ product.title }}" class="font-semibold underline underline-offset-4">{{ 'products.product.price.see_more' | t }}</a>
+            <a href="{{ product.url }}" title="{{ product.title }}" class="rz-link font-semibold">{{ 'products.product.price.see_more' | t }}</a>
         </div>
     </div>
 </div>

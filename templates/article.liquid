@@ -1,3 +1,29 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": {{ article.title | json }},
+        "url": {{ request.origin | append: article.url | json }},
+        {%- if article.image -%}
+            "image": {{ article.image | image_url: width: 1200 | prepend: "https:" | json }},
+        {%- endif -%}
+        "datePublished": {{ article.published_at | date: "%Y-%m-%dT%H:%M:%S%z" | json }},
+        "dateModified": {{ article.updated_at | date: "%Y-%m-%dT%H:%M:%S%z" | json }},
+        "author": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }},
+            "logo": {
+                "@type": "ImageObject",
+                "url": {{ 'logo-main.png' | asset_url | prepend: "https:" | json }}
+            }
+        },
+        "description": {{ article.excerpt_or_content | strip_html | truncate: 160 | json }}
+    }
+</script>
 <div class="pt-4 pb-24 container mx-auto">
     <div class="sm:w-10/12 mx-auto">
         <div>
@@ -13,12 +39,12 @@
             </picture>
         </div>
         <div class="mt-4 text-center">
-            <a href="{{ blog.url }}" title="{{ 'blogs.article.back_to_blog' | t }}" class="underline underline-offset-4 text-lg text-stone-900">{{ 'blogs.article.back_to_blog' | t }}</a>
+            <a href="{{ blog.url }}" title="{{ 'blogs.article.back_to_blog' | t }}" class="rz-link text-lg">{{ 'blogs.article.back_to_blog' | t }}</a>
         </div>
         <div class="mt-8">
-            <h1 class="font-serif font-bold text-5xl text-stone-900">{{ article.title }}</h1>
+            <h1 class="rz-h1">{{ article.title }}</h1>
         </div>
-        <div class="mt-8 text-xl text-stone-900">{{ article.content | replace: "<h2", '<h2 class="mt-6 mb-4 font-serif font-bold text-5xl"' | replace: "<h3", '<h3 class="mt-6 mb-4 font-serif font-bold text-3xl"' | replace: '<p', '<p class="mb-4"' | replace: '<a', '<a class="underline underline-offset-4"' }}</div>
+        <div class="mt-8 text-xl text-content">{{ article.content | replace: "<h2", '<h2 class="mt-6 mb-4 font-serif font-bold text-5xl"' | replace: "<h3", '<h3 class="mt-6 mb-4 font-serif font-bold text-3xl"' | replace: '<p', '<p class="mb-4"' | replace: '<a', '<a class="underline underline-offset-4"' }}</div>
     </div>
 </div>
 <div class="mt-12 relative">
@@ -34,9 +60,9 @@
             <img src="{{ image | asset_img_url: 'x2100' }}" alt="{{ title }}" height="200" width="200" loading="lazy" class="w-full h-auto object-cover" />
         </picture>
     </div>
-    <div class="absolute top-0 left-0 right-0 bottom-0 bg-stone-900 opacity-25"></div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-content opacity-25"></div>
     <div class="text-center w-10/12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div class="text-neutral-100 mx-auto text-center font-serif font-bold text-2xl lg:text-4xl leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
-        <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit text-lg font-medium bg-indigo-600 text-neutral-100 uppercase px-8 pt-3 pb-3 rounded-md transition-all hover:bg-stone-900" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
+        <div class="rz-h2 text-content-inverse text-center leading-relaxed w-11/12 lg:w-10/12 mx-auto">{{ 'templates.homepage.showcase_8.call_to_action_block.title' | t | newline_to_br }}</div>
+        <a href="{{ routes['collections_url'] }}" class="block mt-12 mx-auto w-fit h-fit rz-btn-lg rz-btn-secondary" title="{{ 'templates.homepage.hero.button' | t }}">{{ 'templates.homepage.hero.button' | t }}</a>
     </div>
 </div>

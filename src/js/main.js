@@ -11,22 +11,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 function initProductHover() {
     const hoverElements = document.querySelectorAll('[data-rz-product-hover]')
-    const actionHoverElements = document.querySelectorAll('[data-rz-product-hover-action]')
-    if (!actionHoverElements.length || !hoverElements.length) {
-        return
-    }
+    if (!hoverElements.length) return
+
     hoverElements.forEach((element) => {
         element.addEventListener('mouseenter', (e) => {
-            const actionHandle = e.target.getAttribute('data-rz-product-hover')
-            const actionElement = document.querySelector(`[data-rz-product-hover-action="${actionHandle}"]`)
-            actionElement.classList.remove('opacity-0')
-            actionElement.classList.add('opacity-100')
+            const handle = e.currentTarget.getAttribute('data-rz-product-hover')
+            const containerEl = document.querySelector(`[data-rz-product-container="${handle}"]`)
+            const primaryEl = document.querySelector(`[data-rz-product-primary="${handle}"]`)
+            const hoverEl = document.querySelector(`[data-rz-product-hover-action="${handle}"]`)
+            if (!primaryEl || !hoverEl || !containerEl) return
+            const startH = containerEl.offsetHeight
+            containerEl.style.height = startH + 'px'
+            primaryEl.classList.add('hidden')
+            hoverEl.classList.remove('hidden')
+            hoverEl.classList.add('rz-fade-in')
+            containerEl.style.height = 'auto'
+            const endH = containerEl.offsetHeight
+            containerEl.style.height = startH + 'px'
+            requestAnimationFrame(() => { containerEl.style.height = endH + 'px' })
+            const onEnd = () => { containerEl.style.height = ''; containerEl.removeEventListener('transitionend', onEnd) }
+            containerEl.addEventListener('transitionend', onEnd)
         })
         element.addEventListener('mouseleave', (e) => {
-            const actionHandle = e.target.getAttribute('data-rz-product-hover')
-            const actionElement = document.querySelector(`[data-rz-product-hover-action="${actionHandle}"]`)
-            actionElement.classList.remove('opacity-100')
-            actionElement.classList.add('opacity-0')
+            const handle = e.currentTarget.getAttribute('data-rz-product-hover')
+            const containerEl = document.querySelector(`[data-rz-product-container="${handle}"]`)
+            const primaryEl = document.querySelector(`[data-rz-product-primary="${handle}"]`)
+            const hoverEl = document.querySelector(`[data-rz-product-hover-action="${handle}"]`)
+            if (!primaryEl || !hoverEl || !containerEl) return
+            const startH = containerEl.offsetHeight
+            containerEl.style.height = startH + 'px'
+            hoverEl.classList.add('hidden')
+            hoverEl.classList.remove('rz-fade-in')
+            primaryEl.classList.remove('hidden')
+            primaryEl.classList.add('rz-fade-in')
+            containerEl.style.height = 'auto'
+            const endH = containerEl.offsetHeight
+            containerEl.style.height = startH + 'px'
+            requestAnimationFrame(() => { containerEl.style.height = endH + 'px' })
+            const onEnd = () => { containerEl.style.height = ''; containerEl.removeEventListener('transitionend', onEnd) }
+            containerEl.addEventListener('transitionend', onEnd)
         })
     })
 }
@@ -40,7 +63,7 @@ function initSecurePopover() {
     let popperInstanceList = [];
 
     secureCloseBtnElementList.forEach(secureCloseBtnElement => {secureCloseBtnElement.addEventListener('click', hideSecure)})
-    
+
     secureBtnElementList.forEach((secureBtnElement, index) => {
         secureBtnElement.addEventListener('click', (event, secureBtnElement) => {handleSecureToggle(secureBtnElement, index)});
 
@@ -258,7 +281,7 @@ function initCart() {
                 'line': currentId,
                 'quantity': currentQuantity
             };
-    
+
             fetch(window.Shopify.routes.root + 'cart/change.js', {
                 method: 'POST',
                 headers: {

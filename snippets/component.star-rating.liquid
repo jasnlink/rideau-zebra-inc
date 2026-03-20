@@ -1,0 +1,29 @@
+{% comment %}
+    Star rating display component.
+    Renders 5 stars + optional count or label.
+
+    Parameters:
+        rating       - decimal rating value (e.g. 5.0)
+        count        - total review count (shown in parentheses)
+        label        - text label shown after stars (e.g. "10 reviews")
+        size_class   - Tailwind size class for stars (default: 'h-4 w-4')
+        text_class   - Tailwind text class for count/label (default: 'text-sm')
+        show_count   - boolean, show review count (default: true)
+{% endcomment %}
+
+{%- assign star_size = size_class | default: 'h-4 w-4' -%}
+{%- assign star_text = text_class | default: 'text-sm' -%}
+{%- assign star_show_count = show_count | default: true -%}
+
+<div class="flex items-center gap-1.5">
+    <div class="flex items-center gap-0.5 text-brand-600" aria-label="{{ rating }} out of 5 stars">
+        {%- for i in (1..5) -%}
+            {% render 'icon-star', class: star_size %}
+        {%- endfor -%}
+    </div>
+    {%- if label != blank -%}
+        <span class="{{ star_text }} text-content-secondary font-medium">{{ label }}</span>
+    {%- elsif star_show_count and count -%}
+        <span class="{{ star_text }} text-content-secondary font-medium">({{ count }})</span>
+    {%- endif -%}
+</div>

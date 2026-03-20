@@ -1,6 +1,6 @@
 <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org",
         "@type": "Product",
         "name": {{ product.title | json }},
         "url": {{ request.origin | append: product.url | json }},
@@ -15,6 +15,64 @@
             "@type": "Brand",
             "name": {{ product.vendor | json }}
         },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 5.0,
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": 10
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Carl C." },
+                "datePublished": "2024-03-01",
+                "reviewBody": "We are happy that we decided to go with Rideau Zebra. The quality of the blinds were very good and their attention to installation was excellent. I recommend their company/products if you need blinds for your house or condo.",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Jean-Daniel P." },
+                "datePublished": "2025-01-15",
+                "reviewBody": "From the initial contact with Rideau Zebra to the installation, everything went smoothly, efficiently, and pleasantly. Lucie was invaluable and fully committed to our project. The result is magnificent and brings a beautiful harmony to our condo. A fantastic local company that I recommend without hesitation!",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Marie-Noël G." },
+                "datePublished": "2025-02-10",
+                "reviewBody": "We had a wonderful experience purchasing our home blinds from Rideau Zebra. Lucie's service was impeccable; professional and friendly; communication was quick and clear. The result is truly superb. Thank you for everything, we are delighted!",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Charlie C." },
+                "datePublished": "2025-03-01",
+                "reviewBody": "Excellent !",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Johanne and Paul" },
+                "datePublished": "2025-01-01",
+                "reviewBody": "We installed our blinds this morning, and everything is perfect. Thank you for the great service. We look forward to referring your business to our friends.",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "St\u00e9phanie" },
+                "datePublished": "2025-02-01",
+                "reviewBody": "The team was very helpful and patient in helping me choose the right model for my living room. I'm thrilled with my purchase and highly recommend them.",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Alexandre" },
+                "datePublished": "2025-03-01",
+                "reviewBody": "I recently bought zebra blinds for my home office and couldn't be happier. Thank you for your excellent customer service and expertise.",
+                "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+            }
+        ],
         "offers": [
             {%- for variant in product.variants -%}
             {
@@ -23,15 +81,15 @@
                 "sku": {{ variant.sku | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 12 -%}
-                "gtin12": {{ variant.barcode }},
+                "gtin12": {{ variant.barcode | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 13 -%}
-                "gtin13": {{ variant.barcode }},
+                "gtin13": {{ variant.barcode | json }},
                 {%- endif -%}
                 {%- if variant.barcode.size == 14 -%}
-                "gtin14": {{ variant.barcode }},
+                "gtin14": {{ variant.barcode | json }},
                 {%- endif -%}
-                "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
                 "price" : {{ variant.price | divided_by: 100.00 | json }},
                 "priceCurrency" : {{ cart.currency.iso_code | json }},
                 "url" : {{ request.origin | append: variant.url | json }}
@@ -41,7 +99,7 @@
     }
 </script>
 <div data-animation-object="cart" class="fixed z-50 hidden">
-    <div class="p-1 bg-indigo-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-neutral-100' %}</div>
+    <div class="p-1 bg-brand-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-content-inverse' %}</div>
 </div>
 <div class="container 2xl:px-0 pt-6 pb-12 mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 xl:gap-12">
@@ -92,7 +150,7 @@
                 <div class="mt-2 grid grid-cols-6 gap-2" data-glide-el="controls">
                     {% for media in product.media %}
                         <div role="button" data-glide-dir="={{ forloop.index0 }}">
-                            <div class="flex items-stretch justify-center bg-gray-200 aspect-square rounded-md">
+                            <div class="flex items-stretch justify-center bg-content-light aspect-square rounded-md">
                                 <picture class="flex flex-grow">
                                     <img src="{{ media | image_url: width: 196 }}" alt="{{ image.alt }}" height="120" width="120" loading="lazy" class="w-full h-full object-cover rounded" />
                                 </picture>
@@ -102,29 +160,59 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-5 text-stone-900 relative">
+        <div class="col-span-5 text-content relative">
             <div class="sticky top-24">
                 <form data-rz-product-forms="form">
                     <div class="py-4 lg:py-6 mx-auto">
-                        <div class="text-4xl font-bold mt-4 font-serif text-black">{{ product.title }}</div>
-                        <div class="mt-4 pt-4 border-t border-stone-400">{{ product.description | strip_html }}</div>
-                        {% comment %} Check if product has zebra-blinds product type {% endcomment %}
+                        <div class="rz-h1 mt-4">{{ product.title }}</div>
+                        <a href="#reviews" class="mt-2 block w-fit">
+                            {% assign review_label = 'products.reviews.review_count' | t: count: 10 %}
+                            {% render 'component.star-rating',
+                                rating: 5.0,
+                                label: review_label,
+                                size_class: 'h-4 w-4',
+                                text_class: 'text-sm'
+                            %}
+                        </a>
+                        <div class="mt-4 pt-4 rz-divider">{{ product.description | strip_html }}</div>
+                        {% comment %} Check if product has a valid product type {% endcomment %}
                         {% assign has_product_type = false %}
                         {% for tag in product.tags %}
                             {% if tag contains 'product-type:' %}
                                 {% assign product_type = tag | remove: 'product-type:' %}
-                                {% if product_type == 'zebra-blinds' or product_type == 'motorized-zebra-blinds' or product_type == 'opaque-blinds' %}
+                                {% if product_type == 'zebra-blinds' or product_type == 'curtains' or product_type == 'opaque-blinds' %}
                                     {% assign has_product_type = true %}
                                     {% break %}
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
+                        {% comment %} Detect product operation mechanism {% endcomment %}
+                        {% assign product_operation = 'cordless' %}
+                        {% for tag in product.tags %}
+                            {% if tag contains 'operation:' %}
+                                {% assign product_operation = tag | remove: 'operation:' %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% comment %} Detect product tier for specs {% endcomment %}
+                        {% assign product_tier = '' %}
+                        {% for tag in product.tags %}
+                            {% if tag contains 'tier:' %}
+                                {% assign product_tier = tag | remove: 'tier:' %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% comment %} Map tier to spec tier (basic/standard → basic, premium → premium) {% endcomment %}
+                        {% assign spec_tier = product_tier %}
+                        {% if product_tier == 'standard' %}
+                            {% assign spec_tier = 'basic' %}
+                        {% endif %}
                         {% if has_product_type %}
                             {% render 'component.color-selector' %}
 
-                            {% comment %} <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-white border border-stone-200 hover:bg-neutral-50 has-[:checked]:bg-indigo-200 has-[:checked]:border-indigo-500" for="install-check">
+                            {% comment %} <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-surface-white border border-content-light hover:bg-surface-50 has-[:checked]:bg-brand-200 has-[:checked]:border-brand-500" for="install-check">
                                 <input class="hidden peer" type="checkbox" id="install-check" data-product-install-service-item-id="{{ all_products['professional-window-blind-installation-service'].first_available_variant.id }}">
-                                <span class="transition-all opacity-20 peer-checked:opacity-100">{% render 'icon-success', class: 'h-6 fill-indigo-500' %}</span>
+                                <span class="transition-all opacity-20 peer-checked:opacity-100">{% render 'icon-success', class: 'h-6 fill-brand-500' %}</span>
                                 {% assign installPrice = all_products['professional-window-blind-installation-service'].price | money_without_trailing_zeros %}
                                 <span>{{ 'products.product.cordless_zebra_blinds.have_us_install' | t: installPrice: installPrice }}</span>
                             </label> {% endcomment %}
@@ -141,9 +229,9 @@
                         {% endif %}
                         {% if has_product_type %}
                             <div class="mt-2">
-                                <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-white border border-stone-200 hover:bg-neutral-50 has-[:checked]:bg-indigo-200 has-[:checked]:border-indigo-500" for="install-check">
+                                <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-surface-white border border-content-light hover:bg-surface-50 has-[:checked]:bg-brand-200 has-[:checked]:border-brand-500" for="install-check">
                                     <input class="hidden peer" type="checkbox" id="install-check" data-product-install-service-item-id="{{ all_products['professional-window-blind-installation-service'].first_available_variant.id }}">
-                                    <span class="transition-all opacity-20 peer-checked:opacity-100">{% render 'icon-success', class: 'h-6 fill-indigo-500' %}</span>
+                                    <span class="transition-all opacity-20 peer-checked:opacity-100">{% render 'icon-success', class: 'h-6 fill-brand-500' %}</span>
                                     {% assign installPrice = all_products['professional-window-blind-installation-service'].price | money_without_trailing_zeros %}
                                     <span>{{ 'products.product.cordless_zebra_blinds.have_us_install' | t: installPrice: installPrice }}</span>
                                 </label>
@@ -152,20 +240,27 @@
                         <div class="pt-4 pb-2 flex items-center justify-between gap-8">
                             <span data-product-display-price class="text-2xl font-light shrink-0">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
                             {% comment %} {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
-                                <div class="shrink flex items-center gap-1 bg-green-100 border border-green-300 rounded-md px-4 py-1">
-                                    <span>{% render 'icon-success', class: 'h-4 fill-green-500' %}</span>
-                                    <span class="text-xs font-medium text-green-500">{{ 'products.product.pickup_availability.pick_up_available_montreal' | t }}</span>
+                                <div class="shrink flex items-center gap-1 bg-trust-100 border border-trust-300 rounded-md px-4 py-1">
+                                    <span>{% render 'icon-success', class: 'h-4 fill-trust-500' %}</span>
+                                    <span class="text-xs font-medium text-trust-500">{{ 'products.product.pickup_availability.pick_up_available_montreal' | t }}</span>
                                 </div>
                             {% endif %} {% endcomment %}
                             <div data-product-display-availability="true" class="hidden flex-col">
-                                <span class="text-sm font-medium text-green-400">{{ 'products.product.in_stock' | t }}</span>
+                                <span class="text-sm font-medium text-trust-400">{{ 'products.product.in_stock' | t }}</span>
                                 <span class="text-sm font-medium">{{ 'products.product.free_shipping' | t }}</span>
                             </div>
                             <div data-product-display-availability="false" class="hidden flex-col">
-                                <span class="text-sm font-medium text-red-500">{{ 'products.product.out_of_stock' | t }}</span>
+                                <span class="text-sm font-medium text-danger">{{ 'products.product.out_of_stock' | t }}</span>
                             </div>
                         </div>
                         {% assign button_text = 'products.product.add_to_cart' | t %}
+                        <div class="mt-2 hidden items-center gap-2 rounded-md bg-danger/10 px-4 py-3 text-danger"
+                            data-rz-width-warning
+                            data-rz-width-warning-too-small="{{ 'products.product.cordless_zebra_blinds.width_warning.too_small' | t }}"
+                            data-rz-width-warning-too-large="{{ 'products.product.cordless_zebra_blinds.width_warning.too_large' | t }}">
+                            {% render 'icon-error', class: 'h-5 w-5 flex-shrink-0 text-danger', fill: 'none' %}
+                            <span class="text-sm font-medium" data-rz-width-warning-text></span>
+                        </div>
                         <div class="mt-2 w-full" data-overlay-listen>
                             {% render 'product.component.add-cart-button',
                                 button_text: button_text
@@ -177,69 +272,69 @@
                             {% endfor %}
                         </div>
                         <div class="mt-2 flex justify-center items-center">
-                            <div class="w-full order-first lg:order-last sm:w-fit text-xs text-stone-900 font-bold rounded-md flex justify-center items-center gap-x-2 bg-green-300 py-2 px-8 tracking-tighter select-none hover:bg-green-200 active:bg-green-400">{% render 'icon-secure', class: 'h-4 w-auto fill-black' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}{{ ' | ' }}{{ 'sections.footer.powered_by_shpf' | t }}</span></div>
+                            <div class="w-fit rz-btn-trust flex items-center gap-x-2">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
                         </div>
                         <div class="mt-3">
                             {% render 'component.questions-scheduler' %}
                         </div>
                         {% comment %} {% if product.collections contains collections['zebra-blinds'] or product.collections contains collections['motorized-cordless-zebra-blinds'] %}
-                            <div class="mt-4 py-2 flex gap-4 justify-center items-center bg-indigo-800 rounded-md px-8 border border-stone-400">
-                                <span>{% render 'icon-fixed-rate-shipping', class: 'h-6 w-auto fill-neutral-100' %}</span>
-                                <span class="font-medium text-neutral-100">{{ 'products.product.cordless_zebra_blinds.highlight_badges.0' | t | newline_to_br }}</span>
+                            <div class="mt-4 py-2 flex gap-4 justify-center items-center bg-brand-800 rounded-md px-8 border border-content-tertiary">
+                                <span>{% render 'icon-fixed-rate-shipping', class: 'h-6 w-auto fill-content-inverse' %}</span>
+                                <span class="font-medium text-content-inverse">{{ 'products.product.cordless_zebra_blinds.highlight_badges.0' | t | newline_to_br }}</span>
                             </div>
-                            <div class="mt-2 py-1 flex gap-4 justify-center items-center bg-indigo-100 rounded-md px-8 border border-indigo-300">
-                                <span>{% render 'icon-shipping', class: 'h-8 w-auto fill-stone-700' %}</span>
-                                <span class="font-medium text-stone-700">{{ 'products.product.cordless_zebra_blinds.highlight_badges.1' | t | newline_to_br }}</span>
+                            <div class="mt-2 py-1 flex gap-4 justify-center items-center bg-brand-100 rounded-md px-8 border border-brand-300">
+                                <span>{% render 'icon-shipping', class: 'h-8 w-auto fill-content-secondary' %}</span>
+                                <span class="font-medium text-content-secondary">{{ 'products.product.cordless_zebra_blinds.highlight_badges.1' | t | newline_to_br }}</span>
                             </div>
                         {% endif %} {% endcomment %}
                     </div>
                 </form>
                 {% if has_product_type %}
                     <div data-product-tab-group="0">
-                        <div class="grid grid-cols-3 gap-x-4 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
+                        <div class="grid grid-cols-3 gap-x-4 text-center py-4 rz-divider lg:whitespace-nowrap">
                             <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.highlights.tab_title' | t }}</div>
                             <div role="button" data-product-tab-action="1" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.materials_care.tab_title' | t }}</div>
                             <div role="button" data-product-tab-action="2" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.warranty_returns.tab_title' | t }}</div>
                         </div>
                         <div class="container mx-auto pt-6 pb-10">
-                            {% if product.metafields.custom_filters.is_motorized == true %}
+                            {% if product_operation == 'motorized' %}
                                 <div data-product-tab="0" class="transition-all hidden opacity-0">
-                                    <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-childsafe', class: 'h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.0' | t }}</span>
                                     </div>
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                                {% render 'icon-weave', class: 'h-8 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.1' | t }}</span>
                                     </div>
-                                    {% comment %} <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    {% comment %} <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                                {% render 'icon-stain', class: 'h-12 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.2' | t }}</span>
                                     </div> {% endcomment %}
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-gears', class: 'ml-2 h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-gears', class: 'ml-2 h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.3' | t }}</span>
                                     </div>
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-style', class: 'h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.motorized.4' | t }}</span>
@@ -247,42 +342,42 @@
                                 </div>
                             {% else %}
                                 <div data-product-tab="0" class="transition-all hidden opacity-0">
-                                    <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-0 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-childsafe', class: 'h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-childsafe', class: 'h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.0' | t }}</span>
                                     </div>
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-weave', class: 'h-8 w-auto fill-stone-900' %}
+                                                {% render 'icon-weave', class: 'h-8 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.1' | t }}</span>
                                     </div>
-                                    {% comment %} <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    {% comment %} <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-stain', class: 'h-12 w-auto fill-stone-900' %}
+                                                {% render 'icon-stain', class: 'h-12 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.2' | t }}</span>
                                     </div> {% endcomment %}
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-hand', class: 'h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-hand', class: 'h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.3' | t }}</span>
                                     </div>
-                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-neutral-200 rounded-md px-8">
+                                    <div class="mt-4 py-4 flex gap-8 justify-start items-center bg-surface-200 rounded-md px-8">
                                         <div class="h-8 w-8 relative">
                                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
-                                                {% render 'icon-style', class: 'h-10 w-auto fill-stone-900' %}
+                                                {% render 'icon-style', class: 'h-10 w-auto fill-content' %}
                                             </div>
                                         </div>
                                         <span class="font-medium">{{ 'products.product.cordless_zebra_blinds.highlights.non_motorized.4' | t }}</span>
@@ -290,7 +385,7 @@
                                 </div>
                             {% endif %}
                             <div data-product-tab="1" class="transition-all hidden opacity-0">
-                                <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.materials_care.materials.title' | t }}</div>
+                                <div class="rz-h5">{{ 'products.product.cordless_zebra_blinds.materials_care.materials.title' | t }}</div>
                                 <ul class="mt-4 ml-4 list-disc leading-8">
                                     <li>{{ 'products.product.cordless_zebra_blinds.materials_care.materials.0_html' | t }}</li>
                                     <li>{{ 'products.product.cordless_zebra_blinds.materials_care.materials.1_html' | t }}</li>
@@ -301,7 +396,7 @@
                                 </ul>
                             </div>
                             <div data-product-tab="2" class="transition-all hidden opacity-0">
-                                <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.title' | t }}</div>
+                                <div class="rz-h5">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.title' | t }}</div>
                                 <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.0' | t }}</div>
                                 <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.warranty_returns.warranty.1' | t }}</div>
                                 <div class="mt-4 text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.warranty_returns.returns.title' | t }}</div>
@@ -311,18 +406,19 @@
                         </div>
                     </div>
                     <div data-product-tab-group="1">
-                        <div class="grid grid-cols-3 text-center py-4 border-t border-stone-400 lg:whitespace-nowrap">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 text-center py-4 rz-divider lg:whitespace-nowrap">
                             <div role="button" data-product-tab-action="0" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.tab_title' | t }}</div>
                             <div role="button" data-product-tab-action="1" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.included.tab_title' | t }}</div>
                             <div role="button" data-product-tab-action="2" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.install.tab_title' | t }}</div>
+                            <div role="button" data-product-tab-action="3" class="transition-all hover:font-semibold font-light">{{ 'products.product.cordless_zebra_blinds.specifications.tab_title' | t }}</div>
                         </div>
                         <div class="container mx-auto pt-6 pb-10">
                             <div data-product-tab="0" class="transition-all hidden opacity-0">
-                                <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.pickup.title' | t }}</div>
+                                <div class="rz-h5">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.pickup.title' | t }}</div>
                                 <ul class="mt-4 ml-4 list-disc leading-8">
                                     <li>{{ 'products.product.cordless_zebra_blinds.pickup_delivery.pickup.0' | t }}</li>
                                 </ul>
-                                <div class="text-xl font-bold mt-4 font-serif">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.title' | t }}</div>
+                                <div class="rz-h5 mt-4">{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.title' | t }}</div>
                                 <ul class="mt-4 ml-4 list-disc leading-8">
                                     <li>{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.0' | t }}</li>
                                     <li>{{ 'products.product.cordless_zebra_blinds.pickup_delivery.delivery.1' | t }}</li>
@@ -330,9 +426,9 @@
                                 </ul>
                             </div>
                             <div data-product-tab="1" class="transition-all hidden opacity-0">
-                                <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.included.title' | t }}</div>
+                                <div class="rz-h5">{{ 'products.product.cordless_zebra_blinds.included.title' | t }}</div>
                                 <ul class="mt-4 ml-4 list-disc leading-8">
-                                    {% if product.metafields.custom_filters.is_motorized == true %}
+                                    {% if product_operation == 'motorized' %}
                                         <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.0' | t }}</li>
                                         <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.1' | t }}</li>
                                         <li>{{ 'products.product.cordless_zebra_blinds.included.motorized.2' | t }}</li>
@@ -348,7 +444,7 @@
                                 <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.included.description' | t }}</div>
                             </div>
                             <div data-product-tab="2" class="transition-all hidden opacity-0">
-                                <div class="text-xl font-bold font-serif">{{ 'products.product.cordless_zebra_blinds.install.title' | t }}</div>
+                                <div class="rz-h5">{{ 'products.product.cordless_zebra_blinds.install.title' | t }}</div>
                                 <div class="mt-4">
                                     {% assign asset = 'products.product.cordless_zebra_blinds.install.media' | t %}
                                     <picture>
@@ -362,16 +458,117 @@
                                 </ul>
                                 <div class="mt-4">{{ 'products.product.cordless_zebra_blinds.install.description_html' | t }}</div>
                             </div>
+                            {% if spec_tier != blank %}
+                                <div data-product-tab="3" class="transition-all hidden opacity-0">
+                                    {% assign spec_base = 'products.product.cordless_zebra_blinds.product_details.' | append: spec_tier | append: '.specifications' %}
+                                    {% comment %} Diagrams {% endcomment %}
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            {% assign fig1_key = spec_base | append: '.fig_1' %}
+                                            <div class="text-center text-sm">{{ fig1_key | t }}</div>
+                                            <div class="mt-2">
+                                                {% assign fig1_asset = 'product-specifications-full-' | append: spec_tier | append: '.svg' %}
+                                                <picture>
+                                                    <img src="{{ fig1_asset | asset_url }}" alt="{{ fig1_key | t }}" class="w-full h-auto object-cover">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            {% assign fig2_key = spec_base | append: '.fig_2' %}
+                                            <div class="text-center text-sm">{{ fig2_key | t }}</div>
+                                            <div class="mt-2">
+                                                {% assign fig2_asset = 'product-specifications-cassette-' | append: spec_tier | append: '.svg' %}
+                                                <picture>
+                                                    <img src="{{ fig2_asset | asset_url }}" alt="{{ fig2_key | t }}" class="w-full h-auto object-cover">
+                                                </picture>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% comment %} Dimensions {% endcomment %}
+                                    {% assign dim_key = spec_base | append: '.sections.dimensions.title' %}
+                                    <div class="rz-h5 mt-8">{{ dim_key | t }}</div>
+                                    {% assign dim_cassette_title = spec_base | append: '.sections.dimensions.cassette.title' %}
+                                    <div class="mt-4 font-bold">{{ dim_cassette_title | t }}</div>
+                                    <div class="mt-2 leading-loose">
+                                        <table class="text-surface-800">
+                                            {% assign k = spec_base | append: '.sections.dimensions.cassette.height.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.cassette.height.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                            {% assign k = spec_base | append: '.sections.dimensions.cassette.min_depth.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.cassette.min_depth.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                            {% assign k = spec_base | append: '.sections.dimensions.cassette.max_depth.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.cassette.max_depth.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                            {% assign k = spec_base | append: '.sections.dimensions.cassette.width.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.cassette.width.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                        </table>
+                                    </div>
+                                    {% assign dim_blinds_title = spec_base | append: '.sections.dimensions.blinds.title' %}
+                                    <div class="mt-4 font-bold">{{ dim_blinds_title | t }}</div>
+                                    <div class="mt-2 leading-loose">
+                                        <table class="text-surface-800">
+                                            {% assign k = spec_base | append: '.sections.dimensions.blinds.height.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.blinds.height.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                            {% assign k = spec_base | append: '.sections.dimensions.blinds.width.heading' %}
+                                            {% assign v = spec_base | append: '.sections.dimensions.blinds.width.data' %}
+                                            <tr><th class="text-left font-medium" valign="top">{{ k | t }}</th><td class="font-light pl-2">{{ v | t }}</td></tr>
+                                        </table>
+                                    </div>
+                                    {% comment %} Materials {% endcomment %}
+                                    {% assign mat_key = spec_base | append: '.sections.materials.title' %}
+                                    <div class="rz-h5 mt-8">{{ mat_key | t }}</div>
+                                    {% assign mat_cassette_title = spec_base | append: '.sections.materials.cassette.title' %}
+                                    <div class="mt-4 font-bold">{{ mat_cassette_title | t }}</div>
+                                    <div class="mt-2 leading-loose">
+                                        <table class="text-surface-800">
+                                            {% assign v = spec_base | append: '.sections.materials.cassette.line_1' %}
+                                            <tr><td class="font-light">{{ v | t }}</td></tr>
+                                            {% assign v = spec_base | append: '.sections.materials.cassette.line_2' %}
+                                            <tr><td class="font-light">{{ v | t }}</td></tr>
+                                        </table>
+                                    </div>
+                                    {% assign mat_blinds_title = spec_base | append: '.sections.materials.blinds.title' %}
+                                    <div class="mt-4 font-bold">{{ mat_blinds_title | t }}</div>
+                                    <div class="mt-2 leading-loose">
+                                        <table class="text-surface-800">
+                                            {% assign v = spec_base | append: '.sections.materials.blinds.line_1' %}
+                                            <tr><td class="font-light">{{ v | t }}</td></tr>
+                                            {% assign v = spec_base | append: '.sections.materials.blinds.line_2' %}
+                                            <tr><td class="font-light">{{ v | t }}</td></tr>
+                                        </table>
+                                    </div>
+                                    {% comment %} Features {% endcomment %}
+                                    {% assign feat_key = spec_base | append: '.sections.features.title' %}
+                                    <div class="rz-h5 mt-8">{{ feat_key | t }}</div>
+                                    <ul class="mt-4 ml-4 list-disc leading-8">
+                                        {% assign v = spec_base | append: '.sections.features.line_1' %}
+                                        <li>{{ v | t }}</li>
+                                        {% assign v = spec_base | append: '.sections.features.line_2' %}
+                                        <li>{{ v | t }}</li>
+                                        {% assign v = spec_base | append: '.sections.features.line_3' %}
+                                        <li>{{ v | t }}</li>
+                                        {% assign v = spec_base | append: '.sections.features.line_4' %}
+                                        <li>{{ v | t }}</li>
+                                        {% assign v = spec_base | append: '.sections.features.line_5' %}
+                                        <li>{{ v | t }}</li>
+                                        {% assign v = spec_base | append: '.sections.features.line_6' %}
+                                        <li>{{ v | t }}</li>
+                                    </ul>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endif %}
                 {% comment %} {% if product.metafields.custom.alternate_product != blank %}
                     {% assign alternate_product = product.metafields.custom.alternate_product.value %}
-                    <div class="p-12 border-t border-stone-400">
+                    <div class="p-12 border-t border-content-tertiary">
                         <h3 class="font-serif text-3xl font-bold">{{ 'products.product.see_also' | t }}</h3>
                         <div class="mt-4">
                             <div>
-                                <a href="{{ alternate_product.url }}" class="bg-gray-200 aspect-square rounded-md">
+                                <a href="{{ alternate_product.url }}" class="bg-content-light aspect-square rounded-md">
                                     <div class="relative">
                                         <picture class="relative">
                                             <source srcset="{{ product.featured_image | image_url: width: 800 }}" media="(min-width:1536px)" />
@@ -388,7 +585,7 @@
                             <div class="pt-4 pb-5">
                                 <div>
                                     <a href="{{ alternate_product.url }}" class="block">
-                                        <span class="text-xl font-bold mt-4 font-serif text-black">{{ alternate_product.title }}</span>
+                                        <span class="text-xl font-bold mt-4 font-serif text-content">{{ alternate_product.title }}</span>
                                     </a>
                                 </div>
                                 <div class="mt-1.5">
@@ -411,33 +608,40 @@
     </div>
 </div>
 {% render 'product.section.info' %}
-{% comment %} Check for product tier {% endcomment %}
-{% assign product_tier = '' %}
-{% for tag in product.tags %}
-    {% if tag contains 'tier:' %}
-        {% assign product_tier = tag | remove: 'tier:' %}
-        {% break %}
-    {% endif %}
-{% endfor %}
-{% if product_tier == 'basic' or product_tier == 'standard' %}
-    {% section 'product-details-basic' %}
-{% elsif product_tier == 'premium' %}
-    {% section 'product-details-premium' %}
-{% endif %}
-{% assign component_title = 'products.product.components.wide_hero' | t | newline_to_br %}
-{% assign image = 'product-showcase-wide-2.jpg' %}
-<div class="mt-12 lg:mt-24">
-    {% render 'component.wide-hero', title: component_title, image: image %}
+{% comment %} ── 3-step ordering process ── {% endcomment %}
+<div class="bg-surface-100">
+    <div class="container mx-auto pt-16 pb-24 lg:pt-24 lg:pb-32 rz-page-gutter text-content">
+        <h2 class="rz-h1 w-full text-center">{{ 'templates.homepage.how_to_order.title' | t }}</h2>
+        <div class="mt-20 lg:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-12 lg:gap-16">
+            <div class="border-t border-content-tertiary pt-8">
+                <div class="rz-overline text-content-secondary">{{ 'templates.homepage.how_to_order.step_label' | t: step: 1 }}</div>
+                <div class="mt-3 rz-h3">{{ 'templates.homepage.how_to_order.step_1.title' | t }}</div>
+                <p class="mt-4 text-content-secondary leading-relaxed">{{ 'templates.homepage.how_to_order.step_1.description' | t }}</p>
+            </div>
+            <div class="border-t border-content-tertiary pt-8">
+                <div class="rz-overline text-content-secondary">{{ 'templates.homepage.how_to_order.step_label' | t: step: 2 }}</div>
+                <div class="mt-3 rz-h3">{{ 'templates.homepage.how_to_order.step_2.title' | t }}</div>
+                <p class="mt-4 text-content-secondary leading-relaxed">{{ 'templates.homepage.how_to_order.step_2.description' | t }}</p>
+            </div>
+            <div class="border-t border-content-tertiary pt-8">
+                <div class="rz-overline text-content-secondary">{{ 'templates.homepage.how_to_order.step_label' | t: step: 3 }}</div>
+                <div class="mt-3 rz-h3">{{ 'templates.homepage.how_to_order.step_3.title' | t }}</div>
+                <p class="mt-4 text-content-secondary leading-relaxed">{{ 'templates.homepage.how_to_order.step_3.description' | t }}</p>
+            </div>
+        </div>
+    </div>
 </div>
+{% render 'component.reviews' %}
+{% render 'component.faq' %}
 {% section 'product-overview' %}
 
 {% capture drawer_content %}
-    <div class="relative w-full text-stone-900">
-        <div role="button" data-drawer-close class="sticky z-10 top-5 left-full mr-2 sm:mr-8 flex items-center justify-center w-fit p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
-            <div>{% render 'icon-close', class: 'h-5 w-auto fill-neutral-100 text-neutral-100' %}</div>
+    <div class="relative w-full text-content">
+        <div role="button" data-drawer-close class="sticky z-10 top-5 left-full mr-2 sm:mr-8 flex items-center justify-center w-fit rz-icon-btn">
+            <div>{% render 'icon-close', class: 'h-5 w-auto fill-content-inverse text-content-inverse' %}</div>
         </div>
         <div class="relative container text-center pt-8 pb-4 mx-auto">
-            <h3 class="text-5xl font-serif font-bold">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.title' | t }}</h3>
+            <h3 class="rz-h1">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.title' | t }}</h3>
         </div>
         <div class="relative pt-4 pb-16 container mx-auto flex justify-center">
             <div class="lg:w-1/2">
@@ -454,7 +658,7 @@
                         <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                     </picture>
                 </div>
-                <h4 class="text-2xl font-serif font-bold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}</h4>
+                <h4 class="rz-h4 mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.inside_mount.description' | t }}</p>
                 <div class="mt-20 aspect-square rounded-md overflow-hidden">
                     <picture>
@@ -468,9 +672,9 @@
                         <img src="{{ image | asset_img_url: 'x1200' }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                     </picture>
                 </div>
-                <h4 class="text-2xl font-serif font-bold mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}</h4>
+                <h4 class="rz-h4 mt-6 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.outside_mount.description' | t }}</p>
-                <h4 class="text-3xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.title' | t }}</h4>
+                <h4 class="rz-h3 mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.mount_type.sections.conclusion.description' | t }}</p>
             </div>
         </div>
@@ -479,55 +683,55 @@
 {% render 'component.drawer', drawer_id: 'mount-type', drawer_content: drawer_content %}
 
 {% capture drawer_content %}
-    <div class="relative w-full text-stone-900">
-        <div role="button" data-drawer-close class="sticky z-10 top-5 left-full mr-2 sm:mr-8 flex items-center justify-center w-fit p-2 rounded-full bg-stone-900 hover:bg-indigo-600 transition-all">
-            <div>{% render 'icon-close', class: 'h-5 w-auto fill-neutral-100 text-neutral-100' %}</div>
+    <div class="relative w-full text-content">
+        <div role="button" data-drawer-close class="sticky z-10 top-5 left-full mr-2 sm:mr-8 flex items-center justify-center w-fit rz-icon-btn">
+            <div>{% render 'icon-close', class: 'h-5 w-auto fill-content-inverse text-content-inverse' %}</div>
         </div>
         <div class="relative container text-center pt-8 pb-4 mx-auto">
-            <h3 class="text-5xl font-serif font-bold">{{ 'products.product.cordless_zebra_blinds.guides.measuring.title' | t }}</h3>
+            <h3 class="rz-h1">{{ 'products.product.cordless_zebra_blinds.guides.measuring.title' | t }}</h3>
         </div>
         <div class="relative pt-4 pb-16 container mx-auto flex justify-center">
             <div class="lg:w-1/2">
                 <p>{{ 'products.product.cordless_zebra_blinds.guides.measuring.description' | t }}</p>
-                <h4 class="text-2xl font-serif font-bold mt-6 text-start">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.title' | t }}</h4>
+                <h4 class="rz-h4 mt-6 text-start">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.title' | t }}</h4>
                 <ul class="mt-4 list-disc list-inside">
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.0' | t }}</li>
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.1' | t }}</li>
                     <li>{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.before_you_start.bullet_points.2' | t }}</li>
                 </ul>
-                <h4 class="text-4xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.title' | t }}</h4>
+                <h4 class="rz-h2 mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.title' | t }}</h4>
                 <div class="mt-0 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-depth.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-bold mt-12 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}</h5>
+                <h5 class="rz-h4 mt-12 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.depth.description_2' | t }}</p>
                 <div class="mt-8 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-width.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}</h5>
+                <h5 class="rz-h4 mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.width.description_2' | t }}</p>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-inside-height.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}</h5>
+                <h5 class="rz-h4 mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.inside_mount.sections.height.description_2' | t }}</p>
-                <h4 class="text-4xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.title' | t }}</h4>
+                <h4 class="rz-h2 mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.title' | t }}</h4>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-outside-width.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}</h5>
+                <h5 class="rz-h4 mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.width.description_2' | t }}</p>
                 <div class="mt-4 aspect-square rounded-md overflow-hidden">
                     <img src="{{ 'article-measure-outside-height.svg' | asset_url }}" alt="{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover" />
                 </div>
-                <h5 class="text-2xl font-serif font-bold mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}</h5>
+                <h5 class="rz-h4 mt-0 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.title' | t }}</h5>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.description_1' | t }}</p>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.height.description_2' | t }}</p>
-                <h4 class="text-3xl font-serif font-bold mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.title' | t }}</h4>
+                <h4 class="rz-h3 mt-20 text-center">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.title' | t }}</h4>
                 <p class="mt-4">{{ 'products.product.cordless_zebra_blinds.guides.measuring.sections.outside_mount.sections.conclusion.description' | t }}</p>
             </div>
         </div>

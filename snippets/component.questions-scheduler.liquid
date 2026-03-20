@@ -1,17 +1,72 @@
-<div class="bg-stone-200 rounded-md p-8 text-neutral-900 border-stone-900">
-    <div class="flex justify-center items-center">
-        {% render 'icon-question', class: 'h-16 w-auto fill-stone-900' %}
+<div class="rz-card bg-content-light p-8 border-content" data-rz-scheduler>
+    <h3 class="rz-h4 text-center">{{ 'products.product.looking_for_more_1' | t }}</h3>
+    <p class="mt-3 text-center text-content-secondary">{{ 'products.product.looking_for_more_2' | t }}</p>
+    <a href="#rz-calendly-embed" class="mt-6 block w-full rz-btn-md rz-btn-primary text-center">{{ 'products.product.plan_a_meeting' | t }}</a>
+    <p class="mt-3 text-center rz-caption">{{ 'products.product.plan_a_meeting_sub' | t }}</p>
+    <div class="mt-6 rz-divider-light pt-6">
+        <div id="rz-calendly-embed" data-rz-calendly-container style="min-width: 320px;">
+            {% comment %} Calendly inline widget loads here via IntersectionObserver {% endcomment %}
+        </div>
     </div>
-    <h3 class="mt-4 font-serif font-bold text-3xl text-center">{{ 'products.product.looking_for_more_1' | t }}</h3>
-    <p class="mt-2 text-center">{{ 'products.product.looking_for_more_2' | t }}</p>
-    <!-- Début de widget de lien Calendly -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <a href="" class="mt-4 block bg-stone-900 mx-auto text-neutral-100 rounded-md w-fit font-semibold px-8 py-3 transition-all text-center text-sm hover:bg-indigo-500" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/lucie-xie/15min'});return false;">{{ 'products.product.plan_a_meeting' | t }}</a>
-    <!-- Fin de widget de lien Calendly -->
-    <div class="mt-8">
-        <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.email_us' | t }}</a>
-        <span>{{ 'products.product.or' | t }}</span>
-        <a href="{{ pages['contact'].url }}" title="{{ 'products.product.give_us_a_call' | t }}" class="underline underline-offset-2 font-semibold">{{ 'products.product.give_us_a_call' | t }}</a>
+    <div class="mt-6 text-center rz-divider-light pt-6">
+        <span class="text-content-secondary">{{ 'products.product.prefer_text' | t }}</span>
+        <a href="{{ pages['contact'].url }}" title="{{ 'products.product.email_us' | t }}" class="rz-link font-semibold">{{ 'products.product.email_us' | t }}</a>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var scheduler = document.querySelector('[data-rz-scheduler]');
+    if (!scheduler) return;
+
+    var container = scheduler.querySelector('[data-rz-calendly-container]');
+    var loaded = false;
+
+    function loadCalendly() {
+        if (loaded) return;
+        loaded = true;
+
+        // Lazy-load Calendly CSS
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        document.head.appendChild(link);
+
+        // Lazy-load Calendly JS then init inline widget
+        var script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.onload = function() {
+            Calendly.initInlineWidget({
+                url: 'https://calendly.com/lucie-xie/15min?hide_gdpr_banner=1',
+                parentElement: container,
+                resize: true
+            });
+        };
+        document.head.appendChild(script);
+    }
+
+    // Auto-load when card scrolls into view
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    loadCalendly();
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin: '0px 0px 200px 0px' });
+        observer.observe(scheduler);
+    } else {
+        loadCalendly();
+    }
+
+    // CTA button also triggers load + scrolls to embed
+    var cta = scheduler.querySelector('a[href="#rz-calendly-embed"]');
+    if (cta) {
+        cta.addEventListener('click', function(e) {
+            e.preventDefault();
+            loadCalendly();
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+});
+</script>

@@ -1,0 +1,60 @@
+{% comment %}
+    Hardcoded reviews data for Rideau Zebra.
+    Source: Google Reviews.
+
+    Usage:
+        {% render 'component.reviews-data' %}
+    Then access: rz_reviews_count, rz_reviews_rating, and loop the individual review variables.
+
+    Reviews with text content are stored for display.
+    All reviews (incl. 5-star no-text) are counted in the aggregate.
+{% endcomment %}
+
+{% assign rz_reviews_count = 7 %}
+{% assign rz_reviews_rating = 5.0 %}
+{% assign rz_reviews_display_count = 4 %}
+
+{% comment %} ── LD+JSON aggregateRating block ── {% endcomment %}
+{% capture rz_reviews_ldjson_aggregate %}
+"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rz_reviews_rating }},
+    "bestRating": 5,
+    "worstRating": 1,
+    "reviewCount": {{ rz_reviews_count }}
+}
+{% endcapture %}
+
+{% comment %} ── LD+JSON individual reviews block ── {% endcomment %}
+{% capture rz_reviews_ldjson_reviews %}
+"review": [
+    {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Carl C." },
+        "datePublished": "2024-03-01",
+        "reviewBody": "We are happy that we decided to go with Rideau Zebra. The quality of the blinds were very good and their attention to installation was excellent. I recommend their company/products if you need blinds for your house or condo.",
+        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+    },
+    {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Jean-Daniel P." },
+        "datePublished": "2025-01-15",
+        "reviewBody": "From the initial contact with Rideau Zebra to the installation, everything went smoothly, efficiently, and pleasantly. Lucie was invaluable and fully committed to our project. The result is magnificent and brings a beautiful harmony to our condo. A fantastic local company that I recommend without hesitation!",
+        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+    },
+    {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Marie-Noël G." },
+        "datePublished": "2025-02-10",
+        "reviewBody": "We had a wonderful experience purchasing our home blinds from Rideau Zebra. Lucie's service was impeccable; professional and friendly; communication was quick and clear. The result is truly superb. Thank you for everything, we are delighted!",
+        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+    },
+    {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Charlie C." },
+        "datePublished": "2025-03-01",
+        "reviewBody": "Excellent !",
+        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+    }
+]
+{% endcapture %}

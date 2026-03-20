@@ -67,14 +67,20 @@ All product attributes now use namespace-prefixed tags:
 product-type:VALUE   # Product category
 tier:VALUE           # Quality/feature level
 color-group:VALUE    # Color variant grouping
+operation:VALUE      # Operation mechanism
 ```
 
 ### Supported Values
 
 **Product Types:**
 - `product-type:zebra-blinds`
-- `product-type:motorized-zebra-blinds`
+- `product-type:curtains`
 - `product-type:opaque-blinds`
+
+**Operation Mechanisms:**
+- `operation:cordless` (default if no tag present)
+- `operation:motorized`
+- `operation:cord`
 
 **Tiers:**
 - `tier:basic`
@@ -95,10 +101,22 @@ color-group:VALUE    # Color variant grouping
 {% for tag in product.tags %}
     {% if tag contains 'product-type:' %}
         {% assign product_type = tag | remove: 'product-type:' %}
-        {% if product_type == 'zebra-blinds' or product_type == 'motorized-zebra-blinds' or product_type == 'opaque-blinds' %}
+        {% if product_type == 'zebra-blinds' or product_type == 'curtains' or product_type == 'opaque-blinds' %}
             {% assign has_product_type = true %}
             {% break %}
         {% endif %}
+    {% endif %}
+{% endfor %}
+```
+
+### Operation Detection Pattern
+
+```liquid
+{% assign product_operation = 'cordless' %}
+{% for tag in product.tags %}
+    {% if tag contains 'operation:' %}
+        {% assign product_operation = tag | remove: 'operation:' %}
+        {% break %}
     {% endif %}
 {% endfor %}
 ```
@@ -204,14 +222,14 @@ Metafields:
 **Premium Motorized Blind - Slate Gray:**
 ```
 Tags:
-  - product-type:motorized-zebra-blinds
+  - product-type:zebra-blinds
   - tier:premium
   - color-group:zebra-premium
+  - operation:motorized
 
 Metafields:
   - color_key_name: slate-gray
   - color: #475569
-  - is_motorized: true
 ```
 
 ## Benefits
