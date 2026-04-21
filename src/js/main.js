@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     initMobileMenu();
     initProductHover();
     initDrawers();
+    initAddCartAction();
 });
 
 function initProductHover() {
