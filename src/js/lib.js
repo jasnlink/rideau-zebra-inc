@@ -33,7 +33,7 @@ export function initAddCartAction() {
         }
 
         enableLoading(targetElement);
-        initAnimation()
+        initAnimation(targetElement)
 
         let formData = {
             'items': []
@@ -84,12 +84,12 @@ export function initAddCartAction() {
         })
         .then((data) => {
             updateCartCount()
-            pushGtagAddCartEvent(productIds)
+            pushGtagAddCartEvent(productIds, targetElement)
             disableLoading(targetElement);
             playAnimation();
         })
         .catch((error) => {
-            pushGtagAddErrorEvent(productId)
+            pushGtagAddErrorEvent(productIds, targetElement)
             disableLoading(targetElement, true);
             console.error('Error adding to cart.', error)
         })
@@ -99,14 +99,13 @@ export function initAddCartAction() {
             }
         })
 
-        function initAnimation() {
+        function initAnimation(sourceElement) {
 
             const animationObjectElement = document.querySelector('[data-animation-object="cart"]')
-            const animationSourceElement = document.querySelector('[data-animation-source="cart"]')
 
-            if (!animationObjectElement || !animationSourceElement) return
+            if (!animationObjectElement || !sourceElement) return
 
-            let animationSourceElementRect = animationSourceElement.getBoundingClientRect()
+            let animationSourceElementRect = sourceElement.getBoundingClientRect()
 
             let animationObjectRect = animationObjectElement.getBoundingClientRect()
 
@@ -171,9 +170,13 @@ export function initAddCartAction() {
 
         }
 
-        function pushGtagAddCartEvent(pushIds) {
+        function pushGtagAddCartEvent(pushIds, sourceElement) {
 
             if (!pushIds || !pushIds.length) {
+                return
+            }
+
+            if (typeof gtag === 'undefined') {
                 return
             }
 
@@ -182,17 +185,18 @@ export function initAddCartAction() {
 
             for (let pushId of pushIds) {
                 const itemInfoElement = document.querySelector('[data-info-variant-id="'+ pushId +'"]')
-                if (itemInfoElement) {
+                const infoSource = itemInfoElement || (sourceElement && sourceElement.getAttribute('data-info-variant-id') === pushId ? sourceElement : null)
+                if (infoSource) {
                     gtagItems.push({
-                        item_id: itemInfoElement.getAttribute('data-info-product-id'),
-                        item_name: itemInfoElement.getAttribute('data-info-product-title'),
-                        item_brand: itemInfoElement.getAttribute('data-info-product-vendor'),
-                        item_category: itemInfoElement.getAttribute('data-info-product-collection'),
-                        item_variant: itemInfoElement.getAttribute('data-info-variant-id'),
-                        price: itemInfoElement.getAttribute('data-info-variant-price'),
+                        item_id: infoSource.getAttribute('data-info-product-id'),
+                        item_name: infoSource.getAttribute('data-info-product-title'),
+                        item_brand: infoSource.getAttribute('data-info-product-vendor'),
+                        item_category: infoSource.getAttribute('data-info-product-collection'),
+                        item_variant: infoSource.getAttribute('data-info-variant-id'),
+                        price: infoSource.getAttribute('data-info-variant-price'),
                         quantity: 1
                     })
-                    totalValue += parseFloat(itemInfoElement.getAttribute('data-info-variant-price'))
+                    totalValue += parseFloat(infoSource.getAttribute('data-info-variant-price'))
                 } else {
                     gtagItems.push({
                         item_id: pushId,
@@ -202,17 +206,22 @@ export function initAddCartAction() {
 
             }
 
+            const currencySource = document.querySelector('[data-info-variant-id]') || sourceElement
             gtag("event", "add_to_cart", {
-                currency: document.querySelector('[data-info-variant-id]').getAttribute('data-info-currency'),
+                currency: currencySource && currencySource.getAttribute('data-info-currency') ? currencySource.getAttribute('data-info-currency') : 'CAD',
                 value: totalValue,
                 items: gtagItems,
             });
 
         }
 
-        function pushGtagAddErrorEvent(pushIds) {
+        function pushGtagAddErrorEvent(pushIds, sourceElement) {
 
             if (!pushIds || !pushIds.length) {
+                return
+            }
+
+            if (typeof gtag === 'undefined') {
                 return
             }
 
@@ -225,8 +234,9 @@ export function initAddCartAction() {
                 })
             }
 
+            const currencySource = document.querySelector('[data-info-variant-id]') || sourceElement
             gtag("event", "error_add_cart", {
-                currency: document.querySelector('[data-info-variant-id]').getAttribute('data-info-currency'),
+                currency: currencySource && currencySource.getAttribute('data-info-currency') ? currencySource.getAttribute('data-info-currency') : 'CAD',
                 value: 0,
                 items: gtagItems,
             });

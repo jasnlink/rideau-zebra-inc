@@ -116,6 +116,13 @@
                     data-add-cart="{{ product.variants.first.id }}"
                     data-add-cart-selected-product-variant-id="{{ product.variants.first.id }}"
                     data-animation-source="cart"
+                    data-info-product-id="{{ product.id }}"
+                    data-info-product-title="{{ product.title | remove: "'" | remove: '"' }}"
+                    data-info-product-vendor="{{ product.vendor | remove: "'" | remove: '"' }}"
+                    data-info-product-collection="{{ product.collections[0].title | remove: "'" | remove: '"' }}"
+                    data-info-variant-id="{{ product.variants.first.id }}"
+                    data-info-currency="{{ shop.currency }}"
+                    data-info-variant-price="{{ product.variants.first.price | times: 0.01 }}"
                     class="rz-btn-sm rz-btn-primary w-full">
                     <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
                     <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
