@@ -98,7 +98,33 @@
             </a>
         </div>
         <div class="mt-6">
-            <a href="{{ product.url }}" title="{{ product.title }}" class="rz-link font-semibold">{{ 'products.product.price.see_more' | t }}</a>
+            {% comment %} Detect blinds product type {% endcomment %}
+            {% assign card_is_blinds = false %}
+            {% for tag in product.tags %}
+                {% if tag contains 'product-type:' %}
+                    {% assign card_pt = tag | remove: 'product-type:' %}
+                    {% if card_pt == 'zebra-blinds' or card_pt == 'opaque-blinds' %}
+                        {% assign card_is_blinds = true %}
+                        {% break %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% if product.has_only_default_variant and card_is_blinds == false %}
+                <button
+                    type="button"
+                    data-add-cart="{{ product.variants.first.id }}"
+                    data-add-cart-selected-product-variant-id="{{ product.variants.first.id }}"
+                    data-animation-source="cart"
+                    class="rz-btn-sm rz-btn-primary w-full">
+                    <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
+                    <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
+                    <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-5 w-5 fill-content-inverse' %}</span>
+                    <span data-add-state="default">{{ 'products.product.add_to_cart' | t }}</span>
+                </button>
+            {% else %}
+                <a href="{{ product.url }}" title="{{ product.title }}" class="rz-link font-semibold">{{ 'products.product.price.see_more' | t }}</a>
+            {% endif %}
         </div>
     </div>
 </div>
