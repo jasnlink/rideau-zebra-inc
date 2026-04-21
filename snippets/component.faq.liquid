@@ -20,7 +20,8 @@
                 {% assign a_key = 'components.faq.items.' | append: i | append: '.answer' %}
                 {% assign question = q_key | t %}
                 {% assign answer = a_key | t %}
-                {% unless question contains 'translation missing' %}
+                {% assign question_check = question | downcase %}
+                {% unless question_check contains 'translation missing' %}
                     <details class="group border-b border-content-tertiary">
                         <summary class="flex items-center justify-between gap-4 py-6 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
                             <span class="rz-h4 pr-4">{{ question }}</span>
@@ -40,7 +41,8 @@
                     {% assign a_key = 'components.faq.blinds.' | append: i | append: '.answer' %}
                     {% assign question = q_key | t %}
                     {% assign answer = a_key | t %}
-                    {% unless question contains 'translation missing' %}
+                    {% assign question_check = question | downcase %}
+                    {% unless question_check contains 'translation missing' %}
                         <details class="group border-b border-content-tertiary">
                             <summary class="flex items-center justify-between gap-4 py-6 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
                                 <span class="rz-h4 pr-4">{{ question }}</span>
