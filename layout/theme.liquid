@@ -84,6 +84,9 @@
         {% render 'fonts' %}
     </head>
     <body>
+        <div data-animation-object="cart" class="fixed z-50 hidden">
+            <div class="p-1 bg-brand-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-content-inverse' %}</div>
+        </div>
         {% section 'mobile-menu' %}
         {% section 'cart-drawer' %}
         {% section 'header' %}
