@@ -1191,28 +1191,54 @@
       "title": "Frequently Asked Questions",
       "items": {
         "1": {
-          "question": "How long does it take to receive my blinds?",
-          "answer": "For regular orders, please allow 2 to 4 business days for delivery. For made-to-measure orders, please allow 1 to 2 weeks. We also offer free local pickup in Montreal by appointment."
+          "question": "How long does delivery take?",
+          "answer": "Standard orders ship within 2 to 4 business days. Made-to-measure products take 1 to 2 weeks. We also offer free local pickup in Montreal by appointment."
         },
         "2": {
-          "question": "How do I measure my windows?",
-          "answer": "Use a steel tape measure for accuracy. Measure the width and height at three points and use the smallest measurement. Our product page includes a full measuring guide with diagrams for both inside and outside mounts."
-        },
-        "3": {
-          "question": "Can I install the blinds myself?",
-          "answer": "Yes. Each order includes brackets, screws, and drywall anchors. Mark your bracket positions, drill pilot holes, attach the brackets, and clip the headrail into place."
-        },
-        "4": {
           "question": "What is your return policy?",
           "answer": "We offer a 30-day return and exchange policy. Items must be in new, unused condition with all original tags and packaging. Return shipping is free and refunds are processed within 7 to 10 business days."
         },
-        "5": {
+        "3": {
           "question": "What warranty do you offer?",
-          "answer": "All our zebra blinds are backed by a two-year limited warranty covering any defects in materials or craftsmanship."
+          "answer": "Our products are backed by a two-year limited warranty covering any defects in materials or craftsmanship. Contact us directly if you run into any issues — we stand behind every item we sell."
+        },
+        "4": {
+          "question": "What makes Rideau Zebra different?",
+          "answer": "We're a Montreal-based company that designs and sells our own products. Every item is quality-checked before it ships. No middlemen, no markup chains — just premium home products at honest prices."
+        },
+        "5": {
+          "question": "How do you ensure product quality?",
+          "answer": "We work directly with our manufacturers and inspect every product before it leaves our hands. Materials are tested for durability, colorfastness, and daily wear. We don't sell anything we wouldn't use ourselves."
         },
         "6": {
+          "question": "Where have you been mentioned?",
+          "answer": "Rideau Zebra has been featured by FM 103.3, Courrier du Sud, Gravité Média, and Ma Vie Ma Région. We're also a partner of FADOQ, offering exclusive discounts to their members."
+        },
+        "7": {
+          "question": "Do you have a blog?",
+          "answer": "Yes. We publish articles on home décor tips, product care guides, and project showcases. Visit our News page to read the latest."
+        },
+        "8": {
+          "question": "How can I contact you?",
+          "answer": "Email us at contact@rideauzebra.ca or call (450) 912-9327. You can also book a free consultation through our website. We respond within one business day."
+        }
+      },
+      "blinds": {
+        "1": {
+          "question": "How do I measure my windows?",
+          "answer": "Use a steel tape measure for accuracy. Measure the width and height at three points and use the smallest measurement. Our product page includes a full measuring guide with diagrams for both inside and outside mounts."
+        },
+        "2": {
+          "question": "Can I install the blinds myself?",
+          "answer": "Yes. Each order includes brackets, screws, and drywall anchors. Mark your bracket positions, drill pilot holes, attach the brackets, and clip the headrail into place."
+        },
+        "3": {
           "question": "Are your blinds child and pet safe?",
           "answer": "Yes. Our cordless design eliminates dangling cords, making them safe for homes with children and pets."
+        },
+        "4": {
+          "question": "Do you offer motorized blinds?",
+          "answer": "Yes. We carry motorized zebra blinds with remote control operation. They\u2019re ideal for hard-to-reach windows and smart home setups."
         }
       }
     }

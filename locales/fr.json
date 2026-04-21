@@ -1199,28 +1199,54 @@
       "title": "Questions fréquentes",
       "items": {
         "1": {
-          "question": "Combien de temps faut-il pour recevoir mes stores ?",
-          "answer": "Pour les commandes régulières, prévoyez 2 à 4 jours ouvrables pour la livraison. Pour les commandes sur mesure, prévoyez 1 à 2 semaines. Nous offrons aussi la collecte locale gratuite à Montréal sur rendez-vous."
+          "question": "Quel est le délai de livraison ?",
+          "answer": "Les commandes standards sont expédiées en 2 à 4 jours ouvrables. Les produits sur mesure prennent 1 à 2 semaines. Nous offrons aussi la collecte locale gratuite à Montréal sur rendez-vous."
         },
         "2": {
-          "question": "Comment mesurer mes fenêtres ?",
-          "answer": "Utilisez un ruban à mesurer en acier pour une précision maximale. Mesurez la largeur et la hauteur en trois points et utilisez la plus petite mesure. Notre page produit inclut un guide de mesure complet avec diagrammes pour les montages intérieur et extérieur."
-        },
-        "3": {
-          "question": "Puis-je installer les stores moi-même ?",
-          "answer": "Oui. Chaque commande comprend les supports, vis et ancrages muraux. Marquez l'emplacement des supports, percez les trous pilotes, fixez les supports et clipsez le rail de tête en place."
-        },
-        "4": {
           "question": "Quelle est votre politique de retour ?",
           "answer": "Nous offrons une politique de retour et d'échange de 30 jours. Les articles doivent être neufs et inutilisés avec toutes les étiquettes et l'emballage d'origine. Les frais de retour sont gratuits et les remboursements sont traités en 7 à 10 jours ouvrables."
         },
-        "5": {
+        "3": {
           "question": "Quelle garantie offrez-vous ?",
-          "answer": "Tous nos stores zébrés sont couverts par une garantie limitée de deux ans couvrant tout défaut de matériaux ou de fabrication."
+          "answer": "Nos produits sont couverts par une garantie limitée de deux ans contre tout défaut de matériaux ou de fabrication. Contactez-nous directement en cas de problème — nous garantissons chaque article que nous vendons."
+        },
+        "4": {
+          "question": "Qu'est-ce qui distingue Rideau Zebra ?",
+          "answer": "Nous sommes une entreprise montréalaise qui conçoit et vend ses propres produits. Chaque article est vérifié avant l'expédition. Pas d'intermédiaires, pas de chaînes de majoration — juste des produits de qualité à des prix honnêtes."
+        },
+        "5": {
+          "question": "Comment assurez-vous la qualité de vos produits ?",
+          "answer": "Nous travaillons directement avec nos fabricants et inspectons chaque produit avant qu'il ne quitte nos mains. Les matériaux sont testés pour leur durabilité, leur résistance aux couleurs et leur usage quotidien. Nous ne vendons rien que nous n'utiliserions pas nous-mêmes."
         },
         "6": {
+          "question": "Où avez-vous été mentionnés ?",
+          "answer": "Rideau Zebra a été présenté par FM 103.3, le Courrier du Sud, Gravité Média et Ma Vie Ma Région. Nous sommes aussi partenaires de la FADOQ, offrant des rabais exclusifs à leurs membres."
+        },
+        "7": {
+          "question": "Avez-vous un blogue ?",
+          "answer": "Oui. Nous publions des articles sur la décoration intérieure, des guides d'entretien et des projets réalisés. Visitez notre page Nouvelles pour lire les plus récents."
+        },
+        "8": {
+          "question": "Comment puis-je vous contacter ?",
+          "answer": "Écrivez-nous à contact@rideauzebra.ca ou appelez au (450) 912-9327. Vous pouvez aussi réserver une consultation gratuite via notre site. Nous répondons en un jour ouvrable."
+        }
+      },
+      "blinds": {
+        "1": {
+          "question": "Comment mesurer mes fenêtres ?",
+          "answer": "Utilisez un ruban à mesurer en acier pour une précision maximale. Mesurez la largeur et la hauteur en trois points et utilisez la plus petite mesure. Notre page produit inclut un guide de mesure complet avec diagrammes pour les montages intérieur et extérieur."
+        },
+        "2": {
+          "question": "Puis-je installer les stores moi-même ?",
+          "answer": "Oui. Chaque commande comprend les supports, vis et ancrages muraux. Marquez l'emplacement des supports, percez les trous pilotes, fixez les supports et clipsez le rail de tête en place."
+        },
+        "3": {
           "question": "Vos stores sont-ils sécuritaires pour les enfants et les animaux ?",
           "answer": "Oui. Notre design sans cordon élimine les cordons pendants, ce qui les rend sécuritaires pour les foyers avec enfants et animaux."
+        },
+        "4": {
+          "question": "Offrez-vous des stores motorisés ?",
+          "answer": "Oui. Nous offrons des stores zébrés motorisés avec télécommande. Ils sont idéaux pour les fenêtres difficiles d'accès et les configurations de maison intelligente."
         }
       }
     }
