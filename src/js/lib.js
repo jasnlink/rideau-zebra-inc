@@ -4,9 +4,13 @@ export function initAddCartAction() {
     const addCartShowcaseElementList = document.querySelectorAll('[data-add-cart-showcase]');
 
     addCartActionElementList.forEach((element) => {
+        if (element.dataset.addCartBound === 'true') return
+        element.dataset.addCartBound = 'true'
         element.addEventListener('click', handleAddCart);
     })
     addCartShowcaseElementList.forEach((element) => {
+        if (element.dataset.addCartBound === 'true') return
+        element.dataset.addCartBound = 'true'
         element.addEventListener('click', handleAddCart);
     })
 
