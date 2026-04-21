@@ -1,0 +1,175 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": {{ product.title | json }},
+        "url": {{ request.origin | append: product.url | json }},
+        "image": [
+            {{ product.featured_image | image_url: width: 800 | prepend: "https:" | json }}
+        ],
+        "description": {{ product.description | strip_html | json }},
+        {% if product.selected_or_first_available_variant.sku != blank -%}
+            "sku": {{ product.selected_or_first_available_variant.sku | json }},
+        {%- endif %}
+        "brand": {
+            "@type": "Brand",
+            "name": {{ product.vendor | json }}
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 5.0,
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": 10
+        },
+        "offers": [
+            {%- for variant in product.variants -%}
+            {
+                "@type" : "Offer",
+                {%- if variant.sku != blank -%}
+                "sku": {{ variant.sku | json }},
+                {%- endif -%}
+                {%- if variant.barcode.size == 12 -%}
+                "gtin12": {{ variant.barcode | json }},
+                {%- endif -%}
+                {%- if variant.barcode.size == 13 -%}
+                "gtin13": {{ variant.barcode | json }},
+                {%- endif -%}
+                {%- if variant.barcode.size == 14 -%}
+                "gtin14": {{ variant.barcode | json }},
+                {%- endif -%}
+                "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                "price" : {{ variant.price | divided_by: 100.00 | json }},
+                "priceCurrency" : {{ cart.currency.iso_code | json }},
+                "url" : {{ request.origin | append: variant.url | json }}
+            }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+        ]
+    }
+</script>
+<div data-animation-object="cart" class="fixed z-50 hidden">
+    <div class="p-1 bg-brand-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-content-inverse' %}</div>
+</div>
+<div class="container 2xl:px-0 pt-6 pb-12 mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 xl:gap-12">
+        {% comment %} ── Media gallery ── {% endcomment %}
+        <div class="col-span-7">
+            <div class="hidden lg:flex flex-col gap-2">
+                {% for media in product.media %}
+                    <div class="flex items-center justify-center aspect-square rounded-md">
+                    {% if media.media_type == 'image' %}
+                        <picture class="flex flex-grow">
+                            <source srcset="{{ media | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                            <source srcset="{{ media | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                            <source srcset="{{ media | image_url: width: 868 }}" media="(min-width:1024px)" />
+                            <source srcset="{{ media | image_url: width: 1152 }}" media="(min-width:768px)" />
+                            <source srcset="{{ media | image_url: width: 896 }}" media="(min-width:640px)" />
+                            <source srcset="{{ media | image_url: width: 768 }}" media="(min-width:0px)" />
+                            <img src="{{ media | image_url: width: 768 }}" alt="{{ media.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-contain rounded-md" />
+                        </picture>
+                    {% elsif media.media_type == 'video' %}
+                        {{ media | video_tag: image_size: '480x', playsinline: '', autoplay: true, loop: true, muted: true, class: 'w-full h-full object-cover rounded-md' }}
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="glide lg:hidden">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        {% for media in product.media %}
+                            <li class="glide__slide">
+                                <div class="flex items-center justify-center aspect-square rounded-md">
+                                    {% if media.media_type == 'image' %}
+                                        <picture class="flex flex-grow">
+                                            <source srcset="{{ media | image_url: width: 1154 }}" media="(min-width:1536px)" />
+                                            <source srcset="{{ media | image_url: width: 1018 }}" media="(min-width:1280px)" />
+                                            <source srcset="{{ media | image_url: width: 868 }}" media="(min-width:1024px)" />
+                                            <source srcset="{{ media | image_url: width: 1152 }}" media="(min-width:768px)" />
+                                            <source srcset="{{ media | image_url: width: 896 }}" media="(min-width:640px)" />
+                                            <source srcset="{{ media | image_url: width: 768 }}" media="(min-width:0px)" />
+                                            <img src="{{ media | image_url: width: 768 }}" alt="{{ media.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-contain rounded-md" />
+                                        </picture>
+                                    {% elsif media.media_type == 'video' %}
+                                        {{ media | video_tag: image_size: '480x', playsinline: '', autoplay: true, loop: true, muted: true, class: 'w-full h-full object-cover rounded-md' }}
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="mt-2 grid grid-cols-6 gap-2" data-glide-el="controls">
+                    {% for media in product.media %}
+                        <div role="button" data-glide-dir="={{ forloop.index0 }}">
+                            <div class="flex items-stretch justify-center bg-content-light aspect-square rounded-md">
+                                <picture class="flex flex-grow">
+                                    <img src="{{ media | image_url: width: 196 }}" alt="{{ media.alt }}" height="120" width="120" loading="lazy" class="w-full h-full object-cover rounded" />
+                                </picture>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% comment %} ── Product info ── {% endcomment %}
+        <div class="col-span-5 text-content relative">
+            <div class="sticky top-24">
+                <form data-rz-product-forms="form">
+                    <div class="py-4 lg:py-6 mx-auto">
+                        <h1 class="rz-h1 mt-4">{{ product.title }}</h1>
+                        <a href="#reviews" class="mt-2 block w-fit">
+                            {% assign review_label = 'products.reviews.review_count' | t: count: 10 %}
+                            {% render 'component.star-rating',
+                                rating: 5.0,
+                                label: review_label,
+                                size_class: 'h-4 w-4',
+                                text_class: 'text-sm'
+                            %}
+                        </a>
+                        {% comment %} Product description — HTML preserved {% endcomment %}
+                        <div class="mt-4 pt-4 rz-divider rz-prose">
+                            {{ product.description }}
+                        </div>
+                        {% if product.has_only_default_variant == false %}
+                            <div class="mt-6">
+                                {% render 'product.section.variant-selector',
+                                    type: 'dropdown',
+                                    groupId: 0
+                                %}
+                            </div>
+                        {% endif %}
+                        <div class="pt-4 pb-2 flex items-center justify-between gap-8">
+                            <span data-product-display-price class="text-2xl font-light shrink-0">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
+                            <div data-product-display-availability="true" class="hidden flex-col">
+                                <span class="text-sm font-medium text-trust-400">{{ 'products.product.in_stock' | t }}</span>
+                                <span class="text-sm font-medium">{{ 'products.product.free_shipping' | t }}</span>
+                            </div>
+                            <div data-product-display-availability="false" class="hidden flex-col">
+                                <span class="text-sm font-medium text-danger">{{ 'products.product.out_of_stock' | t }}</span>
+                            </div>
+                        </div>
+                        {% assign button_text = 'products.product.add_to_cart' | t %}
+                        <div class="mt-2 w-full" data-overlay-listen>
+                            {% render 'product.component.add-cart-button',
+                                button_text: button_text
+                            %}
+                        </div>
+                        <div class="mt-3 inline-flex w-full justify-center gap-y-2 gap-x-2 flex-wrap">
+                            {% for type in shop.enabled_payment_types -%}
+                                {{ type | payment_type_svg_tag: class: 'h-8 w-auto' }}
+                            {% endfor %}
+                        </div>
+                        <div class="mt-2 flex justify-center items-center">
+                            <div class="w-fit rz-btn-trust flex items-center gap-x-2">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
+                        </div>
+                        <div class="mt-3">
+                            {% render 'component.questions-scheduler' %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% render 'product.section.info' %}
+{% render 'component.reviews' %}
+{% render 'component.faq' %}
