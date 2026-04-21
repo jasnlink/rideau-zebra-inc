@@ -147,6 +147,15 @@
         </div>
     </div>
 {% endif %}
+{% comment %} ── Blinds showcase sections — only on non-product pages or blinds products ── {% endcomment %}
+{% assign is_blinds_product = false %}
+{% for tag in product.tags %}
+    {% if tag == 'product-type:zebra-blinds' or tag == 'product-type:curtains' or tag == 'product-type:opaque-blinds' %}
+        {% assign is_blinds_product = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% if request.page_type != 'product' or is_blinds_product %}
 <div class="container mx-auto mt-24 lg:mt-36">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
         <div class="aspect-square">
@@ -328,6 +337,7 @@
         <div class="rz-hero-title text-content-inverse">{{ 'templates.homepage.showcase_11.title' | t | newline_to_br }}</div>
     </div>
 </div>
+{% endif %}
 <div class="bg-surface-100">
     <div class="container mx-auto py-24 text-content">
         <div class="w-full text-center">
