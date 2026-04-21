@@ -1,0 +1,197 @@
+{% comment %}
+  General product overview section.
+  Used by product.general.liquid template.
+  Contains: What Sets Us Apart, Mentioned-by + Featured Project, Blog, Tagline.
+  Does NOT include blinds-specific showcase sections.
+{% endcomment %}
+
+{% comment %} ── What Sets Us Apart ── {% endcomment %}
+<div class="container mx-auto pt-12 pb-20 md:pt-24 md:pb-32 text-content">
+    <div>
+        <h2 class="rz-h1 w-full text-center">{{ 'templates.overview.sections.what_sets_us_apart.main.title' | t | newline_to_br }}</h2>
+        <p class="mt-8 text-center">{{ 'templates.overview.sections.what_sets_us_apart.main.description' | t | newline_to_br }}</p>
+    </div>
+    <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-48">
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-durable', class: 'h-20 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.made_to_last.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.made_to_last.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-tailor', class: 'h-24 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.custom_made.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.custom_made.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-warranty', class: 'h-20 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.warranty.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.warranty.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-12 md:gap-24 justify-between">
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-quality', class: 'h-16 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.quality.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.quality.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-support', class: 'h-20 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.support.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.support.description' | t }}</div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 items-center justify-between">
+                <div class="h-24 w-24 relative">
+                    <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center">
+                        {% render 'icon-shipping', class: 'h-20 w-auto fill-content' %}
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="rz-h4 text-center">{{ 'templates.overview.sections.what_sets_us_apart.delivery.title' | t | newline_to_br }}</div>
+                    <div class="inline-block mt-4 px-2 md:px-12 text-center md:text-start">{{ 'templates.overview.sections.what_sets_us_apart.delivery.description' | t }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} ── Mentioned-by logos + Featured Project ── {% endcomment %}
+{% assign language = localization.language.iso_code %}
+<div class="py-20 bg-brand-50">
+    <div class="container mx-auto">
+        <div class="rz-h2 text-center">{{ 'templates.homepage.partners.title' | t }}</div>
+        <div class="mt-12 grid grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-2">
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-fadoq.svg' -%}
+                {% if language == 'fr' %}
+                    {% assign partner_url = 'https://www.fadoq.ca/ile-de-montreal/rabais/habitation/rideau-zebra' %}
+                {% else %}
+                    {% assign partner_url = 'https://www.fadoq.ca/en/ile-de-montreal/discounts/housing/827952-2' %}
+                {% endif %}
+                <a href="{{ partner_url }}" class="block" target="_blank">
+                    <img src="{{ image | asset_url }}" alt="FADOQ" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+                </a>
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-fm1033.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="FM103.3" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-courrier-v2.png' -%}
+                <a href="https://www.lecourrierdusud.ca/les-stores-alternes-un-equilibre-parfait-entre-style-et-fonctionnalite" class="block" target="_blank">
+                    <img src="{{ image | asset_img_url: '240x' }}" alt="Courrier du Sud" height="200" width="200" loading="lazy" class="w-full h-12 sm:h-20 object-contain" />
+                </a>
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-gravite-media.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="Gravité Média" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-ma-vie-ma-region.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="Ma Vie Ma Région" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                {%- assign image = 'partner-logo-walmart.png' -%}
+                <img src="{{ image | asset_img_url: '240x' }}" alt="Walmart" height="200" width="200" loading="lazy" class="w-full h-10 sm:h-16 object-contain" />
+            </div>
+        </div>
+        <div class="mt-24">
+            {% assign featured_article = articles['news/custom-zebra-blinds-installations-rideau-zebra-elevates-fm-103-3s-studios'] %}
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="overflow-hidden rounded-md">
+                    <img
+                        src="{{ featured_article.image | image_url: width: 900 }}"
+                        srcset="{{ featured_article.image | image_url: width: 600 }} 600w, {{ featured_article.image | image_url: width: 900 }} 900w, {{ featured_article.image | image_url: width: 1200 }} 1200w"
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        alt="{{ featured_article.title }}"
+                        width="900" height="600"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                    />
+                </div>
+                <div>
+                    <span class="rz-overline text-content-secondary">{{ 'templates.homepage.featured_project.overline' | t }}</span>
+                    <h3 class="mt-4 rz-h2">{{ 'templates.homepage.featured_project.title' | t }}</h3>
+                    <p class="mt-6 text-content-secondary leading-relaxed">{{ 'templates.homepage.featured_project.description' | t }}</p>
+                    <a href="{{ featured_article.url }}" class="inline-block mt-8 rz-btn-md rz-btn-secondary" title="{{ featured_article.title }}">{{ 'templates.homepage.featured_project.cta' | t }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} ── Blog articles ── {% endcomment %}
+<div class="bg-surface-100">
+    <div class="container mx-auto py-24 text-content">
+        <div class="w-full text-center">
+            <div class="rz-h1">{{ blogs['news'].title }}</div>
+        </div>
+        <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {% for article in blogs['news'].articles %}
+                {% if forloop.index == 4 %}{% break %}{% endif %}
+                <a href="{{ article.url }}" title="{{ article.title }}" class="block">
+                    <div class="aspect-square rounded-md relative flex align-bottom">
+                        <div class="absolute top-0 left-0 bottom-0 right-0">
+                            <picture>
+                                {% assign image = article.image %}
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1536px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1280px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:1024px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:768px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:640px)" />
+                                <source srcset="{{ image | image_url: width: 1200 }}" media="(min-width:0px)" />
+                                <img src="{{ image | image_url: width: 1200 }}" alt="{{ image.alt }}" height="200" width="200" loading="lazy" class="w-full h-full object-cover rounded-md" />
+                            </picture>
+                        </div>
+                        <div class="absolute top-0 left-0 right-0 bottom-0 bg-content opacity-40 rounded-md"></div>
+                        <div class="relative my-12 mx-12 flex flex-col justify-between">
+                            <div class="rz-h4 text-content-inverse">{{ article.title }}</div>
+                            <div class="rz-btn-md rz-btn-ghost w-fit">{{ 'templates.homepage.showcase_12.read_button' | t }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="mt-4 w-full text-center">
+            <a href="{{ blogs['news'].url }}" class="inline-block mt-8 rz-link text-xl">{{ 'templates.homepage.showcase_12.see_blog_button' | t }}</a>
+        </div>
+    </div>
+</div>
+
+{% comment %} ── Tagline ── {% endcomment %}
+<div class="bg-surface-100">
+    <div class="container mx-auto mt-12 lg:mt-24 py-16 lg:py-32 text-center text-content">
+        <div class="rz-h2">{{ 'templates.homepage.showcase_13.title' | t | newline_to_br }}</div>
+        <div class="mt-8 text-sm">{{ 'templates.homepage.showcase_13.sub' | t }}</div>
+    </div>
+</div>
