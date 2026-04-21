@@ -104,6 +104,8 @@ export function initAddCartAction() {
             const animationObjectElement = document.querySelector('[data-animation-object="cart"]')
             const animationSourceElement = document.querySelector('[data-animation-source="cart"]')
 
+            if (!animationObjectElement || !animationSourceElement) return
+
             let animationSourceElementRect = animationSourceElement.getBoundingClientRect()
 
             let animationObjectRect = animationObjectElement.getBoundingClientRect()
@@ -121,12 +123,14 @@ export function initAddCartAction() {
 
             const animationObjectElement = document.querySelector('[data-animation-object="cart"]')
             const animationTargetElement = document.querySelector('[data-animation-target="cart"]')
-            
+
+            if (!animationObjectElement || !animationTargetElement) return
+
             animationObjectElement.classList.remove('hidden')
-    
+
             let animationObjectRect = animationObjectElement.getBoundingClientRect()
             let animationTargetElementRect = animationTargetElement.getBoundingClientRect()
-    
+
             let animationObjectTargetX = animationTargetElementRect.x + (animationTargetElementRect.width/2) - (animationObjectRect.width/2)
             let animationObjectTargetY = animationTargetElementRect.y + (animationTargetElementRect.height/2) - (animationObjectRect.height/2)
 
@@ -146,7 +150,7 @@ export function initAddCartAction() {
             element.querySelector('[data-add-state="loading"]').classList.remove('hidden')
             element.disabled = true
         }
-    
+
         function disableLoading(element, error=false) {
             element.querySelector('[data-add-state="loading"]').classList.add('hidden')
             if(error) {
@@ -195,7 +199,7 @@ export function initAddCartAction() {
                         quantity: 1
                     })
                 }
-                
+
             }
 
             gtag("event", "add_to_cart", {
@@ -203,7 +207,7 @@ export function initAddCartAction() {
                 value: totalValue,
                 items: gtagItems,
             });
-        
+
         }
 
         function pushGtagAddErrorEvent(pushIds) {
@@ -264,7 +268,7 @@ export function updateCartCount() {
             text += prefix + '.' + suffix
         }
         text += ' ' + window.Shopify.currency.active
-        
+
         const cartTotalElementList = document.querySelectorAll('[data-cart-total]')
         cartTotalElementList.forEach((cartTotalElement) => {
             cartTotalElement.innerText = text
@@ -272,7 +276,7 @@ export function updateCartCount() {
     }
 
     function handleCartCount(count) {
-        
+
         const cartCountElementList = document.querySelectorAll('[data-cart-count]')
         cartCountElementList.forEach((cartCountElement) => {
             if(count <= 0) {
