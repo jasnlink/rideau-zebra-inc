@@ -91,7 +91,7 @@
 
     /* Icon button: circular, for cart/close/menu-close */
     .rz-icon-btn {
-        @apply flex items-center justify-center p-2 rounded-full bg-content hover:bg-brand-600 transition-all;
+        @apply relative flex items-center justify-center p-2 rounded-full bg-content hover:bg-brand-600 transition-all;
     }
 
     /* ----------------------------------------------------------
