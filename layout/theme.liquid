@@ -84,9 +84,6 @@
         {% render 'fonts' %}
     </head>
     <body>
-        <div data-animation-object="cart" class="fixed z-50 hidden">
-            <div class="p-1 bg-brand-600 rounded-full">{% render 'icon-item', class: 'h-4 w-4 fill-content-inverse' %}</div>
-        </div>
         {% section 'mobile-menu' %}
         {% section 'cart-drawer' %}
         {% section 'header' %}
@@ -94,7 +91,7 @@
             id="main-content"
             role="main"
             tabindex="-1"
-            class="bg-surface-100"
+            class="bg-surface-100 rz-gradient-surface"
         >
             {% if request.path contains '/policies/refund-policy' %}
                 {% section 'policy-refund' %}
@@ -111,5 +108,6 @@
             {% endif %}
         </main>
         {% section 'footer' %}
+        {% render 'component.secure-popover' %}
     </body>
 </html>

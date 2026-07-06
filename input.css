@@ -94,6 +94,131 @@
     }
 
     /* ----------------------------------------------------------
+       BUTTON STATES — centralized, reusable
+       Loading / Success / Error — mutually exclusive, graceful transitions
+       ---------------------------------------------------------- */
+
+    /* Shared: disable interaction during state transitions */
+    .rz-btn-loading,
+    .rz-btn-success,
+    .rz-btn-error {
+        pointer-events: none;
+    }
+
+    /* ── Loading: pressed-in + breathing sheen ── */
+    @keyframes rzBtnPulse {
+        0%, 100% { opacity: 0; }
+        50%      { opacity: 1; }
+    }
+    .rz-btn-loading {
+        position: relative;
+        transform: scale(0.97);
+        transition: transform 250ms ease, box-shadow 250ms ease;
+        box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .rz-btn-loading::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: rgba(255,255,255,0.15);
+        animation: rzBtnPulse 1.5s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    /* ── Success: trust-tinted ring pulse, then fades ── */
+    @keyframes rzBtnSuccessRing {
+        0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.35), inset 0 0 0 0 rgba(74,222,128,0.1); }
+        40%  { box-shadow: 0 0 0 6px rgba(74,222,128,0), inset 0 0 0 0 rgba(74,222,128,0.1); }
+        100% { box-shadow: 0 0 0 0 rgba(74,222,128,0), inset 0 0 0 0 rgba(74,222,128,0); }
+    }
+    .rz-btn-success {
+        animation: rzBtnSuccessRing 1.4s ease-out forwards;
+    }
+
+    /* ── Error: subtle horizontal shake ── */
+    @keyframes rzBtnErrorShake {
+        0%, 100% { transform: translateX(0); }
+        15%, 45%, 75% { transform: translateX(-3px); }
+        30%, 60%, 90% { transform: translateX(3px); }
+    }
+    .rz-btn-error {
+        animation: rzBtnErrorShake 0.55s ease;
+    }
+
+    /* ── Icon visibility: hidden by default, shown during states ── */
+    .rz-icon-processing { display: none; }
+    .rz-btn-loading .rz-icon-processing,
+    .rz-btn-success .rz-icon-processing,
+    .rz-btn-error .rz-icon-processing,
+    .rz-cart-btn-loading .rz-icon-processing,
+    .rz-cart-btn-success .rz-icon-processing,
+    .rz-cart-btn-error .rz-icon-processing { display: block; }
+
+    /* ── Loading ring: draws progressively ── */
+    @keyframes rzRingDraw {
+        to { stroke-dashoffset: 0; }
+    }
+    .rz-btn-loading .rz-icon-ring-progress {
+        animation: rzRingDraw 1s linear forwards;
+    }
+
+    /* ── Success ring: completed + check appears ── */
+    @keyframes rzCheckAppear {
+        to { opacity: 1; stroke-dashoffset: 0; }
+    }
+    .rz-btn-success .rz-icon-ring-progress {
+        stroke-dashoffset: 0;
+        transition: stroke 0.3s ease;
+    }
+    .rz-btn-success .rz-icon-ring-check {
+        animation: rzCheckAppear 0.35s ease-out 0.1s forwards;
+        stroke-dasharray: 14;
+        stroke-dashoffset: 14;
+        opacity: 0;
+    }
+    /* Reset ring when back to default */
+    .rz-icon-ring-progress {
+        stroke-dashoffset: 63;
+        transition: stroke-dashoffset 0s;
+    }
+    .rz-icon-ring-check {
+        stroke-dasharray: 14;
+        stroke-dashoffset: 14;
+        opacity: 0;
+        transition: none;
+    }
+
+    /* ── Cart line-item button states (lightweight, no scale/box-shadow) ── */
+    .rz-cart-btn-loading .rz-cart-btn-icon { display: none; }
+    .rz-cart-btn-loading .rz-cart-btn-ring { display: flex; }
+    .rz-cart-btn-loading .rz-icon-ring-progress {
+        animation: rzRingDraw 1s linear forwards;
+    }
+    .rz-cart-btn-success .rz-cart-btn-icon { display: none; }
+    .rz-cart-btn-success .rz-cart-btn-ring { display: flex; }
+    .rz-cart-btn-success .rz-icon-ring-progress { stroke-dashoffset: 0; }
+    .rz-cart-btn-success .rz-icon-ring-check {
+        animation: rzCheckAppear 0.35s ease-out 0.1s forwards;
+        stroke-dasharray: 14;
+        stroke-dashoffset: 14;
+        opacity: 0;
+    }
+    .rz-cart-btn-error .rz-cart-btn-ring { display: none; }
+    .rz-cart-btn-error .rz-cart-btn-icon { display: block; }
+    .rz-cart-btn-error { animation: rzBtnErrorShake 0.55s ease; }
+
+    /* ── Disabled: unified across all variants ── */
+    .rz-btn-primary:disabled,
+    .rz-btn-secondary:disabled,
+    .rz-btn-ghost:disabled,
+    .rz-btn-outline:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    /* ----------------------------------------------------------
        TRUST BUTTONS (SSL badges, verify)
        ---------------------------------------------------------- */
     .rz-btn-trust {
@@ -162,7 +287,7 @@
        CARDS
        ---------------------------------------------------------- */
     .rz-card {
-        @apply bg-surface-white border border-content-light rounded-md;
+        @apply bg-surface-white border border-content-light rounded-md rz-gradient-surface-white;
     }
     .rz-card-padded {
         @apply rz-card px-4 sm:px-6 pt-6 pb-8;
@@ -278,6 +403,34 @@
     to { opacity: 1; }
 }
 
+@keyframes rzCartShimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.cart-line-shimmer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: inherit;
+}
+.cart-line-shimmer-inner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.25) 35%,
+        rgba(255,255,255,0.45) 50%,
+        rgba(255,255,255,0.25) 65%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: rzCartShimmer 1s ease-in-out infinite;
+}
+
 @layer utilities {
     .rz-fade-in {
         animation: rzFadeIn 200ms ease-in-out;
@@ -289,6 +442,22 @@
     }
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
+    }
+    /* ── Subtle background gradients — depth without decoration ── */
+    .rz-gradient-surface {
+        background: linear-gradient(180deg, #f7f7f7 0%, #f5f5f5 50%, #f2f2f2 100%);
+    }
+    .rz-gradient-surface-white {
+        background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+    }
+    .rz-gradient-surface-card {
+        background: linear-gradient(180deg, #e8e8e8 0%, #e5e5e5 100%);
+    }
+    .rz-gradient-dark {
+        background: linear-gradient(180deg, #1c1917 0%, #231f1d 100%);
+    }
+    .rz-gradient-brand {
+        background: linear-gradient(180deg, #4f46e5 0%, #4338ca 100%);
     }
     /* Minimum square aspect ratio — container is at least as tall as it is wide */
     .min-aspect-square {

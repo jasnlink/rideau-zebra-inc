@@ -1,4 +1,4 @@
-<div id="{{ drawer_id }}-overlay" class="hidden transition-opacity ease-in-out duration-700 fixed top-0 left-0 right-0 bottom-0 bg-content/60 backdrop-blur-sm z-40"></div>
-<div id="{{ drawer_id }}" data-drawer data-drawer-state="closed" class="hidden transition-transform ease-in-out duration-700 fixed top-0 right-0 z-50 bg-surface-white/85 backdrop-blur-md h-full w-full shadow-2xl overflow-y-auto">
+<div id="{{ drawer_id }}-overlay" class="invisible pointer-events-none transition-opacity ease-in-out duration-700 fixed top-0 left-0 right-0 bottom-0 bg-content/60 backdrop-blur-sm z-40"></div>
+<div id="{{ drawer_id }}" data-drawer data-drawer-state="closed" class="invisible pointer-events-none transition-transform ease-in-out duration-700 fixed top-0 right-0 z-50 backdrop-blur-md h-full w-full shadow-2xl overflow-y-auto {{ drawer_class }}" style="background-color: rgba(255,255,255,0.85)">
     {{ drawer_content }}
 </div>

@@ -10,7 +10,7 @@
         </div>
     </div>
 </div>
-<footer class="bg-content text-content-inverse/[.85] pt-24 pb-24 underline-offset-4">
+<footer class="bg-content rz-gradient-dark text-content-inverse/[.85] pt-24 pb-24 underline-offset-4">
     <div>
         <div class="rz-page-gutter pt-16 pb-20">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-y-24 sm:gap-y-16 gap-x-48 sm:gap-x-16 xl:gap-x-12">
@@ -97,16 +97,3 @@
         </div>
     </div>
 </footer>
-<div id="secure-popover" class="hidden rz-popover" role="tooltip">
-    <div data-secure-close role="button" class="absolute z-10 top-2 right-2">
-        {% render 'icon-close', class: 'h-4 w-auto fill-content' %}
-    </div>
-    <div class="relative container mx-auto py-8 px-6">
-        <div class="rz-popover-trust">
-            <div class="flex items-center justify-center gap-x-2">{% render 'icon-success', class: 'h-8 w-auto fill-trust-400', fill: '#428445' %} <span class="font-bold text-2xl">{{ 'sections.footer.site_secure' | t }}</span></div>
-            <div class="mt-6 text-center">
-                <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rideauzebra.ca&latest" target="_blank" class="block w-full rz-btn-trust-verify" title="{{ 'sections.footer.verify_security' | t }}">{{ 'sections.footer.verify_security' | t }}</a>
-            </div>
-        </div>
-    </div>
-</div>

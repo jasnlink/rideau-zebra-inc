@@ -362,8 +362,8 @@
             "height": "Hauteur",
             "depth": "Profondeur",
             "depth_check": {
-              "title": "Vérification de la profondeur",
-              "description": "Assurez-vous que votre cadre intérieur a au moins 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium afin de garantir un ajustement correct.",
+              "title": "Profondeur du cadre",
+              "description": "Pour un ajustement parfait, votre cadre doit avoir une profondeur minimale de 70 mm (2,75 po) pour les stores standard, ou 90 mm (3,5 po) pour les premium.",
               "see_specifications": "Voir les spécifications du produit"
             },
             "assign_room_name": {
@@ -518,6 +518,8 @@
       "or": "ou",
       "give_us_a_call": "appelez-nous.",
       "add_to_cart": "Ajouter au panier",
+      "added": "Ajouté",
+      "try_again": "Réessayer",
       "charity_donation": {
         "title": "Soutenir Orbis International",
         "description": "Orbis fournit des soins oculaires aux communautés du monde entier, redonnant la vue à ceux qui en ont le plus besoin. Choisissez un pourcentage de votre commande \u2014 100 % est remis à leurs programmes.",
@@ -942,7 +944,9 @@
       "copyright": "&copy; Tous droits réservés",
       "ssl_encrypted": "PAIEMENTS SÉCURISÉS | PROPULSÉ PAR SHOPIFY",
       "site_secure": "Site sécuritaire",
-      "verify_security": "Vérifier la sécurité"
+      "verify_security": "Vérifier la sécurité",
+      "protected_checkout": "Paiement protégé",
+      "encryption_detail": "Cryptage SSL 256 bits"
     },
     "featured_blog": {
       "view_all": "Tout afficher",

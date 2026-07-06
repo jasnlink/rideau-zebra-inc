@@ -102,7 +102,7 @@
         </div>
     </div>
 </div>
-<div class="bg-brand-600">
+<div class="bg-brand-600 rz-gradient-brand">
     <div class="container mx-auto mt-24 py-32 text-center text-content-inverse">
         <div class="mx-auto rz-h2 leading-relaxed w-11/12 lg:w-10/12">{{ 'templates.homepage.showcase_4.title' | t | newline_to_br }}</div>
         <a href="{{ routes['collections_url'] }}" class="inline-block mt-8 rz-link text-lg lg:text-xl" title="{{ 'templates.homepage.showcase_4.button' | t }}">{{ 'templates.homepage.showcase_4.button' | t }}</a>
@@ -186,7 +186,7 @@
         </div>
     </div>
 </div>
-<div class="bg-content mt-36">
+<div class="bg-content rz-gradient-dark mt-36">
     <div class="container mx-auto pt-48">
         <div class=" text-content-inverse grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
             <div class="aspect-square">
@@ -207,7 +207,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-content pt-36 pb-64 relative">
+    <div class="pt-36 pb-64 relative">
         <div class="rz-hero-title text-content-inverse w-11/12 text-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">{{ 'templates.homepage.showcase_7.sub' | t }}</div>
     </div>
 </div>
@@ -275,7 +275,7 @@
 <div class="mt-12 lg:mt-24">
     {% render 'component.wide-hero', title: component_title, image: image %}
 </div>
-<div class="bg-surface-100">
+<div>
     <div class="container mx-auto py-24 text-content">
         <div class="rz-h1 w-full text-center">{{ 'templates.homepage.showcase_10.title' | t | newline_to_br }}</div>
         <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -320,7 +320,7 @@
         <div class="font-serif text-4xl lg:text-6xl text-content-inverse font-bold">{{ 'templates.homepage.showcase_11.title' | t | newline_to_br }}</div>
     </div>
 </div>
-<div class="bg-surface-100">
+<div>
     <div class="container mx-auto py-24 text-content">
         <div class="w-full text-center">
             <div class="rz-h1">{{ blogs['news'].title }}</div>
@@ -358,7 +358,7 @@
         </div>
     </div>
 </div>
-<div class="bg-surface-100">
+<div>
     <div class="container mx-auto mt-12 lg:mt-24 py-16 lg:py-32 text-center text-content">
         <div class="rz-h2">{{ 'templates.homepage.showcase_13.title' | t | newline_to_br }}</div>
         {% comment %} <a href="{{ shop.url }}" class="inline-block mt-8 text-lg lg:text-xl underline underline-offset-4">{{ 'templates.homepage.showcase_13.button' | t }}</a> {% endcomment %}

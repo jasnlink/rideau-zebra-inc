@@ -359,8 +359,8 @@
             "height": "Height",
             "depth": "Depth",
             "depth_check": {
-              "title": "Depth Check",
-              "description": "Ensure your inner frame has at least 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds to ensure a proper fit.",
+              "title": "Frame depth",
+              "description": "For a perfect fit, your frame needs a minimum depth of 70 mm (2.75 in) for standard blinds, or 90 mm (3.5 in) for premium.",
               "see_specifications": "See product specifications"
             },
             "assign_room_name": {
@@ -515,6 +515,8 @@
       "or": "or",
       "give_us_a_call": "give us a call.",
       "add_to_cart": "Add to cart",
+      "added": "Added",
+      "try_again": "Try again",
       "charity_donation": {
         "title": "Support Orbis International",
         "description": "Orbis provides eye care to communities worldwide, restoring vision for those who need it most. Select a percentage of your order \u2014 100% goes to their programs.",
@@ -934,7 +936,9 @@
       "copyright": "&copy; Copyright",
       "ssl_encrypted": "SECURE PAYMENTS | POWERED BY SHOPIFY",
       "site_secure": "Site is secure",
-      "verify_security": "Verify security"
+      "verify_security": "Verify security",
+      "protected_checkout": "Protected checkout",
+      "encryption_detail": "256-bit SSL encryption"
     },
     "featured_blog": {
       "view_all": "View all",

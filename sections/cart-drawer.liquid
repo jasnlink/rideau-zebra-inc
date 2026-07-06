@@ -8,60 +8,40 @@
                 </div>
             </div>
         </div>
-        <div id="cart-drawer-content" class="h-full shrink overflow-auto flex flex-col">
-            {% if cart.empty? == true %}
-                <div class="shrink">
-                    <div class="container mt-20 mx-auto">
-                        <div class="text-center rz-h4">{{ 'templates.cart.empty_message.title' | t }}</div>
-                        <div class="text-center mt-4 rz-body-lg">{{ 'templates.cart.empty_message.description' | t }}</div>
-                        <a href="{{ routes['collections_url'] }}" title="{{ 'templates.cart.empty_message.button' | t }}" class="block w-fit mx-auto mt-8 rz-btn-md rz-btn-primary">{{ 'templates.cart.empty_message.button' | t }}</a>
-                    </div>
-                </div>
-            {% else %}
-                <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-auto">
-                    <div class="container mt-4 mb-5 mx-auto flex flex-col gap-y-8">
-                        {% for line_item in cart.items %}
-                            {%- if line_item.product.title contains 'Charity' or line_item.product.title contains 'Donation' -%}
-                                {% continue %}
-                            {%- endif -%}
-                            <div class="flex items-center gap-x-4 sm:gap-x-8" data-cart-line="{{ forloop.index }}">
-                                <div>
-                                    <a href="{{ line_item.url }}" class="block aspect-square w-36 h-36 rounded-md select-none bg-content-light">
-                                        <picture>
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1536px)" />
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1280px)" />
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1024px)" />
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:768px)" />
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:640px)" />
-                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:0px)" />
-                                            <img src="{{ line_item.image | image_url: width: 160 }}" alt="{{ line_item.product.title }}" height="132" width="132" loading="lazy" class="h-full w-auto object-contain rounded-md" />
-                                        </picture>
-                                    </a>
+        <div id="cart-drawer-content" class="h-full shrink overflow-y-auto flex flex-col">
+            {% comment %} ── Always-rendered template for JS inline rendering ── {% endcomment %}
+            <template id="cart-item-template">
+                    <div class="flex items-center gap-x-4 sm:gap-x-8" data-cart-line="">
+                        <div>
+                            <a href="" class="block aspect-square w-36 h-36 lg:w-44 lg:h-44 rounded-md select-none bg-content-light">
+                                <img src="" alt="" height="132" width="132" loading="lazy" class="h-full w-auto object-contain rounded-md" />
+                            </a>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-col justify-center items-start">
+                                <div class="w-full flex flex-col sm:flex-row justify-between gap-x-8">
+                                    <a href="" class="sm:text-2xl font-bold font-serif"></a>
+                                    <span class="font-light mt-1 sm:mt-0 text-sm sm:text-xl" data-cart-line-price></span>
                                 </div>
-                                <div class="flex-grow">
-                                    <div class="flex flex-col justify-center items-start">
-                                        <div class="w-full flex flex-col sm:flex-row justify-between gap-x-8">
-                                            <a href="{{ line_item.url }}" class="sm:text-2xl font-bold font-serif">{{ line_item.product.title | truncate: 80, '' }}</a>
-                                            <span class="font-light mt-1 sm:mt-0 text-sm sm:text-xl" data-cart-line-price>{{ line_item.final_line_price | money_with_currency }}</span>
-                                        </div>
-                                        {% if line_item.product.has_only_default_variant == false %}
-                                            <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ line_item.variant.title }}</div>
-                                        {% endif %}
-                                        {% unless line_item.properties == empty %}
-                                            {% for property in line_item.properties %}
-                                                <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ property.first }}: {{ property.last }}</div>
-                                            {% endfor %}
-                                        {% endunless %}
-                                        <div class="mt-1.5 flex justify-center items-center gap-2">
-                                            <div role="button" data-cart-action="minus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-minus', class: 'h-3 w-3 text-content' %}</div>
-                                            <div class="select-none text-content font-medium" data-cart-line-qty>{{ line_item.quantity }}</div>
-                                            <div role="button" data-cart-action="plus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-plus', class: 'h-3 w-3 text-content' %}</div>
-                                        </div>
+                                <div class="mt-1 sm:mt-0 text-xs sm:text-lg text-content-secondary cart-item-variant" style="display:none"></div>
+                                <div class="cart-item-properties mt-1"></div>
+                                <div class="mt-1.5 flex justify-center items-center gap-2">
+                                    <div role="button" data-cart-action="minus" data-cart-item-id="" data-cart-item-quantity="" class="py-1 px-2 relative">
+                                        <span class="rz-cart-btn-icon">{% render 'icon-minus', class: 'h-3 w-3 text-content' %}</span>
+                                        <span class="rz-cart-btn-ring hidden absolute inset-0 flex items-center justify-center">{% render 'icon-processing', class: 'h-3 w-3 text-content' %}</span>
+                                    </div>
+                                    <div class="select-none text-content font-medium" data-cart-line-qty></div>
+                                    <div role="button" data-cart-action="plus" data-cart-item-id="" data-cart-item-quantity="" class="py-1 px-2 relative">
+                                        <span class="rz-cart-btn-icon">{% render 'icon-plus', class: 'h-3 w-3 text-content' %}</span>
+                                        <span class="rz-cart-btn-ring hidden absolute inset-0 flex items-center justify-center">{% render 'icon-processing', class: 'h-3 w-3 text-content' %}</span>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
+                </template>
+                <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-y-auto {% if cart.empty? %}hidden{% endif %}">
+                    <div class="container mt-4 mb-5 mx-auto flex flex-col gap-y-8"></div>
                 </div>
                 {% assign charity_item = nil %}
                 {% assign charity_line = 0 %}
@@ -72,8 +52,16 @@
                         {% break %}
                     {% endif %}
                 {% endfor %}
-                <div class="mt-auto shrink">
-                    <div id="cart-drawer-charity" class="transition-opacity duration-300 bg-surface-200/50 border-t border-content/10">
+                {% comment %} ── Empty state ── {% endcomment %}
+                <div id="cart-drawer-empty" class="shrink {% if cart.empty? == false %}hidden{% endif %}">
+                    <div class="container mt-20 mx-auto">
+                        <div class="text-center rz-h4">{{ 'templates.cart.empty_message.title' | t }}</div>
+                        <div class="text-center mt-4 rz-body-lg">{{ 'templates.cart.empty_message.description' | t }}</div>
+                        <a href="{{ routes['collections_url'] }}" title="{{ 'templates.cart.empty_message.button' | t }}" class="block w-fit mx-auto mt-8 rz-btn-md rz-btn-primary">{{ 'templates.cart.empty_message.button' | t }}</a>
+                    </div>
+                </div>
+                <div id="cart-drawer-summary" class="mt-auto shrink {% if cart.empty? %}hidden{% endif %}" style="background-color: rgba(245,245,245,0.6)">
+                    <div id="cart-drawer-charity" class="transition-opacity duration-300 border-t border-content/10" style="background-color: rgba(229,229,229,0.6)">
                         <div class="max-w-2xl mx-auto py-3">
                             <div data-charity-donation data-charity-context="cart" data-charity-variant-id="45690314653749" data-charity-base-amount="{{ cart.items_subtotal_price }}">
                                 {% comment %} ── State: Donated (compact cart row) ── {% endcomment %}
@@ -160,7 +148,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="cart-drawer-footer" class="shrink bg-surface-100/50">
+                    <div id="cart-drawer-footer" class="shrink">
                         <div class="pt-4 pb-2 px-4 sm:px-8">
                             <div class="max-w-2xl mx-auto text-content">
                                 <div class="flex justify-between">
@@ -184,7 +172,6 @@
                         </div>
                     </div>
                 </div>
-            {% endif %}
         </div>
     </div>
 {% endcapture %}

@@ -4,7 +4,7 @@
 {% endcomment %}
 
 {% comment %} ── Page header ── {% endcomment %}
-<div class="bg-surface-white">
+<div>
     <div class="container mx-auto rz-page-gutter pt-16 pb-12 lg:pt-24 lg:pb-16 text-center">
         <h1 class="rz-h1">{{ collection.title }}</h1>
         {% if collection.description != blank %}
@@ -14,7 +14,7 @@
 </div>
 
 {% comment %} ── Product grid ── {% endcomment %}
-<div class="bg-surface-100">
+<div>
     <div class="container mx-auto rz-page-gutter pt-8 pb-16 lg:pb-24">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
             {% for product in collection.products %}

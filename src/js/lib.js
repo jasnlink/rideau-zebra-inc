@@ -191,72 +191,58 @@ export function initAddCartAction() {
         })
 
         function initAnimation(sourceElement) {
-
-            const animationObjectElement = document.querySelector('[data-animation-object="cart"]')
-
-            if (!animationObjectElement || !sourceElement) return
-
-            let animationSourceElementRect = sourceElement.getBoundingClientRect()
-
-            let animationObjectRect = animationObjectElement.getBoundingClientRect()
-
-            let animationObjectSourceX = animationSourceElementRect.x + (animationSourceElementRect.width/2) - (animationObjectRect.width/2)
-            let animationObjectSourceY = animationSourceElementRect.y - (animationObjectRect.height/2)
-
-            animationObjectElement.style.setProperty('left', `${animationObjectSourceX}px`)
-            animationObjectElement.style.setProperty('top', `${animationObjectSourceY}px`)
-            animationObjectElement.style.setProperty('transition', `all .45s cubic-bezier(.55,.05,.92,.54) 0s`)
-
+            // Fly animation removed — replaced with cart sheen + pop (see playAnimation)
         }
 
         function playAnimation() {
+            var cartBtn = document.querySelector('[data-animation-target="cart"]');
+            if (!cartBtn) return;
 
-            const animationObjectElement = document.querySelector('[data-animation-object="cart"]')
-            const animationTargetElement = document.querySelector('[data-animation-target="cart"]')
+            // Sheen wrapper — contained inside button so qty badge isn't clipped
+            var wrapper = document.createElement('span');
+            wrapper.style.cssText = 'position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;border-radius:9999px;';
+            var sheen = document.createElement('span');
+            sheen.style.cssText = 'position:absolute;top:-50%;left:-150%;width:60%;height:200%;' +
+                'background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0.45) 50%,transparent 65%);' +
+                'transform:skewX(-15deg);transition:left 0.55s cubic-bezier(0.4,0,0.2,1);';
+            wrapper.appendChild(sheen);
+            cartBtn.appendChild(wrapper);
+            requestAnimationFrame(function() { sheen.style.left = '200%'; });
 
-            if (!animationObjectElement || !animationTargetElement) return
+            // Elastic pop
+            cartBtn.style.transition = 'transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+            cartBtn.style.transform = 'scale(1.2)';
+            setTimeout(function() {
+                cartBtn.style.transform = 'scale(1)';
+            }, 350);
 
-            animationObjectElement.classList.remove('hidden')
-
-            let animationObjectRect = animationObjectElement.getBoundingClientRect()
-            let animationTargetElementRect = animationTargetElement.getBoundingClientRect()
-
-            let animationObjectTargetX = animationTargetElementRect.x + (animationTargetElementRect.width/2) - (animationObjectRect.width/2)
-            let animationObjectTargetY = animationTargetElementRect.y + (animationTargetElementRect.height/2) - (animationObjectRect.height/2)
-
-            setTimeout(() => {
-                animationObjectElement.style.setProperty('left', `${animationObjectTargetX}px`)
-                animationObjectElement.style.setProperty('top', `${animationObjectTargetY}px`)
-            }, 20);
-
-            animationObjectElement.addEventListener('transitionend', () => {
-                animationObjectElement.style.setProperty('transition', ``)
-                animationObjectElement.classList.add('hidden')
-            }, {once:true})
+            setTimeout(function() {
+                if (wrapper.parentNode) wrapper.parentNode.removeChild(wrapper);
+            }, 600);
         }
 
         function enableLoading(element) {
-            element.querySelector('[data-add-state="default"]').classList.add('hidden')
-            element.querySelector('[data-add-state="loading"]').classList.remove('hidden')
-            element.disabled = true
+            element.querySelector('[data-add-state="default"]').classList.add('hidden');
+            element.querySelector('[data-add-state="loading"]').classList.remove('hidden');
+            setBtnState(element, 'loading');
         }
 
-        function disableLoading(element, error=false) {
-            element.querySelector('[data-add-state="loading"]').classList.add('hidden')
+        function disableLoading(element, error) {
+            element.querySelector('[data-add-state="loading"]').classList.add('hidden');
             if(error) {
+                setBtnState(element, 'error');
                 element.querySelector('[data-add-state="error"]').classList.remove('hidden')
                 setTimeout(() => {
                     element.querySelector('[data-add-state="error"]').classList.add('hidden')
                     element.querySelector('[data-add-state="default"]').classList.remove('hidden')
-                    element.disabled = false
-                }, 500);
+                }, 600);
             } else {
+                setBtnState(element, 'success');
                 element.querySelector('[data-add-state="success"]').classList.remove('hidden')
                 setTimeout(() => {
                     element.querySelector('[data-add-state="success"]').classList.add('hidden')
                     element.querySelector('[data-add-state="default"]').classList.remove('hidden')
-                    element.disabled = false
-                }, 500);
+                }, 1500);
             }
 
         }
@@ -344,7 +330,7 @@ export function initAddCartAction() {
  * and derives every display element from it.
  * Pass recalcDonation=false to skip %-based donation recalculation.
  */
-export function syncCartUI(cartData, recalcDonation) {
+export function syncCartUI(cartData, recalcDonation, skipItems) {
     if (!cartData) return;
     var subtotal = cartData.items_subtotal_price || 0;
     var items = cartData.items || [];
@@ -388,6 +374,9 @@ export function syncCartUI(cartData, recalcDonation) {
     syncCharitySection(productEl, donationItem, donationPrice, cleanSubtotal, true);
     syncCharitySection(cartEl, donationItem, donationPrice, cleanSubtotal, false);
 
+    // ── Render line items inline ──
+    if (!skipItems) renderCartItems(items);
+
     // ── %-based donation recalculation ──
     if (recalcDonation !== false && donationItem) {
         var dtype = donationItem.properties ? donationItem.properties['donation_type'] : null;
@@ -397,7 +386,8 @@ export function syncCartUI(cartData, recalcDonation) {
             console.log('[syncCartUI-recalc] percent:', percent, '| cleanSubtotal:', cleanSubtotal, '| donationPrice:', donationPrice);
             if (percent > 0) {
                 var newQty = Math.round((percent / 100) * cleanSubtotal);
-                if (newQty <= 0) newQty = 1;
+                if (cleanSubtotal <= 0) newQty = 0; // Remove donation when cart is empty
+                if (newQty <= 0) newQty = 0;
                 console.log('[syncCartUI-recalc] newQty:', newQty, '| oldQty:', donationItem.quantity, '| line:', donationItem._line);
                 if (newQty !== donationItem.quantity) {
                     console.log('[syncCartUI-recalc] FIRING cart/change.js');
@@ -426,6 +416,154 @@ function setCartRow(section, rowName) {
     rows.forEach(function(r) { r.classList.add('hidden'); });
     var target = section.querySelector('[data-charity-row="' + rowName + '"]');
     if (target) target.classList.remove('hidden');
+}
+
+// ── Product tags cache for variant visibility ──
+var _productTagsCache = {};
+
+function getProductTags(handle) {
+    if (_productTagsCache[handle]) return Promise.resolve(_productTagsCache[handle]);
+    return fetch(window.Shopify.routes.root + 'products/' + handle + '.js')
+        .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function(product) {
+            var tags = product.tags || [];
+            _productTagsCache[handle] = tags;
+            return tags;
+        })
+        .catch(function() { _productTagsCache[handle] = []; return []; });
+}
+
+function hasProductTypeTag(tags, type) {
+    for (var i = 0; i < tags.length; i++) {
+        if (tags[i] === 'product-type:' + type) return true;
+    }
+    return false;
+}
+
+function shouldHideVariant(tags) {
+    return hasProductTypeTag(tags, 'zebra-blinds') || hasProductTypeTag(tags, 'opaque-blinds');
+}
+
+/**
+ * Render cart line items from cart data. No section fetch.
+ */
+function renderCartItems(items) {
+    console.log('[renderCartItems] called — items:', items ? items.length : 0);
+    var itemsEl = document.getElementById('cart-drawer-items');
+    var emptyEl = document.getElementById('cart-drawer-empty');
+    var summaryEl = document.getElementById('cart-drawer-summary');
+    var template = document.getElementById('cart-item-template');
+    console.log('[renderCartItems] itemsEl:', !!itemsEl, '| emptyEl:', !!emptyEl, '| summaryEl:', !!summaryEl, '| template:', !!template);
+
+    if (!itemsEl || !template) {
+        console.warn('[renderCartItems] BAIL — missing elements');
+        return;
+    }
+
+    var container = itemsEl.querySelector('.container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'container mt-4 mb-5 mx-auto flex flex-col gap-y-8';
+        itemsEl.appendChild(container);
+    }
+
+    // Filter out donation items
+    var visibleCount = 0;
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.variant_id === 45690314653749) continue;
+        if (item.product_title && (item.product_title.indexOf('Charity') !== -1 || item.product_title.indexOf('Donation') !== -1)) continue;
+        visibleCount++;
+    }
+    console.log('[renderCartItems] visible (non-donation) items:', visibleCount);
+
+    if (visibleCount === 0) {
+        if (emptyEl) emptyEl.classList.remove('hidden');
+        if (itemsEl) itemsEl.classList.add('hidden');
+        if (summaryEl) summaryEl.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+    }
+
+    // Show items + summary, hide empty
+    if (emptyEl) emptyEl.classList.add('hidden');
+    if (itemsEl) itemsEl.classList.remove('hidden');
+    if (summaryEl) summaryEl.classList.remove('hidden');
+
+    container.innerHTML = '';
+
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        // Skip donation items
+        if (item.variant_id === 45690314653749) continue;
+        if (item.product_title && (item.product_title.indexOf('Charity') !== -1 || item.product_title.indexOf('Donation') !== -1)) continue;
+
+        var clone = template.content.firstElementChild.cloneNode(true);
+        var line = i + 1; // 1-based, matches Shopify API line numbers (full items array)
+
+        clone.setAttribute('data-cart-line', line);
+
+        var img = clone.querySelector('img');
+        if (img && item.image) { img.src = item.image; img.alt = item.product_title || ''; }
+        var link = clone.querySelector('a[href]');
+        if (link) link.href = item.url || '#';
+
+        var titleLink = clone.querySelector('.font-serif');
+        if (titleLink) titleLink.textContent = item.product_title || '';
+
+        var priceEl = clone.querySelector('[data-cart-line-price]');
+        if (priceEl) priceEl.textContent = formatMoney(item.final_line_price || item.line_price || 0);
+
+        var variantEl = clone.querySelector('.cart-item-variant');
+        // Determine handle from URL for tag lookup (strip query string and variant suffix)
+        var handle = '';
+        if (item.url) {
+            var parts = item.url.split('/');
+            handle = parts[parts.length - 1];
+            // Strip query string: /products/handle?variant=123 → handle
+            var qIdx = handle.indexOf('?');
+            if (qIdx !== -1) handle = handle.substring(0, qIdx);
+        }
+        if (variantEl && item.variant_title && item.variant_title !== 'Default Title') {
+            // Check cached tags first, else hide until tags load
+            if (handle && _productTagsCache[handle]) {
+                variantEl.style.display = shouldHideVariant(_productTagsCache[handle]) ? 'none' : '';
+                if (variantEl.style.display !== 'none') variantEl.textContent = item.variant_title;
+            } else {
+                // Hide initially, fetch tags, then re-render
+                variantEl.style.display = 'none';
+                if (handle) {
+                    getProductTags(handle).then(function() { renderCartItems(items); });
+                }
+            }
+        }
+
+        var propsContainer = clone.querySelector('.cart-item-properties');
+        if (propsContainer && item.properties) {
+            propsContainer.innerHTML = '';
+            var hasProps = false;
+            for (var key in item.properties) {
+                if (key === 'donation_type') continue;
+                var propDiv = document.createElement('div');
+                propDiv.className = 'text-xs sm:text-sm text-content-secondary';
+                propDiv.textContent = key + ': ' + item.properties[key];
+                propsContainer.appendChild(propDiv);
+                hasProps = true;
+            }
+            if (!hasProps) propsContainer.style.display = 'none';
+        }
+
+        var qtyEl = clone.querySelector('[data-cart-line-qty]');
+        if (qtyEl) qtyEl.textContent = item.quantity || 0;
+
+        var minusBtn = clone.querySelector('[data-cart-action="minus"]');
+        var plusBtn = clone.querySelector('[data-cart-action="plus"]');
+        [minusBtn, plusBtn].forEach(function(b) {
+            if (b) { b.dataset.cartItemId = line; b.dataset.cartItemQuantity = item.quantity || 0; }
+        });
+
+        container.appendChild(clone);
+    }
 }
 
 /**
@@ -959,4 +1097,60 @@ export function updateCharityDonationAmounts(priceCents) {
 
 export function formatMoney(cents) {
     return '$' + (cents / 100).toFixed(2).replace(/\.00$/, '');
+}
+
+/**
+ * Centralized button state manager.
+ *
+ * For simple buttons (text-only): manages class + disabled + text restore.
+ * For complex buttons (with data-add-state children): manages class + disabled only;
+ *   inner elements handle their own text/icon swapping.
+ *
+ * Usage:
+ *   setBtnState(btn, 'loading')           → pressed + breathing sheen
+ *   setBtnState(btn, 'success')           → trust ring pulse, auto-clears
+ *   setBtnState(btn, 'error')             → shake, auto-clears
+ *   setBtnState(btn, 'default')           → back to normal
+ */
+export function setBtnState(btn, state) {
+    if (!btn) return;
+
+    var hasStateChildren = btn.querySelector('[data-add-state]');
+
+    // Clear all state classes
+    btn.classList.remove('rz-btn-loading', 'rz-btn-success', 'rz-btn-error');
+    btn.style.transform = '';
+
+    if (state === 'loading') {
+        if (!hasStateChildren && !btn.dataset.originalText) {
+            btn.dataset.originalText = btn.textContent.trim();
+        }
+        btn.classList.add('rz-btn-loading');
+        btn.disabled = true;
+    } else if (state === 'success') {
+        btn.classList.add('rz-btn-success');
+        btn.disabled = true;
+        setTimeout(function() {
+            btn.classList.remove('rz-btn-success');
+            btn.disabled = false;
+            if (!hasStateChildren && btn.dataset.originalText) {
+                btn.textContent = btn.dataset.originalText;
+            }
+        }, 1500);
+    } else if (state === 'error') {
+        btn.classList.add('rz-btn-error');
+        btn.disabled = true;
+        setTimeout(function() {
+            btn.classList.remove('rz-btn-error');
+            btn.disabled = false;
+            if (!hasStateChildren && btn.dataset.originalText) {
+                btn.textContent = btn.dataset.originalText;
+            }
+        }, 600);
+    } else {
+        btn.disabled = false;
+        if (!hasStateChildren && btn.dataset.originalText) {
+            btn.textContent = btn.dataset.originalText;
+        }
+    }
 }

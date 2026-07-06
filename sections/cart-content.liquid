@@ -7,7 +7,7 @@
         </div>
     </div>
 {% else %}
-    <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-auto">
+    <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-y-auto">
         <div class="container mt-4 mb-5 mx-auto flex flex-col gap-y-8">
 
             {% for line_item in cart.items %}
@@ -169,19 +169,6 @@
                 {% endfor %}
             </div>
             <div data-secure-action="cart" role="button" class="rz-btn-trust flex gap-x-1 text-xs">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
-        </div>
-    </div>
-    <div id="secure-popover" class="hidden rz-popover" role="tooltip">
-        <div data-secure-close role="button" class="absolute z-10 top-2 right-2">
-            {% render 'icon-close', class: 'h-4 w-auto fill-content' %}
-        </div>
-        <div class="relative container mx-auto py-8 px-6">
-            <div class="rz-popover-trust">
-                <div class="flex items-center justify-center gap-x-2">{% render 'icon-success', class: 'h-8 w-auto fill-trust-400', fill: '#428445' %} <span class="font-bold text-2xl">{{ 'sections.footer.site_secure' | t }}</span></div>
-                <div class="mt-6 text-center">
-                    <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rideauzebra.ca&latest" target="_blank" class="block w-full rz-btn-trust-verify" title="{{ 'sections.footer.verify_security' | t }}">{{ 'sections.footer.verify_security' | t }}</a>
-                </div>
-            </div>
         </div>
     </div>
 {% endif %}

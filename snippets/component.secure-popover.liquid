@@ -1,0 +1,18 @@
+<div id="secure-popover" class="hidden" role="tooltip" style="z-index:9999;max-width:320px;background:linear-gradient(180deg,#ffffff 0%,#fafafa 100%);border-radius:0.375rem;border:1px solid #e7e5e3;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);opacity:0;transition:opacity 200ms ease-out">
+    <div class="px-5 py-4">
+        <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-100 flex items-center justify-center">
+                {% render 'icon-secure', class: 'h-5 w-auto fill-content' %}
+            </div>
+            <div>
+                <div class="font-serif font-bold text-base text-content">{{ 'sections.footer.protected_checkout' | t }}</div>
+                <div class="text-xs text-content-secondary mt-0.5">{{ 'sections.footer.encryption_detail' | t }}</div>
+            </div>
+        </div>
+        <div class="mt-3 border-t border-content-light pt-3">
+            <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rideauzebra.ca&latest" target="_blank" rel="noopener" class="rz-link text-xs font-medium">
+                {{ 'sections.footer.verify_security' | t }} →
+            </a>
+        </div>
+    </div>
+</div>

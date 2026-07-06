@@ -10,6 +10,8 @@
     "devDependencies": {
         "@babel/core": "^7.20.12",
         "@babel/preset-env": "^7.20.2",
+        "@shopify/cli": "^4.3.0",
+        "@shopify/theme": "^3.58.2",
         "@webpack-cli/generators": "^3.0.1",
         "babel-loader": "^9.1.2",
         "css-loader": "^6.7.3",
