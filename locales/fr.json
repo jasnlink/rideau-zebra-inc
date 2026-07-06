@@ -518,6 +518,24 @@
       "or": "ou",
       "give_us_a_call": "appelez-nous.",
       "add_to_cart": "Ajouter au panier",
+      "charity_donation": {
+        "title": "Soutenir Orbis International",
+        "description": "Orbis fournit des soins oculaires aux communautés du monde entier, redonnant la vue à ceux qui en ont le plus besoin. Choisissez un pourcentage de votre commande \u2014 100 % est remis à leurs programmes.",
+        "description_cart": "Choisissez un pourcentage de votre commande. 100 % est remis aux programmes de soins oculaires Orbis.",
+        "of_order": "de votre commande",
+        "custom": "Autre",
+        "custom_amount_placeholder": "Montant en dollars",
+        "add_donation": "Ajouter le don",
+        "thank_you_title": "Merci de soutenir Orbis.",
+        "donation_summary_suffix": " à Orbis International. Merci.",
+        "already_donated": "{{ amount }} à Orbis International. Merci de soutenir les soins oculaires dans le monde.",
+        "added": "Ajouté. Merci.",
+        "error": "Impossible d'ajouter le don. Veuillez réessayer.",
+        "cart_label": "Don Orbis",
+        "cart_description": "Merci de soutenir les soins oculaires dans le monde.",
+        "cart_line_dynamic": "{{ type }} à Orbis. Merci.",
+        "remove": "Retirer"
+      },
       "description": "Description",
       "on_sale": "En vente",
       "product_variants": "Variantes de produits",
@@ -849,6 +867,11 @@
     }
   },
   "sections": {
+    "orbis_partnership": {
+      "overline": "Nos partenaires",
+      "title": "Nous soutenons Orbis International",
+      "learn_more": "En savoir plus sur Orbis"
+    },
     "header": {
       "top_bar_1_html": "Profitez de 5% de réduction sur votre première commande avec le code : <strong>ZEBRA5<\/strong>",
       "top_bar_2_html": "Appelez-nous <a href=\"+14509129327\" class=\"underline\">(450) 912-9327<\/a>",

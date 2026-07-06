@@ -134,6 +134,10 @@
                                 %}
                             </div>
                         {% endif %}
+                        {% comment %} ── Charity Donation ── {% endcomment %}
+                        <div class="mt-4">
+                          {% render 'component.charity-donation', context: 'product' %}
+                        </div>
                         <div class="pt-4 pb-2 flex items-center justify-between gap-8">
                             <span data-product-display-price class="text-2xl font-light shrink-0">{{ product.selected_or_first_available_variant.price | money_with_currency }}</span>
                             <div data-product-display-availability="true" class="hidden flex-col">

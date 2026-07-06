@@ -1,0 +1,209 @@
+{% comment %}
+  ============================================================
+  Charity Donation
+  Three states toggled via data-charity-state:
+    "select"  — chip selection (States 1 & 2)
+    "donated" — thank-you message (State 3, donation already in cart)
+  Cart drawer — standalone add-to-cart per chip.
+  ============================================================
+{% endcomment %}
+
+{% assign donation_variant_id = 45690314653749 %}
+
+{% assign already_donated = false %}
+{% assign donation_line_item_price = 0 %}
+{% for item in cart.items %}
+  {% if item.product.title contains 'Charity' or item.product.title contains 'Donation' %}
+    {% assign already_donated = true %}
+    {% assign donation_line_item_price = item.final_line_price %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if context == 'cart' %}
+  {% assign base_amount_cents = cart.items_subtotal_price %}
+{% else %}
+  {% assign base_amount_cents = cart.items_subtotal_price | plus: product.selected_or_first_available_variant.price %}
+{% endif %}
+
+<div
+  data-charity-donation
+  data-charity-variant-id="{{ donation_variant_id }}"
+  data-charity-context="{{ context | default: 'product' }}"
+  data-charity-base-amount="{{ base_amount_cents }}"
+  {% if context != 'cart' %}data-charity-cart-subtotal="{{ cart.items_subtotal_price }}"{% endif %}
+  data-charity-currency="{{ cart.currency.iso_code }}"
+  {% if context == 'cart' %}
+  data-cart-label="{{ 'products.product.charity_donation.cart_label' | t }}"
+  data-cart-remove="{{ 'products.product.charity_donation.remove' | t }}"
+  {% endif %}
+>
+  {% if context == 'cart' %}
+  <div class="rz-fade-in">
+  {% else %}
+  <div class="pt-6 pb-8">
+  {% endif %}
+
+    {% comment %} ── State: Already donated ── {% endcomment %}
+    <div data-charity-state="donated" class="{% if already_donated == false %}hidden{% endif %} transition-opacity duration-200">
+      <div class="flex items-center gap-3 rounded-md bg-surface-200 px-5 py-4">
+        <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-6 w-auto flex-shrink-0">
+        <div class="flex-grow min-w-0">
+          <p class="text-sm font-medium text-content">{{ 'products.product.charity_donation.thank_you_title' | t }}</p>
+          <p class="text-xs text-content-secondary mt-0.5 truncate"
+             data-charity-donated-message="{{ 'products.product.charity_donation.already_donated' | t: amount: '__AMOUNT__' }}">
+            {% assign donation_amount_formatted = donation_line_item_price | money_without_trailing_zeros %}
+            {{ 'products.product.charity_donation.already_donated' | t: amount: donation_amount_formatted }}
+          </p>
+        </div>
+        <button type="button" data-charity-remove-cart class="text-xs font-medium text-content-secondary hover:text-content underline underline-offset-4 transition-colors shrink-0">
+          {{ 'products.product.charity_donation.remove' | t }}
+        </button>
+      </div>
+    </div>
+
+    {% comment %} ── State: Selection ── {% endcomment %}
+    <div data-charity-state="select" class="{% if already_donated %}hidden{% endif %}{% if context == 'cart' %} min-h-[26px] flex flex-col justify-center {% endif %}transition-opacity duration-200">
+
+    {% if context == 'cart' %}
+
+      {% comment %} ── Cart: three single-row states, toggled ── {% endcomment %}
+
+      {% comment %} Row A: chips {% endcomment %}
+      <div data-charity-row="chips" class="flex items-center gap-2 flex-wrap">
+        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+          <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+        </span>
+        <span class="inline-flex items-center gap-1">
+          {% for pct in (1..3) %}
+            {% assign pct_amount = base_amount_cents | times: pct | divided_by: 100 %}
+          <button type="button" data-charity-donate="{{ pct }}"
+            title="{% if base_amount_cents > 0 %}{{ pct_amount | money_without_trailing_zeros }}{% endif %}"
+            class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                   hover:border-brand-300 hover:bg-surface-50
+                   transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+            {{ pct }}%
+          </button>
+          {% endfor %}
+          <button type="button" data-charity-custom-toggle
+            class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                   hover:border-brand-300 hover:bg-surface-50
+                   transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+            {{ 'products.product.charity_donation.custom' | t }}
+          </button>
+        </span>
+      </div>
+
+      {% comment %} Row B: custom amount (replaces chips inline) {% endcomment %}
+      <div data-charity-row="custom" class="hidden flex items-center gap-1.5 flex-wrap">
+        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+          <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+        </span>
+        <span class="text-xs text-content-secondary">$</span>
+        <input type="number" data-charity-custom-amount min="0.01" step="0.01" placeholder="0"
+          class="w-16 bg-transparent border border-content-light rounded px-2 py-1 text-xs text-right focus:outline-none text-content"
+          aria-label="{{ 'products.product.charity_donation.custom_amount_placeholder' | t }}">
+        <button type="button" data-charity-donate="custom"
+          class="rz-btn-xs rz-btn-secondary">
+          {{ 'products.product.charity_donation.add_donation' | t }}
+        </button>
+        <button type="button" data-charity-custom-cancel class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</button>
+      </div>
+
+      {% comment %} Row C: summary (hidden, populated by JS after add) {% endcomment %}
+      <div data-charity-row="summary" class="hidden flex items-center justify-between gap-x-4 py-1">
+        <div class="flex items-center gap-2 min-w-0">
+          <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-4 w-auto flex-shrink-0">
+          <span data-charity-summary-text class="text-xs text-content-secondary truncate"></span>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <span data-charity-summary-price class="font-light text-xs"></span>
+          <span role="button" data-charity-remove-inline class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</span>
+        </div>
+      </div>
+
+    {% else %}
+
+      {% comment %} ── Product: full card layout ── {% endcomment %}
+
+    {% if context == 'product' %}
+      <div class="relative w-full h-36 sm:h-44 -mt-6 mb-5 overflow-hidden rounded-md">
+        <img src="{{ 'orbis-1.png' | asset_url }}" alt="Orbis" class="w-full h-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-surface-white/60 to-transparent"></div>
+      </div>
+    {% endif %}
+
+    <p class="font-medium text-lg text-content inline-flex items-center gap-2">
+      <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-5 w-auto flex-shrink-0">
+      {{ 'products.product.charity_donation.title' | t }}
+    </p>
+    <p class="mt-2 text-content-secondary leading-relaxed max-w-prose">
+      {{ 'products.product.charity_donation.description' | t }}
+    </p>
+
+    <div data-charity-options class="mt-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+
+        {% for pct in (1..3) %}
+          {% assign pct_amount = base_amount_cents | times: pct | divided_by: 100 %}
+        <button type="button" data-charity-select="{{ pct }}"
+          class="flex flex-col items-center justify-center gap-1 py-4 px-3 rounded-md cursor-pointer
+                 border-2 border-content-light bg-surface-white text-content
+                 hover:border-brand-300 hover:bg-surface-50
+                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500
+                 transition-colors duration-200 select-none">
+          <span class="text-xl font-medium">{{ pct }}%</span>
+          <span class="text-xs text-content-secondary leading-tight text-center px-1">
+            {{ 'products.product.charity_donation.of_order' | t }}<br><span class="min-h-[1.25em]" data-charity-amount="{{ pct }}">{% if base_amount_cents > 0 %}{{ pct_amount | money_without_trailing_zeros }}{% endif %}</span>
+          </span>
+        </button>
+        {% endfor %}
+
+        <button type="button" data-charity-custom-toggle
+          class="flex flex-col items-center justify-center gap-1 py-4 px-3 rounded-md cursor-pointer
+                 border-2 border-content-light bg-surface-white text-content
+                 hover:border-brand-300 hover:bg-surface-50
+                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500
+                 transition-colors duration-200 select-none">
+          <span class="text-xl font-medium">{{ 'products.product.charity_donation.custom' | t }}</span>
+          <span class="text-sm text-content-secondary min-h-[1.25em]"></span>
+        </button>
+
+      </div>
+
+      <div data-charity-custom-input class="hidden mt-4">
+        <div class="inline-flex items-center rounded-md border border-content-light bg-surface-white">
+          <span class="pl-3 pr-0.5 text-content-secondary select-none">$</span>
+          <input type="number" data-charity-custom-amount min="0.01" step="0.01" placeholder="0"
+            class="w-24 bg-transparent pr-3 py-3 text-right focus:outline-none text-content"
+            aria-label="{{ 'products.product.charity_donation.custom_amount_placeholder' | t }}">
+        </div>
+        <button type="button" data-charity-select-custom class="ml-3 rz-btn-md rz-btn-secondary">
+          {{ 'products.product.charity_donation.add_donation' | t }}
+        </button>
+      </div>
+
+    </div>
+
+    {% comment %} ── State 2: Confirmation ── {% endcomment %}
+    <div data-charity-summary class="hidden mt-6 -mx-0 rounded-md bg-surface-200 px-5 py-4 rz-fade-in">
+      <div class="flex items-center gap-3">
+        <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-6 w-auto flex-shrink-0">
+        <div class="flex-grow min-w-0">
+          <p class="text-sm font-medium text-content">{{ 'products.product.charity_donation.thank_you_title' | t }}</p>
+          <p class="text-xs text-content-secondary mt-0.5 truncate">
+            <span data-charity-summary-amount class="font-semibold text-content"></span>{{ 'products.product.charity_donation.donation_summary_suffix' | t }}
+          </p>
+        </div>
+        <button type="button" data-charity-remove class="text-xs font-medium text-content-secondary hover:text-content underline underline-offset-4 transition-colors shrink-0">
+          {{ 'products.product.charity_donation.remove' | t }}
+        </button>
+      </div>
+    </div>
+
+    {% endif %}
+
+    </div>
+
+  </div>
+</div>

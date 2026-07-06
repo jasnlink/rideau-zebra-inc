@@ -225,13 +225,17 @@
                             </div>
                         {% endif %}
                         {% if has_product_type %}
-                            <div class="mt-2">
-                                <label class="p-4 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-surface-white border border-content-light hover:bg-surface-50 has-[:checked]:bg-brand-200 has-[:checked]:border-brand-500" for="install-check">
+                            <div class="mt-6">
+                                <label class="py-5 px-6 transition-all cursor-pointer select-none max-w-full text-clip overflow-hidden rounded-md flex gap-4 items-center bg-surface-white border border-content-light hover:bg-surface-50 has-[:checked]:bg-brand-200 has-[:checked]:border-brand-500" for="install-check">
                                     <input class="hidden peer" type="checkbox" id="install-check" data-product-install-service-item-id="{{ all_products['professional-window-blind-installation-service'].first_available_variant.id }}">
-                                    <span class="transition-all opacity-20 peer-checked:opacity-100">{% render 'icon-success', class: 'h-6 fill-brand-500' %}</span>
+                                    <span class="transition-all opacity-20 peer-checked:opacity-100 shrink-0">{% render 'icon-success', class: 'h-7 w-auto fill-brand-500' %}</span>
                                     {% assign installPrice = all_products['professional-window-blind-installation-service'].price | money_without_trailing_zeros %}
-                                    <span>{{ 'products.product.cordless_zebra_blinds.have_us_install' | t: installPrice: installPrice }}</span>
+                                    <span class="text-base font-medium">{{ 'products.product.cordless_zebra_blinds.have_us_install' | t: installPrice: installPrice }}</span>
                                 </label>
+                            </div>
+                            {% comment %} ── Charity Donation ── {% endcomment %}
+                            <div class="mt-8">
+                              {% render 'component.charity-donation', context: 'product' %}
                             </div>
                         {% endif %}
                         <div class="pt-4 pb-2 flex items-center justify-between gap-8">

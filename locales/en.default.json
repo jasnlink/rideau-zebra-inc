@@ -515,6 +515,24 @@
       "or": "or",
       "give_us_a_call": "give us a call.",
       "add_to_cart": "Add to cart",
+      "charity_donation": {
+        "title": "Support Orbis International",
+        "description": "Orbis provides eye care to communities worldwide, restoring vision for those who need it most. Select a percentage of your order \u2014 100% goes to their programs.",
+        "description_cart": "Select a percentage of your order. 100% goes to Orbis eye care programs.",
+        "of_order": "of your order",
+        "custom": "Other",
+        "custom_amount_placeholder": "Amount in dollars",
+        "add_donation": "Add donation",
+        "thank_you_title": "Thank you for supporting Orbis.",
+        "donation_summary_suffix": " to Orbis International. Thank you.",
+        "already_donated": "{{ amount }} to Orbis International. Thank you for supporting eye care worldwide.",
+        "added": "Added. Thank you.",
+        "error": "Couldn't add donation. Please try again.",
+        "cart_label": "Orbis donation",
+        "cart_description": "Thank you for supporting eye care worldwide.",
+        "cart_line_dynamic": "{{ type }} to Orbis. Thank you.",
+        "remove": "Remove"
+      },
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
@@ -841,6 +859,11 @@
     }
   },
   "sections": {
+    "orbis_partnership": {
+      "overline": "Our partners",
+      "title": "We support Orbis International",
+      "learn_more": "Learn more about Orbis"
+    },
     "header": {
       "top_bar_1_html": "Enjoy 5% off on your first order with code: <strong>ZEBRA5<\/strong>",
       "top_bar_2_html": "Call us <a href=\"+14509129327\" class=\"underline\">(450) 912-9327<\/a>",

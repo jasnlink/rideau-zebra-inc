@@ -1,6 +1,6 @@
 {% capture drawer_content %}
     <div class="flex flex-col h-full">
-        <div class="shrink bg-surface-white">
+        <div class="shrink border-b border-content/10">
             <div class="px-2 sm:px-8 flex justify-between items-center py-4 mx-auto">
                 <span class="rz-h2 text-content">{{ 'templates.cart.your_cart' | t }}</span>
                 <div role="button" data-drawer-close class="rz-icon-btn relative">
@@ -8,9 +8,183 @@
                 </div>
             </div>
         </div>
-        <div data-cart-drawer-state="default" id="cart-drawer-content" class="h-full shrink overflow-auto flex flex-col"></div>
-        <div data-cart-drawer-state="loading" class="hidden h-full items-center justify-center">
-            <span>{% render 'icon-loading', class: 'animate-spin mx-auto h-12 w-12 text-content' %}</span>
+        <div id="cart-drawer-content" class="h-full shrink overflow-auto flex flex-col">
+            {% if cart.empty? == true %}
+                <div class="shrink">
+                    <div class="container mt-20 mx-auto">
+                        <div class="text-center rz-h4">{{ 'templates.cart.empty_message.title' | t }}</div>
+                        <div class="text-center mt-4 rz-body-lg">{{ 'templates.cart.empty_message.description' | t }}</div>
+                        <a href="{{ routes['collections_url'] }}" title="{{ 'templates.cart.empty_message.button' | t }}" class="block w-fit mx-auto mt-8 rz-btn-md rz-btn-primary">{{ 'templates.cart.empty_message.button' | t }}</a>
+                    </div>
+                </div>
+            {% else %}
+                <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-auto">
+                    <div class="container mt-4 mb-5 mx-auto flex flex-col gap-y-8">
+                        {% for line_item in cart.items %}
+                            {%- if line_item.product.title contains 'Charity' or line_item.product.title contains 'Donation' -%}
+                                {% continue %}
+                            {%- endif -%}
+                            <div class="flex items-center gap-x-4 sm:gap-x-8" data-cart-line="{{ forloop.index }}">
+                                <div>
+                                    <a href="{{ line_item.url }}" class="block aspect-square w-36 h-36 rounded-md select-none bg-content-light">
+                                        <picture>
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1536px)" />
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1280px)" />
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:1024px)" />
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:768px)" />
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:640px)" />
+                                            <source srcset="{{ line_item.image | image_url: width: 160 }}" media="(min-width:0px)" />
+                                            <img src="{{ line_item.image | image_url: width: 160 }}" alt="{{ line_item.product.title }}" height="132" width="132" loading="lazy" class="h-full w-auto object-contain rounded-md" />
+                                        </picture>
+                                    </a>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex flex-col justify-center items-start">
+                                        <div class="w-full flex flex-col sm:flex-row justify-between gap-x-8">
+                                            <a href="{{ line_item.url }}" class="sm:text-2xl font-bold font-serif">{{ line_item.product.title | truncate: 80, '' }}</a>
+                                            <span class="font-light mt-1 sm:mt-0 text-sm sm:text-xl" data-cart-line-price>{{ line_item.final_line_price | money_with_currency }}</span>
+                                        </div>
+                                        {% if line_item.product.has_only_default_variant == false %}
+                                            <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ line_item.variant.title }}</div>
+                                        {% endif %}
+                                        {% unless line_item.properties == empty %}
+                                            {% for property in line_item.properties %}
+                                                <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ property.first }}: {{ property.last }}</div>
+                                            {% endfor %}
+                                        {% endunless %}
+                                        <div class="mt-1.5 flex justify-center items-center gap-2">
+                                            <div role="button" data-cart-action="minus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-minus', class: 'h-3 w-3 text-content' %}</div>
+                                            <div class="select-none text-content font-medium" data-cart-line-qty>{{ line_item.quantity }}</div>
+                                            <div role="button" data-cart-action="plus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-plus', class: 'h-3 w-3 text-content' %}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% assign charity_item = nil %}
+                {% assign charity_line = 0 %}
+                {% for item in cart.items %}
+                    {% assign charity_line = charity_line | plus: 1 %}
+                    {% if item.product.title contains 'Charity' or item.product.title contains 'Donation' %}
+                        {% assign charity_item = item %}
+                        {% break %}
+                    {% endif %}
+                {% endfor %}
+                <div class="mt-auto shrink">
+                    <div id="cart-drawer-charity" class="transition-opacity duration-300 bg-surface-200/50 border-t border-content/10">
+                        <div class="max-w-2xl mx-auto py-3">
+                            <div data-charity-donation data-charity-context="cart" data-charity-variant-id="45690314653749" data-charity-base-amount="{{ cart.items_subtotal_price }}">
+                                {% comment %} ── State: Donated (compact cart row) ── {% endcomment %}
+                                <div data-charity-state="donated" class="{% if charity_item == nil %}hidden{% endif %} transition-opacity duration-200">
+                                    <div class="flex items-center justify-between gap-x-4 py-1">
+                                        <div class="flex items-center gap-2 min-w-0">
+                                            <span class="flex-shrink-0"><img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-4 w-auto"></span>
+                                            <span class="text-xs text-content-secondary truncate" data-charity-donated-label>
+                                                {%- if charity_item -%}
+                                                {%- assign dlabel = false -%}
+                                                {%- for property in charity_item.properties -%}
+                                                    {%- if property.first == 'donation_type' -%}
+                                                        {%- assign dlabel = property.last -%}
+                                                    {%- endif -%}
+                                                {%- endfor -%}
+                                                {%- if dlabel -%}
+                                                    {{ 'products.product.charity_donation.cart_line_dynamic' | t: type: dlabel }}
+                                                {%- else -%}
+                                                    {{ 'products.product.charity_donation.cart_description' | t }}
+                                                {%- endif -%}
+                                                {%- endif -%}
+                                            </span>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <span data-charity-donation-price class="font-light text-xs">{% if charity_item %}{{ charity_item.final_line_price | money_with_currency }}{% endif %}</span>
+                                            <span role="button" data-charity-remove-inline data-charity-variant-id="45690314653749" class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} ── State: Select (chips/custom/summary) ── {% endcomment %}
+                                <div data-charity-state="select" class="{% if charity_item %}hidden{% endif %} min-h-[26px] flex flex-col justify-center transition-opacity duration-200">
+                                    {% comment %} Row A: chips {% endcomment %}
+                                    <div data-charity-row="chips" class="flex items-center gap-2 flex-wrap">
+                                        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+                                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+                                        </span>
+                                        <span class="inline-flex items-center gap-1">
+                                            {%- assign base_amount_cents = cart.items_subtotal_price -%}
+                                            {% for pct in (1..3) %}
+                                                {% assign pct_amount = base_amount_cents | times: pct | divided_by: 100 %}
+                                            <button type="button" data-charity-donate="{{ pct }}"
+                                                title="{% if base_amount_cents > 0 %}{{ pct_amount | money_without_trailing_zeros }}{% endif %}"
+                                                class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                                                       hover:border-brand-300 hover:bg-surface-50
+                                                       transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+                                                {{ pct }}%
+                                            </button>
+                                            {% endfor %}
+                                            <button type="button" data-charity-custom-toggle
+                                                class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                                                       hover:border-brand-300 hover:bg-surface-50
+                                                       transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+                                                {{ 'products.product.charity_donation.custom' | t }}
+                                            </button>
+                                        </span>
+                                    </div>
+                                    {% comment %} Row B: custom amount {% endcomment %}
+                                    <div data-charity-row="custom" class="hidden flex items-center gap-1.5 flex-wrap">
+                                        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+                                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+                                        </span>
+                                        <span class="text-xs text-content-secondary">$</span>
+                                        <input type="number" data-charity-custom-amount min="0.01" step="0.01" placeholder="0"
+                                            class="w-16 bg-transparent border border-content-light rounded px-2 py-1 text-xs text-right focus:outline-none text-content"
+                                            aria-label="{{ 'products.product.charity_donation.custom_amount_placeholder' | t }}">
+                                        <button type="button" data-charity-donate="custom"
+                                            class="rz-btn-xs rz-btn-secondary">
+                                            {{ 'products.product.charity_donation.add_donation' | t }}
+                                        </button>
+                                        <button type="button" data-charity-custom-cancel class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</button>
+                                    </div>
+                                    {% comment %} Row C: summary (JS-populated) {% endcomment %}
+                                    <div data-charity-row="summary" class="hidden flex items-center justify-between gap-x-4 py-1">
+                                        <div class="flex items-center gap-2 min-w-0">
+                                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-4 w-auto flex-shrink-0">
+                                            <span data-charity-summary-text class="text-xs text-content-secondary truncate"></span>
+                                        </div>
+                                        <div class="flex items-center gap-3 shrink-0">
+                                            <span data-charity-summary-price class="font-light text-xs"></span>
+                                            <span role="button" data-charity-remove-inline class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cart-drawer-footer" class="shrink bg-surface-100/50">
+                        <div class="pt-4 pb-2 px-4 sm:px-8">
+                            <div class="max-w-2xl mx-auto text-content">
+                                <div class="flex justify-between">
+                                    <div class="font-bold font-serif text-lg">{{ 'sections.cart.subtotal' | t }}</div>
+                                    <div class="font-light text-lg" data-cart-subtotal>{{ cart.items_subtotal_price | money_with_currency }}</div>
+                                </div>
+                                <div class="mt-1 flex justify-between">
+                                    <div class="font-bold font-serif text-base">{{ 'sections.cart.taxes_delivery' | t }}</div>
+                                    <div class="font-light italic text-base">{{ 'sections.cart.calculated_checkout' | t }}</div>
+                                </div>
+                                <a href="{{ shop.url | append: '/checkout' }}" id="checkout" class="block text-center w-full mt-3 rz-btn-md rz-btn-primary" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
+                            </div>
+                        </div>
+                        <div class="container mx-auto pt-1 pb-1 flex flex-col items-center justify-center gap-y-2 sm:flex-row sm:gap-x-4">
+                            <div class="inline-flex justify-center gap-x-0.5 flex-wrap">
+                                {% for type in shop.enabled_payment_types -%}
+                                    {{ type | payment_type_svg_tag: class: 'h-4 w-auto' }}
+                                {% endfor %}
+                            </div>
+                            <div data-secure-action="cart" role="button" class="rz-btn-trust flex gap-x-1 text-[10px] py-1 px-4">{% render 'icon-secure', class: 'h-3.5 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endcapture %}

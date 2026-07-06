@@ -7,10 +7,15 @@
         </div>
     </div>
 {% else %}
-    <div id="cart-drawer-items" class="shrink overflow-auto">
+    <div id="cart-drawer-items" class="flex-1 min-h-0 overflow-auto">
         <div class="container mt-4 mb-5 mx-auto flex flex-col gap-y-8">
+
             {% for line_item in cart.items %}
-                <div class="flex items-center gap-x-4 sm:gap-x-8">
+                {%- if line_item.product.title contains 'Charity' or line_item.product.title contains 'Donation' or line_item.product.title contains 'charity' or line_item.product.title contains 'donation' -%}
+                    {% continue %}
+                {%- endif -%}
+
+                <div class="flex items-center gap-x-4 sm:gap-x-8" data-cart-line="{{ forloop.index }}">
                     <div>
                         <a href="{{ line_item.url }}" class="block aspect-square w-36 h-36 rounded-md select-none bg-content-light">
                             <picture>
@@ -28,7 +33,7 @@
                         <div class="flex flex-col justify-center items-start">
                             <div class="w-full flex flex-col sm:flex-row justify-between gap-x-8">
                                 <a href="{{ line_item.url }}" class="sm:text-2xl font-bold font-serif">{{ line_item.product.title | truncate: 80, '' }}</a>
-                                <span class="font-light mt-1 sm:mt-0 text-sm sm:text-xl">{{ line_item.final_line_price | money_with_currency }}</span>
+                                <span class="font-light mt-1 sm:mt-0 text-sm sm:text-xl" data-cart-line-price>{{ line_item.final_line_price | money_with_currency }}</span>
                             </div>
                             {% if line_item.product.has_only_default_variant == false %}
                                 <div class="mt-1 sm:mt-0 text-xs sm:text-lg">{{ line_item.variant.title }}</div>
@@ -40,7 +45,7 @@
                             {% endunless %}
                             <div class="mt-1.5 flex justify-center items-center gap-2">
                                 <div role="button" data-cart-action="minus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-minus', class: 'h-3 w-3 text-content' %}</div>
-                                <div class="select-none text-content font-medium">{{ line_item.quantity }}</div>
+                                <div class="select-none text-content font-medium" data-cart-line-qty>{{ line_item.quantity }}</div>
                                 <div role="button" data-cart-action="plus" data-cart-item-id="{{ forloop.index }}" data-cart-item-quantity="{{ line_item.quantity }}" class="py-1 px-2">{% render 'icon-plus', class: 'h-3 w-3 text-content' %}</div>
                             </div>
                         </div>
@@ -49,31 +54,121 @@
             {% endfor %}
         </div>
     </div>
-    <div id="cart-drawer-footer" class="mt-auto shrink bg-surface-100">
-        <div class="pt-6 pb-2">
-            <div class="container mx-auto text-content">
-                <div class="flex justify-between">
-                    <div class="font-bold font-serif text-lg">{{ 'sections.cart.subtotal' | t }}</div>
-                    <div class="font-light text-lg">{{ cart.items_subtotal_price | money_with_currency }}</div>
-                </div>
-                <div class="mt-2 flex justify-between">
-                    <div class="font-bold font-serif text-lg">{{ 'sections.cart.taxes_delivery' | t }}</div>
-                    <div class="font-light italic text-lg">{{ 'sections.cart.calculated_checkout' | t }}</div>
-                </div>
-                <a href="{{ shop.url | append: '/checkout' }}" id="checkout" class="block text-center w-full mt-4 rz-btn-lg rz-btn-primary" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
-            </div>
-        </div>
-        <div class="bg-surface-100">
-            <div class="container mx-auto pt-1 pb-1 flex flex-col sm:flex-row justify-center gap-y-2 gap-x-4">
-                <div class="flex flex-col gap-y-3 lg:flex-row items-center justify-center gap-x-4">
-                    <div class="inline-flex justify-center gap-y-2 gap-x-0.5 flex-wrap">
-                        {% for type in shop.enabled_payment_types -%}
-                            {{ type | payment_type_svg_tag: class: 'h-4 sm:h-6 w-auto' }}
-                        {% endfor %}
+    {% comment %} ── Charity Donation ── inline, replaces itself when added ── {% endcomment %}
+    {% assign charity_item = nil %}
+    {% assign charity_line = 0 %}
+    {% for item in cart.items %}
+        {% assign charity_line = charity_line | plus: 1 %}
+        {% if item.product.title contains 'Charity' or item.product.title contains 'Donation' %}
+            {% assign charity_item = item %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    <div id="cart-drawer-charity" class="shrink transition-opacity duration-300 bg-surface-200/50 border-t border-content/10">
+        <div class="max-w-2xl mx-auto py-3">
+            <div data-charity-donation data-charity-context="cart" data-charity-variant-id="45690314653749" data-charity-base-amount="{{ cart.items_subtotal_price }}">
+                {% comment %} ── State: Donated (compact cart row) ── {% endcomment %}
+                <div data-charity-state="donated" class="{% if charity_item == nil %}hidden{% endif %} transition-opacity duration-200">
+                    <div class="flex items-center justify-between gap-x-4 py-1">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="flex-shrink-0"><img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-4 w-auto"></span>
+                            <span class="text-xs text-content-secondary truncate" data-charity-donated-label>
+                                {%- if charity_item -%}
+                                {%- assign dlabel = false -%}
+                                {%- for property in charity_item.properties -%}
+                                    {%- if property.first == 'donation_type' -%}
+                                        {%- assign dlabel = property.last -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                                {%- if dlabel -%}
+                                    {{ 'products.product.charity_donation.cart_line_dynamic' | t: type: dlabel }}
+                                {%- else -%}
+                                    {{ 'products.product.charity_donation.cart_description' | t }}
+                                {%- endif -%}
+                                {%- endif -%}
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <span data-charity-donation-price class="font-light text-xs">{% if charity_item %}{{ charity_item.final_line_price | money_with_currency }}{% endif %}</span>
+                            <span role="button" data-charity-remove-inline data-charity-variant-id="45690314653749" class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</span>
+                        </div>
                     </div>
                 </div>
-                <div data-secure-action="cart" role="button" class="w-fit mx-auto sm:mx-0 rz-btn-trust flex gap-x-2">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
+                {% comment %} ── State: Select (chips/custom/summary) ── {% endcomment %}
+                <div data-charity-state="select" class="{% if charity_item %}hidden{% endif %} min-h-[26px] flex flex-col justify-center transition-opacity duration-200">
+                    <div data-charity-row="chips" class="flex items-center gap-2 flex-wrap">
+                        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+                        </span>
+                        <span class="inline-flex items-center gap-1">
+                            {%- assign base_amount_cents = cart.items_subtotal_price -%}
+                            {% for pct in (1..3) %}
+                                {% assign pct_amount = base_amount_cents | times: pct | divided_by: 100 %}
+                            <button type="button" data-charity-donate="{{ pct }}"
+                                title="{% if base_amount_cents > 0 %}{{ pct_amount | money_without_trailing_zeros }}{% endif %}"
+                                class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                                       hover:border-brand-300 hover:bg-surface-50
+                                       transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+                                {{ pct }}%
+                            </button>
+                            {% endfor %}
+                            <button type="button" data-charity-custom-toggle
+                                class="text-xs py-1 px-2 rounded border border-content-light bg-surface-white text-content
+                                       hover:border-brand-300 hover:bg-surface-50
+                                       transition-colors duration-200 select-none cursor-pointer whitespace-nowrap">
+                                {{ 'products.product.charity_donation.custom' | t }}
+                            </button>
+                        </span>
+                    </div>
+                    <div data-charity-row="custom" class="hidden flex items-center gap-1.5 flex-wrap">
+                        <span class="inline-flex items-center gap-1 text-xs text-content-secondary whitespace-nowrap">
+                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-3.5 w-auto flex-shrink-0"> {{ 'products.product.charity_donation.title' | t }}
+                        </span>
+                        <span class="text-xs text-content-secondary">$</span>
+                        <input type="number" data-charity-custom-amount min="0.01" step="0.01" placeholder="0"
+                            class="w-16 bg-transparent border border-content-light rounded px-2 py-1 text-xs text-right focus:outline-none text-content"
+                            aria-label="{{ 'products.product.charity_donation.custom_amount_placeholder' | t }}">
+                        <button type="button" data-charity-donate="custom"
+                            class="rz-btn-xs rz-btn-secondary">
+                            {{ 'products.product.charity_donation.add_donation' | t }}
+                        </button>
+                        <button type="button" data-charity-custom-cancel class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</button>
+                    </div>
+                    <div data-charity-row="summary" class="hidden flex items-center justify-between gap-x-4 py-1">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis" class="h-4 w-auto flex-shrink-0">
+                            <span data-charity-summary-text class="text-xs text-content-secondary truncate"></span>
+                        </div>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <span data-charity-summary-price class="font-light text-xs"></span>
+                            <span role="button" data-charity-remove-inline class="text-xs rz-link cursor-pointer whitespace-nowrap">{{ 'products.product.charity_donation.remove' | t }}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <div id="cart-drawer-footer" class="mt-auto shrink bg-surface-100/50">
+        <div class="pt-4 pb-2">
+            <div class="max-w-2xl mx-auto text-content">
+                <div class="flex justify-between">
+                    <div class="font-bold font-serif text-lg">{{ 'sections.cart.subtotal' | t }}</div>
+                    <div class="font-light text-lg" data-cart-subtotal>{{ cart.items_subtotal_price | money_with_currency }}</div>
+                </div>
+                <div class="mt-1 flex justify-between">
+                    <div class="font-bold font-serif text-base">{{ 'sections.cart.taxes_delivery' | t }}</div>
+                    <div class="font-light italic text-base">{{ 'sections.cart.calculated_checkout' | t }}</div>
+                </div>
+                <a href="{{ shop.url | append: '/checkout' }}" id="checkout" class="block text-center w-full mt-3 rz-btn-md rz-btn-primary" title="{{ 'sections.cart.checkout_now' | t }}">{{ 'sections.cart.checkout_now' | t }}</a>
+            </div>
+        </div>
+        <div class="container mx-auto pt-1 pb-1 flex items-center justify-center gap-x-4">
+            <div class="inline-flex justify-center gap-x-0.5 flex-wrap">
+                {% for type in shop.enabled_payment_types -%}
+                    {{ type | payment_type_svg_tag: class: 'h-4 w-auto' }}
+                {% endfor %}
+            </div>
+            <div data-secure-action="cart" role="button" class="rz-btn-trust flex gap-x-1 text-xs">{% render 'icon-secure', class: 'h-4 w-auto fill-content' %} <span>{{ 'sections.footer.ssl_encrypted' | t }}</span></div>
         </div>
     </div>
     <div id="secure-popover" class="hidden rz-popover" role="tooltip">
