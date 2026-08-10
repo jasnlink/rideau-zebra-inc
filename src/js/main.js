@@ -3,6 +3,7 @@ import { updateCartCount } from "./lib";
 
 window.addEventListener('DOMContentLoaded', (event) => {
     initSecurePopover();
+    initCharityInfoPopover();
     initCart();
     initMobileMenu();
     initProductHover();
@@ -111,6 +112,135 @@ function initSecurePopover() {
 
     popover.addEventListener('mouseenter', function() { cancelHide(); });
     popover.addEventListener('mouseleave', function() { hide(); });
+}
+
+/**
+ * Charity consent info popover.
+ * Shows exactly which order information is shared with Orbis Canada when the
+ * tax-receipt consent box is ticked (first name, last name, email, phone, address).
+ * Works on hover (desktop) and tap/click (touch), plus keyboard (Enter/Space/Escape).
+ * Mirrors the secure-popover pattern: single shared popover positioned via Popper.js.
+ */
+function initCharityInfoPopover() {
+    var popover = document.getElementById('charity-info-popover');
+    var triggers = document.querySelectorAll('[data-charity-info-action]');
+    if (!popover || !triggers.length) return;
+
+    var popperInstance = null;
+    var activeTrigger = null;
+    var showTimer = null;
+    var hideTimer = null;
+    var openByClick = false;
+    var isTouch = window.matchMedia('(hover: none)').matches;
+
+    function position(trigger) {
+        if (!popperInstance) {
+            popperInstance = Popper.createPopper(trigger, popover, {
+                placement: 'top',
+                strategy: 'fixed',
+                modifiers: [{ name: 'offset', options: { offset: [0, 10] } }]
+            });
+        } else {
+            popperInstance.state.elements.reference = trigger;
+            popperInstance.update();
+        }
+    }
+
+    function reveal(trigger) {
+        popover.classList.remove('hidden');
+        // Force reflow so the browser registers opacity:0 before transitioning
+        popover.offsetHeight;
+        popover.style.opacity = '1';
+        position(trigger);
+    }
+
+    function show(trigger) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        if (activeTrigger === trigger) return;
+        activeTrigger = trigger;
+        showTimer = setTimeout(function() { reveal(trigger); }, 200);
+    }
+
+    function showNow(trigger) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        activeTrigger = trigger;
+        reveal(trigger);
+    }
+
+    function hide() {
+        clearTimeout(showTimer);
+        hideTimer = setTimeout(function() {
+            popover.style.opacity = '0';
+            setTimeout(function() {
+                popover.classList.add('hidden');
+                activeTrigger = null;
+                openByClick = false;
+            }, 200);
+        }, 250);
+    }
+
+    function cancelHide() {
+        clearTimeout(hideTimer);
+    }
+
+    function toggle(trigger) {
+        if (activeTrigger === trigger && !popover.classList.contains('hidden')) {
+            hide();
+            return;
+        }
+        openByClick = true;
+        showNow(trigger);
+    }
+
+    triggers.forEach(function(trigger) {
+        trigger.addEventListener('mouseenter', function() {
+            if (!openByClick) show(trigger);
+        });
+        trigger.addEventListener('mouseleave', function() {
+            if (!openByClick) hide();
+        });
+        trigger.addEventListener('click', function(e) {
+            // Only handle real pointer clicks; keyboard activation is handled in keydown
+            if (e.detail === 0) return;
+            e.preventDefault();
+            e.stopPropagation();
+            toggle(trigger);
+        });
+        trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hide();
+                return;
+            }
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle(trigger);
+            }
+        });
+        trigger.addEventListener('focus', function() {
+            if (isTouch) return;
+            if (!openByClick) show(trigger);
+        });
+        trigger.addEventListener('blur', function() {
+            if (!openByClick) hide();
+        });
+    });
+
+    // Keep the popover open while the pointer is over it
+    popover.addEventListener('mouseenter', cancelHide);
+    popover.addEventListener('mouseleave', function() { if (!openByClick) hide(); });
+
+    // Close on outside click (tap-away) and Escape
+    document.addEventListener('click', function(e) {
+        if (!openByClick) return;
+        if (popover.contains(e.target)) return;
+        if (e.target.closest('[data-charity-info-action]')) return;
+        hide();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') hide();
+    });
 }
 
 function initMobileMenu() {

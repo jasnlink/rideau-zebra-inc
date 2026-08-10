@@ -100,12 +100,18 @@ export function initAddCartAction() {
                     charityDonationInfo = { type: 'percent', value: percent };
                 }
                 if (quantity > 0) {
+                    var consentCheckbox = charitySection.querySelector('[data-charity-state="select"] [data-charity-consent-checkbox]');
+                    var props = { 'donation_type': donationLabel };
+                    if (consentCheckbox && consentCheckbox.checked) {
+                        props['_orbis_tax_receipt_consent'] = 'true';
+                    } else if (consentCheckbox && !consentCheckbox.checked) {
+                        // Nudge: briefly highlight the consent area so the user notices it
+                        nudgeConsentRow(charitySection);
+                    }
                     charityPayload = {
                         id: variantId,
                         quantity: quantity,
-                        properties: {
-                            'donation_type': donationLabel
-                        }
+                        properties: props
                     };
                     // Store type in DOM for recalc
                     if (charityDonationInfo.type === 'percent') {
@@ -171,6 +177,16 @@ export function initAddCartAction() {
                         customToggleBtn.classList.add('border-content-light', 'bg-surface-white');
                     }
                 }
+                // Refresh the charity section to the donated/confirmation state —
+                // the donation is already in the cart, so show the toggleable
+                // tax-receipt consent checkbox (matches the drawer flow).
+                return fetch(window.Shopify.routes.root + 'cart.js')
+                    .then(function(r) { return r.json(); })
+                    .then(function(cartData) { syncCartUI(cartData, true); })
+                    .then(function() {
+                        disableLoading(targetElement);
+                        playAnimation();
+                    });
             }
             disableLoading(targetElement);
             playAnimation();
@@ -418,6 +434,61 @@ function setCartRow(section, rowName) {
     if (target) target.classList.remove('hidden');
 }
 
+/**
+ * Briefly highlight the tax-receipt consent row so the user notices it
+ * before/after adding a donation without ticking the box.
+ */
+function nudgeConsentRow(section) {
+    if (!section) return;
+    var consentRow = section.querySelector('[data-charity-state="select"] [data-charity-consent-row]');
+    if (!consentRow) return;
+    consentRow.classList.add('bg-surface-200');
+    setTimeout(function() {
+        consentRow.classList.remove('bg-surface-200');
+    }, 1200);
+}
+
+/**
+ * Update the _orbis_tax_receipt_consent property on the charity line item.
+ * Called when the user checks/unchecks the consent box in the donated/confirmation
+ * state — the donation is already in the cart, so we push the change via cart/change.js.
+ */
+function updateCharityConsentProperty(variantId, checked, checkbox) {
+    var previous = !checked;
+    fetch(window.Shopify.routes.root + 'cart.js')
+        .then(function(r) { return r.json(); })
+        .then(function(cart) {
+            var charityItem = cart.items.find(function(i) { return i.variant_id === variantId; });
+            if (!charityItem) throw new Error('charity line not found');
+            var line = cart.items.indexOf(charityItem) + 1;
+            // Preserve existing properties (e.g. donation_type), replace the consent flag
+            var properties = {};
+            if (charityItem.properties) {
+                Object.keys(charityItem.properties).forEach(function(key) {
+                    if (key === '_orbis_tax_receipt_consent') return;
+                    properties[key] = charityItem.properties[key];
+                });
+            }
+            if (checked) properties['_orbis_tax_receipt_consent'] = 'true';
+            return fetch(window.Shopify.routes.root + 'cart/change.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ line: line, quantity: charityItem.quantity, properties: properties })
+            });
+        })
+        .then(function(res) {
+            if (!res.ok) throw new Error('cart/change.js failed');
+            return res.json();
+        })
+        .then(function(cartData) {
+            syncCartUI(cartData, true);
+        })
+        .catch(function(err) {
+            console.error('[charity-consent] update failed:', err);
+            if (checkbox) checkbox.checked = previous;
+        });
+}
+
 // ── Product tags cache for variant visibility ──
 var _productTagsCache = {};
 
@@ -592,8 +663,23 @@ function syncCharitySection(section, donationItem, donationPrice, cleanSubtotal,
             if (labelEl && donationItem.properties) {
                 var dtype = donationItem.properties['donation_type'];
                 if (dtype) {
-                    labelEl.textContent = dtype + '. Thank you.';
+                    // Prefer the translated template baked into the markup (bilingual),
+                    // fall back to a plain suffix if the template is missing.
+                    var labelTemplate = labelEl.dataset.charityDonatedLabelTemplate;
+                    if (labelTemplate) {
+                        labelEl.textContent = labelTemplate.replace('__TYPE__', dtype);
+                    } else {
+                        labelEl.textContent = dtype + '. Thank you.';
+                    }
                 }
+            }
+            // Sync the tax-receipt consent checkbox to the cart's actual consent
+            // flag so the product surface and the cart drawer stay consistent
+            // (toggling consent on one surface must reflect on the other).
+            var consentCb = donatedState.querySelector('[data-charity-consent-checkbox]');
+            if (consentCb) {
+                var hasConsent = donationItem.properties && donationItem.properties['_orbis_tax_receipt_consent'] === 'true';
+                if (consentCb.checked !== hasConsent) consentCb.checked = hasConsent;
             }
         }
         var priceDisplay = document.querySelector('[data-charity-donation-price]');
@@ -607,7 +693,19 @@ function syncCharitySection(section, donationItem, donationPrice, cleanSubtotal,
             // Reset cart rows to chips
             setCartRow(selectState, 'chips');
         }
+        // Detect a remove (donated was visible and is now being hidden) so the
+        // selection form is fully reset: close/clear the custom amount input
+        // and reset the tax-receipt consent checkbox to a fresh state.
+        var wasDonatedVisible = donatedState && !donatedState.classList.contains('hidden');
         if (donatedState) donatedState.classList.add('hidden');
+        if (wasDonatedVisible && selectState) {
+            var customInput = selectState.querySelector('[data-charity-custom-input]');
+            if (customInput) customInput.classList.add('hidden');
+            var customAmount = selectState.querySelector('[data-charity-custom-amount]');
+            if (customAmount) customAmount.value = '';
+            var consentCb = selectState.querySelector('[data-charity-consent-checkbox]');
+            if (consentCb) consentCb.checked = false;
+        }
         console.log('[syncCharitySection] AFTER toggle — selectState.hidden:', selectState ? selectState.classList.contains('hidden') : '?', '| donatedState.hidden:', donatedState ? donatedState.classList.contains('hidden') : '?');
         delete section.dataset.charitySelected;
         section.querySelectorAll('[data-charity-select]').forEach(function(chip) {
@@ -725,6 +823,22 @@ export function updateCartCount() {
 export function initCharityDonation() {
 
     document.addEventListener('click', handleCharityDonation);
+
+    // ── Consent checkbox in donated/confirmation state — sync the cart line property ──
+    var consentToggles = document.querySelectorAll('[data-charity-consent-toggle]');
+    consentToggles.forEach(function(toggle) {
+        var checkbox = toggle.querySelector('[data-charity-consent-checkbox]');
+        if (!checkbox) return;
+        checkbox.addEventListener('change', function() {
+            var section = toggle.closest('[data-charity-donation]');
+            var donatedState = section ? section.querySelector('[data-charity-state="donated"]') : null;
+            // Only push to the cart when the donation is already added (donated state visible)
+            if (!donatedState || donatedState.classList.contains('hidden')) return;
+            var variantId = parseInt(section.dataset.charityVariantId);
+            if (!variantId) return;
+            updateCharityConsentProperty(variantId, checkbox.checked, checkbox);
+        });
+    });
 
     function handleCharityDonation(event) {
 
@@ -973,10 +1087,19 @@ export function initCharityDonation() {
 
         donateBtn.disabled = true;
 
+        var consentCheckbox = section.querySelector('[data-charity-state="select"] [data-charity-consent-checkbox]');
+        var props = { 'donation_type': donationLabel };
+        if (consentCheckbox && consentCheckbox.checked) {
+            props['_orbis_tax_receipt_consent'] = 'true';
+        } else if (consentCheckbox && !consentCheckbox.checked) {
+            // Nudge: briefly highlight the consent area so the user notices it
+            nudgeConsentRow(section);
+        }
+
         var formData = {
             id: variantId,
             quantity: quantity,
-            properties: { 'donation_type': donationLabel }
+            properties: props
         };
 
         // Fade out select state while request is in flight

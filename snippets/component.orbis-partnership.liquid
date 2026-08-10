@@ -1,6 +1,6 @@
 {% comment %}
   ============================================================
-  Orbis Partnership — explains Rideau Zebra's support of Orbis International.
+  Orbis Partnership — explains Rideau Zebra's support of Orbis Canada.
   Include on product pages and homepage after the Featured Project section.
   ============================================================
 {% endcomment %}
@@ -14,27 +14,19 @@
                 <p class="rz-overline text-content-secondary">{{ 'sections.orbis_partnership.overline' | t }}</p>
                 <h2 class="rz-h2 mt-2">{{ 'sections.orbis_partnership.title' | t }}</h2>
                 <p class="mt-4 text-content-secondary leading-relaxed max-w-prose">
-                    {% if language == 'fr' %}
-                        Orbis International est une organisation à but non lucratif qui construit des systèmes de soins oculaires durables dans le monde entier. Depuis plus de 40 ans, ils forment des professionnels de la santé, fournissent des équipements et redonnent la vue à des millions de personnes dans les communautés où les soins oculaires sont hors de portée.
-                    {% else %}
-                        Orbis International is a nonprofit that builds sustainable eye care systems worldwide. For over 40 years, they have trained healthcare professionals, provided equipment, and restored sight for millions of people in communities where eye care is out of reach.
-                    {% endif %}
+                    {{ 'sections.orbis_partnership.description_paragraph_1' | t }}
                 </p>
                 <p class="mt-3 text-content-secondary leading-relaxed max-w-prose">
-                    {% if language == 'fr' %}
-                        90 % des pertes de vision dans le monde sont évitables ou traitables. Chaque commande que vous passez chez Rideau Zebra nous permet de soutenir la mission d'Orbis : rendre les soins oculaires accessibles à tous.
-                    {% else %}
-                        90% of vision loss worldwide is preventable or treatable. Every order you place with Rideau Zebra helps us support Orbis's mission: making eye care accessible to everyone, everywhere.
-                    {% endif %}
+                    {{ 'sections.orbis_partnership.description_paragraph_2' | t }}
                 </p>
-                <a href="https://www.orbis.org/en/about-us" target="_blank" rel="noopener" class="inline-block mt-5 rz-btn-md rz-btn-secondary">
+                <a href="https://www.orbis.org/{% if language == 'fr' %}fr{% else %}en{% endif %}" target="_blank" rel="noopener" class="inline-block mt-5 rz-btn-md rz-btn-secondary">
                     {{ 'sections.orbis_partnership.learn_more' | t }}
                 </a>
             </div>
             <div class="relative order-first lg:order-none">
-                <img src="{{ 'orbis-2.png' | asset_url }}" alt="Orbis medical team" width="600" height="400" loading="lazy" class="w-full h-auto rounded-md shadow-lg">
+                <img src="{{ 'orbis-2.png' | asset_url }}" alt="Orbis Canada medical team" width="600" height="400" loading="lazy" class="w-full h-auto rounded-md shadow-lg">
                 <div class="mt-4 flex justify-center">
-                    <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis International" width="160" height="84" loading="lazy" class="h-10 sm:h-14 w-auto opacity-80">
+                    <img src="{{ 'partner-logo-orbis.svg' | asset_url }}" alt="Orbis Canada" width="160" height="84" loading="lazy" class="h-10 sm:h-14 w-auto opacity-80">
                 </div>
             </div>
         </div>
