@@ -123,11 +123,13 @@
                     data-info-variant-id="{{ product.variants.first.id }}"
                     data-info-currency="{{ shop.currency }}"
                     data-info-variant-price="{{ product.variants.first.price | times: 0.01 }}"
-                    class="rz-btn-sm rz-btn-primary w-full">
-                    <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
-                    <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-5 w-5 fill-content-inverse', fill: 'none' %}</span>
-                    <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-5 w-5 fill-content-inverse' %}</span>
+                    data-animation-image="{{ product.featured_image | image_url: width: 80 }}"
+                    class="rz-btn-sm lg:rz-btn-md rz-btn-primary w-full inline-flex items-center justify-center gap-1.5">
+                    {% render 'icon-processing', class: 'h-4 w-4 flex-shrink-0' %}
                     <span data-add-state="default">{{ 'products.product.add_to_cart' | t }}</span>
+                    <span data-add-state="loading" class="hidden">{{ 'products.product.add_to_cart' | t }}</span>
+                    <span data-add-state="success" class="hidden">{{ 'products.product.added' | t }}</span>
+                    <span data-add-state="error" class="hidden">{{ 'products.product.try_again' | t }}</span>
                 </button>
             {% else %}
                 <a href="{{ product.url }}" title="{{ product.title }}" class="rz-link font-semibold">{{ 'products.product.price.see_more' | t }}</a>

@@ -1,13 +1,15 @@
-import { initAddCartAction } from "./lib";
+import { initAddCartAction, initCharityDonation, formatMoney, syncCartUI, setBtnState } from "./lib";
 import { updateCartCount } from "./lib";
 
 window.addEventListener('DOMContentLoaded', (event) => {
     initSecurePopover();
+    initCharityInfoPopover();
     initCart();
     initMobileMenu();
     initProductHover();
     initDrawers();
     initAddCartAction();
+    initCharityDonation();
 });
 
 function initProductHover() {
@@ -56,41 +58,189 @@ function initProductHover() {
 }
 
 function initSecurePopover() {
+    var popover = document.getElementById('secure-popover');
+    var triggers = document.querySelectorAll('[data-secure-action]');
+    if (!popover || !triggers.length) return;
 
-    const secureBtnElementList = document.querySelectorAll('[data-secure-action]');
-    const secureCloseBtnElementList = document.querySelectorAll('[data-secure-close]');
-    const securePopoverElement = document.getElementById('secure-popover');
+    var popperInstance = null;
+    var activeTrigger = null;
+    var showTimer = null;
+    var hideTimer = null;
 
-    let popperInstanceList = [];
+    function show(trigger) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        if (activeTrigger === trigger) return;
+        activeTrigger = trigger;
+        showTimer = setTimeout(function() {
+            popover.classList.remove('hidden');
+            // Force reflow so browser registers opacity:0 before transitioning
+            popover.offsetHeight;
+            popover.style.opacity = '1';
+            if (!popperInstance) {
+                popperInstance = Popper.createPopper(trigger, popover, {
+                    placement: 'top',
+                    strategy: 'fixed',
+                    modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]
+                });
+            } else {
+                popperInstance.state.elements.reference = trigger;
+                popperInstance.update();
+            }
+        }, 200);
+    }
 
-    secureCloseBtnElementList.forEach(secureCloseBtnElement => {secureCloseBtnElement.addEventListener('click', hideSecure)})
+    function hide() {
+        clearTimeout(showTimer);
+        hideTimer = setTimeout(function() {
+            popover.style.opacity = '0';
+            setTimeout(function() {
+                popover.classList.add('hidden');
+                activeTrigger = null;
+            }, 200);
+        }, 250);
+    }
 
-    secureBtnElementList.forEach((secureBtnElement, index) => {
-        secureBtnElement.addEventListener('click', (event, secureBtnElement) => {handleSecureToggle(secureBtnElement, index)});
+    function cancelHide() {
+        clearTimeout(hideTimer);
+    }
 
-        const popperInstance = Popper.createPopper(secureBtnElement, securePopoverElement, {
-            placement: 'top',
-            modifiers: [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [0, 24],
-                    },
-                },
-            ],
+    triggers.forEach(function(trigger) {
+        trigger.addEventListener('mouseenter', function() { show(trigger); });
+        trigger.addEventListener('mouseleave', function() { hide(); });
+    });
+
+    popover.addEventListener('mouseenter', function() { cancelHide(); });
+    popover.addEventListener('mouseleave', function() { hide(); });
+}
+
+/**
+ * Charity consent info popover.
+ * Shows exactly which order information is shared with Orbis Canada when the
+ * tax-receipt consent box is ticked (first name, last name, email, phone, address).
+ * Works on hover (desktop) and tap/click (touch), plus keyboard (Enter/Space/Escape).
+ * Mirrors the secure-popover pattern: single shared popover positioned via Popper.js.
+ */
+function initCharityInfoPopover() {
+    var popover = document.getElementById('charity-info-popover');
+    var triggers = document.querySelectorAll('[data-charity-info-action]');
+    if (!popover || !triggers.length) return;
+
+    var popperInstance = null;
+    var activeTrigger = null;
+    var showTimer = null;
+    var hideTimer = null;
+    var openByClick = false;
+    var isTouch = window.matchMedia('(hover: none)').matches;
+
+    function position(trigger) {
+        if (!popperInstance) {
+            popperInstance = Popper.createPopper(trigger, popover, {
+                placement: 'top',
+                strategy: 'fixed',
+                modifiers: [{ name: 'offset', options: { offset: [0, 10] } }]
+            });
+        } else {
+            popperInstance.state.elements.reference = trigger;
+            popperInstance.update();
+        }
+    }
+
+    function reveal(trigger) {
+        popover.classList.remove('hidden');
+        // Force reflow so the browser registers opacity:0 before transitioning
+        popover.offsetHeight;
+        popover.style.opacity = '1';
+        position(trigger);
+    }
+
+    function show(trigger) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        if (activeTrigger === trigger) return;
+        activeTrigger = trigger;
+        showTimer = setTimeout(function() { reveal(trigger); }, 200);
+    }
+
+    function showNow(trigger) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        activeTrigger = trigger;
+        reveal(trigger);
+    }
+
+    function hide() {
+        clearTimeout(showTimer);
+        hideTimer = setTimeout(function() {
+            popover.style.opacity = '0';
+            setTimeout(function() {
+                popover.classList.add('hidden');
+                activeTrigger = null;
+                openByClick = false;
+            }, 200);
+        }, 250);
+    }
+
+    function cancelHide() {
+        clearTimeout(hideTimer);
+    }
+
+    function toggle(trigger) {
+        if (activeTrigger === trigger && !popover.classList.contains('hidden')) {
+            hide();
+            return;
+        }
+        openByClick = true;
+        showNow(trigger);
+    }
+
+    triggers.forEach(function(trigger) {
+        trigger.addEventListener('mouseenter', function() {
+            if (!openByClick) show(trigger);
         });
-        popperInstanceList.push(popperInstance)
-    })
+        trigger.addEventListener('mouseleave', function() {
+            if (!openByClick) hide();
+        });
+        trigger.addEventListener('click', function(e) {
+            // Only handle real pointer clicks; keyboard activation is handled in keydown
+            if (e.detail === 0) return;
+            e.preventDefault();
+            e.stopPropagation();
+            toggle(trigger);
+        });
+        trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hide();
+                return;
+            }
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle(trigger);
+            }
+        });
+        trigger.addEventListener('focus', function() {
+            if (isTouch) return;
+            if (!openByClick) show(trigger);
+        });
+        trigger.addEventListener('blur', function() {
+            if (!openByClick) hide();
+        });
+    });
 
-    function handleSecureToggle(secureBtnElement, index) {
-        securePopoverElement.classList.toggle('hidden');
-        popperInstanceList[index].update();
-    }
+    // Keep the popover open while the pointer is over it
+    popover.addEventListener('mouseenter', cancelHide);
+    popover.addEventListener('mouseleave', function() { if (!openByClick) hide(); });
 
-    function hideSecure() {
-        securePopoverElement.classList.add('hidden');
-    }
-
+    // Close on outside click (tap-away) and Escape
+    document.addEventListener('click', function(e) {
+        if (!openByClick) return;
+        if (popover.contains(e.target)) return;
+        if (e.target.closest('[data-charity-info-action]')) return;
+        hide();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') hide();
+    });
 }
 
 function initMobileMenu() {
@@ -118,25 +268,35 @@ function initMobileMenu() {
         event.preventDefault();
 
         if(menuOpen === false) {
-            menuWrapperElement.classList.remove('hidden');
-            menuDrawerElement.classList.remove('hidden');
+            var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+            var scrollY = window.scrollY;
+            document.body.style.top = '-' + scrollY + 'px';
+            document.body.style.paddingRight = scrollbarW + 'px';
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            menuWrapperElement.classList.remove('invisible', 'pointer-events-none');
+            menuDrawerElement.classList.remove('invisible', 'pointer-events-none');
             setTimeout(() => {
                 menuWrapperElement.style.opacity = backdropOpacity;
                 menuDrawerElement.style.transform = 'translateX(0%)';
             }, 20);
             menuWrapperElement.addEventListener('transitionend', () => {
-                document.body.style.overflow = 'hidden';
-                document.documentElement.style.overflow = 'hidden';
             }, {once:true})
             menuOpen = true
         } else if(menuOpen === true) {
             menuWrapperElement.style.opacity = 0;
             menuDrawerElement.style.transform = 'translateX(-100%)';
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
             menuWrapperElement.addEventListener('transitionend', () => {
-                menuWrapperElement.classList.add('hidden');
-                menuDrawerElement.classList.add('hidden');
+                menuWrapperElement.classList.add('invisible', 'pointer-events-none');
+                menuDrawerElement.classList.add('invisible', 'pointer-events-none');
+                var scrollY = parseInt(document.body.style.top || '0');
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+                window.scrollTo({ top: -scrollY, behavior: 'instant' });
             }, {once:true})
             menuOpen = false
         }
@@ -181,26 +341,38 @@ function initDrawers() {
         const drawerElement = document.querySelector(`#${target}`)
 
         if (open === true) {
-            drawerWrapperElement.classList.remove('hidden');
-            drawerElement.classList.remove('hidden');
+            // Lock scroll + compensate (Material UI pattern)
+            var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+            var scrollY = window.scrollY;
+            document.body.style.top = '-' + scrollY + 'px';
+            document.body.style.paddingRight = scrollbarW + 'px';
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            drawerWrapperElement.classList.remove('invisible', 'pointer-events-none');
+            drawerElement.classList.remove('invisible', 'pointer-events-none');
             setTimeout(() => {
                 drawerWrapperElement.style.opacity = backdropOpacity;
                 drawerElement.style.transform = 'translateX(0%)';
             }, 20);
             drawerWrapperElement.addEventListener('transitionend', () => {
-                document.body.style.overflow = 'hidden';
-                document.documentElement.style.overflow = 'hidden';
                 drawerElement.setAttribute('data-drawer-state', 'open')
             }, {once:true})
         } else if (open === false) {
             drawerWrapperElement.style.opacity = 0;
             drawerElement.style.transform = 'translateX(100%)';
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
             drawerWrapperElement.addEventListener('transitionend', () => {
-                drawerWrapperElement.classList.add('hidden');
-                drawerElement.classList.add('hidden');
+                drawerWrapperElement.classList.add('invisible', 'pointer-events-none');
+                drawerElement.classList.add('invisible', 'pointer-events-none');
                 drawerElement.setAttribute('data-drawer-state', 'closed')
+                // Restore scroll
+                var scrollY = parseInt(document.body.style.top || '0');
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+                window.scrollTo({ top: -scrollY, behavior: 'instant' });
             }, {once:true})
         }
     }
@@ -209,103 +381,134 @@ function initDrawers() {
 function initCart() {
 
     updateCartCount();
-    const cartElement = document.querySelector('#cart-drawer')
-    cartElement.addEventListener('transitionstart', (event) => {
-        if (event.target.id === cartElement.id && cartElement.getAttribute('data-drawer-state') === 'closed') {
-            handleCartFetch();
-        }
-    })
-
-    function handleCartFetch() {
-        enableLoading()
-        const section = 'cart-content'
-        const elementCartDrawerContentSection = document.getElementById('cart-drawer-content');
-        fetch(window.Shopify.routes.root + "?sections=" + section)
-        .then((res) => {
-            if(!res.ok) {
-                throw new Error();
-            }
-            return res.json()
-        })
-        .then((data) => {
-            elementCartDrawerContentSection.innerHTML = data[section];
-            document.getElementById('shopify-section-'+section).classList.add('h-full', 'flex', 'flex-col', 'shrink', 'overflow-auto');
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-        .finally(() => {
-            disableLoading()
-            initCartAction();
-            initSecurePopover();
-        })
-
-        function enableLoading() {
-            document.querySelector('[data-cart-drawer-state="default"]').classList.add('hidden');
-            document.querySelector('[data-cart-drawer-state="loading"]').classList.remove('hidden');
-        }
-
-        function disableLoading() {
-            document.querySelector('[data-cart-drawer-state="default"]').classList.remove('hidden');
-            document.querySelector('[data-cart-drawer-state="loading"]').classList.add('hidden');
-        }
-
-    }
+    initCartAction();
 
     function initCartAction() {
 
         const cartDrawerElement = document.getElementById('cart-drawer')
-        const cartActionElementList = cartDrawerElement.querySelectorAll('[data-cart-action]')
 
-        const cartShopBtnElement = document.getElementById('cart-shop-btn');
-
-        if(cartShopBtnElement !== null) {
-            cartShopBtnElement.addEventListener('click', handleCartToggle);
+        // Event delegation: one listener on persistent parent, no re-binding needed
+        if (!cartDrawerElement.dataset.cartActionsDelegated) {
+            cartDrawerElement.dataset.cartActionsDelegated = 'true';
+            cartDrawerElement.addEventListener('click', function(event) {
+                const btn = event.target.closest('[data-cart-action]');
+                if (!btn) return;
+                event.preventDefault();
+                handleCartAction(btn);
+            });
         }
 
-        cartActionElementList.forEach(cartActionElement => {
-            cartActionElement.addEventListener('click', handleCartAction)
-        })
+        var _cartRequests = {}; // per-line request IDs — prevents stale updates
 
-        function handleCartAction(event) {
-            let currentId = parseInt(event.currentTarget.dataset.cartItemId)
-            let currentQuantity = parseInt(event.currentTarget.dataset.cartItemQuantity)
+        function handleCartAction(btn) {
+            if (btn.disabled) return;
+            btn.disabled = true;
 
-            let currentAction = event.currentTarget.dataset.cartAction
-            if(currentAction === 'minus') {
-                currentQuantity--;
-            } else if(currentAction === 'plus') {
-                currentQuantity++;
+            const line = parseInt(btn.dataset.cartItemId);
+            let qty = parseInt(btn.dataset.cartItemQuantity);
+            if (isNaN(qty) || qty < 0) qty = 1;
+
+            const action = btn.dataset.cartAction;
+            if (action === 'minus') qty = Math.max(0, qty - 1);
+            else if (action === 'plus') qty = Math.max(1, qty + 1);
+            else if (action === 'remove') qty = 0;
+
+            var reqId = Date.now() + '_' + line;
+            _cartRequests[line] = reqId;
+
+            const payload = { line: line, quantity: qty };
+
+            var lineEl = document.querySelector('[data-cart-line="' + line + '"]');
+            var qtyEl = lineEl ? lineEl.querySelector('[data-cart-line-qty]') : null;
+            if (lineEl) {
+                lineEl.style.transition = 'opacity 200ms';
+                lineEl.style.opacity = '0.6';
             }
+            if (qtyEl) {
+                qtyEl.style.transition = 'transform 300ms ease-in-out';
+                qtyEl.style.transform = 'scale(0.85)';
+            }
+            btn.classList.add('rz-cart-btn-loading');
+            // Ring animation on the clicked button
+            btn.classList.add('rz-cart-btn-loading');
 
-            let formData = {
-                'line': currentId,
-                'quantity': currentQuantity
-            };
+            if (action === 'remove') {
+                var charityArea = document.getElementById('cart-drawer-charity');
+                if (charityArea) { charityArea.style.transition = 'opacity 200ms'; charityArea.style.opacity = '0.6'; }
+            }
 
             fetch(window.Shopify.routes.root + 'cart/change.js', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             })
             .then((res) => {
-                if(!res.ok) {
-                    throw new Error();
-                }
-                return res.json()
+                if (!res.ok) throw new Error();
+                return res.json();
             })
             .then((data) => {
-                updateCartCount()
+                // Guard: skip if a newer request for this line has superseded us
+                if (_cartRequests[line] !== reqId) return;
+
+                syncCartUI(data, undefined, true);
+
+                // Re-query lineEl — syncCartUI may have rebuilt the DOM
+                var currentLineEl = document.querySelector('[data-cart-line="' + line + '"]');
+
+                if (qty === 0) {
+                    if (currentLineEl && currentLineEl.parentNode) {
+                        currentLineEl.style.opacity = '0';
+                        currentLineEl.style.transition = '';
+                        currentLineEl.classList.add('hidden');
+                    }
+                } else {
+                    var updatedItem = data.items[line - 1];
+                    if (currentLineEl && currentLineEl.parentNode && updatedItem) {
+                        var newQty = updatedItem.quantity;
+                        var priceEl = currentLineEl.querySelector('[data-cart-line-price]');
+                        var qtyElUpdate = currentLineEl.querySelector('[data-cart-line-qty]');
+                        if (priceEl) priceEl.textContent = formatMoney(updatedItem.final_line_price);
+                        if (qtyElUpdate) {
+                            qtyElUpdate.textContent = newQty;
+                            qtyElUpdate.style.transform = 'scale(1.15)';
+                            setTimeout(function() { qtyElUpdate.style.transform = 'scale(1)'; }, 150);
+                        }
+                        currentLineEl.querySelectorAll('[data-cart-action]').forEach(function(b) {
+                            b.dataset.cartItemQuantity = newQty;
+                        });
+                    }
+                    if (currentLineEl && currentLineEl.parentNode) {
+                        currentLineEl.style.opacity = '1';
+                        setTimeout(function() { currentLineEl.style.transition = ''; }, 250);
+                    }
+                }
+
+                var charityArea = document.getElementById('cart-drawer-charity');
+                if (charityArea) { charityArea.style.opacity = '1'; charityArea.style.transition = ''; }
+
+                // Ring completion on the button
+                btn.classList.remove('rz-cart-btn-loading');
+                btn.classList.add('rz-cart-btn-success');
+                btn.disabled = false;
+                setTimeout(function() { btn.classList.remove('rz-cart-btn-success'); }, 600);
             })
             .catch((error) => {
-                console.error(error)
-            })
-            .finally(() => {
-                handleCartFetch();
-            })
+                console.error('[cart] cart/change.js FAILED:', error);
+                btn.classList.remove('rz-cart-btn-loading');
+                btn.classList.add('rz-cart-btn-error');
+                btn.disabled = false;
+                setTimeout(function() { btn.classList.remove('rz-cart-btn-error'); }, 600);
+                // Re-query — DOM may have changed
+                var currentLineEl = document.querySelector('[data-cart-line="' + line + '"]');
+                if (currentLineEl && currentLineEl.parentNode) {
+                    currentLineEl.style.opacity = '1';
+                    currentLineEl.style.transition = '';
+                }
+                var currentQtyEl = currentLineEl ? currentLineEl.querySelector('[data-cart-line-qty]') : null;
+                if (currentQtyEl) { currentQtyEl.style.transform = 'scale(1)'; currentQtyEl.style.transition = ''; }
+            });
 
         }
+
     }
 }

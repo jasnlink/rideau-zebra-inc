@@ -359,8 +359,8 @@
             "height": "Height",
             "depth": "Depth",
             "depth_check": {
-              "title": "Depth Check",
-              "description": "Ensure your inner frame has at least 70 mm (2.75 in) clearance for standard blinds and 90 mm (3.5 in) for premium blinds to ensure a proper fit.",
+              "title": "Frame depth",
+              "description": "For a perfect fit, your frame needs a minimum depth of 70 mm (2.75 in) for standard blinds, or 90 mm (3.5 in) for premium.",
               "see_specifications": "See product specifications"
             },
             "assign_room_name": {
@@ -515,6 +515,42 @@
       "or": "or",
       "give_us_a_call": "give us a call.",
       "add_to_cart": "Add to cart",
+      "added": "Added",
+      "try_again": "Try again",
+      "charity_donation": {
+        "title": "Support Orbis Canada",
+        "description": "Orbis Canada helps create access to eye care and restore vision worldwide \u2014 because when people can see, they can thrive. Select a donation amount to add to your order. 100% of your donation will go to Orbis Canada. Gifts of $20 or more are tax receiptable.",
+        "description_cart": "Select a donation amount to add to your order. 100% goes to Orbis Canada eye care programs.",
+        "of_order": "of your order",
+        "custom": "Other",
+        "custom_amount_placeholder": "Amount in dollars",
+        "add_donation": "Add donation",
+        "thank_you_title": "Thank you for supporting Orbis Canada.",
+        "donation_summary_suffix": " to Orbis Canada. Thank you.",
+        "already_donated": "{{ amount }} to Orbis Canada. Thank you for supporting eye care worldwide.",
+        "added": "Added. Thank you.",
+        "error": "Couldn't add donation. Please try again.",
+        "cart_label": "Orbis Canada donation",
+        "cart_description": "Thank you for supporting eye care worldwide.",
+        "cart_line_dynamic": "{{ type }} to Orbis Canada. Thank you.",
+        "remove": "Remove",
+        "consent_label": "I consent to Rideau Zebra sharing my contact information with Orbis Canada so they can issue a tax receipt for my donation (gifts of $20+).",
+        "consent_label_cart": "I consent to share my info for a tax receipt ($20+)",
+        "consent_label_short": "Tax receipt consent",
+        "info_icon_label": "More info",
+        "consent_given": "Tax receipt consent granted",
+        "consent_not_given": "No tax receipt consent",
+        "info_icon_aria": "See which information is shared with Orbis Canada",
+        "info_popover_title": "Your information",
+        "info_popover_body": "By checking this box, the following details from your order are sent to Orbis Canada so they can issue your tax receipt:",
+        "info_popover_field_first_name": "First name",
+        "info_popover_field_last_name": "Last name",
+        "info_popover_field_email": "Email",
+        "info_popover_field_phone": "Phone number",
+        "info_popover_field_address": "Address",
+        "info_popover_threshold": "Tax receipts are issued for donations of $20 or more.",
+        "info_popover_note": "Only these details are shared — no payment information."
+      },
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
@@ -841,6 +877,13 @@
     }
   },
   "sections": {
+    "orbis_partnership": {
+      "overline": "Our partners",
+      "title": "We Support Orbis Canada",
+      "learn_more": "Learn more about Orbis Canada",
+      "description_paragraph_1": "Orbis Canada is a global nonprofit that works with their local partners to train eye care providers, strengthen health facilities, tackle barriers to access, and support sight-saving, life-changing eye care in communities where it\u2019s often out of reach.",
+      "description_paragraph_2": "1.1 billion people worldwide live with vision loss, but 90% is actually treatable or preventable. Every order you place with Rideau Zebra supports Orbis Canada\u2019s mission to create a world where everyone, everywhere can access the eye care they need to thrive."
+    },
     "header": {
       "top_bar_1_html": "Enjoy 5% off on your first order with code: <strong>ZEBRA5<\/strong>",
       "top_bar_2_html": "Call us <a href=\"+14509129327\" class=\"underline\">(450) 912-9327<\/a>",
@@ -911,7 +954,9 @@
       "copyright": "&copy; Copyright",
       "ssl_encrypted": "SECURE PAYMENTS | POWERED BY SHOPIFY",
       "site_secure": "Site is secure",
-      "verify_security": "Verify security"
+      "verify_security": "Verify security",
+      "protected_checkout": "Protected checkout",
+      "encryption_detail": "256-bit SSL encryption"
     },
     "featured_blog": {
       "view_all": "View all",

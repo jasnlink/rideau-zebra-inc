@@ -1,0 +1,37 @@
+{% comment %}
+    Charity consent info popover.
+    Explains exactly which order information is shared with Orbis Canada
+    when the tax-receipt consent checkbox is ticked.
+    Rendered once globally in theme.liquid; positioned via Popper.js
+    relative to any [data-charity-info-action] trigger (hover + tap).
+{% endcomment %}
+<div id="charity-info-popover" class="hidden" role="tooltip" style="z-index:9999;max-width:300px;background:linear-gradient(180deg,#ffffff 0%,#fafafa 100%);border-radius:0.375rem;border:1px solid #e7e5e3;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);opacity:0;transition:opacity 200ms ease-out">
+    <div class="px-5 py-4">
+        <div class="font-serif font-bold text-sm text-content">{{ 'products.product.charity_donation.info_popover_title' | t }}</div>
+        <p class="mt-2 text-xs text-content-secondary leading-relaxed">{{ 'products.product.charity_donation.info_popover_body' | t }}</p>
+        <ul class="mt-2 flex flex-col gap-1.5 text-xs text-content">
+            <li class="flex items-center gap-2">
+                <span class="flex-shrink-0 text-trust-400">{% render 'icon-success', class: 'h-3 w-auto', fill: 'currentColor' %}</span>
+                {{ 'products.product.charity_donation.info_popover_field_first_name' | t }}
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="flex-shrink-0 text-trust-400">{% render 'icon-success', class: 'h-3 w-auto', fill: 'currentColor' %}</span>
+                {{ 'products.product.charity_donation.info_popover_field_last_name' | t }}
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="flex-shrink-0 text-trust-400">{% render 'icon-success', class: 'h-3 w-auto', fill: 'currentColor' %}</span>
+                {{ 'products.product.charity_donation.info_popover_field_email' | t }}
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="flex-shrink-0 text-trust-400">{% render 'icon-success', class: 'h-3 w-auto', fill: 'currentColor' %}</span>
+                {{ 'products.product.charity_donation.info_popover_field_phone' | t }}
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="flex-shrink-0 text-trust-400">{% render 'icon-success', class: 'h-3 w-auto', fill: 'currentColor' %}</span>
+                {{ 'products.product.charity_donation.info_popover_field_address' | t }}
+            </li>
+        </ul>
+        <p class="mt-3 pt-3 border-t border-content-light text-[11px] text-content-secondary leading-snug">{{ 'products.product.charity_donation.info_popover_threshold' | t }}</p>
+        <p class="mt-1 text-[11px] text-content-tertiary leading-snug">{{ 'products.product.charity_donation.info_popover_note' | t }}</p>
+    </div>
+</div>

@@ -29,10 +29,12 @@
                 <span class="rz-badge-trust">Free Shipping</span>
             {% endif %}
         </div>
-            <button type="button" data-add-cart-showcase="{{ variant.id }}" class="mt-4 w-full rz-btn-md rz-btn-primary disabled:opacity-75 disabled:bg-content disabled:text-content-inverse">
-            <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-5 w-5 text-content-inverse', fill: 'none' %}</span>
-            <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-5 w-5 text-content-inverse' %}</span>
-            <span data-add-state="default">Add to cart</span>
+            <button type="button" data-add-cart-showcase="{{ variant.id }}" data-animation-source="cart" data-animation-image="{% if variant.image %}{{ variant.image | image_url: width: 80 }}{% else %}{{ product.featured_image | image_url: width: 80 }}{% endif %}" class="mt-4 w-full rz-btn-md rz-btn-primary inline-flex items-center justify-center gap-2">
+            {% render 'icon-processing', class: 'h-5 w-5 flex-shrink-0' %}
+            <span data-add-state="default">{{ 'products.product.add_to_cart' | t }}</span>
+            <span data-add-state="loading" class="hidden">{{ 'products.product.add_to_cart' | t }}</span>
+            <span data-add-state="success" class="hidden">{{ 'products.product.added' | t }}</span>
+            <span data-add-state="error" class="hidden">{{ 'products.product.try_again' | t }}</span>
         </button>
     </div>
 </div>

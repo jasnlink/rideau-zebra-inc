@@ -10,3 +10,7 @@ Thumbs.db
 
 #node_modules
 node_modules
+
+# DSH session data #
+####################
+.dsh/

@@ -1,4 +1,5 @@
 import Glide from "@glidejs/glide";
+import { updateCharityDonationAmounts } from './lib';
 
 window.addEventListener('DOMContentLoaded', (event) => {
     new Glide('.glide').mount();
@@ -329,6 +330,15 @@ function initVariantSelector() {
             document.querySelectorAll('[data-product-display-price]').forEach(element => {
                 element.textContent = foundElement.getAttribute('data-selector-variant-price')
             })
+            // Update charity donation amounts when variant price changes
+            const priceText = foundElement.getAttribute('data-selector-variant-price');
+            if (priceText) {
+                const priceMatch = priceText.match(/[\d,]+\.?\d*/);
+                if (priceMatch) {
+                    const priceDollars = parseFloat(priceMatch[0].replace(/,/g, ''));
+                    updateCharityDonationAmounts(Math.round(priceDollars * 100));
+                }
+            }
             document.querySelectorAll('[data-product-display-availability="true"]').forEach(element => {
                 element.classList.remove('hidden')
                 element.classList.add('flex')

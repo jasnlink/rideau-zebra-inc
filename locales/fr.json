@@ -362,8 +362,8 @@
             "height": "Hauteur",
             "depth": "Profondeur",
             "depth_check": {
-              "title": "Vérification de la profondeur",
-              "description": "Assurez-vous que votre cadre intérieur a au moins 70 mm (2,75 po) de dégagement pour les stores standard et 90 mm (3,5 po) pour les stores premium afin de garantir un ajustement correct.",
+              "title": "Profondeur du cadre",
+              "description": "Pour un ajustement parfait, votre cadre doit avoir une profondeur minimale de 70 mm (2,75 po) pour les stores standard, ou 90 mm (3,5 po) pour les premium.",
               "see_specifications": "Voir les spécifications du produit"
             },
             "assign_room_name": {
@@ -518,6 +518,42 @@
       "or": "ou",
       "give_us_a_call": "appelez-nous.",
       "add_to_cart": "Ajouter au panier",
+      "added": "Ajouté",
+      "try_again": "Réessayer",
+      "charity_donation": {
+        "title": "Soutenir Orbis Canada",
+        "description": "Orbis Canada contribue à créer un accès aux soins oculaires et à redonner la vue dans le monde entier \u2014 parce que quand les gens peuvent voir, ils peuvent s\u2019épanouir. Choisissez un montant de don à ajouter à votre commande. 100 % de votre don sera remis à Orbis Canada. Les dons de 20 $ ou plus donnent droit à un reçu fiscal.",
+        "description_cart": "Choisissez un montant de don à ajouter à votre commande. 100 % est remis aux programmes de soins oculaires d\u2019Orbis Canada.",
+        "of_order": "de votre commande",
+        "custom": "Autre",
+        "custom_amount_placeholder": "Montant en dollars",
+        "add_donation": "Ajouter le don",
+        "thank_you_title": "Merci de soutenir Orbis Canada.",
+        "donation_summary_suffix": " à Orbis Canada. Merci.",
+        "already_donated": "{{ amount }} à Orbis Canada. Merci de soutenir les soins oculaires dans le monde.",
+        "added": "Ajouté. Merci.",
+        "error": "Impossible d'ajouter le don. Veuillez réessayer.",
+        "cart_label": "Don Orbis Canada",
+        "cart_description": "Merci de soutenir les soins oculaires dans le monde.",
+        "cart_line_dynamic": "{{ type }} à Orbis Canada. Merci.",
+        "remove": "Retirer",
+        "consent_label": "Je consens à ce que Rideau Zebra partage mes coordonnées avec Orbis Canada afin qu\u2019ils puissent émettre un reçu fiscal pour mon don (dons de 20 $ et plus).",
+        "consent_label_cart": "Je consens à partager mes infos pour un reçu fiscal (20 $+)",
+        "consent_label_short": "Consentement pour reçu fiscal",
+        "info_icon_label": "Plus d'infos",
+        "consent_given": "Consentement pour reçu fiscal accordé",
+        "consent_not_given": "Aucun consentement pour reçu fiscal",
+        "info_icon_aria": "Voir quelles informations sont partagées avec Orbis Canada",
+        "info_popover_title": "Vos informations",
+        "info_popover_body": "En cochant cette case, les coordonnées suivantes de votre commande sont transmises à Orbis Canada afin qu\u2019ils puissent émettre votre reçu fiscal :",
+        "info_popover_field_first_name": "Prénom",
+        "info_popover_field_last_name": "Nom",
+        "info_popover_field_email": "Courriel",
+        "info_popover_field_phone": "Numéro de téléphone",
+        "info_popover_field_address": "Adresse",
+        "info_popover_threshold": "Les reçus fiscaux sont émis pour les dons de 20 $ ou plus.",
+        "info_popover_note": "Seules ces coordonnées sont partagées \u2014 aucune information de paiement."
+      },
       "description": "Description",
       "on_sale": "En vente",
       "product_variants": "Variantes de produits",
@@ -849,6 +885,13 @@
     }
   },
   "sections": {
+    "orbis_partnership": {
+      "overline": "Nos partenaires",
+      "title": "Nous soutenons Orbis Canada",
+      "learn_more": "En savoir plus sur Orbis Canada",
+      "description_paragraph_1": "Orbis Canada est un organisme à but non lucratif mondial qui travaille avec ses partenaires locaux pour former des prestataires de soins oculaires, renforcer les établissements de santé, éliminer les obstacles à l\u2019accès et soutenir des soins oculaires qui sauvent la vue et changent des vies dans les communautés où ils sont souvent hors de portée.",
+      "description_paragraph_2": "1,1 milliard de personnes dans le monde vivent avec une perte de vision, mais 90 % des cas sont en fait traitables ou évitables. Chaque commande que vous passez chez Rideau Zebra soutient la mission d\u2019Orbis Canada de créer un monde où chacun, partout, peut accéder aux soins oculaires dont il a besoin pour s\u2019épanouir."
+    },
     "header": {
       "top_bar_1_html": "Profitez de 5% de réduction sur votre première commande avec le code : <strong>ZEBRA5<\/strong>",
       "top_bar_2_html": "Appelez-nous <a href=\"+14509129327\" class=\"underline\">(450) 912-9327<\/a>",
@@ -919,7 +962,9 @@
       "copyright": "&copy; Tous droits réservés",
       "ssl_encrypted": "PAIEMENTS SÉCURISÉS | PROPULSÉ PAR SHOPIFY",
       "site_secure": "Site sécuritaire",
-      "verify_security": "Vérifier la sécurité"
+      "verify_security": "Vérifier la sécurité",
+      "protected_checkout": "Paiement protégé",
+      "encryption_detail": "Cryptage SSL 256 bits"
     },
     "featured_blog": {
       "view_all": "Tout afficher",

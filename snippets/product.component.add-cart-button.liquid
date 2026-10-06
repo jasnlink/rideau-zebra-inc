@@ -2,9 +2,10 @@
 {%- if compact == true -%}
     {%- assign buttonSizeClass = 'rz-btn-xs xl:rz-btn-sm' -%}
 {%- endif -%}
-<button type="submit" data-add-cart-selected-product-variant-id="{{ product.selected_or_first_available_variant.id }}" data-add-cart="{{ product.selected_or_first_available_variant.id }}" data-animation-source="cart" class="{{ buttonSizeClass }} w-full rz-btn-primary">
-    <span data-add-state="error" class="hidden">{% render 'icon-error', class: 'mx-auto h-7 w-7 text-content-inverse', fill: 'none' %}</span>
-    <span data-add-state="success" class="hidden">{% render 'icon-success', class: 'mx-auto h-7 w-7 text-content-inverse', fill: 'none' %}</span>
-    <span data-add-state="loading" class="hidden">{% render 'icon-loading', class: 'animate-spin mx-auto h-7 w-7 text-content-inverse' %}</span>
+<button type="submit" data-add-cart-selected-product-variant-id="{{ product.selected_or_first_available_variant.id }}" data-add-cart="{{ product.selected_or_first_available_variant.id }}" data-animation-source="cart" data-animation-image="{{ product.featured_image | image_url: width: 80 }}" class="{{ buttonSizeClass }} w-full rz-btn-primary inline-flex items-center justify-center gap-2">
+    {% render 'icon-processing', class: 'h-5 w-5 flex-shrink-0' %}
     <span data-add-state="default">{{ button_text }}</span>
+    <span data-add-state="loading" class="hidden">{{ button_text }}</span>
+    <span data-add-state="success" class="hidden">{{ 'products.product.added' | t }}</span>
+    <span data-add-state="error" class="hidden">{{ 'products.product.try_again' | t }}</span>
 </button>
